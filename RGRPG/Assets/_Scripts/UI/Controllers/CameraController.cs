@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RGRPG.UIControllers
+namespace RGRPG.Controllers
 {
     public class CameraController : MonoBehaviour
     {

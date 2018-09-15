@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using RGRPG.Core;
 
-namespace RGRPG.UIControllers
+namespace RGRPG.Controllers
 {
 
     public class CharacterController : MonoBehaviour
@@ -37,8 +37,7 @@ namespace RGRPG.UIControllers
                 firstUpdate = false;
             }
 
-            transform.position = character.Position;
-
+            transform.position = new Vector3(character.Position.x, character.Position.y, 0);
         }
 
         public void SetCharacter(Character character)
@@ -63,6 +62,7 @@ namespace RGRPG.UIControllers
             }
 
             spriteRenderer.sprite = image;
+            spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
         }
 
     }

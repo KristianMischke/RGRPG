@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using RGRPG.Core;
 using TMPro;
 
-namespace RGRPG.UIControllers
+namespace RGRPG.Controllers
 {
 
     public class CharacterHUDController : MonoBehaviour

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using RGRPG.Core;
 
-namespace RGRPG.UIControllers
+namespace RGRPG.Controllers
 {
     public class CharacterActionController : MonoBehaviour
     {

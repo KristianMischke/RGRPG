@@ -23,7 +23,7 @@ namespace RGRPG.Core
         protected int attack; //TODO: we need to consider how we are storing the attack (should it be in the character or the action or both?
         protected int defense;
 
-        protected Vector3 position;
+        protected Vector2Int position;
 
         protected List<ICharacterAction> actions;
 
@@ -33,7 +33,7 @@ namespace RGRPG.Core
         public int Attack { get { return attack; } }
         public int Defense { get { return defense; } }
         public List<ICharacterAction> Actions { get { return actions; } }
-        public Vector3 Position { get { return position; } }
+        public Vector2Int Position { get { return position; } }
 
         public Character() { }
 
@@ -57,10 +57,14 @@ namespace RGRPG.Core
             health += amount;
         }
 
-        public void Move(int x, int y, int z) {
+        public void Move(int x, int y)
+        {
+            position += new Vector2Int(x, y);
+        }
 
-            position += new Vector3(x, y, z);
-
+        public void SetPosition(int x, int y)
+        {
+            position = new Vector2Int(x, y);
         }
 
     }

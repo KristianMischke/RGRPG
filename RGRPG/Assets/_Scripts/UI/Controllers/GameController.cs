@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RGRPG.Core;
 
-namespace RGRPG.UIControllers
+namespace RGRPG.Controllers
 {
 
     public class GameController : MonoBehaviour
@@ -25,9 +25,9 @@ namespace RGRPG.UIControllers
         public List<CharacterHUDController> enemyHUDControllers;
 
         // Prefabs
+        public GameObject worldSceneView;
         public GameObject characterView;
         public GameObject characterHUDView;
-
 
         // Data
         Game game;
@@ -56,12 +56,21 @@ namespace RGRPG.UIControllers
 
             game = new Game();
 
+            // set up the scene controller
+            GameObject worldSceneObject = Instantiate(worldSceneView);
+            worldSceneObject.transform.SetParent(worldObjectContainer.transform);
+
+            SceneController worldSceneController = worldSceneObject.GetComponent<SceneController>();
+            worldSceneController.scene = game.StartScene;
+            worldSceneController.ResetScene();
+
             // set up the player controllers
             foreach (Character playerData in game.Players)
             {
                 // set up world character controller
                 GameObject playerView = Instantiate(characterView);
                 playerView.transform.SetParent(worldObjectContainer.transform);
+                playerView.name = playerData.Name;
                 
                 CharacterController playerController = playerView.GetComponent<CharacterController>();
                 playerController.SetCharacter(playerData);
@@ -73,7 +82,7 @@ namespace RGRPG.UIControllers
 
                 CharacterHUDController playerHUDController = playerHUDView.GetComponent<CharacterHUDController>();
                 playerHUDController.character = playerData;
-                playerHUDController.SetSelectAction(() => { game.selectedCharacter = playerHUDController.character; });
+                playerHUDController.SetSelectAction(() => { game.SelectCharacter(playerHUDController.character); });
                 playerHUDControllers.Add(playerHUDController);
             }
 
@@ -83,6 +92,7 @@ namespace RGRPG.UIControllers
                 // set up world character controller
                 GameObject enemyView = Instantiate(characterView);
                 enemyView.transform.SetParent(worldObjectContainer.transform);
+                enemyView.name = enemyData.Name;
 
                 CharacterController enemyController = enemyView.GetComponent<CharacterController>();
                 enemyController.SetCharacter(enemyData);
@@ -103,7 +113,7 @@ namespace RGRPG.UIControllers
             }
             else
             {
-                Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.selectedCharacter).gameObject;
+                Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
                 MoveSelectedCharacter();
             }
 
@@ -131,7 +141,7 @@ namespace RGRPG.UIControllers
                 xMovement = -1;
             }
 
-            game.selectedCharacter.Move(xMovement, yMovement, 0);
+            game.MoveSelectedCharacter(xMovement, yMovement);
 
         }
     }
