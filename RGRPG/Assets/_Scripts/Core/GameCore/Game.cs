@@ -18,12 +18,23 @@ namespace RGRPG.Core
         protected List<Character> enemies;
         protected Character selectedCharacter;
 
+        // for combat
+        protected bool isInCombat = false;
+        protected bool playerTurnInputDone = false;
+        protected Character combatEnemy; //TODO: do we want to be able to fight multiple enemies at a time?
+        protected Dictionary<Character, Queue<ICharacterAction>> characterTurns;
+        protected Queue<Character> turnOrder;
+
         public List<WorldScene> Scenes { get { return scenes; } }
         public WorldScene StartScene { get { return startScene; } }
         public WorldScene CurrentScene { get { return currentScene; } }
         public List<Character> Players { get { return players; } }
         public List<Character> Enemies { get { return enemies; } }
         public Character SelectedCharacter { get { return selectedCharacter; } }
+
+        public bool IsInCombat { get { return isInCombat; } }
+        public bool PlayerTurnInputDone { get { return playerTurnInputDone; } }
+        public Character CombatEnemy { get { return combatEnemy; } }
 
         public Game()
         {
@@ -58,11 +69,57 @@ namespace RGRPG.Core
             selectedCharacter = players[0];
         }
 
-        public void Turn()
+        public void GameLoop()
         {
+            if (isInCombat)
+            {
+
+                if (playerTurnInputDone)
+                {
+                    RecordAction(combatEnemy.Actions[0], combatEnemy, players[Random.Range(0, players.Count)]);
+
+                    ProcessCombatTurns();
+                    playerTurnInputDone = false;
+                }
+
+                return;
+            }
 
 
+            CheckEncounterEnemy();
+        }
 
+        void ProcessCombatTurns()
+        {
+            // get the random order
+            List<Character> characters = new List<Character>(characterTurns.Keys);
+            turnOrder = new Queue<Character>();
+            while(characters.Count > 0)
+            {
+                int nextCharacter = Random.Range(0, characters.Count + 1);
+                turnOrder.Enqueue(characters[nextCharacter]);
+                characters.RemoveAt(nextCharacter);
+            }
+
+
+            //TODO: this all happens in one frame, we would probably want to break it out or do something ont the controller side to make things happen slower and in order to the player
+            while (turnOrder.Count > 0)
+            {
+                Character currentTurn = turnOrder.Dequeue();
+                Debug.Log("Processing " + currentTurn.Name + "'s Turn");
+                while(characterTurns[currentTurn].Count > 0)
+                {
+                    ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
+                    Debug.Log("Executing Action: " + currentAction.GetName());
+                    currentAction.DoAction();
+                }
+            }
+
+        }
+
+        public void FinishPlayerTurnInput()
+        {
+            playerTurnInputDone = true;
         }
 
         public void SelectCharacter(Character target)
@@ -77,6 +134,42 @@ namespace RGRPG.Core
             {
                 selectedCharacter.Move(x, y);
             }
+        }
+
+        void CheckEncounterEnemy()
+        {
+            if (isInCombat)
+                return;
+
+            foreach (Character player in players)
+            {
+                foreach (Character enemy in enemies)
+                {
+                    if (player.Position == enemy.Position)
+                    {
+                        Debug.Log("FIGHT");
+                        combatEnemy = enemy;
+                        StartCombat();
+                    }
+                }
+            }
+        }
+
+        void StartCombat()
+        {
+            isInCombat = true;
+
+            characterTurns = new Dictionary<Character, Queue<ICharacterAction>>();
+        }
+
+        public void RecordAction(ICharacterAction action, Character source, Character target)
+        {
+            if (!characterTurns.ContainsKey(source))
+                characterTurns.Add(source, new Queue<ICharacterAction>());
+
+            action.SetTargets(new List<Character> { target });
+            characterTurns[source].Enqueue(action);
+            Debug.Log(source.Name + " -> " + action.GetName());
         }
 
     }

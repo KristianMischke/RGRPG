@@ -6,7 +6,8 @@ namespace RGRPG.Core
 {
     public interface ICharacterAction
     {
-        void DoAction(List<Character> targets);
+        void SetTargets(List<Character> targets);
+        void DoAction();
         string GetName();
         int GetAmount();
         bool HasAmount();
@@ -15,6 +16,7 @@ namespace RGRPG.Core
 
     public class AttackAction : ICharacterAction
     {
+        private List<Character> targets = new List<Character>();
 
         private int damage;
 
@@ -23,7 +25,12 @@ namespace RGRPG.Core
             this.damage = damage;
         }
 
-        public void DoAction(List<Character> targets)
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction()
         {
             foreach (Character c in targets)
             {

@@ -9,6 +9,8 @@ namespace RGRPG.Controllers
     public class GameController : MonoBehaviour
     {
 
+        public static GameController instance;
+
         // Scene Object References
         public GameObject worldObjectContainer;
         public GameObject combatObjectContainer;
@@ -31,11 +33,13 @@ namespace RGRPG.Controllers
 
         // Data
         Game game;
-        public bool combatMode = false;
 
         // Use this for initialization
         void Start()
         {
+            if (instance == null)
+                instance = this;
+
             if (worldObjectContainer == null)
             {
                 worldObjectContainer = GameObject.Find("WorldObjects");
@@ -81,8 +85,7 @@ namespace RGRPG.Controllers
                 playerHUDView.transform.SetParent(playerHUDList.transform);
 
                 CharacterHUDController playerHUDController = playerHUDView.GetComponent<CharacterHUDController>();
-                playerHUDController.character = playerData;
-                playerHUDController.SetSelectAction(() => { game.SelectCharacter(playerHUDController.character); });
+                playerHUDController.Init(playerData);
                 playerHUDControllers.Add(playerHUDController);
             }
 
@@ -104,10 +107,12 @@ namespace RGRPG.Controllers
         void Update()
         {
 
-            worldObjectContainer.SetActive(!combatMode);
-            combatObjectContainer.SetActive(combatMode);
+            game.GameLoop();
 
-            if (combatMode)
+            worldObjectContainer.SetActive(!game.IsInCombat);
+            combatObjectContainer.SetActive(game.IsInCombat);
+
+            if (game.IsInCombat)
             {
 
             }
@@ -116,7 +121,7 @@ namespace RGRPG.Controllers
                 Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
                 MoveSelectedCharacter();
             }
-
+           
         }
 
         void MoveSelectedCharacter()
@@ -143,6 +148,26 @@ namespace RGRPG.Controllers
 
             game.MoveSelectedCharacter(xMovement, yMovement);
 
+        }
+
+        public void SelectCharacter(Character c)
+        {
+            game.SelectCharacter(c);
+        }
+
+        public void RecordAction(ICharacterAction action, Character source, Character target)
+        {
+            game.RecordAction(action, source, target);
+        }
+
+        public Character GetCombatEnemy()
+        {
+            return game.CombatEnemy;
+        }
+
+        public void FinishPlayerTurnInput()
+        {
+            game.FinishPlayerTurnInput();
         }
     }
 

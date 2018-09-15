@@ -65,4 +65,3 @@ MonoBehaviour:
     type: 2}
   characterHUDView: {fileID: 1309484275852450, guid: 34e9a40707b23e547a15bb78609d5502,
     type: 2}
-  combatMode: 0
