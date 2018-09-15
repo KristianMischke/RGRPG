@@ -15,6 +15,15 @@ namespace RGRPG.UIControllers
         public GameObject canvasObject;
         public GameObject playerHUDList;
 
+        [HideInInspector]
+        public List<CharacterController> playerControllers;
+        [HideInInspector]
+        public List<CharacterHUDController> playerHUDControllers;
+        [HideInInspector]
+        public List<CharacterController> enemyControllers;
+        [HideInInspector]
+        public List<CharacterHUDController> enemyHUDControllers;
+
         // Prefabs
         public GameObject characterView;
         public GameObject characterHUDView;
@@ -42,6 +51,9 @@ namespace RGRPG.UIControllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
+            playerControllers = new List<CharacterController>();
+            enemyControllers = new List<CharacterController>();
+
             game = new Game();
 
             // set up the player controllers
@@ -53,6 +65,7 @@ namespace RGRPG.UIControllers
                 
                 CharacterController playerController = playerView.GetComponent<CharacterController>();
                 playerController.SetCharacter(playerData);
+                playerControllers.Add(playerController);
 
                 // set up UI character controller
                 GameObject playerHUDView = Instantiate(characterHUDView);
@@ -61,6 +74,7 @@ namespace RGRPG.UIControllers
                 CharacterHUDController playerHUDController = playerHUDView.GetComponent<CharacterHUDController>();
                 playerHUDController.character = playerData;
                 playerHUDController.SetSelectAction(() => { game.selectedCharacter = playerHUDController.character; });
+                playerHUDControllers.Add(playerHUDController);
             }
         }
 
@@ -77,6 +91,7 @@ namespace RGRPG.UIControllers
             }
             else
             {
+                Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.selectedCharacter).gameObject;
                 MoveSelectedCharacter();
             }
 
