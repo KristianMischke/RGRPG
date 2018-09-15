@@ -37,9 +37,52 @@ namespace RGRPG.Core
             }
         }
 
-        public bool IsTerrainTraversable(int x, int y)
+        public bool CanPlayerMoveHere(Character character, ref float dx, ref float dy)
         {
-            return terrainTiles[x, y].Traversable;
+            // factor in player radius
+            Vector2 characterRadius = new Vector2(dx, dy);
+            characterRadius.Normalize();
+            characterRadius *= character.Radius;
+
+            int beforeTileX, beforeTileY;
+            TerrainTile beforeTile = GetTileAt(character.Position.x, character.Position.y, out beforeTileX, out beforeTileY);
+
+            int nextTileX, nextTileY;
+            TerrainTile nextTile = GetTileAt(character.Position.x + characterRadius.x + dx, character.Position.y + characterRadius.y + dy, out nextTileX, out nextTileY);
+
+            bool collision = nextTile == null || !nextTile.Traversable;
+
+            if (collision)
+            {
+                if (beforeTileX != nextTileX)
+                {
+                    float beforeRadiusPosX = character.Position.x + characterRadius.x;
+                    float borderX = Mathf.Min(beforeTileX, nextTileX) + 0.5f;
+                    dx = borderX - beforeRadiusPosX;
+                }
+                if (beforeTileY != nextTileY)
+                {
+                    float beforeRadiusPosY = character.Position.y + characterRadius.y;
+                    float borderY = Mathf.Min(beforeTileY, nextTileY) + 0.5f;
+                    dy = borderY - beforeRadiusPosY;
+                }
+            }
+
+            return true;
+            //return collision;
+        }
+
+        public TerrainTile GetTileAt(float x, float y, out int xIndex, out int yIndex)
+        {
+            xIndex = (int)(x + 0.5f);
+            yIndex = (int)(y + 0.5f);
+
+            if (xIndex < 0 || yIndex < 0 || xIndex >= terrainTiles.GetLength(0) || yIndex >= terrainTiles.GetLength(1))
+            {
+                return null;
+            }
+
+            return terrainTiles[xIndex, yIndex];
         }
 
     }

@@ -96,7 +96,7 @@ namespace RGRPG.Core
             turnOrder = new Queue<Character>();
             while(characters.Count > 0)
             {
-                int nextCharacter = Random.Range(0, characters.Count + 1);
+                int nextCharacter = Random.Range(0, characters.Count);
                 turnOrder.Enqueue(characters[nextCharacter]);
                 characters.RemoveAt(nextCharacter);
             }
@@ -128,11 +128,11 @@ namespace RGRPG.Core
             selectedCharacter = target;
         }
 
-        public void MoveSelectedCharacter(int x, int y)
+        public void MoveSelectedCharacter(float dx, float dy)
         {
-            if (currentScene.IsTerrainTraversable(selectedCharacter.Position.x + x, selectedCharacter.Position.y + y))
+            if (currentScene.CanPlayerMoveHere(selectedCharacter, ref dx, ref dy))
             {
-                selectedCharacter.Move(x, y);
+                selectedCharacter.Move(dx, dy);
             }
         }
 

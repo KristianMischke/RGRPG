@@ -37,7 +37,7 @@ namespace RGRPG.Controllers
                 firstUpdate = false;
             }
 
-            transform.position = new Vector3(character.Position.x, character.Position.y, 0);
+            transform.position = character.Position;
         }
 
         public void SetCharacter(Character character)
@@ -47,6 +47,9 @@ namespace RGRPG.Controllers
 
         void LoadCharacterImage()
         {
+            if (character == null)
+                return;
+
             Sprite image;
             switch (character.Type)
             {

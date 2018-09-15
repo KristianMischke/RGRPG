@@ -58,6 +58,11 @@ namespace RGRPG.Controllers
                     break;
             }
 
+            if (!terrainTile.Traversable)
+            {
+                image = Resources.Load<Sprite>("Sprites/stone");
+            }
+
             spriteRenderer.sprite = image;
             spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
 
