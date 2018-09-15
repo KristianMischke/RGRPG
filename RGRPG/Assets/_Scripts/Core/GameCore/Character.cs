@@ -5,8 +5,18 @@ using UnityEngine;
 namespace RGRPG.Core
 {
 
+    //TODO: change these
+    public enum CharacterType
+    {
+        Player,
+        Enemy,
+
+        COUNT
+    }
+
     public class Character
     {
+        protected CharacterType type;
         protected string name;
 
         protected int health;
@@ -17,6 +27,7 @@ namespace RGRPG.Core
 
         protected List<ICharacterAction> actions;
 
+        public CharacterType Type { get { return type; } }
         public string Name { get { return name; } }
         public int Health { get { return health; } }
         public int Attack { get { return attack; } }
@@ -26,8 +37,9 @@ namespace RGRPG.Core
 
         public Character() { }
 
-        public Character(string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Character(CharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
         {
+            this.type = type;
             this.name = name;
             this.health = health;
             this.attack = attack;

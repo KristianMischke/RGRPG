@@ -76,6 +76,18 @@ namespace RGRPG.UIControllers
                 playerHUDController.SetSelectAction(() => { game.selectedCharacter = playerHUDController.character; });
                 playerHUDControllers.Add(playerHUDController);
             }
+
+            // set up the enemy controllers
+            foreach (Character enemyData in game.Enemies)
+            {
+                // set up world character controller
+                GameObject enemyView = Instantiate(characterView);
+                enemyView.transform.SetParent(worldObjectContainer.transform);
+
+                CharacterController enemyController = enemyView.GetComponent<CharacterController>();
+                enemyController.SetCharacter(enemyData);
+                enemyControllers.Add(enemyController);
+            }
         }
 
         // Update is called once per frame
