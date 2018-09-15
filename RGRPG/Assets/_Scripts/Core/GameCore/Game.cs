@@ -145,7 +145,7 @@ namespace RGRPG.Core
             {
                 foreach (Character enemy in enemies)
                 {
-                    if (player.Position == enemy.Position)
+                    if (player.TouchingCharacter(enemy))
                     {
                         Debug.Log("FIGHT");
                         combatEnemy = enemy;
