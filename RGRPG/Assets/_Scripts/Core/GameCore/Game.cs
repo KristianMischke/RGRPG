@@ -9,26 +9,39 @@ namespace RGRPG.Core
     {
 
         private List<Character> players;
-        private Character enemy;
+        private List<Character> enemies;
 
         public List<Character> Players { get { return players; } }
-        public Character Enemy { get { return enemy; } }
+        public List<Character> Enemy { get { return enemies; } }
+
+        public Character selectedCharacter;
 
         public Game()
         {
-
             Init();
         }
 
         public void Init()
         {
             players = new List<Character>();
-            enemy = new Character();
+            enemies = new List<Character>();
 
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character("Player " + (i + 1), 100, 10, 10, new List<ICharacterActions> { new AttackAction(10) }));
+                players.Add(new Character("Player " + (i + 1), 100, 10, 10, new List<ICharacterAction> { new AttackAction(10) }));
+                players[i].Move(Random.Range(-5, 5), Random.Range(-5, 5), 0);
             }
+
+            // for now just add one enemy. TODO: spawn more
+            enemies.Add(new Character("Enemy", 100, 10, 10, new List<ICharacterAction> { new AttackAction(10) }));
+
+            selectedCharacter = players[0];
+        }
+
+        public void Turn() {
+
+
+
         }
 
     }

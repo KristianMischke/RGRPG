@@ -373,6 +373,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &908124443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 908124444}
+  m_Layer: 0
+  m_Name: CombatObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &908124444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 908124443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 995.2048, y: 566.6759, z: 19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &926799924
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,12 +521,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldObjectContainer: {fileID: 31665015}
+  combatObjectContainer: {fileID: 0}
   canvasObject: {fileID: 1903072330}
   playerHUDList: {fileID: 926799924}
   characterView: {fileID: 1751886850351214, guid: 11854fe5c934abd488ac7eb542972a31,
     type: 2}
   characterHUDView: {fileID: 1309484275852450, guid: 34e9a40707b23e547a15bb78609d5502,
     type: 2}
+  combatMode: 0
 --- !u!4 &1107107522
 Transform:
   m_ObjectHideFlags: 0
@@ -586,7 +616,7 @@ GameObject:
   - component: {fileID: 1903072332}
   - component: {fileID: 1903072331}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

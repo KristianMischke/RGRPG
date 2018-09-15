@@ -4,17 +4,16 @@ using UnityEngine;
 
 namespace RGRPG.Core
 {
-    public interface ICharacterActions
+    public interface ICharacterAction
     {
-
         void DoAction(List<Character> targets);
-
         string GetName();
-
+        int GetAmount();
+        bool HasAmount();
     }
 
 
-    public class AttackAction : ICharacterActions
+    public class AttackAction : ICharacterAction
     {
 
         private int damage;
@@ -32,10 +31,11 @@ namespace RGRPG.Core
             }
         }
 
-        public string GetName()
-        {
-            return "Attack";
-        }
+        public string GetName() { return "Attack"; }
+
+        public int GetAmount() { return damage; }
+
+        public bool HasAmount() { return true; }
 
     }
 }

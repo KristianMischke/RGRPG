@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using RGRPG.Core;
 using TMPro;
 
@@ -9,29 +11,56 @@ namespace RGRPG.UIControllers
 
     public class CharacterHUDController : MonoBehaviour
     {
-        // Prefab References
-        public GameObject nameText;
-        public GameObject healthText;
+        // Prefabs
+        public GameObject actionView;
+
+        // Scene Object References
+        public GameObject nameTextObject;
+        public GameObject healthTextObject;
+        public GameObject actionList;
+        public GameObject selectButtonObject;
 
         // Data
-        Character me;
+        public Character character;
+
+        public delegate void SelectActionDelegate();
+        SelectActionDelegate mySelectAction;
 
         // Use this for initialization
         void Start()
         {
+            foreach (ICharacterAction action in character.Actions) {
+                GameObject actionObject = Instantiate(actionView);
+                actionObject.transform.SetParent(actionList.transform);
 
+                CharacterActionController actionController = actionObject.GetComponent<CharacterActionController>();
+                actionController.action = action;
+            }
+
+            selectButtonObject.GetComponent<Button>().onClick.AddListener(SelectAction);
         }
 
         // Update is called once per frame
         void Update()
         {
-            nameText.GetComponent<TextMeshProUGUI>().text = me.Name;
-            healthText.GetComponent<TextMeshProUGUI>().text = "HP " + me.Health.ToString();
+            if (character == null)
+                return;
+
+            TextMeshProUGUI nameText = nameTextObject.GetComponent<TextMeshProUGUI>();
+            nameText.text = character.Name;
+
+            TextMeshProUGUI healthText = healthTextObject.GetComponent<TextMeshProUGUI>();
+            healthText.text = "HP " + character.Health.ToString();
         }
 
-        public void SetCharacter(Character character)
+        public void SetSelectAction(SelectActionDelegate actionEvent)
         {
-            me = character;
+            mySelectAction = actionEvent;
+        }
+
+        public void SelectAction() {
+            mySelectAction();
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 

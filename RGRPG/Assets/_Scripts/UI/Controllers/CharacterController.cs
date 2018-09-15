@@ -10,7 +10,7 @@ namespace RGRPG.UIControllers
     {
 
         // Data
-        Character me;
+        public Character character;
 
         // Use this for initialization
         void Start()
@@ -21,11 +21,15 @@ namespace RGRPG.UIControllers
         // Update is called once per frame
         void Update()
         {
+            if (character == null)
+                return;
+
+            transform.position = character.Position;
 
         }
 
         public void SetCharacter(Character character) {
-            me = character;
+            this.character = character;
         }
     }
 
