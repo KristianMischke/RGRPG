@@ -15,7 +15,7 @@ namespace RGRPG.Core
         protected WorldScene currentScene;
 
         protected List<Character> players;
-        protected List<Character> enemies;
+        protected List<Enemy> enemies;
         protected Character selectedCharacter;
 
         // for combat
@@ -29,7 +29,7 @@ namespace RGRPG.Core
         public WorldScene StartScene { get { return startScene; } }
         public WorldScene CurrentScene { get { return currentScene; } }
         public List<Character> Players { get { return players; } }
-        public List<Character> Enemies { get { return enemies; } }
+        public List<Enemy> Enemies { get { return enemies; } }
         public Character SelectedCharacter { get { return selectedCharacter; } }
 
         public bool IsInCombat { get { return isInCombat; } }
@@ -54,7 +54,7 @@ namespace RGRPG.Core
 
 
             players = new List<Character>();
-            enemies = new List<Character>();
+            enemies = new List<Enemy>();
 
             for (int i = 0; i < 4; i++)
             {
@@ -63,8 +63,7 @@ namespace RGRPG.Core
             }
 
             // for now just add one enemy. TODO: spawn more
-            enemies.Add(new Character(CharacterType.Enemy, "Enemy", 100, 10, 10, new List<ICharacterAction> { new AttackAction(10) }));
-            enemies[0].SetPosition(15, 12);
+            enemies.Add(new Enemy(new Vector2(15, 12), "Enemy", 100, 10, 10, new List<ICharacterAction> { new AttackAction(10) }));
 
             selectedCharacter = players[0];
         }
@@ -85,8 +84,18 @@ namespace RGRPG.Core
                 return;
             }
 
+            //Start here
+            UpdateAI();
 
             CheckEncounterEnemy();
+        }
+
+        void UpdateAI()
+        {
+            foreach (Enemy e in enemies)
+            {
+                e.UpdateAI(Time.deltaTime);
+            }
         }
 
         void ProcessCombatTurns()
