@@ -75,4 +75,63 @@ namespace RGRPG.Core
         }
 
     }
+
+    public class Enemy : Character
+    {
+        protected Vector2 fixedPosition;
+        protected Vector2 targetPosition;
+        protected float moveTime;
+        protected float waitTime;
+        protected bool isAtTarget = true;
+        protected bool isDoneWaiting = true;
+        protected float range = 5;
+        protected float maxR = 7;
+
+        public Enemy(Vector2 pos, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        {
+            this.position = pos;
+            this.fixedPosition = pos;
+            this.type = CharacterType.Enemy;
+            this.name = name;
+            this.health = health;
+            this.attack = attack;
+            this.defense = defense;
+            this.actions = actions;
+        }
+
+        public void UpdateAI(float deltaTime)
+        {
+            if (isAtTarget && isDoneWaiting) {
+                float newX; float newY;
+                do
+                {
+                    newX = Random.Range(position.x - range, position.x + range);
+                    newY = Random.Range(position.y - range, position.y + range);
+                }
+                while (Vector2.Distance(fixedPosition, new Vector2(newX, newY)) > maxR);
+                targetPosition = new Vector2(newX, newY);
+                isAtTarget = false;
+
+            } else if (isAtTarget && !isDoneWaiting) {
+                waitTime -= deltaTime;
+                if (waitTime <= 0)
+                    isDoneWaiting = true;
+
+            } else {
+                moveTime = deltaTime / 3; //2 can be changed
+
+                float dx = targetPosition.x - position.x; float dy = targetPosition.y - position.y;
+
+                Move(dx * moveTime, dy * moveTime);
+                if (Vector2.Distance(position, targetPosition) <= 1.0f) {
+                    isAtTarget = true;
+                    isDoneWaiting = false;
+                    waitTime = Random.Range(0.0f, 1f);
+                }
+                    
+
+            }
+            
+        }
+    }
 }
