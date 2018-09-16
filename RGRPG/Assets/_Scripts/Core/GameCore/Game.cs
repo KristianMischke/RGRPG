@@ -77,6 +77,7 @@ namespace RGRPG.Core
                 {
                     RecordAction(combatEnemy.Actions[0], combatEnemy, players[/*Random.Range(0, players.Count)*/0]);
 
+                    RollDiceForTurnOrder();
                     ProcessCombatTurns();
                     foreach (Character c in players)
                         c.Reset();
@@ -101,32 +102,33 @@ namespace RGRPG.Core
             }
         }
 
-        void ProcessCombatTurns()
+        void RollDiceForTurnOrder()
         {
             // get the random order
             List<Character> characters = new List<Character>(characterTurns.Keys);
             turnOrder = new Queue<Character>();
-            while(characters.Count > 0)
+            while (characters.Count > 0)
             {
                 int nextCharacter = Random.Range(0, characters.Count);
                 turnOrder.Enqueue(characters[nextCharacter]);
                 characters.RemoveAt(nextCharacter);
             }
+        }
 
-
+        void ProcessCombatTurns()
+        {
             //TODO: this all happens in one frame, we would probably want to break it out or do something ont the controller side to make things happen slower and in order to the player
             while (turnOrder.Count > 0)
             {
                 Character currentTurn = turnOrder.Dequeue();
                 Debug.Log("Processing " + currentTurn.Name + "'s Turn");
-                while(characterTurns[currentTurn].Count > 0)
+                while (characterTurns[currentTurn].Count > 0)
                 {
                     ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
                     Debug.Log("Executing Action: " + currentAction.GetName());
                     currentAction.DoAction();
                 }
             }
-
         }
 
         public void FinishPlayerTurnInput()
