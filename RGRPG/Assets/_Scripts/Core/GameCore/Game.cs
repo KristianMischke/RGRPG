@@ -36,6 +36,8 @@ namespace RGRPG.Core
         public bool PlayerTurnInputDone { get { return playerTurnInputDone; } }
         public Character CombatEnemy { get { return combatEnemy; } }
 
+        public Queue<string> gameMessages = new Queue<string>();
+
         public Game()
         {
             Init();
@@ -122,11 +124,11 @@ namespace RGRPG.Core
             while (turnOrder.Count > 0)
             {
                 Character currentTurn = turnOrder.Dequeue();
-                Debug.Log("Processing " + currentTurn.Name + "'s Turn");
+                LogMessage("Processing " + currentTurn.Name + "'s Turn");
                 while (characterTurns[currentTurn].Count > 0)
                 {
                     ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
-                    Debug.Log("Executing Action: " + currentAction.GetName());
+                    LogMessage("Executing Action: " + currentAction.GetName());
                     currentAction.DoAction();
                 }
             }
@@ -159,7 +161,7 @@ namespace RGRPG.Core
                 {
                     if (player.TouchingCharacter(enemy))
                     {
-                        Debug.Log("FIGHT");
+                        LogMessage("FIGHT");
                         combatEnemy = enemy;
                         StartCombat();
                     }
@@ -177,7 +179,7 @@ namespace RGRPG.Core
         public void RecordAction(ICharacterAction action, Character source, Character target)
         {
             if (!source.IsAlive()) {
-                Debug.Log("You are dead, not big surprise");
+                LogMessage("You are dead, not big surprise");
                 return;
             }
             if (!characterTurns.ContainsKey(source))
@@ -185,7 +187,12 @@ namespace RGRPG.Core
 
             action.SetTargets(new List<Character> { target });
             characterTurns[source].Enqueue(action);
-            Debug.Log(source.Name + " -> " + action.GetName());
+            LogMessage(source.Name + " -> " + action.GetName());
+        }
+
+        public void LogMessage(string text)
+        {
+            gameMessages.Enqueue(text);
         }
 
     }

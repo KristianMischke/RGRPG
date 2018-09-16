@@ -132,7 +132,9 @@ namespace RGRPG.Controllers
             {
                 MoveSelectedCharacter();
             }
-           
+
+            if(game.gameMessages.Count > 0)
+                EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
         }
 
         void MoveSelectedCharacter()
