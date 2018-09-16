@@ -22,6 +22,7 @@ namespace RGRPG.Core
         protected int health;
         protected int attack; //TODO: we need to consider how we are storing the attack (should it be in the character or the action or both?
         protected int defense;
+        protected int mana;
 
         protected Vector2 position;
         protected float radius = 0.5f;
@@ -33,6 +34,7 @@ namespace RGRPG.Core
         public int Health { get { return health; } }
         public int Attack { get { return attack; } }
         public int Defense { get { return defense; } }
+        public int Mana { get { return mana; } }
         public List<ICharacterAction> Actions { get { return actions; } }
         public Vector2 Position { get { return position; } }
         public float Radius { get { return radius; } }
@@ -72,6 +74,16 @@ namespace RGRPG.Core
         public void Heal(int amount)
         {
             health += amount;
+        }
+
+        public void SetMana(int amount)
+        {
+            mana = amount;
+        }
+
+        public void ChangeMana(int amount)
+        {
+            mana += amount;
         }
 
         public void Move(WorldScene scene, float dx, float dy)
