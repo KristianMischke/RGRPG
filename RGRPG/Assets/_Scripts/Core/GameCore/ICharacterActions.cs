@@ -45,4 +45,36 @@ namespace RGRPG.Core
         public bool HasAmount() { return true; }
 
     }
+
+    public class DefendAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int shield;
+
+        public DefendAction(int shield)
+        {
+            this.shield = shield;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction()
+        {
+            foreach (Character c in targets)
+            {
+                c.SetShield(shield);
+            }
+        }
+
+        public string GetName() { return "Defend"; }
+
+        public int GetAmount() { return shield; }
+
+        public bool HasAmount() { return true; }
+
+    }
 }

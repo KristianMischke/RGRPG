@@ -42,7 +42,10 @@ namespace RGRPG.Controllers
 
         public void ChooseAction()
         {
-            GameController.instance.RecordAction(action, character, GameController.instance.GetCombatEnemy());
+            if (action.GetType() == typeof(DefendAction))
+                GameController.instance.RecordAction(action, character, character);
+            else
+                GameController.instance.RecordAction(action, character, GameController.instance.GetCombatEnemy());
         }
     }
 }

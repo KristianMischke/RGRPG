@@ -51,7 +51,20 @@ namespace RGRPG.Core
 
         public void Damage(int amount)
         {
-            health -= amount;
+            if (defense >= amount)
+                Debug.Log("Deflected damage!");
+            else
+                health -= amount - defense;
+        }
+
+        public void SetShield(int amt)
+        {
+            defense = amt;
+        }
+
+        public void Reset()
+        {
+            defense = 0;
         }
 
         public void Heal(int amount)

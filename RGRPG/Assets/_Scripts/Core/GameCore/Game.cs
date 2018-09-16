@@ -58,12 +58,12 @@ namespace RGRPG.Core
 
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 10, 10, new List<ICharacterAction> { new AttackAction(10) }));
+                players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10), new DefendAction(6) }));
                 players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
             }
 
             // for now just add one enemy. TODO: spawn more
-            enemies.Add(new Enemy(new Vector2(15, 12), "Enemy", 100, 10, 10, new List<ICharacterAction> { new AttackAction(10) }));
+            enemies.Add(new Enemy(new Vector2(15, 12), "Enemy", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10) }));
 
             selectedCharacter = players[0];
         }
@@ -75,9 +75,12 @@ namespace RGRPG.Core
 
                 if (playerTurnInputDone)
                 {
-                    RecordAction(combatEnemy.Actions[0], combatEnemy, players[Random.Range(0, players.Count)]);
+                    RecordAction(combatEnemy.Actions[0], combatEnemy, players[/*Random.Range(0, players.Count)*/0]);
 
                     ProcessCombatTurns();
+                    foreach (Character c in players)
+                        c.Reset();
+                    combatEnemy.Reset();
                     playerTurnInputDone = false;
                 }
 
