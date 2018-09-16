@@ -189,6 +189,11 @@ namespace RGRPG.Controllers
         {
             game.FinishPlayerTurnInput();
         }
+
+        public bool IsInCombat()
+        {
+            return game.IsInCombat;
+        }
     }
 
 }

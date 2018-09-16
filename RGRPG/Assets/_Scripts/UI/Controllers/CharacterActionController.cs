@@ -13,6 +13,8 @@ namespace RGRPG.Controllers
         public GameObject actionButtonObject;
         public GameObject actionTextObject;
 
+        public Button actionButton;
+
         // Data
         private Character character;
         private ICharacterAction action;
@@ -20,7 +22,7 @@ namespace RGRPG.Controllers
         // Use this for initialization
         void Start()
         {
-            Button actionButton = actionButtonObject.GetComponent<Button>();
+            actionButton = actionButtonObject.GetComponent<Button>();
             actionButton.onClick.AddListener(ChooseAction);
 
             Text actionText = actionTextObject.GetComponent<Text>();
@@ -32,6 +34,8 @@ namespace RGRPG.Controllers
         {
             if (action == null)
                 return;
+
+            actionButton.interactable = character.IsAlive() && GameController.instance.IsInCombat();
         }
 
         public void Init(ICharacterAction action, Character character)

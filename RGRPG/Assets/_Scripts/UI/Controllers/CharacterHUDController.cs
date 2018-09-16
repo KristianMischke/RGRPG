@@ -37,6 +37,7 @@ namespace RGRPG.Controllers
 
             TextMeshProUGUI nameText = nameTextObject.GetComponent<TextMeshProUGUI>();
             nameText.text = character.Name;
+            nameText.color = character.IsAlive() ? new Color(1, 1, 1) : new Color(1, 0, 0);
 
             TextMeshProUGUI healthText = healthTextObject.GetComponent<TextMeshProUGUI>();
             healthText.text = "HP " + character.Health.ToString();

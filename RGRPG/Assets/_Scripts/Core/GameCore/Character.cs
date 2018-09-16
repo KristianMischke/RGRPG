@@ -53,6 +53,8 @@ namespace RGRPG.Core
         {
             if (defense >= amount)
                 Debug.Log("Deflected damage!");
+            else if (health <= 0)
+                health = 0;
             else
                 health -= amount - defense;
         }
@@ -85,6 +87,10 @@ namespace RGRPG.Core
         public bool TouchingCharacter(Character other)
         {
             return Mathf.Pow(other.position.x - position.x, 2) + Mathf.Pow(other.position.y - position.y, 2) <= Mathf.Pow(radius + other.radius, 2);
+        }
+        public bool IsAlive()
+        {
+            return health > 0;
         }
 
     }

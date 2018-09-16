@@ -44,7 +44,7 @@ namespace RGRPG.Core
         public void Init()
         {
             //TODO: load scenes from files, for now just have one scene
-            List<WorldScene> scenes = new List<WorldScene>();
+            scenes = new List<WorldScene>();
 
             WorldScene newScene = new WorldScene(30, 30);
 
@@ -58,7 +58,7 @@ namespace RGRPG.Core
 
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10), new DefendAction(6), new HealAction(9)}));
+                players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10), new DefendAction(6), new HealAction(9) }));
                 players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
             }
 
@@ -176,6 +176,10 @@ namespace RGRPG.Core
 
         public void RecordAction(ICharacterAction action, Character source, Character target)
         {
+            if (!source.IsAlive()) {
+                Debug.Log("You are dead, not big surprise");
+                return;
+            }
             if (!characterTurns.ContainsKey(source))
                 characterTurns.Add(source, new Queue<ICharacterAction>());
 
