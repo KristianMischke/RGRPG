@@ -77,4 +77,36 @@ namespace RGRPG.Core
         public bool HasAmount() { return true; }
 
     }
+
+    public class HealAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int heal;
+
+        public HealAction(int heal)
+        {
+            this.heal = heal;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction()
+        {
+            foreach (Character c in targets)
+            {
+                c.Heal(heal);
+            }
+        }
+
+        public string GetName() { return "Heal"; }
+
+        public int GetAmount() { return heal; }
+
+        public bool HasAmount() { return true; }
+
+    }
 }
