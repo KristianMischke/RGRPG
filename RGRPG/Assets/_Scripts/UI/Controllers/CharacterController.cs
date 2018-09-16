@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using RGRPG.Core;
+using TMPro;
 
 namespace RGRPG.Controllers
 {
@@ -11,8 +12,14 @@ namespace RGRPG.Controllers
     {
         // Scene Object References
         public GameObject ArtObject;
+        public GameObject Widget;
+        public GameObject healthTextObject;
+        public GameObject healthBarFillParentObject;
+        public GameObject healthBarFillObject;
 
-        public SpriteRenderer spriteRenderer;
+        RectTransform healthBarFillParent;
+        RectTransform healthBarFill;
+        SpriteRenderer spriteRenderer;
 
         // Data
         public Character character;
@@ -22,6 +29,9 @@ namespace RGRPG.Controllers
         void Start()
         {
             spriteRenderer = ArtObject.GetComponentInChildren<SpriteRenderer>();
+
+            healthBarFillParent = healthBarFillParentObject.GetComponent<RectTransform>();
+            healthBarFill = healthBarFillObject.GetComponent<RectTransform>();
         }
 
         // Update is called once per frame
@@ -38,6 +48,14 @@ namespace RGRPG.Controllers
             }
 
             transform.position = character.Position;
+
+            Widget.SetActive(GameController.instance.IsInCombat());
+
+            TextMeshProUGUI healthText = healthTextObject.GetComponent<TextMeshProUGUI>();
+            healthText.text = "HP " + character.Health.ToString();
+
+            float healthPercentage = Mathf.Min(character.Health / 100f, 1);
+            healthBarFill.sizeDelta = new Vector2(healthPercentage * healthBarFillParent.sizeDelta.x, healthBarFill.sizeDelta.y);
         }
 
         public void SetCharacter(Character character)

@@ -4,9 +4,33 @@ using UnityEngine;
 
 namespace RGRPG.Core
 {
+    public enum GameState
+    {
+        Starting,
+        WorldMovement,
+        Combat,
+
+        COUNT
+    }
+
+    public enum CombatState
+    {
+        NONE,
+
+        BeginCombat,
+        PickTurnOrder,
+        ChooseEnemyActions,
+        PlayersChooseActions,
+        ExecuteTurns,
+        EndCombat,
+
+        COUNT
+    }
 
     public class Game
     {
+        protected GameState currentGameState = GameState.Starting;
+
         protected int worldWidth;
         protected int worldHeight;
 
@@ -19,12 +43,14 @@ namespace RGRPG.Core
         protected Character selectedCharacter;
 
         // for combat
-        protected bool isInCombat = false;
-        protected bool playerTurnInputDone = false;
-        protected Character combatEnemy; //TODO: do we want to be able to fight multiple enemies at a time?
+        protected CombatState currentCombatState = CombatState.NONE;
+        protected int turnCounter = 0;
+        protected List<Character> combatEnemies = new List<Character>(); //TODO: do we want to be able to fight multiple enemies at a time?
         protected Dictionary<Character, Queue<ICharacterAction>> characterTurns;
         protected Queue<Character> turnOrder;
 
+        public GameState CurrentGameState { get { return currentGameState; } }
+        public CombatState CurrentCombatState { get { return currentCombatState; } }
         public List<WorldScene> Scenes { get { return scenes; } }
         public WorldScene StartScene { get { return startScene; } }
         public WorldScene CurrentScene { get { return currentScene; } }
@@ -32,9 +58,8 @@ namespace RGRPG.Core
         public List<Enemy> Enemies { get { return enemies; } }
         public Character SelectedCharacter { get { return selectedCharacter; } }
 
-        public bool IsInCombat { get { return isInCombat; } }
-        public bool PlayerTurnInputDone { get { return playerTurnInputDone; } }
-        public Character CombatEnemy { get { return combatEnemy; } }
+        public bool IsInCombat { get { return currentGameState == GameState.Combat; } }
+        public List<Character> CombatEnemies { get { return combatEnemies; } }        
 
         public Queue<string> gameMessages = new Queue<string>();
 
@@ -69,32 +94,23 @@ namespace RGRPG.Core
             enemies.Add(new Enemy(new Vector2(28, 28), "Enemy 2", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10) }));
 
             selectedCharacter = players[0];
+
+            currentGameState = GameState.WorldMovement;
+            currentCombatState = CombatState.NONE;
         }
 
         public void GameLoop()
         {
-            if (isInCombat)
+            switch(currentGameState)
             {
-
-                if (playerTurnInputDone)
-                {
-                    RecordAction(combatEnemy.Actions[0], combatEnemy, players[Random.Range(0, players.Count)]);
-
-                    RollDiceForTurnOrder();
-                    ProcessCombatTurns();
-                    foreach (Character c in players)
-                        c.Reset();
-                    combatEnemy.Reset();
-                    playerTurnInputDone = false;
-                }
-
-                return;
+                case GameState.WorldMovement:
+                    UpdateAI();
+                    CheckEncounterEnemy();
+                    break;
+                case GameState.Combat:
+                    DoCombat();
+                    break;
             }
-
-            //Start here
-            UpdateAI();
-
-            CheckEncounterEnemy();
         }
 
         void UpdateAI()
@@ -105,10 +121,58 @@ namespace RGRPG.Core
             }
         }
 
+        void DoCombat()
+        {
+            switch (currentCombatState)
+            {
+                case CombatState.BeginCombat:
+                    turnCounter = 0;
+                    currentCombatState = CombatState.PickTurnOrder;
+                    break;
+                case CombatState.PickTurnOrder:
+                    RollDiceForTurnOrder();
+                    currentCombatState = CombatState.ChooseEnemyActions;
+                    break;
+                case CombatState.ChooseEnemyActions:
+                    foreach(Enemy e in combatEnemies)
+                        RecordAction(e.Actions[0], e, players[Random.Range(0, players.Count)]);
+                    currentCombatState = CombatState.PlayersChooseActions;
+                    break;
+                case CombatState.PlayersChooseActions:
+                    break;
+                case CombatState.ExecuteTurns:
+                    turnCounter++;
+                    LogMessage("PROCESS TURN #" + turnCounter);
+                    ProcessCombatTurns();
+                    foreach (Character c in players)
+                        c.Reset();
+                    for(int i = 0; i < enemies.Count; i++)
+                    {
+                        Enemy e = enemies[i];
+                        e.Reset();
+                        if (!e.IsAlive())
+                        {
+                            //TODO: spill loot
+                            enemies.RemoveAt(i);
+                        }
+                    }
+
+                    currentCombatState = CombatState.PickTurnOrder;
+                    CheckExitConditions();
+                    break;
+                case CombatState.EndCombat:
+                    currentCombatState = CombatState.NONE;
+                    currentGameState = GameState.WorldMovement;
+                    break;
+            }
+        }
+
         void RollDiceForTurnOrder()
         {
             // get the random order
-            List<Character> characters = new List<Character>(characterTurns.Keys);
+            List<Character> characters = new List<Character>();
+            characters.AddRange(combatEnemies);
+            characters.AddRange(players);
             turnOrder = new Queue<Character>();
             while (characters.Count > 0)
             {
@@ -118,25 +182,62 @@ namespace RGRPG.Core
             }
         }
 
+        void CheckExitConditions()
+        {
+            bool allEnemiesDead = true;
+            foreach (Enemy e in combatEnemies)
+            {
+                allEnemiesDead &= !e.IsAlive();
+            }
+
+            bool allPlayersDead = true;
+            foreach (Character p in players)
+            {
+                allPlayersDead &= !p.IsAlive();
+            }
+
+            if (allPlayersDead)
+            {
+                LogMessage("The Enemie(s) Won!");
+            }
+
+            if (allEnemiesDead)
+            {
+                LogMessage("YOU Won!");
+            }
+
+            if (allEnemiesDead || allPlayersDead)
+                currentCombatState = CombatState.EndCombat;
+        }
+
         void ProcessCombatTurns()
         {
+            // We might not need to do the below because it can be queued from the GameController
             //TODO: this all happens in one frame, we would probably want to break it out or do something ont the controller side to make things happen slower and in order to the player
             while (turnOrder.Count > 0)
             {
                 Character currentTurn = turnOrder.Dequeue();
                 LogMessage("Processing " + currentTurn.Name + "'s Turn");
-                while (characterTurns[currentTurn].Count > 0)
+                if (characterTurns.ContainsKey(currentTurn))
                 {
-                    ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
-                    LogMessage("Executing Action: " + currentAction.GetName());
-                    currentAction.DoAction();
+                    while (characterTurns[currentTurn].Count > 0)
+                    {
+                        ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
+                        LogMessage("Executing Action: " + currentAction.GetName());
+                        currentAction.DoAction();
+                    }
+                }
+                else
+                {
+                    LogMessage("PASS");
                 }
             }
         }
 
         public void FinishPlayerTurnInput()
         {
-            playerTurnInputDone = true;
+            if (currentGameState == GameState.Combat && currentCombatState == CombatState.PlayersChooseActions)
+                currentCombatState = CombatState.ExecuteTurns;
         }
 
         public void SelectCharacter(Character target)
@@ -152,7 +253,7 @@ namespace RGRPG.Core
 
         void CheckEncounterEnemy()
         {
-            if (isInCombat)
+            if (currentGameState == GameState.Combat)
                 return;
 
             foreach (Character player in players)
@@ -162,7 +263,8 @@ namespace RGRPG.Core
                     if (player.TouchingCharacter(enemy))
                     {
                         LogMessage("FIGHT");
-                        combatEnemy = enemy;
+                        combatEnemies.Clear();
+                        combatEnemies.Add(enemy); //TODO: right now just single enemies per world enemy, in future: bands of enemies
                         StartCombat();
                     }
                 }
@@ -171,13 +273,20 @@ namespace RGRPG.Core
 
         void StartCombat()
         {
-            isInCombat = true;
+            currentGameState = GameState.Combat;
+            currentCombatState = CombatState.BeginCombat;
 
             characterTurns = new Dictionary<Character, Queue<ICharacterAction>>();
         }
 
         public void RecordAction(ICharacterAction action, Character source, Character target)
         {
+            if (currentGameState != GameState.Combat)
+            {
+                LogMessage("Must be in combat mode to choose your action");
+                return;
+            }
+
             if (!source.IsAlive()) {
                 LogMessage("You are dead, not big surprise");
                 return;

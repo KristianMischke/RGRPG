@@ -51,7 +51,7 @@ namespace RGRPG.Controllers
             else if (action.GetType() == typeof(HealAction))
                 GameController.instance.RecordAction(action, character, character);
             else
-                GameController.instance.RecordAction(action, character, GameController.instance.GetCombatEnemy());
+                GameController.instance.RecordAction(action, character, GameController.instance.GetCombatEnemies()[0]);
 
         }
     }

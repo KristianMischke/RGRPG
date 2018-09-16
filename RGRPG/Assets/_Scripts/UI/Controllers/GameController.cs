@@ -17,6 +17,7 @@ namespace RGRPG.Controllers
         public GameObject canvasObject;
         public GameObject playerHUDList;
 
+        
         [HideInInspector]
         public List<CharacterController> playerControllers;
         [HideInInspector]
@@ -27,7 +28,7 @@ namespace RGRPG.Controllers
         public List<CharacterHUDController> enemyHUDControllers;
 
         [HideInInspector]
-        public CharacterController combatEnemyController;
+        public List<CharacterController> combatEnemiesController;
 
         // Prefabs
         public GameObject worldSceneView;
@@ -107,11 +108,10 @@ namespace RGRPG.Controllers
             }
 
             // add a character controller for combat view (this will show the enemy in battles)
+            // TODO: make this adjustable for bands of enemies
             GameObject combatEnemyObject = Instantiate(characterView);
-            combatEnemyController = combatEnemyObject.GetComponent<CharacterController>();
-            combatEnemyController.transform.SetParent(combatObjectContainer.transform);
-
-            combatEnemyController = combatEnemyObject.GetComponent<CharacterController>();
+            combatEnemiesController.Add(combatEnemyObject.GetComponent<CharacterController>());
+            combatEnemiesController[0].transform.SetParent(combatObjectContainer.transform);
         }
 
         // Update is called once per frame
@@ -125,11 +125,28 @@ namespace RGRPG.Controllers
 
             if (game.IsInCombat)
             {
-                combatEnemyController.SetCharacter(game.CombatEnemy);
-                Camera.main.GetComponent<CameraController>().followObject = combatEnemyController.gameObject;
+                combatEnemiesController[0].SetCharacter(game.CombatEnemies[0]);
+                Camera.main.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
+
+                if (game.CurrentCombatState == CombatState.EndCombat)
+                {
+                    SelectCharacter(game.SelectedCharacter);
+                }
             }
             else
             {
+
+                //TODO: This should not just be for enemies, ultimately when we add pooling, this will be resolved, but for now just remove enemy objects when they die
+                for (int i = 0; i < enemyControllers.Count; i++)
+                {
+                    CharacterController enemyController = enemyControllers[i];
+                    if (enemyController.character.Type == CharacterType.Enemy && !enemyController.character.IsAlive())
+                    {
+                        enemyControllers.RemoveAt(i);
+                        Destroy(enemyController.gameObject);
+                    }
+                }
+
                 MoveSelectedCharacter();
             }
 
@@ -139,7 +156,7 @@ namespace RGRPG.Controllers
 
         void MoveSelectedCharacter()
         {
-            float moveMagnitude = 0.2f;
+            float moveMagnitude = 4f;
             float yMovement = 0;
             float xMovement = 0;
 
@@ -163,7 +180,7 @@ namespace RGRPG.Controllers
 
             Vector2 moveVector = new Vector2(xMovement, yMovement);
             moveVector.Normalize();
-            moveVector *= moveMagnitude;
+            moveVector *= moveMagnitude*Time.deltaTime;
 
             game.MoveSelectedCharacter(moveVector.x, moveVector.y);
 
@@ -182,9 +199,9 @@ namespace RGRPG.Controllers
             game.RecordAction(action, source, target);
         }
 
-        public Character GetCombatEnemy()
+        public List<Character> GetCombatEnemies()
         {
-            return game.CombatEnemy;
+            return game.CombatEnemies;
         }
 
         public void FinishPlayerTurnInput()
