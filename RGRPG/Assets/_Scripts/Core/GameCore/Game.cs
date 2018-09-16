@@ -64,6 +64,7 @@ namespace RGRPG.Core
 
             // for now just add one enemy. TODO: spawn more
             enemies.Add(new Enemy(new Vector2(15, 12), "Enemy", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10) }));
+            enemies.Add(new Enemy(new Vector2(28, 28), "Enemy 2", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10) }));
 
             selectedCharacter = players[0];
         }
@@ -98,7 +99,7 @@ namespace RGRPG.Core
         {
             foreach (Enemy e in enemies)
             {
-                e.UpdateAI(Time.deltaTime);
+                e.UpdateAI(currentScene, Time.deltaTime);
             }
         }
 
@@ -144,8 +145,7 @@ namespace RGRPG.Core
 
         public void MoveSelectedCharacter(float dx, float dy)
         {
-            currentScene.AdjustPlayerMovementToCollisions(selectedCharacter, ref dx, ref dy);
-            selectedCharacter.Move(dx, dy);
+            selectedCharacter.Move(currentScene, dx, dy);
         }
 
         void CheckEncounterEnemy()

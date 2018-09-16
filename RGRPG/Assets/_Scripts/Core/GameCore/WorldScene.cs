@@ -71,6 +71,12 @@ namespace RGRPG.Core
             }
         }
 
+        public TerrainTile GetTileAt(float x, float y)
+        {
+            int xIndex, yIndex;
+            return GetTileAt(x, y, out xIndex, out yIndex);
+        }
+
         public TerrainTile GetTileAt(float x, float y, out int xIndex, out int yIndex)
         {
             xIndex = (int)(x + 0.5f);

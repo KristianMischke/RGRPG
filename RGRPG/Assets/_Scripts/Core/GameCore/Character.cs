@@ -74,9 +74,10 @@ namespace RGRPG.Core
             health += amount;
         }
 
-        public void Move(float x, float y)
+        public void Move(WorldScene scene, float dx, float dy)
         {
-            position += new Vector2(x, y);
+            scene.AdjustPlayerMovementToCollisions(this, ref dx, ref dy);
+            position += new Vector2(dx, dy);
         }
 
         public void SetPosition(float x, float y)
@@ -118,16 +119,18 @@ namespace RGRPG.Core
             this.actions = actions;
         }
 
-        public void UpdateAI(float deltaTime)
+        public void UpdateAI(WorldScene scene, float deltaTime)
         {
             if (isAtTarget && isDoneWaiting) {
                 float newX; float newY;
+                TerrainTile targetTile;
                 do
                 {
                     newX = Random.Range(position.x - range, position.x + range);
                     newY = Random.Range(position.y - range, position.y + range);
+                    targetTile = scene.GetTileAt(newX, newY);
                 }
-                while (Vector2.Distance(fixedPosition, new Vector2(newX, newY)) > maxR);
+                while (Vector2.Distance(fixedPosition, new Vector2(newX, newY)) > maxR || targetTile == null || !targetTile.Traversable);
                 targetPosition = new Vector2(newX, newY);
                 isAtTarget = false;
 
@@ -141,7 +144,7 @@ namespace RGRPG.Core
 
                 float dx = targetPosition.x - position.x; float dy = targetPosition.y - position.y;
 
-                Move(dx * moveTime, dy * moveTime);
+                Move(scene, dx * moveTime, dy * moveTime);
                 if (Vector2.Distance(position, targetPosition) <= 1.0f) {
                     isAtTarget = true;
                     isDoneWaiting = false;
