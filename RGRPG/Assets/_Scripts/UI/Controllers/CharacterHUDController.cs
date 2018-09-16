@@ -17,13 +17,18 @@ namespace RGRPG.Controllers
         // Scene Object References
         public GameObject nameTextObject;
         public GameObject healthTextObject;
+        public GameObject manaTextObject;
         public GameObject actionList;
         public GameObject selectButtonObject;
         public GameObject healthBarFillParentObject;
         public GameObject healthBarFillObject;
+        public GameObject manaBarFillParentObject;
+        public GameObject manaBarFillObject;
 
         RectTransform healthBarFillParent;
         RectTransform healthBarFill;
+        RectTransform manaBarFillParent;
+        RectTransform manaBarFill;
 
         // Data
         public Character character;
@@ -35,6 +40,9 @@ namespace RGRPG.Controllers
 
             healthBarFillParent = healthBarFillParentObject.GetComponent<RectTransform>();
             healthBarFill = healthBarFillObject.GetComponent<RectTransform>();
+
+            manaBarFillParent = manaBarFillParentObject.GetComponent<RectTransform>();
+            manaBarFill = manaBarFillObject.GetComponent<RectTransform>();
         }
 
         // Update is called once per frame
@@ -50,11 +58,14 @@ namespace RGRPG.Controllers
             TextMeshProUGUI healthText = healthTextObject.GetComponent<TextMeshProUGUI>();
             healthText.text = "HP " + character.Health.ToString();
 
-            float healthPercentage = Mathf.Min(character.Health / 100f, 1);
-            //Debug.Log(healthBarFill == null);
-            //Debug.Log(healthBarFillParent == null);
+            TextMeshProUGUI manaText = manaTextObject.GetComponent<TextMeshProUGUI>();
+            manaText.text = "MN " + character.Mana.ToString();
 
+            float healthPercentage = Mathf.Min(character.Health / 100f, 1);
             healthBarFill.sizeDelta = new Vector2(healthPercentage * healthBarFillParent.sizeDelta.x, healthBarFill.sizeDelta.y);
+
+            float manaPercentage = Mathf.Min(character.Mana / 100f, 1);
+            manaBarFill.sizeDelta = new Vector2(manaPercentage * manaBarFillParent.sizeDelta.x, manaBarFill.sizeDelta.y);
 
 
         }
