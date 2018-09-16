@@ -75,7 +75,7 @@ namespace RGRPG.Core
 
                 if (playerTurnInputDone)
                 {
-                    RecordAction(combatEnemy.Actions[0], combatEnemy, players[/*Random.Range(0, players.Count)*/0]);
+                    RecordAction(combatEnemy.Actions[0], combatEnemy, players[Random.Range(0, players.Count)]);
 
                     RollDiceForTurnOrder();
                     ProcessCombatTurns();
@@ -144,10 +144,8 @@ namespace RGRPG.Core
 
         public void MoveSelectedCharacter(float dx, float dy)
         {
-            if (currentScene.CanPlayerMoveHere(selectedCharacter, ref dx, ref dy))
-            {
-                selectedCharacter.Move(dx, dy);
-            }
+            currentScene.AdjustPlayerMovementToCollisions(selectedCharacter, ref dx, ref dy);
+            selectedCharacter.Move(dx, dy);
         }
 
         void CheckEncounterEnemy()

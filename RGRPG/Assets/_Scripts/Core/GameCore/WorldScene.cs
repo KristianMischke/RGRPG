@@ -37,39 +37,38 @@ namespace RGRPG.Core
             }
         }
 
-        public bool CanPlayerMoveHere(Character character, ref float dx, ref float dy)
+        public void AdjustPlayerMovementToCollisions(Character character, ref float dx, ref float dy)
         {
-            // factor in player radius
-            Vector2 characterRadius = new Vector2(dx, dy);
-            characterRadius.Normalize();
-            characterRadius *= character.Radius;
+
+            float signedRadiusX = dx == 0 ? 0 : character.Radius * Mathf.Sign(dx);
+            float signedRadiusY = dy == 0 ? 0 : character.Radius * Mathf.Sign(dy);
 
             int beforeTileX, beforeTileY;
             TerrainTile beforeTile = GetTileAt(character.Position.x, character.Position.y, out beforeTileX, out beforeTileY);
 
-            int nextTileX, nextTileY;
-            TerrainTile nextTile = GetTileAt(character.Position.x + characterRadius.x + dx, character.Position.y + characterRadius.y + dy, out nextTileX, out nextTileY);
+            // Get the next X tile
+            int nextTileX, ignoreY;
+            TerrainTile nextTileH = GetTileAt(character.Position.x + signedRadiusX + dx, character.Position.y, out nextTileX, out ignoreY);
+            bool collisionX = nextTileH == null || !nextTileH.Traversable;
 
-            bool collision = nextTile == null || !nextTile.Traversable;
+            // Get the next Y tile
+            int ignoreX, nextTileY;
+            TerrainTile nextTileV = GetTileAt(character.Position.x, character.Position.y + signedRadiusY + dy, out ignoreX, out nextTileY);            
+            bool collisionY = nextTileV == null || !nextTileV.Traversable;
 
-            if (collision)
+            if (collisionX && beforeTileX != nextTileX)
             {
-                if (beforeTileX != nextTileX)
-                {
-                    float beforeRadiusPosX = character.Position.x + characterRadius.x;
-                    float borderX = Mathf.Min(beforeTileX, nextTileX) + 0.5f;
-                    dx = borderX - beforeRadiusPosX;
-                }
-                if (beforeTileY != nextTileY)
-                {
-                    float beforeRadiusPosY = character.Position.y + characterRadius.y;
-                    float borderY = Mathf.Min(beforeTileY, nextTileY) + 0.5f;
-                    dy = borderY - beforeRadiusPosY;
-                }
+                float beforeRadiusPosX = character.Position.x + signedRadiusX;
+                float borderX = Mathf.Min(beforeTileX, nextTileX) + 0.5f;
+                dx = borderX - beforeRadiusPosX;
             }
 
-            return true;
-            //return collision;
+            if (collisionY && beforeTileY != nextTileY)
+            {
+                float beforeRadiusPosY = character.Position.y + signedRadiusY;
+                float borderY = Mathf.Min(beforeTileY, nextTileY) + 0.5f;
+                dy = borderY - beforeRadiusPosY;
+            }
         }
 
         public TerrainTile GetTileAt(float x, float y, out int xIndex, out int yIndex)
