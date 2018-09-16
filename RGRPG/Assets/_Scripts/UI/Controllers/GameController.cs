@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using RGRPG.Core;
 
 namespace RGRPG.Controllers
@@ -192,6 +193,7 @@ namespace RGRPG.Controllers
 
             // update camera follow object
             Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         public void RecordAction(ICharacterAction action, Character source, Character target)

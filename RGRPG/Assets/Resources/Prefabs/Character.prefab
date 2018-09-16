@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArtObject: {fileID: 1900317452099224}
+  Widget: {fileID: 1918351123174370}
   healthTextObject: {fileID: 1110337672399784}
   healthBarFillParentObject: {fileID: 1891392910741652}
   healthBarFillObject: {fileID: 1815579628749536}

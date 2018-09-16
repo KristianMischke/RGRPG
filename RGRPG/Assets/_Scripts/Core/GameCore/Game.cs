@@ -22,6 +22,7 @@ namespace RGRPG.Core
         ChooseEnemyActions,
         PlayersChooseActions,
         ExecuteTurns,
+        NextRound,
         EndCombat,
 
         COUNT
@@ -45,9 +46,10 @@ namespace RGRPG.Core
         // for combat
         protected CombatState currentCombatState = CombatState.NONE;
         protected int turnCounter = 0;
+        protected int roundCounter = 0;
         protected List<Character> combatEnemies = new List<Character>(); //TODO: do we want to be able to fight multiple enemies at a time?
         protected Dictionary<Character, Queue<ICharacterAction>> characterTurns;
-        protected Queue<Character> turnOrder;
+        protected List<Character> turnOrder;
 
         public GameState CurrentGameState { get { return currentGameState; } }
         public CombatState CurrentCombatState { get { return currentCombatState; } }
@@ -85,13 +87,13 @@ namespace RGRPG.Core
 
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10), new DefendAction(6), new HealAction(9) }));
+                players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
                 players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
             }
 
             // for now just add one enemy. TODO: spawn more
-            enemies.Add(new Enemy(new Vector2(15, 12), "Enemy", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10) }));
-            enemies.Add(new Enemy(new Vector2(28, 28), "Enemy 2", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10) }));
+            enemies.Add(new Enemy(new Vector2(15, 12), "Enemy", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25) }));
+            enemies.Add(new Enemy(new Vector2(28, 28), "Enemy 2", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 20) }));
 
             selectedCharacter = players[0];
 
@@ -127,6 +129,10 @@ namespace RGRPG.Core
             {
                 case CombatState.BeginCombat:
                     turnCounter = 0;
+                    foreach (Character p in players)
+                        p.SetMana(50);
+                    foreach (Enemy e in enemies)
+                        e.SetMana(50);
                     currentCombatState = CombatState.PickTurnOrder;
                     break;
                 case CombatState.PickTurnOrder:
@@ -141,12 +147,23 @@ namespace RGRPG.Core
                 case CombatState.PlayersChooseActions:
                     break;
                 case CombatState.ExecuteTurns:
-                    turnCounter++;
-                    LogMessage("PROCESS TURN #" + turnCounter);
-                    ProcessCombatTurns();
+                    if (turnCounter >= turnOrder.Count)
+                    {
+                        currentCombatState = CombatState.NextRound;
+                    }
+                    else
+                    {
+                        ProcessNextCombatTurn();
+                        turnCounter++;
+                    }
+                    break;
+                case CombatState.NextRound:
+                    roundCounter++;
+                    turnCounter = 0;
+                    LogMessage("ROUND #" + turnCounter + "DONE");
                     foreach (Character c in players)
                         c.Reset();
-                    for(int i = 0; i < enemies.Count; i++)
+                    for (int i = 0; i < enemies.Count; i++)
                     {
                         Enemy e = enemies[i];
                         e.Reset();
@@ -155,6 +172,12 @@ namespace RGRPG.Core
                             //TODO: spill loot
                             enemies.RemoveAt(i);
                         }
+                    }
+
+                    for (int i = 0; i < turnOrder.Count; i++)
+                    {
+                        Character c = turnOrder[i];
+                        c.ChangeMana(i * 10 + 10); // MANA RECHARGE TODO: change behaviour
                     }
 
                     currentCombatState = CombatState.PickTurnOrder;
@@ -173,11 +196,11 @@ namespace RGRPG.Core
             List<Character> characters = new List<Character>();
             characters.AddRange(combatEnemies);
             characters.AddRange(players);
-            turnOrder = new Queue<Character>();
+            turnOrder = new List<Character>();
             while (characters.Count > 0)
             {
                 int nextCharacter = Random.Range(0, characters.Count);
-                turnOrder.Enqueue(characters[nextCharacter]);
+                turnOrder.Add(characters[nextCharacter]);
                 characters.RemoveAt(nextCharacter);
             }
         }
@@ -210,27 +233,30 @@ namespace RGRPG.Core
                 currentCombatState = CombatState.EndCombat;
         }
 
-        void ProcessCombatTurns()
+        void ProcessNextCombatTurn()
         {
-            // We might not need to do the below because it can be queued from the GameController
-            //TODO: this all happens in one frame, we would probably want to break it out or do something ont the controller side to make things happen slower and in order to the player
-            while (turnOrder.Count > 0)
+            Character currentTurn = turnOrder[turnCounter];
+            LogMessage("Processing " + currentTurn.Name + "'s Turn");
+            if (characterTurns.ContainsKey(currentTurn))
             {
-                Character currentTurn = turnOrder.Dequeue();
-                LogMessage("Processing " + currentTurn.Name + "'s Turn");
-                if (characterTurns.ContainsKey(currentTurn))
+                while (characterTurns[currentTurn].Count > 0)
                 {
-                    while (characterTurns[currentTurn].Count > 0)
+                    ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
+                    if (currentAction.ManaCost() > currentTurn.Mana)
                     {
-                        ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
+                        LogMessage("NOT ENOUGH MANA");
+                    }
+                    else
+                    {
+                        currentTurn.ChangeMana(-currentAction.ManaCost());
                         LogMessage("Executing Action: " + currentAction.GetName());
                         currentAction.DoAction();
                     }
                 }
-                else
-                {
-                    LogMessage("PASS");
-                }
+            }
+            else
+            {
+                LogMessage("PASS");
             }
         }
 

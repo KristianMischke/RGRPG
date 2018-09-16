@@ -8,6 +8,7 @@ namespace RGRPG.Core
     {
         void SetTargets(List<Character> targets);
         void DoAction();
+        int ManaCost();
         string GetName();
         int GetAmount();
         bool HasAmount();
@@ -19,10 +20,12 @@ namespace RGRPG.Core
         private List<Character> targets = new List<Character>();
 
         private int damage;
+        private int manaCost;
 
-        public AttackAction(int damage)
+        public AttackAction(int damage, int manaCost)
         {
             this.damage = damage;
+            this.manaCost = manaCost;
         }
 
         public void SetTargets(List<Character> targets)
@@ -38,6 +41,11 @@ namespace RGRPG.Core
             }
         }
 
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
         public string GetName() { return "Attack"; }
 
         public int GetAmount() { return damage; }
@@ -51,10 +59,12 @@ namespace RGRPG.Core
         private List<Character> targets = new List<Character>();
 
         private int shield;
+        private int manaCost;
 
-        public DefendAction(int shield)
+        public DefendAction(int shield, int manaCost)
         {
             this.shield = shield;
+            this.manaCost = manaCost;
         }
 
         public void SetTargets(List<Character> targets)
@@ -70,6 +80,11 @@ namespace RGRPG.Core
             }
         }
 
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
         public string GetName() { return "Defend"; }
 
         public int GetAmount() { return shield; }
@@ -83,10 +98,12 @@ namespace RGRPG.Core
         private List<Character> targets = new List<Character>();
 
         private int heal;
+        private int manaCost;
 
-        public HealAction(int heal)
+        public HealAction(int heal, int manaCost)
         {
             this.heal = heal;
+            this.manaCost = manaCost;
         }
 
         public void SetTargets(List<Character> targets)
@@ -100,6 +117,11 @@ namespace RGRPG.Core
             {
                 c.Heal(heal);
             }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
         }
 
         public string GetName() { return "Heal"; }
