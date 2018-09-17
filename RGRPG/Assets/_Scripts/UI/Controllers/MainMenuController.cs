@@ -16,31 +16,43 @@ public class MainMenuController : MonoBehaviour
     private Button OptionsButton;
     private Button CreditsButton;
     private Button QuitButton;
+    private DiscordController controller = new DiscordController();
 
 
-	void Start ()
+    void Start()
     {
+
         StartButton = StartButtonObject.GetComponent<Button>();
         OptionsButton = OptionsButtonObject.GetComponent<Button>();
         CreditsButton = CreditsButtonObject.GetComponent<Button>();
         QuitButton = QuitButtonObject.GetComponent<Button>();
+        controller.OnApplicationQuit();
+        controller.OnEnable();
+        controller.InMainMenu();
 
-        StartButton.onClick.AddListener(() => {
+        StartButton.onClick.AddListener(() =>
+        {
             SceneManager.LoadScene("GameScene");
         });
-        OptionsButton.onClick.AddListener(() => {
+
+        OptionsButton.onClick.AddListener(() =>
+        {
             SceneManager.LoadScene("OptionsScene");
         });
-        CreditsButton.onClick.AddListener(() => {
+
+        CreditsButton.onClick.AddListener(() =>
+        {
             SceneManager.LoadScene("CreditsScene");
         });
-        QuitButton.onClick.AddListener(() => {
+
+        QuitButton.onClick.AddListener(() =>
+        {
             Application.Quit();
         });
     }
-	
-	void Update ()
+
+    void Update()
     {
 
-	}
+    }
 }

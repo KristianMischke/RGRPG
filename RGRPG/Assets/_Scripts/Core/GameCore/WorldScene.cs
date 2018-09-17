@@ -44,7 +44,8 @@ namespace RGRPG.Core
             float signedRadiusY = dy == 0 ? 0 : character.Radius * Mathf.Sign(dy);
 
             int beforeTileX, beforeTileY;
-            TerrainTile beforeTile = GetTileAt(character.Position.x, character.Position.y, out beforeTileX, out beforeTileY);
+            TerrainTile beforeTile;
+            beforeTile = GetTileAt(character.Position.x, character.Position.y, out beforeTileX, out beforeTileY);
 
             // Get the next X tile
             int nextTileX, ignoreY;

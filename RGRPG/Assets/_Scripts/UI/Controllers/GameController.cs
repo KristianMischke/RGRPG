@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#pragma warning disable 0219 // Variable assigned but not used
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,6 +14,9 @@ namespace RGRPG.Controllers
     {
 
         public static GameController instance;
+
+
+        private DiscordController controller = new DiscordController();
 
         // Scene Object References
         public GameObject worldObjectContainer;
@@ -43,6 +48,8 @@ namespace RGRPG.Controllers
         // Use this for initialization
         void Start()
         {
+            controller.InLobby();
+
             if (instance == null)
                 instance = this;
 
@@ -127,6 +134,7 @@ namespace RGRPG.Controllers
 
             if (game.IsInCombat)
             {
+                controller.InBattle();
                 combatEnemiesController[0].SetCharacter(game.CombatEnemies[0]);
                 Camera.main.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
 

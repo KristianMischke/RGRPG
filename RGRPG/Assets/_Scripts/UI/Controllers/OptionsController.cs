@@ -22,7 +22,7 @@ public class OptionsController : MonoBehaviour
         });
 
         DiscordButton.onClick.AddListener(() => {
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("DiscordScene");
         });
     }
 

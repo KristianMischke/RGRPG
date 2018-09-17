@@ -1,21 +1,9 @@
-﻿#pragma warning disable 0219 // Variable assigned but not used
-
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using RGRPG.Core;
 
-[System.Serializable]
-public class DiscordJoinEvent : UnityEngine.Events.UnityEvent<string> { }
-
-[System.Serializable]
-public class DiscordSpectateEvent : UnityEngine.Events.UnityEvent<string> { }
-
-[System.Serializable]
-public class DiscordJoinRequestEvent : UnityEngine.Events.UnityEvent<DiscordRpc.DiscordUser> { }
-
-public class DiscordController
+public class RPCInitialize
 {
     //TODO: Change variable name for the Discord Presence Button
 
@@ -41,10 +29,7 @@ public class DiscordController
 
     DiscordRpc.EventHandlers handlers;
 
-    public DiscordController()
-    {
-        OnEnable();
-    }
+    //public static DiscordController instance;
 
     public void OnClick()
     {
@@ -162,16 +147,19 @@ public class DiscordController
     void Start()
     {
         BackButton = BackButtonObject.GetComponent<Button>();
-        BackButton.onClick.AddListener(() => {
+
+        BackButton.onClick.AddListener(() =>
+        {
             SceneManager.LoadScene("MainMenuScene");
         });
 
         PresenceButton = PresenceButtonObject.GetComponent<Button>();
-        PresenceButton.onClick.AddListener(() => {
+        PresenceButton.onClick.AddListener(() =>
+        {
             OnClick();
         });
 
-        
+
 
         OnEnable();
     }
@@ -184,7 +172,7 @@ public class DiscordController
             InLobby();
     }
 
-    public void OnEnable()
+    void OnEnable()
     {
         Debug.Log("Discord: init");
         callbackCalls = 0;
@@ -213,7 +201,7 @@ public class DiscordController
         Debug.Log("Discord: shutdown");
         DiscordRpc.Shutdown();
     }
-     void OnApplicationFocus()
+    void OnApplicationFocus()
     {
         OnEnable();
     }
