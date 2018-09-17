@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
+//https://discordapp.com/api/oauth2/authorize?client_id=491261225381003274&redirect_uri=https%3A%2F%2Fgithub.com%2Fagricartel%2FDiscord-Bot&response_type=code&scope=rpc%20rpc.api%20rpc.notifications.read
+
 public class DiscordRpc
 {
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

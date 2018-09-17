@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 89185a82a568d40f3af7958b0d6281eb
+guid: 80772ab40efe24401b24933513e80a26
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -9,27 +9,17 @@ PluginImporter:
   isOverridable: 0
   platformData:
   - first:
-      '': Any
-    second:
-      enabled: 0
-      settings:
-        Exclude Editor: 0
-        Exclude Linux: 1
-        Exclude Linux64: 1
-        Exclude LinuxUniversal: 1
-        Exclude OSXUniversal: 0
-        Exclude Win: 1
-        Exclude Win64: 1
-  - first:
       '': OSXIntel
     second:
       enabled: 1
-      settings: {}
+      settings:
+        CPU: AnyCPU
   - first:
       '': OSXIntel64
     second:
-      enabled: 1
-      settings: {}
+      enabled: 0
+      settings:
+        CPU: None
   - first:
       Any: 
     second:
@@ -38,15 +28,14 @@ PluginImporter:
   - first:
       Editor: Editor
     second:
-      enabled: 1
+      enabled: 0
       settings:
-        CPU: AnyCPU
+        CPU: x86
         DefaultValueInitialized: true
-        OS: AnyOS
   - first:
       Facebook: Win
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
   - first:
@@ -54,11 +43,11 @@ PluginImporter:
     second:
       enabled: 0
       settings:
-        CPU: AnyCPU
+        CPU: None
   - first:
       Standalone: Linux
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: x86
   - first:
@@ -66,17 +55,23 @@ PluginImporter:
     second:
       enabled: 0
       settings:
-        CPU: x86_64
+        CPU: None
   - first:
-      Standalone: OSXUniversal
+      Standalone: LinuxUniversal
     second:
       enabled: 1
       settings:
-        CPU: AnyCPU
+        CPU: x86
+  - first:
+      Standalone: OSXUniversal
+    second:
+      enabled: 0
+      settings:
+        CPU: x86
   - first:
       Standalone: Win
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
   - first:
@@ -84,7 +79,7 @@ PluginImporter:
     second:
       enabled: 0
       settings:
-        CPU: AnyCPU
+        CPU: None
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -82,12 +82,10 @@ namespace RGRPG.Core
             xIndex = (int)(x + 0.5f);
             yIndex = (int)(y + 0.5f);
 
-            if (xIndex < 0 || yIndex < 0 || xIndex >= terrainTiles.GetLength(0) || yIndex >= terrainTiles.GetLength(1))
-            {
-                return null;
-            }
-
-            return terrainTiles[xIndex, yIndex];
+            //if (xIndex < 0 || yIndex < 0 || xIndex >= terrainTiles.GetLength(0) || yIndex >= terrainTiles.GetLength(1)) { return null; }
+            return xIndex < 0 || yIndex < 0 || xIndex >= terrainTiles.GetLength(0) || yIndex >= terrainTiles.GetLength(1)
+                ? null
+                : terrainTiles[xIndex, yIndex];
         }
 
     }
