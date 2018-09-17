@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using RGRPG.Core;
+using UnityEngine.SceneManagement;
 
 namespace RGRPG.Controllers
 {
@@ -153,6 +154,9 @@ namespace RGRPG.Controllers
 
             if(game.gameMessages.Count > 0)
                 EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
+
+            if (Input.GetKey("escape"))
+                SceneManager.LoadScene("PauseMenuScene");
         }
 
         void MoveSelectedCharacter()
