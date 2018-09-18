@@ -15,19 +15,14 @@ public class DiscordSpectateEvent : UnityEngine.Events.UnityEvent<string> { }
 [System.Serializable]
 public class DiscordJoinRequestEvent : UnityEngine.Events.UnityEvent<DiscordRpc.DiscordUser> { }
 
-public class DiscordController
+public class DiscordController : MonoBehaviour
 {
-    //TODO: Change variable name for the Discord Presence Button
 
-    public GameObject BackButtonObject;
-    public GameObject PresenceButtonObject;
-    public Game game;
+    private static DiscordController instance;
+    public static DiscordController Instance { get { return instance; } }
 
-    private Button BackButton;
-    private Button PresenceButton;
-
-    public DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence(); //This is fucking bullshit
-    public string applicationId;
+    public DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence(); //This is fucking bullshit <---why?
+    public string applicationId = "491434833151787008"; //TODO: secure app ID
     public string optionalSteamId;
     public int callbackCalls;
     public int clickCounter;
@@ -40,11 +35,6 @@ public class DiscordController
     public DiscordJoinRequestEvent onJoinRequest;
 
     DiscordRpc.EventHandlers handlers;
-
-    public DiscordController()
-    {
-        OnEnable();
-    }
 
     public void OnClick()
     {
@@ -65,12 +55,12 @@ public class DiscordController
         DiscordRpc.UpdatePresence(presence);
     }
 
-    public void InLobby()
+    public void InOverworld()
     {
         //Debug.Log("Discord: in the lobby!");
 
         presence.state = "Playing Solo";
-        presence.details = "Lobby";
+        presence.details = "Overworld";
         presence.largeImageKey = "die";
         presence.largeImageText = "Lobby";
         presence.smallImageKey = "sword-medium";
@@ -161,31 +151,21 @@ public class DiscordController
 
     void Start()
     {
-        BackButton = BackButtonObject.GetComponent<Button>();
-        BackButton.onClick.AddListener(() => {
-            SceneManager.LoadScene("MainMenuScene");
-        });
 
-        PresenceButton = PresenceButtonObject.GetComponent<Button>();
-        PresenceButton.onClick.AddListener(() => {
-            OnClick();
-        });
-
-        
-
-        OnEnable();
     }
 
     void Update()
     {
         DiscordRpc.RunCallbacks();
-
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene") && !game.IsInCombat)
-            InLobby();
     }
 
     public void OnEnable()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Debug.LogWarning("[DiscordController] Warning: Multiple instances created!");
+
         Debug.Log("Discord: init");
         callbackCalls = 0;
 
@@ -208,7 +188,7 @@ public class DiscordController
     }
 
     //DEBUG METHOD
-    void OnApplicationPause()
+    /*void OnApplicationPause()
     {
         Debug.Log("Discord: shutdown");
         DiscordRpc.Shutdown();
@@ -216,7 +196,7 @@ public class DiscordController
      void OnApplicationFocus()
     {
         OnEnable();
-    }
+    }*/
 
     void OnDestroy()
     {

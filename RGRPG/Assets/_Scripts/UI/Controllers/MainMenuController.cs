@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    // Scene Objects
     public GameObject StartButtonObject;
     public GameObject OptionsButtonObject;
     public GameObject CreditsButtonObject;
@@ -16,8 +17,18 @@ public class MainMenuController : MonoBehaviour
     private Button OptionsButton;
     private Button CreditsButton;
     private Button QuitButton;
-    private DiscordController controller = new DiscordController();
 
+    // Prefabs
+    public GameObject DiscordControllerObject;
+
+    private void OnEnable()
+    {
+        if (DiscordController.Instance == null)
+        {
+            GameObject controllerObject = Instantiate(DiscordControllerObject);
+            DontDestroyOnLoad(controllerObject);
+        }
+    }
 
     void Start()
     {
@@ -26,9 +37,7 @@ public class MainMenuController : MonoBehaviour
         OptionsButton = OptionsButtonObject.GetComponent<Button>();
         CreditsButton = CreditsButtonObject.GetComponent<Button>();
         QuitButton = QuitButtonObject.GetComponent<Button>();
-        controller.OnApplicationQuit();
-        controller.OnEnable();
-        controller.InMainMenu();
+        DiscordController.Instance.InMainMenu();
 
         StartButton.onClick.AddListener(() =>
         {

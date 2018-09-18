@@ -147,7 +147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -218.85}
+  m_AnchoredPosition: {x: 581, y: -382.85}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108067013
@@ -259,7 +259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -158.85}
+  m_AnchoredPosition: {x: 581, y: -322.85}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &264544957
@@ -602,7 +602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -248.85}
+  m_AnchoredPosition: {x: 581, y: -412.85}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &751487843
@@ -692,7 +692,6 @@ GameObject:
   - component: {fileID: 875859682}
   - component: {fileID: 875859681}
   - component: {fileID: 875859685}
-  - component: {fileID: 875859686}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -792,58 +791,8 @@ MonoBehaviour:
   OptionsButtonObject: {fileID: 1974468286}
   CreditsButtonObject: {fileID: 108067011}
   QuitButtonObject: {fileID: 705410170}
---- !u!114 &875859686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 875859680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77b6f2faeb98340fa8af923f839e42f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BackButtonObject: {fileID: 0}
-  PresenceButtonObject: {fileID: 0}
-  applicationId: 491261225381003274
-  optionalSteamId: 
-  callbackCalls: 0
-  clickCounter: 0
-  joinRequest:
-    userId: 
-    username: 
-    discriminator: 
-    avatar: 
-  onConnect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDisconnect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  hasResponded:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onJoin:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DiscordJoinEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onSpectate:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DiscordJoinEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onJoinRequest:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DiscordJoinRequestEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  DiscordControllerObject: {fileID: 1166502408265696, guid: 57592cde27b63ca41b0355a2f6a73811,
+    type: 2}
 --- !u!1 &876143257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -38.6, y: 26.1}
+  m_AnchoredPosition: {x: -38.599976, y: 26.099976}
   m_SizeDelta: {x: -758, y: -344.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440045091
@@ -1276,7 +1225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -188.85}
+  m_AnchoredPosition: {x: 581, y: -352.85}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974468288

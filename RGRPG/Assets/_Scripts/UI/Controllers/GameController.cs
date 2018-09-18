@@ -15,9 +15,6 @@ namespace RGRPG.Controllers
 
         public static GameController instance;
 
-
-        private DiscordController controller = new DiscordController();
-
         // Scene Object References
         public GameObject worldObjectContainer;
         public GameObject combatObjectContainer;
@@ -48,7 +45,7 @@ namespace RGRPG.Controllers
         // Use this for initialization
         void Start()
         {
-            controller.InLobby();
+            DiscordController.Instance.InOverworld();
 
             if (instance == null)
                 instance = this;
@@ -134,7 +131,7 @@ namespace RGRPG.Controllers
 
             if (game.IsInCombat)
             {
-                controller.InBattle();
+                DiscordController.Instance.InBattle();
                 combatEnemiesController[0].SetCharacter(game.CombatEnemies[0]);
                 Camera.main.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
 
@@ -145,7 +142,7 @@ namespace RGRPG.Controllers
             }
             else
             {
-
+                DiscordController.Instance.InOverworld();
                 //TODO: This should not just be for enemies, ultimately when we add pooling, this will be resolved, but for now just remove enemy objects when they die
                 for (int i = 0; i < enemyControllers.Count; i++)
                 {
