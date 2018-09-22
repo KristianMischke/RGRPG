@@ -317,6 +317,13 @@ namespace RGRPG.Core
                 LogMessage("You are dead, not big surprise");
                 return;
             }
+
+            if (!source.Actions.Contains(action))
+            {
+                LogMessage("You are trying to execute an action that this player does not possess.");
+                return;
+            }
+
             if (!characterTurns.ContainsKey(source))
                 characterTurns.Add(source, new Queue<ICharacterAction>());
 

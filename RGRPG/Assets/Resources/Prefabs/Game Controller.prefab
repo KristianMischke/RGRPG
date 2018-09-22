@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4987847550316300}
   - component: {fileID: 114143378573784632}
+  - component: {fileID: 114284002306489388}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: GameController
@@ -59,9 +60,23 @@ MonoBehaviour:
   playerHUDControllers: []
   enemyControllers: []
   enemyHUDControllers: []
+  combatEnemiesController: []
+  DiscordControllerObject: {fileID: 1166502408265696, guid: 57592cde27b63ca41b0355a2f6a73811,
+    type: 2}
   worldSceneView: {fileID: 1231192070236786, guid: 0a998299da7d7be46b0ef3de53d7c160,
     type: 2}
   characterView: {fileID: 1751886850351214, guid: 11854fe5c934abd488ac7eb542972a31,
     type: 2}
   characterHUDView: {fileID: 1309484275852450, guid: 34e9a40707b23e547a15bb78609d5502,
     type: 2}
+--- !u!114 &114284002306489388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675081235607040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec6182d0002e43e38e8d7b5f5f1cf52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

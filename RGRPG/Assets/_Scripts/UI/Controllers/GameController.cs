@@ -35,12 +35,23 @@ namespace RGRPG.Controllers
         public List<CharacterController> combatEnemiesController;
 
         // Prefabs
+        public GameObject DiscordControllerObject;
+
         public GameObject worldSceneView;
         public GameObject characterView;
         public GameObject characterHUDView;
 
         // Data
         Game game;
+
+        private void OnEnable()
+        {
+            if (DiscordController.Instance == null)
+            {
+                GameObject controllerObject = Instantiate(DiscordControllerObject);
+                DontDestroyOnLoad(controllerObject);
+            }
+        }
 
         // Use this for initialization
         void Start()
@@ -123,6 +134,8 @@ namespace RGRPG.Controllers
         // Update is called once per frame
         void Update()
         {
+            if (game == null)
+                return;
 
             game.GameLoop();
 
