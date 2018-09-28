@@ -201,7 +201,8 @@ namespace RGRPG.Controllers
                 xMovement = -1;
             }
 
-            Vector2 moveVector = new Vector2(xMovement, yMovement);
+            Vector2 moveVector = new Vector2(xMovement - yMovement, yMovement);
+            moveVector = moveVector * new Vector2(1, 2);
             moveVector.Normalize();
             moveVector *= moveMagnitude*Time.deltaTime;
 

@@ -47,7 +47,9 @@ namespace RGRPG.Controllers
                 firstUpdate = false;
             }
 
-            transform.position = character.Position;
+            transform.rotation = Quaternion.identity;
+            transform.localPosition = character.Position;
+            transform.localScale = new Vector3(1 / transform.parent.localScale.x, 1 / transform.parent.localScale.y, 1 / transform.parent.localScale.z);
 
             Widget.SetActive(GameController.instance.IsInCombat());
 
