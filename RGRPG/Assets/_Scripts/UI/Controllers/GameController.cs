@@ -155,7 +155,7 @@ namespace RGRPG.Controllers
             }
             else
             {
-                DiscordController.Instance.InOverworld();
+                //DiscordController.Instance.InOverworld();
                 //TODO: This should not just be for enemies, ultimately when we add pooling, this will be resolved, but for now just remove enemy objects when they die
                 for (int i = 0; i < enemyControllers.Count; i++)
                 {

@@ -14,8 +14,8 @@ public class RPCInitialize
     private Button BackButton;
     private Button PresenceButton;
 
-    public DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence(); //This is fucking bullshit
-    public string applicationId;
+    public DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence();
+    public string applicationId = "491261225381003274";
     public string optionalSteamId;
     public int callbackCalls;
     public int clickCounter;
