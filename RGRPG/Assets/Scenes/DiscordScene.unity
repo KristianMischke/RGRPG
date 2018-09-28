@@ -147,7 +147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -270.385}
+  m_AnchoredPosition: {x: 581, y: -434.385}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101159367
@@ -259,7 +259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -180.38501}
+  m_AnchoredPosition: {x: 581, y: -344.385}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718873293
@@ -750,7 +750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -210.38501}
+  m_AnchoredPosition: {x: 581, y: -374.385}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433702540
@@ -937,7 +937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289.5, y: -240.38501}
+  m_AnchoredPosition: {x: 581, y: -404.385}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564032102
@@ -1199,8 +1199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b6f2faeb98340fa8af923f839e42f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackButtonObject: {fileID: 101159365}
-  PresenceButtonObject: {fileID: 718873291}
   applicationId: 491261225381003274
   optionalSteamId: 
   callbackCalls: 0
