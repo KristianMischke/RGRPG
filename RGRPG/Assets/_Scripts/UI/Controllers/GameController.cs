@@ -109,7 +109,7 @@ namespace RGRPG.Controllers
                 playerHUDController.Init(playerData);
                 playerHUDControllers.Add(playerHUDController);
             }
-            Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
 
             // set up the enemy controllers
             foreach (Character enemyData in game.Enemies)
@@ -215,7 +215,7 @@ namespace RGRPG.Controllers
             game.SelectCharacter(c);
 
             // update camera follow object
-            Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
             EventSystem.current.SetSelectedGameObject(null);
         }
 

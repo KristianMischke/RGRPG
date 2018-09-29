@@ -8,14 +8,7 @@ namespace RGRPG.Controllers
     {
 
         public GameObject followObject;
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
+        
         void LateUpdate()
         {
             if (followObject == null)
