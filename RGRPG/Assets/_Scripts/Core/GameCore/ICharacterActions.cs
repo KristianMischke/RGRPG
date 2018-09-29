@@ -46,7 +46,7 @@ namespace RGRPG.Core
             return manaCost;
         }
 
-        public string GetName() { return "Attack"; }
+        public string GetName() { return "ATTACK"; }
 
         public int GetAmount() { return damage; }
 
@@ -85,7 +85,7 @@ namespace RGRPG.Core
             return manaCost;
         }
 
-        public string GetName() { return "Defend"; }
+        public string GetName() { return "DEFEND"; }
 
         public int GetAmount() { return shield; }
 
@@ -124,7 +124,7 @@ namespace RGRPG.Core
             return manaCost;
         }
 
-        public string GetName() { return "Heal"; }
+        public string GetName() { return "HEAL"; }
 
         public int GetAmount() { return heal; }
 
