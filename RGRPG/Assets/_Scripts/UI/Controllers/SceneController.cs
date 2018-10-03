@@ -25,7 +25,9 @@ namespace RGRPG.Controllers
         // Update is called once per frame
         void Update()
         {
-
+            transform.localRotation = Quaternion.identity;
+            transform.localPosition = Vector3.zero;
+            transform.localScale = Vector3.one;
         }
 
         public void ResetScene()

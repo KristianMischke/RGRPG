@@ -13,8 +13,8 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>Rock</Type>
+				<Traversable>1</Traversable>
+				<Type>Grass</Type>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>

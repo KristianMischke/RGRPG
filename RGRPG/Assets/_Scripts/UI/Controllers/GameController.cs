@@ -109,7 +109,7 @@ namespace RGRPG.Controllers
                 playerHUDController.Init(playerData);
                 playerHUDControllers.Add(playerHUDController);
             }
-            Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
 
             // set up the enemy controllers
             foreach (Character enemyData in game.Enemies)
@@ -146,7 +146,7 @@ namespace RGRPG.Controllers
             {
                 DiscordController.Instance.InBattle();
                 combatEnemiesController[0].SetCharacter(game.CombatEnemies[0]);
-                Camera.main.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
+                Camera.main.transform.parent.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
 
                 if (game.CurrentCombatState == CombatState.EndCombat)
                 {
@@ -201,7 +201,8 @@ namespace RGRPG.Controllers
                 xMovement = -1;
             }
 
-            Vector2 moveVector = new Vector2(xMovement, yMovement);
+            Vector2 moveVector = new Vector2(xMovement + yMovement, yMovement- xMovement);
+            //moveVector = moveVector * new Vector2(1, 2);
             moveVector.Normalize();
             moveVector *= moveMagnitude*Time.deltaTime;
 
@@ -214,7 +215,7 @@ namespace RGRPG.Controllers
             game.SelectCharacter(c);
 
             // update camera follow object
-            Camera.main.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
             EventSystem.current.SetSelectedGameObject(null);
         }
 

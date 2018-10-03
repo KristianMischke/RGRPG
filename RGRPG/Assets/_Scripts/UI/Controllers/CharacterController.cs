@@ -47,7 +47,7 @@ namespace RGRPG.Controllers
                 firstUpdate = false;
             }
 
-            transform.position = character.Position;
+            transform.localPosition = character.Position;
 
             Widget.SetActive(GameController.instance.IsInCombat());
 
