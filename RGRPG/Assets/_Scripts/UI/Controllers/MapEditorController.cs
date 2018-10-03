@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using RGRPG.Core;
 using UnityEngine.SceneManagement;
@@ -18,21 +19,18 @@ namespace RGRPG.Controllers
         // Scene Object References
         public GameObject worldObjectContainer;
         public GameObject canvasObject;
-  
 
-        
+        public InputField widthInput;
+        public InputField heightInput;
 
         // Prefabs
-
         public GameObject worldSceneView;
-        // Data
 
-		int width;
-		int height;
+        // Data
+        SceneController worldSceneController;
 
 		WorldScene currentScene;
 
-        // Use this for initialization
         void Start()
         {
             if (instance == null)
@@ -54,27 +52,41 @@ namespace RGRPG.Controllers
             GameObject worldSceneObject = Instantiate(worldSceneView);
             worldSceneObject.transform.SetParent(worldObjectContainer.transform);
 
-            SceneController worldSceneController = worldSceneObject.GetComponent<SceneController>();
+            worldSceneController = worldSceneObject.GetComponent<SceneController>();
 			worldSceneController.scene = currentScene;
             worldSceneController.ResetScene();
-          
+
+            // setup UI listeners
+            widthInput.onEndEdit.AddListener(SetWidth);
+            heightInput.onEndEdit.AddListener(SetHeight);
+
         }
 
-        // Update is called once per frame
         void Update()
         {
 
             worldObjectContainer.SetActive(true);
         }
 
-		public void setWidth(string stringWidth){
-			int.TryParse(stringWidth, out width);		}
+		public void SetWidth(string stringWidth)
+        {
+            int width = currentScene.Width;
+            int.TryParse(stringWidth, out width);
 
-		public void setHeight(string stringHeight){
+            currentScene.AdjustDimensions(width, currentScene.Height);
+            Debug.Log(currentScene.Width);
+            worldSceneController.ResetScene();
+        }
+
+		public void SetHeight(string stringHeight)
+        {
+            int height = currentScene.Height;
 			int.TryParse(stringHeight, out height);
-			
 
-		}
+            currentScene.AdjustDimensions(currentScene.Width, height);
+            Debug.Log(currentScene.Height);
+            worldSceneController.ResetScene();
+        }
 	}
 
 	

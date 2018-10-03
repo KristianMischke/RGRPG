@@ -30,7 +30,7 @@ namespace RGRPG.Controllers
         // Update is called once per frame
         void Update()
         {
-            if (firstUpdate)
+            if (firstUpdate && terrainTile != null)
             {
                 SetSprite();
 
