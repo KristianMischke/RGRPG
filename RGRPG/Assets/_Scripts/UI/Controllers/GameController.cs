@@ -155,7 +155,7 @@ namespace RGRPG.Controllers
             }
             else
             {
-                //DiscordController.Instance.InOverworld();
+                DiscordController.Instance.InOverworld();
                 //TODO: This should not just be for enemies, ultimately when we add pooling, this will be resolved, but for now just remove enemy objects when they die
                 for (int i = 0; i < enemyControllers.Count; i++)
                 {
@@ -170,8 +170,12 @@ namespace RGRPG.Controllers
                 MoveSelectedCharacter();
             }
 
-            if(game.gameMessages.Count > 0)
-                EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
+            if (game.gameMessages.Count > 0 && Marquee.instance.IsFinished())
+            {
+                //EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
+                Marquee.instance.ResetTimer(game.gameMessages.Dequeue());
+                Marquee.instance.StartTimer();
+            }
 
             if (Input.GetKey("escape"))
                 SceneManager.LoadScene("PauseMenuScene");

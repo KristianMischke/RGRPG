@@ -160,7 +160,7 @@ namespace RGRPG.Core
                 case CombatState.NextRound:
                     roundCounter++;
                     turnCounter = 0;
-                    LogMessage("ROUND #" + roundCounter + "DONE");
+                    LogMessage("ROUND #" + roundCounter + " DONE");
                     foreach (Character c in players)
                         c.Reset();
                     for (int i = 0; i < enemies.Count; i++)
@@ -329,7 +329,7 @@ namespace RGRPG.Core
 
             action.SetTargets(new List<Character> { target });
             characterTurns[source].Enqueue(action);
-            LogMessage(source.Name + " -> " + action.GetName());
+            //LogMessage(source.Name + " -> " + action.GetName());
         }
 
         public void LogMessage(string text)
