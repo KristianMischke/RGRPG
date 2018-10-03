@@ -8,9 +8,46 @@ namespace RGRPG.Controllers
     {
 
         public GameObject followObject;
+
+
+        // controling camera in map editor
+        public bool freeControl = false;
+        public float speed = 2.0f;
         
         void LateUpdate()
         {
+
+            if (freeControl)
+            {
+                Vector3 direction = Vector3.zero;
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    direction += Vector3.up;
+                }
+                else if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    direction += Vector3.down;
+                }
+
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    direction += Vector3.left;
+                }
+                else if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    direction += Vector3.right;
+                }
+
+                direction.Normalize();
+
+                Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.forward);
+
+                direction = rotation * direction;
+
+                transform.position = transform.position + direction * speed * Time.deltaTime;
+            }
+
             if (followObject == null)
                 return;
 

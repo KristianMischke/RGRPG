@@ -172,5 +172,47 @@ namespace RGRPG.Core
                 : terrainTiles[xIndex, yIndex];
         }
 
+
+        public void SetTile(int x, int y, TerrainTile t)
+        {
+            if (x >= 0 && x < terrainTiles.GetLength(0) && y >= 0 && y < terrainTiles.GetLength(1))
+            {
+                terrainTiles[x, y] = t;
+            }
+        }
+
+        public void AdjustDimensions(int width, int height, bool expandUp = true, bool expandRight = true)
+        {
+            if (width > 0 && height > 0)
+            {
+                int dW = width - this.width;
+                int dH = height - this.height;
+
+                this.width = width;
+                this.height = height;
+
+                TerrainTile[,] newTiles = new TerrainTile[width, height];
+                for (int x = 0; x < width; x++)
+                {
+                    for (int y = 0; y < height; y++)
+                    {
+                        int oldX = x - (expandRight ? 0 :dW);
+                        int oldY = y - (expandUp ? 0 :dH);
+                        if (oldX >= 0 && oldY >= 0 && oldX < terrainTiles.GetLength(0) && oldY < terrainTiles.GetLength(1))
+                        {
+                            // if the old tile is in the bounds of the the new area, then add it
+                            newTiles[x, y] = terrainTiles[oldX, oldY];
+                        }
+                        else
+                        {
+                            // otherwise create a new tile
+                            newTiles[x, y] = new TerrainTile(TerrainType.Grass, true);
+                        }
+                    }
+                }
+
+                terrainTiles = newTiles;           
+            }
+        }
     }
 }
