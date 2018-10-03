@@ -200,6 +200,6 @@ public class DiscordController : MonoBehaviour
 
     void OnDestroy()
     {
-
+        DiscordRpc.Shutdown();
     }
 }

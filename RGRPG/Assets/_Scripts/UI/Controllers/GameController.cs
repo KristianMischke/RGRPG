@@ -146,7 +146,7 @@ namespace RGRPG.Controllers
             {
                 DiscordController.Instance.InBattle();
                 combatEnemiesController[0].SetCharacter(game.CombatEnemies[0]);
-                Camera.main.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
+                Camera.main.transform.parent.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
 
                 if (game.CurrentCombatState == CombatState.EndCombat)
                 {
@@ -201,8 +201,8 @@ namespace RGRPG.Controllers
                 xMovement = -1;
             }
 
-            Vector2 moveVector = new Vector2(xMovement - yMovement, yMovement);
-            moveVector = moveVector * new Vector2(1, 2);
+            Vector2 moveVector = new Vector2(xMovement + yMovement, yMovement- xMovement);
+            //moveVector = moveVector * new Vector2(1, 2);
             moveVector.Normalize();
             moveVector *= moveMagnitude*Time.deltaTime;
 
