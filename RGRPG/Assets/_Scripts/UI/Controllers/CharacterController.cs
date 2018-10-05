@@ -75,7 +75,7 @@ namespace RGRPG.Controllers
                     image = Resources.Load<Sprite>("Sprites/baby");
                     break;
                 case CharacterType.Enemy:
-                    image = Resources.Load<Sprite>("Sprites/troll");
+                    image = Resources.Load<Sprite>("Sprites/squirrel");
                     break;
                 default:
                     image = Resources.Load<Sprite>("Sprites/baby");
