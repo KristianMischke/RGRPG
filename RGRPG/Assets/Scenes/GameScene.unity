@@ -1028,6 +1028,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followObject: {fileID: 0}
+  freeControl: 0
+  speed: 2
 --- !u!4 &1732401815
 Transform:
   m_ObjectHideFlags: 0

@@ -31,6 +31,11 @@ public class DiceController : MonoBehaviour
         DieText.text = "Roll Die";
     }
 
+    public void SetNumber(int number)
+    {
+        DieText.text = number.ToString();
+    }
+
     public void RollDice()
     {
         DieText.text = ((int)Random.Range(1f, 7f)).ToString();
