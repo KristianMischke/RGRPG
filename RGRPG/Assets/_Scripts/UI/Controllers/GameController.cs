@@ -242,6 +242,16 @@ namespace RGRPG.Controllers
         {
             return game.IsInCombat;
         }
+
+        public int GetDiceRoll(Character targetCharacter)
+        {
+
+            if (game.TurnOrder == null || game.TurnOrder.Count == 0)
+            {
+                return 0;
+            }
+            return game.TurnOrder.Count - game.TurnOrder.IndexOf(targetCharacter);
+        }
     }
 
 }

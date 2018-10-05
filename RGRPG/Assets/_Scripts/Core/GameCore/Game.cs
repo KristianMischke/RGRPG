@@ -61,7 +61,8 @@ namespace RGRPG.Core
         public Character SelectedCharacter { get { return selectedCharacter; } }
 
         public bool IsInCombat { get { return currentGameState == GameState.Combat; } }
-        public List<Character> CombatEnemies { get { return combatEnemies; } }        
+        public List<Character> CombatEnemies { get { return combatEnemies; } }
+        public List<Character> TurnOrder { get { return turnOrder; } } 
 
         public Queue<string> gameMessages = new Queue<string>();
 
