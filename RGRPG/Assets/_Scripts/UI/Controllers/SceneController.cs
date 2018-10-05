@@ -93,7 +93,7 @@ namespace RGRPG.Controllers
                     activeTerrainTiles[i].RemoveAt(activeTerrainTiles[i].Count - 1);
                 }
 
-                if (i > scene.Width)
+                if (i + 1 > scene.Width)
                 {
                     foreach (TerrainTileController t in activeTerrainTiles[i])
                     {
