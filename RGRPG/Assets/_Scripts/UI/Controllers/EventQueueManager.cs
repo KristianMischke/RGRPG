@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace RGRPG.Controllers
 {
+    /// <summary>
+    ///     (depricated) old event queue, can probably remove soon (new system is <see cref="Marquee"/>
+    /// </summary>
     public class EventQueueManager : MonoBehaviour
     {
         public static EventQueueManager instance;

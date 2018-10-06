@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RGRPG.Core
 {
     /// <summary>
-    /// <see cref="GameState"/> these are the different calculations that the game can making in the game loop
+    ///     Different calculations that the game can make in the game loop
     /// </summary>
     public enum GameState
     {
@@ -17,7 +17,7 @@ namespace RGRPG.Core
     }
 
     /// <summary>
-    /// <see cref="CombatState"/> determines the current combat calculation that needs to be made during combat
+    ///     Different combat calculation that need to be made during a combat round
     /// </summary>
     public enum CombatState
     {
@@ -34,17 +34,34 @@ namespace RGRPG.Core
         COUNT
     }
 
+
+    /// <summary>
+    ///     Stores all the game data and functionality of a game
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         This is where all the magic happens in the game.
+    ///     </para>
+    ///     <para>
+    ///         Players and Enemies are updated and maintainted here.
+    ///     </para>
+    ///     <para>
+    ///         The scene list is referenced here, as well as the current scene
+    ///     </para>
+    ///     </para>
+    ///         All of this is still raw data and function, no user interface
+    ///     </para>
+    /// </remarks>
     public class Game
     {
         protected GameState currentGameState = GameState.Starting;
 
-        protected int worldWidth;
-        protected int worldHeight;
-
+        // scenes
         protected List<WorldScene> scenes;
         protected WorldScene startScene;
         protected WorldScene currentScene;
 
+        // characters
         protected List<Character> players;
         protected List<Enemy> enemies;
         protected Character selectedCharacter;
@@ -57,6 +74,7 @@ namespace RGRPG.Core
         protected Dictionary<Character, Queue<ICharacterAction>> characterTurns;
         protected List<Character> turnOrder;
 
+        // allows for public access, but not public assignment
         public GameState CurrentGameState { get { return currentGameState; } }
         public CombatState CurrentCombatState { get { return currentCombatState; } }
         public List<WorldScene> Scenes { get { return scenes; } }
@@ -77,7 +95,10 @@ namespace RGRPG.Core
             Init();
         }
 
-        public void Init()
+        /// <summary>
+        ///     Initializes the game, this should only be called when constructing a new game
+        /// </summary>
+        private void Init()
         {
             //TODO: load scenes from files, for now just have one scene
             scenes = new List<WorldScene>();
@@ -92,6 +113,8 @@ namespace RGRPG.Core
             players = new List<Character>();
             enemies = new List<Enemy>();
 
+            // for now just create 4 players with equal stats, TODO: players need to be loaded from XML then selected by the user(s)...
+            // maybe the selected players should be passed in as parameters into this function (that might be good for when multiplayer comes around)
             for (int i = 0; i < 4; i++)
             {
                 players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
@@ -108,6 +131,9 @@ namespace RGRPG.Core
             currentCombatState = CombatState.NONE;
         }
 
+        /// <summary>
+        ///     Controls the next iteration of the game loop, currently just switches from combat mode to world movement mode
+        /// </summary>
         public void GameLoop()
         {
             switch(currentGameState)
@@ -122,6 +148,9 @@ namespace RGRPG.Core
             }
         }
 
+        /// <summary>
+        ///     Tells all the enemies to execute their AI
+        /// </summary>
         void UpdateAI()
         {
             foreach (Enemy e in enemies)
@@ -130,10 +159,15 @@ namespace RGRPG.Core
             }
         }
 
+
+        /// <summary>
+        ///     Executes the combat logic based on the current combat state
+        /// </summary>
         void DoCombat()
         {
             switch (currentCombatState)
             {
+                // right now begining combat just resets mana. TODO: determine correct behavior
                 case CombatState.BeginCombat:
                     turnCounter = 0;
                     foreach (Character p in players)
@@ -142,17 +176,25 @@ namespace RGRPG.Core
                         e.SetMana(50);
                     currentCombatState = CombatState.PickTurnOrder;
                     break;
+
+                // picks the turn order before actions are chosen (when implementing GameServer, this information will be hidden until everyone has subbmitted their actions)
                 case CombatState.PickTurnOrder:
                     RollDiceForTurnOrder();
                     currentCombatState = CombatState.ChooseEnemyActions;
                     break;
+
+                // chooses who each enemy in combat will attack
                 case CombatState.ChooseEnemyActions:
                     foreach(Enemy e in combatEnemies)
                         RecordAction(e.Actions[0], e, players[Random.Range(0, players.Count)]);
                     currentCombatState = CombatState.PlayersChooseActions;
                     break;
+
+                // lets players input their turn (this state is exited in FinishPlayerTurnInput())
                 case CombatState.PlayersChooseActions:
                     break;
+
+                //
                 case CombatState.ExecuteTurns:
                     if (turnCounter >= turnOrder.Count)
                     {
@@ -164,6 +206,8 @@ namespace RGRPG.Core
                         turnCounter++;
                     }
                     break;
+
+                // go to the next round of combat (currently just recharges some mana)
                 case CombatState.NextRound:
                     roundCounter++;
                     turnCounter = 0;
@@ -190,6 +234,8 @@ namespace RGRPG.Core
                     currentCombatState = CombatState.PickTurnOrder;
                     CheckExitConditions();
                     break;
+
+                // exit to the overworld
                 case CombatState.EndCombat:
                     currentCombatState = CombatState.NONE;
                     currentGameState = GameState.WorldMovement;
@@ -197,9 +243,11 @@ namespace RGRPG.Core
             }
         }
 
+        /// <summary>
+        ///     Gets the random order for the enemies and players involved in combat
+        /// </summary>
         void RollDiceForTurnOrder()
         {
-            // get the random order
             List<Character> characters = new List<Character>();
             characters.AddRange(combatEnemies);
             characters.AddRange(players);
@@ -212,6 +260,9 @@ namespace RGRPG.Core
             }
         }
 
+        /// <summary>
+        ///     Changes the combat state depending on whether or not the player, enemies, or no one has won
+        /// </summary>
         void CheckExitConditions()
         {
             bool allEnemiesDead = true;
@@ -228,18 +279,21 @@ namespace RGRPG.Core
 
             if (allPlayersDead)
             {
-                LogMessage("The Enemie(s) Won!");
+                LogMessage("The Enemie(s) Won!"); //TODO: actually store a win/lose state instead of just logging
             }
 
             if (allEnemiesDead)
             {
-                LogMessage("YOU Won!");
+                LogMessage("YOU Won!"); //TODO: see ^
             }
 
             if (allEnemiesDead || allPlayersDead)
                 currentCombatState = CombatState.EndCombat;
         }
 
+        /// <summary>
+        ///     Executes all the combat actions that the current character has queued up
+        /// </summary>
         void ProcessNextCombatTurn()
         {
             Character currentTurn = turnOrder[turnCounter];
@@ -267,23 +321,38 @@ namespace RGRPG.Core
             }
         }
 
+        /// <summary>
+        ///     Sets the combat state to execute turns
+        /// </summary>
         public void FinishPlayerTurnInput()
         {
             if (currentGameState == GameState.Combat && currentCombatState == CombatState.PlayersChooseActions)
                 currentCombatState = CombatState.ExecuteTurns;
         }
 
+        /// <summary>
+        ///     Allows the user to select a player to control TODO: this behavior will change with leaders
+        /// </summary>
+        /// <param name="target">The character to control</param>
         public void SelectCharacter(Character target)
         {
             //TODO: put parameters on when/which characters can be selected
             selectedCharacter = target;
         }
 
+        /// <summary>
+        ///     Tells the selected character to move
+        /// </summary>
+        /// <param name="dx">The x amount the player should move</param>
+        /// <param name="dy">The y amount the player should move</param>
         public void MoveSelectedCharacter(float dx, float dy)
         {
             selectedCharacter.Move(currentScene, dx, dy);
         }
 
+        /// <summary>
+        ///     Checks to see if a player is touching an enemy to enter combat
+        /// </summary>
         void CheckEncounterEnemy()
         {
             if (currentGameState == GameState.Combat)
@@ -297,13 +366,16 @@ namespace RGRPG.Core
                     {
                         LogMessage("FIGHT");
                         combatEnemies.Clear();
-                        combatEnemies.Add(enemy); //TODO: right now just single enemies per world enemy, in future: bands of enemies
+                        combatEnemies.Add(enemy); //TODO: right now just single enemies per world enemy, in future: one sprite may contain a band of enemies
                         StartCombat();
                     }
                 }
             }
         }
 
+        /// <summary>
+        ///     Sets up variables for beginning combat in the game loop
+        /// </summary>
         void StartCombat()
         {
             currentGameState = GameState.Combat;
@@ -312,6 +384,12 @@ namespace RGRPG.Core
             characterTurns = new Dictionary<Character, Queue<ICharacterAction>>();
         }
 
+        /// <summary>
+        ///     Records an action chosen by the user for a given player and a target
+        /// </summary>
+        /// <param name="action">The action to be executed</param>
+        /// <param name="source">The character who is trying to execute the action</param>
+        /// <param name="target">The character who is the target of the action</param>
         public void RecordAction(ICharacterAction action, Character source, Character target)
         {
             if (currentGameState != GameState.Combat)
@@ -321,7 +399,7 @@ namespace RGRPG.Core
             }
 
             if (!source.IsAlive()) {
-                LogMessage("You are dead, not big surprise");
+                LogMessage("You are dead, no big surprise");
                 return;
             }
 
@@ -339,6 +417,10 @@ namespace RGRPG.Core
             //LogMessage(source.Name + " -> " + action.GetName());
         }
 
+        /// <summary>
+        ///     Adds messages to a queue to be displayed by the UI
+        /// </summary>
+        /// <param name="text">The message to be displayed</param>
         public void LogMessage(string text)
         {
             gameMessages.Enqueue(text);

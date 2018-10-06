@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace RGRPG.Core
 {
+    /// <summary>
+    ///     The various types of terrain in the world (will need to update often)
+    /// </summary>
     public enum TerrainType
     {
         NONE,
@@ -15,6 +18,9 @@ namespace RGRPG.Core
         COUNT
     }
 
+    /// <summary>
+    ///     Stores the raw data for a single tile in the world
+    /// </summary>
     public class TerrainTile
     {
         protected TerrainType type;

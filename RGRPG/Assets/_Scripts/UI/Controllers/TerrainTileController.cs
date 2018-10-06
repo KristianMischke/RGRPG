@@ -6,6 +6,9 @@ using RGRPG.Core;
 
 namespace RGRPG.Controllers
 {
+    /// <summary>
+    ///     Controls the terrain tile game objects and updates their display
+    /// </summary>
     public class TerrainTileController : MonoBehaviour
     {
 
@@ -42,8 +45,14 @@ namespace RGRPG.Controllers
             transform.localScale = Vector3.one;
         }
 
+        /// <summary>
+        ///     Initializes the sprite associated for this tile. TODO: also initialize walls when we support buildings
+        /// </summary>
         public void SetSprite()
         {
+            //TODO: also another instance of why we should probably make a SpriteLoader (see comment in CharacterController)
+            //TODO: the Sprite loader could have a dictionary of Tile Types (maybe subtypes too?) to image filepaths
+
             Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/tiles");
             Sprite[] tileSprites = Resources.LoadAll<Sprite>("Sprites/sidewalk_tile_draft2");
 

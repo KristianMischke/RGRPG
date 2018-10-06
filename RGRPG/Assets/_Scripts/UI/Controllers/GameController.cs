@@ -1,6 +1,4 @@
-﻿#pragma warning disable 0219 // Variable assigned but not used
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,7 +7,14 @@ using UnityEngine.SceneManagement;
 
 namespace RGRPG.Controllers
 {
-
+    /// <summary>
+    ///     Connects the UI to the Game data/functions
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         In the future, we will probably wrap this class with GameClientController and GameServerController, and thus move some of the functionality there
+    ///     </para>
+    /// </remarks>
     public class GameController : MonoBehaviour
     {
 
@@ -46,6 +51,7 @@ namespace RGRPG.Controllers
 
         private void OnEnable()
         {
+            // if the discord controller hasn't been initialized, then initialize it
             if (DiscordController.Instance == null)
             {
                 GameObject controllerObject = Instantiate(DiscordControllerObject);
@@ -53,7 +59,6 @@ namespace RGRPG.Controllers
             }
         }
 
-        // Use this for initialization
         void Start()
         {
             DiscordController.Instance.InOverworld();
@@ -131,7 +136,6 @@ namespace RGRPG.Controllers
             combatEnemiesController[0].transform.SetParent(combatObjectContainer.transform);
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (game == null)
@@ -177,30 +181,35 @@ namespace RGRPG.Controllers
                 Marquee.instance.StartTimer();
             }
 
-            if (Input.GetKey("escape"))
+            if (Input.GetKey(KeyCode.Escape))
                 SceneManager.LoadScene("PauseMenuScene");
         }
 
+        /// <summary>
+        ///     Allows the user to move the selected character with the arrow keys or WASD
+        /// </summary>
         void MoveSelectedCharacter()
         {
+            //TODO: things might need to be adjusted due to the camera tilt?!
+
             float moveMagnitude = 4f;
             float yMovement = 0;
             float xMovement = 0;
 
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
                 yMovement = 1;
             }
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
                 yMovement = -1;
             }
 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 xMovement = 1;
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 xMovement = -1;
             }
@@ -214,6 +223,10 @@ namespace RGRPG.Controllers
 
         }
 
+        /// <summary>
+        ///     Tell the game to select a character
+        /// </summary>
+        /// <param name="c"></param>
         public void SelectCharacter(Character c)
         {
             game.SelectCharacter(c);
@@ -223,16 +236,29 @@ namespace RGRPG.Controllers
             EventSystem.current.SetSelectedGameObject(null);
         }
 
+        /// <summary>
+        ///     Tell the game to record an action
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
         public void RecordAction(ICharacterAction action, Character source, Character target)
         {
             game.RecordAction(action, source, target);
         }
 
+        /// <summary>
+        ///     Gets the current enemie(s) in combat
+        /// </summary>
+        /// <returns></returns>
         public List<Character> GetCombatEnemies()
         {
             return game.CombatEnemies;
         }
 
+        /// <summary>
+        ///     Tells the game that the user is done inputting his combat actions
+        /// </summary>
         public void FinishPlayerTurnInput()
         {
             game.FinishPlayerTurnInput();
@@ -243,6 +269,11 @@ namespace RGRPG.Controllers
             return game.IsInCombat;
         }
 
+        /// <summary>
+        ///     Gets the corresponding dice roll for a given character
+        /// </summary>
+        /// <param name="targetCharacter"></param>
+        /// <returns></returns>
         public int GetDiceRoll(Character targetCharacter)
         {
 

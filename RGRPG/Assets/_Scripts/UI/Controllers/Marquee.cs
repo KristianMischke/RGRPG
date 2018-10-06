@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace RGRPG.Controllers
 {
+    /// <summary>
+    ///     Controls the ticking text at the top of the screen TODO: only show during combat?!
+    /// </summary>
     public class Marquee : MonoBehaviour
     {
         const float TIME_PER_CHAR = 0.1f;

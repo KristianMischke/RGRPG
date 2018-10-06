@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace RGRPG.Controllers
 {
+    /// <summary>
+    ///     Allows the camera to move freely (via arrow keys) or follow an object
+    /// </summary>
     public class CameraController : MonoBehaviour
     {
 
@@ -14,9 +17,11 @@ namespace RGRPG.Controllers
         public bool freeControl = false;
         public float speed = 2.0f;
         
+        // LateUpdate is called after Update
         void LateUpdate()
         {
 
+            // control camera parent with arrow keys
             if (freeControl)
             {
                 Vector3 direction = Vector3.zero;
@@ -51,6 +56,7 @@ namespace RGRPG.Controllers
             if (followObject == null)
                 return;
 
+            // flip camera angle based on world or combat mode
             if (GameController.instance.IsInCombat())
             {
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -64,6 +70,7 @@ namespace RGRPG.Controllers
                 Camera.main.transform.localPosition = new Vector3(0, -18, 0);
             }
 
+            // lerp to new position to follow the object smoothly
             Vector3 newPosition = followObject.transform.position;
             newPosition.z = transform.position.z;
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 5);

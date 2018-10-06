@@ -16,16 +16,20 @@ namespace RGRPG.Core
 
 
     /// <summary>
-    /// The Character class is data representation that stores all the attributes of a character
+    ///     Data representation that stores all the attributes of a character
     /// </summary>
     /// <remarks>
-    /// Both players and enemies classify as "characters"
-    /// Data such as health, position and battle actions are stored here
-    /// 
-    /// Debating on whether or not we should put attack and defense here,
-    /// because we are also dealing with similar structures in the ICharacterActions class (<see cref="RGRPG.Core.ICharacterAction"/>)
-    /// 
-    /// Characters are controlled by Game.cs (<see cref="RGRPG.Core.Game"/>) and is also used as a data representation in UI elements
+    ///     <para>
+    ///         Both players and enemies classify as "characters"
+    ///         Data such as health, position and battle actions are stored here
+    ///     </para>
+    ///     <para>
+    ///         Debating on whether or not we should put attack and defense here,
+    ///         because we are also dealing with similar structures in the ICharacterActions class (<see cref="ICharacterAction"/>)
+    ///     </para>
+    ///     <para>
+    ///         Characters are controlled by Game.cs (<see cref="Game"/>) and is also used as a data representation in UI elements
+    ///     </para>
     /// </remarks>
     public class Character
     {

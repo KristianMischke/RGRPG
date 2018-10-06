@@ -7,7 +7,9 @@ using TMPro;
 
 namespace RGRPG.Controllers
 {
-
+    /// <summary>
+    ///     Controls the in-world and in-combat characters
+    /// </summary>
     public class CharacterController : MonoBehaviour
     {
         // Scene Object References
@@ -58,15 +60,25 @@ namespace RGRPG.Controllers
             healthBarFill.sizeDelta = new Vector2(healthPercentage * healthBarFillParent.sizeDelta.x, healthBarFill.sizeDelta.y);
         }
 
+        /// <summary>
+        ///     Initialize the character for this controller
+        /// </summary>
+        /// <param name="character"></param>
         public void SetCharacter(Character character)
         {
             this.character = character;
         }
 
+        /// <summary>
+        ///     Load the art for the character
+        /// </summary>
         void LoadCharacterImage()
         {
             if (character == null)
                 return;
+
+            //TODO: handle different combat art than world art (will need to store this info in the character XML)
+            //TODO: might not be a bad idea to have a static SpriteLoader script that associates characters with an over-world and combat filepath using dictionaries
 
             Sprite image;
             switch (character.Type)

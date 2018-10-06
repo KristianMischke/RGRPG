@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace RGRPG.Core
 {
+    /// <summary>
+    ///     Abstract interface that stores the blueprint for character's combat actions
+    /// </summary>
+    /// <remarks>
+    ///     Allows for multiple targets
+    /// </remarks>
     public interface ICharacterAction
     {
         void SetTargets(List<Character> targets);
@@ -15,6 +21,9 @@ namespace RGRPG.Core
     }
 
 
+    /// <summary>
+    ///     The basic attack action which can vary in damage and mana cost
+    /// </summary>
     public class AttackAction : ICharacterAction
     {
         private List<Character> targets = new List<Character>();
@@ -54,6 +63,9 @@ namespace RGRPG.Core
 
     }
 
+    /// <summary>
+    ///     The basic defend action which can vary in shield and mana cost
+    /// </summary>
     public class DefendAction : ICharacterAction
     {
         private List<Character> targets = new List<Character>();
@@ -93,6 +105,9 @@ namespace RGRPG.Core
 
     }
 
+    /// <summary>
+    ///     The basic heal action which can vary in heal amount and mana cost
+    /// </summary>
     public class HealAction : ICharacterAction
     {
         private List<Character> targets = new List<Character>();

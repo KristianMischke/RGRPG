@@ -8,7 +8,9 @@ using TMPro;
 
 namespace RGRPG.Controllers
 {
-
+    /// <summary>
+    ///     Controls the HUD (Head Up Display) for a character
+    /// </summary>
     public class CharacterHUDController : MonoBehaviour
     {
         // Prefabs
@@ -75,11 +77,18 @@ namespace RGRPG.Controllers
             myDie.SetNumber(GameController.instance.GetDiceRoll(character));
         }
 
+        /// <summary>
+        ///     Allows the user to select a character to controll TODO: this will change with the new movement system
+        /// </summary>
         public void SelectAction() {
             GameController.instance.SelectCharacter(character);
-            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(null); // deselects button
         }
 
+        /// <summary>
+        ///     Sets up the <see cref="CharacterActionController"/>s for the character's HUD
+        /// </summary>
+        /// <param name="character"></param>
         public void Init(Character character)
         {
             this.character = character;
