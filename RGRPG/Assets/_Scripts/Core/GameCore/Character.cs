@@ -14,6 +14,19 @@ namespace RGRPG.Core
         COUNT
     }
 
+
+    /// <summary>
+    /// The Character class is data representation that stores all the attributes of a character
+    /// </summary>
+    /// <remarks>
+    /// Both players and enemies classify as "characters"
+    /// Data such as health, position and battle actions are stored here
+    /// 
+    /// Debating on whether or not we should put attack and defense here,
+    /// because we are also dealing with similar structures in the ICharacterActions class (<see cref="RGRPG.Core.ICharacterAction"/>)
+    /// 
+    /// Characters are controlled by Game.cs (<see cref="RGRPG.Core.Game"/>) and is also used as a data representation in UI elements
+    /// </remarks>
     public class Character
     {
         protected CharacterType type;
@@ -131,6 +144,12 @@ namespace RGRPG.Core
             this.actions = actions;
         }
 
+
+        /// <summary>
+        /// Basic AI random walk
+        /// </summary>
+        /// <param name="scene">Reference to the scene the enemy is walking in to make sure that it chooses a traversable tile to walk on <see cref="RGRPG.Core.TerrainTile.traversable"/></param>
+        /// <param name="deltaTime">The amount of time that has passed in the last game loop</param>
         public void UpdateAI(WorldScene scene, float deltaTime)
         {
             if (isAtTarget && isDoneWaiting) {

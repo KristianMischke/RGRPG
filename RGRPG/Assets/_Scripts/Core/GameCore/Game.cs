@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace RGRPG.Core
 {
+    /// <summary>
+    /// <see cref="GameState"/> these are the different calculations that the game can making in the game loop
+    /// </summary>
     public enum GameState
     {
         Starting,
@@ -13,6 +16,9 @@ namespace RGRPG.Core
         COUNT
     }
 
+    /// <summary>
+    /// <see cref="CombatState"/> determines the current combat calculation that needs to be made during combat
+    /// </summary>
     public enum CombatState
     {
         NONE,
