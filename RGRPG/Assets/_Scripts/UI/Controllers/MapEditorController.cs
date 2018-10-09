@@ -62,8 +62,29 @@ namespace RGRPG.Controllers
 
         void Update()
         {
-
             worldObjectContainer.SetActive(true);
+
+
+            // mouse pressed
+            if (Input.GetMouseButton(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                // raycast hit
+                if (Physics.Raycast(ray, out hit))
+                {
+                    Transform objectHit = hit.transform;
+
+                    TerrainTileController tileController = objectHit.GetComponent<TerrainTileController>();
+                    if (tileController != null) // has a tileController
+                    {
+                        TerrainTile t = currentScene.GetTileAtIndices(tileController.tilePosition);
+                        currentScene.SetTile(t.Position, new TerrainTile(TerrainType.Water, t.Traversable, t.Position, t.Elevation, t.ElevationRamp)); //TODO: align to paint tool
+                    }
+                }
+            }
+
         }
 
 		public void SetWidth(string stringWidth)

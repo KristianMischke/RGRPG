@@ -26,22 +26,31 @@ namespace RGRPG.Controllers
             {
                 Vector3 direction = Vector3.zero;
 
-                if (Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
                 {
                     direction += Vector3.up;
                 }
-                else if (Input.GetKey(KeyCode.DownArrow))
+                else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
                 {
                     direction += Vector3.down;
                 }
 
-                if (Input.GetKey(KeyCode.LeftArrow))
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                 {
                     direction += Vector3.left;
                 }
-                else if (Input.GetKey(KeyCode.RightArrow))
+                else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                 {
                     direction += Vector3.right;
+                }
+
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - 3f * Time.deltaTime, 1f, 18f);
+                }
+                else if (Input.GetKey(KeyCode.E))
+                {
+                    Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize + 3f * Time.deltaTime, 1f, 18f);
                 }
 
                 direction.Normalize();

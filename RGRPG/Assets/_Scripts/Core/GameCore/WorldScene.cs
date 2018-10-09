@@ -95,7 +95,7 @@ namespace RGRPG.Core
                     GameXMLLoader.ReadXMLValue(tileNode, "Elevation", out elevation);
                     bool elevationRamp;
                     GameXMLLoader.ReadXMLValue(tileNode, "ElevationRamp", out elevationRamp);
-                    terrainTiles[i, j] = new TerrainTile(type, traversable, elevation, elevationRamp);
+                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), elevation, elevationRamp);
 
                     j++;
                 }
@@ -185,8 +185,19 @@ namespace RGRPG.Core
             }
         }
 
+
         /// <summary>
-        ///     Gets the tile at a given location
+        ///     Gets the tile at a given location in world coordinates
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns>The tile at the given position, or null if there is no tile there</returns>
+        public TerrainTile GetTileAt(Vector2 position)
+        {
+            return GetTileAt(position.x, position.y);
+        }
+
+        /// <summary>
+        ///     Gets the tile at a given location in world coordinates
         /// </summary>
         /// <param name="x">The x coordinate to look at</param>
         /// <param name="y">The y coordinate to look at</param>
@@ -198,7 +209,7 @@ namespace RGRPG.Core
         }
 
         /// <summary>
-        ///     Gets the tile at a given location
+        ///     Gets the tile at a given location in world coordinates
         /// </summary>
         /// <param name="x">The x coordinate to look at</param>
         /// <param name="y">The y coordinate to look at</param>
@@ -217,6 +228,29 @@ namespace RGRPG.Core
         }
 
         /// <summary>
+        ///     Gets the tile at a given x and y indices
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns>The tile at the given position, or null if there is no tile there</returns>
+        public TerrainTile GetTileAtIndices(Vector2Int position)
+        {
+            return GetTileAtIndices(position.x, position.y);
+        }
+
+        /// <summary>
+        ///     Gets the tile at a given x and y indices
+        /// </summary>
+        /// <param name="xIndex"></param>
+        /// <param name="yIndex"></param>
+        /// <returns>The tile at the given position, or null if there is no tile there</returns>
+        public TerrainTile GetTileAtIndices(int xIndex, int yIndex)
+        {
+            return xIndex < 0 || yIndex < 0 || xIndex >= terrainTiles.GetLength(0) || yIndex >= terrainTiles.GetLength(1)
+                ? null
+                : terrainTiles[xIndex, yIndex];
+        }
+
+        /// <summary>
         ///     Sets the tile at the position. (safely fails if out of bounds)
         /// </summary>
         /// <param name="x">The xIndex of the target tile</param>
@@ -227,6 +261,19 @@ namespace RGRPG.Core
             if (x >= 0 && x < terrainTiles.GetLength(0) && y >= 0 && y < terrainTiles.GetLength(1))
             {
                 terrainTiles[x, y] = t;
+            }
+        }
+
+        /// <summary>
+        ///     Sets the tile at the position. (safely fails if out of bounds)
+        /// </summary>
+        /// <param name="position">the x and y indices of the target tile</param>
+        /// <param name="t">the new value of the tile</param>
+        public void SetTile(Vector2Int position, TerrainTile t)
+        {
+            if (position.x >= 0 && position.x < terrainTiles.GetLength(0) && position.y >= 0 && position.y < terrainTiles.GetLength(1))
+            {
+                terrainTiles[position.x, position.y] = t;
             }
         }
 
@@ -262,7 +309,7 @@ namespace RGRPG.Core
                         else
                         {
                             // otherwise create a new tile
-                            newTiles[x, y] = new TerrainTile(TerrainType.Grass, true);
+                            newTiles[x, y] = new TerrainTile(TerrainType.Grass, true, x, y);
                         }
                     }
                 }

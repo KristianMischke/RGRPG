@@ -78,8 +78,8 @@ namespace RGRPG.Controllers
                     }
 
                     TerrainTileController tileController = activeTerrainTiles[x][y];
-                    tileController.terrainTile = tile;
-                    tileController.position = new Vector2(x, y);
+                    tileController.tilePosition = new Vector2Int(x, y);
+                    tileController.sceneReference = scene;
                 }
             }
 

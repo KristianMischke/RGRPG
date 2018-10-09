@@ -19,8 +19,10 @@ namespace RGRPG.Controllers
         // Prefabs
 
         // Data
-        public TerrainTile terrainTile;
-        public Vector2 position;
+        public Vector2Int tilePosition;
+        public WorldScene sceneReference;
+
+        private TerrainTile prevTileReference; // used for checking if the tile changed and needs to undergo a visual update
 
         bool firstUpdate = true;
 
@@ -32,15 +34,19 @@ namespace RGRPG.Controllers
 
         // Update is called once per frame
         void Update()
-        {
-            if (firstUpdate && terrainTile != null)
+        {            
+            if (sceneReference != null)
             {
-                SetSprite();
-
-                firstUpdate = false;
+                TerrainTile sceneTile = sceneReference.GetTileAtIndices(tilePosition);
+                if (prevTileReference == null || !prevTileReference.Equals(sceneTile))
+                {
+                    // the last referece we got is not equal to the current one
+                    prevTileReference = sceneTile;
+                    SetSprite();
+                }
             }
 
-            transform.localPosition = position;
+            transform.localPosition = new Vector3(tilePosition.x, tilePosition.y);
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one;
         }
@@ -57,7 +63,7 @@ namespace RGRPG.Controllers
             Sprite[] tileSprites = Resources.LoadAll<Sprite>("Sprites/sidewalk_tile_draft2");
 
             Sprite image;
-            switch (terrainTile.Type)
+            switch (prevTileReference.Type)
             {
                 case TerrainType.Grass:
                     image = tileSprites.Single(x => x.name == "sidewalk_tile_draft2_4");
@@ -70,7 +76,7 @@ namespace RGRPG.Controllers
                     break;
             }
 
-            if (!terrainTile.Traversable)
+            if (!prevTileReference.Traversable)
             {
                 image = Resources.Load<Sprite>("Sprites/stone");
             }
