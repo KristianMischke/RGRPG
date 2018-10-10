@@ -104,6 +104,8 @@ namespace RGRPG.Core
             scenes = new List<WorldScene>();
 
             WorldScene newScene = new WorldScene(30, 30);
+            TextAsset worldXMLTest = Resources.Load<TextAsset>(@"Data\WorldSceneTest"); // currently just loads a test scene. TODO: change behaviour
+            currentScene.LoadXml(worldXMLTest.text);
 
             scenes.Add(newScene);
             startScene = newScene;
@@ -117,7 +119,7 @@ namespace RGRPG.Core
             // maybe the selected players should be passed in as parameters into this function (that might be good for when multiplayer comes around)
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character(CharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
+                players.Add(new Character(TempCharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
                 players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
             }
 

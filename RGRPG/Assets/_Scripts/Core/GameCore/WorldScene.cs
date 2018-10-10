@@ -43,8 +43,7 @@ namespace RGRPG.Core
                 }
             }*/
 
-            TextAsset worldXMLTest = Resources.Load<TextAsset>(@"Data\WorldSceneTest"); // currently just loads a test scene. TODO: change behaviour
-            LoadXml(worldXMLTest.text);
+            
         }
 
         /// <summary>
@@ -89,13 +88,15 @@ namespace RGRPG.Core
                 {
                     TerrainType type;
                     GameXMLLoader.ReadXMLValue(tileNode, "Type", out type);
+                    int subType;
+                    GameXMLLoader.ReadXMLValue(tileNode, "SubType", out subType);
                     bool traversable;
                     GameXMLLoader.ReadXMLValue(tileNode, "Traversable", out traversable);
                     int elevation;
                     GameXMLLoader.ReadXMLValue(tileNode, "Elevation", out elevation);
                     bool elevationRamp;
                     GameXMLLoader.ReadXMLValue(tileNode, "ElevationRamp", out elevationRamp);
-                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), elevation, elevationRamp);
+                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), subType, elevation, elevationRamp);
 
                     j++;
                 }
@@ -128,6 +129,7 @@ namespace RGRPG.Core
                         GameXMLLoader.WriteXMLValue(writer, "ElevationRamp", terrainTiles[i, j].ElevationRamp);
                         GameXMLLoader.WriteXMLValue(writer, "Traversable", terrainTiles[i, j].Traversable);
                         GameXMLLoader.WriteXMLValue(writer, "Type", terrainTiles[i, j].Type.ToString());
+                        GameXMLLoader.WriteXMLValue(writer, "SubType", terrainTiles[i, j].SubType.ToString());
 
                         writer.WriteEndElement();
                     }
@@ -309,7 +311,7 @@ namespace RGRPG.Core
                         else
                         {
                             // otherwise create a new tile
-                            newTiles[x, y] = new TerrainTile(TerrainType.Grass, true, x, y);
+                            newTiles[x, y] = new TerrainTile(TerrainType.TERRAIN_GRASS, true, x, y);
                         }
                     }
                 }

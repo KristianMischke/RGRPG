@@ -56,37 +56,10 @@ namespace RGRPG.Controllers
         /// </summary>
         public void SetSprite()
         {
-            //TODO: also another instance of why we should probably make a SpriteLoader (see comment in CharacterController)
-            //TODO: the Sprite loader could have a dictionary of Tile Types (maybe subtypes too?) to image filepaths
-
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/tiles");
-            Sprite[] tileSprites = Resources.LoadAll<Sprite>("Sprites/sidewalk_tile_draft2");
-
-            Sprite image;
-            switch (prevTileReference.Type)
-            {
-                case TerrainType.Grass:
-                    image = tileSprites.Single(x => x.name == "sidewalk_tile_draft2_4");
-                    break;
-                case TerrainType.Rock:
-                    image = sprites.Single(x => x.name == "dirt_0");
-                    break;
-                default:
-                    image = Resources.Load<Sprite>("Sprites/troll");
-                    break;
-            }
-
-            if (!prevTileReference.Traversable)
-            {
-                image = Resources.Load<Sprite>("Sprites/stone");
-            }
+            Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, System.Enum.GetName(typeof(TerrainType), prevTileReference.Type), prevTileReference.SubType);
 
             spriteRenderer.sprite = image;
             spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
-
-            sprites = null;
-            tileSprites = null;
-            Resources.UnloadUnusedAssets();
         }
     }
 }

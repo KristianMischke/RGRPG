@@ -6,7 +6,7 @@ namespace RGRPG.Core
 {
 
     //TODO: change these
-    public enum CharacterType
+    public enum TempCharacterType
     {
         Player,
         Enemy,
@@ -33,7 +33,7 @@ namespace RGRPG.Core
     /// </remarks>
     public class Character
     {
-        protected CharacterType type;
+        protected TempCharacterType type;
         protected string name;
 
         protected int health;
@@ -46,7 +46,7 @@ namespace RGRPG.Core
 
         protected List<ICharacterAction> actions;
 
-        public CharacterType Type { get { return type; } }
+        public TempCharacterType Type { get { return type; } }
         public string Name { get { return name; } }
         public int Health { get { return health; } }
         public int Attack { get { return attack; } }
@@ -58,7 +58,7 @@ namespace RGRPG.Core
 
         public Character() { }
 
-        public Character(CharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Character(TempCharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
         {
             this.type = type;
             this.name = name;
@@ -140,7 +140,7 @@ namespace RGRPG.Core
         {
             this.position = pos;
             this.fixedPosition = pos;
-            this.type = CharacterType.Enemy;
+            this.type = TempCharacterType.Enemy;
             this.name = name;
             this.health = health;
             this.attack = attack;

@@ -83,10 +83,10 @@ namespace RGRPG.Controllers
             Sprite image;
             switch (character.Type)
             {
-                case CharacterType.Player:
+                case TempCharacterType.Player:
                     image = Resources.Load<Sprite>("Sprites/baby");
                     break;
-                case CharacterType.Enemy:
+                case TempCharacterType.Enemy:
                     image = Resources.Load<Sprite>("Sprites/squirrel");
                     break;
                 default:
