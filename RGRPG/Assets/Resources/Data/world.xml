@@ -127,14 +127,14 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
+				<Type>TERRAIN_WATER</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -228,7 +228,14 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>6</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>6</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -263,7 +270,28 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
+				<SubType>14</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>14</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -298,6 +326,325 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
+				<SubType>14</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>14</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>14</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>14</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>6</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>6</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>14</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -320,6 +667,344 @@
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>21</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>15</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -339,13 +1024,6 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
 			</Tile>
@@ -353,57 +1031,15 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -460,98 +1096,126 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>22</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>16</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -579,43 +1243,15 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -672,502 +1308,92 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>22</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -1181,254 +1407,21 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
+				<SubType>16</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -1463,198 +1456,14 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>5</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
+				<SubType>5</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -1668,28 +1477,7 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
+				<SubType>5</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -1732,113 +1520,148 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>21</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>18</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>16</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>13</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>13</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>13</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<SubType>13</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -1851,6 +1674,183 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>5</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>22</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>16</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
@@ -1944,6 +1944,197 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>22</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>16</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_WATER</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
 			</Tile>
@@ -1965,92 +2156,92 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>22</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -2063,213 +2254,22 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>16</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -2310,8 +2310,8 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>13</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>19</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -2368,120 +2368,120 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>23</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>20</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>17</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -2580,120 +2580,120 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -2792,141 +2792,120 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -2940,197 +2919,6 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -3252,6 +3040,104 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -3292,7 +3178,16 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
@@ -3314,8 +3209,113 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
+				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -3470,8 +3470,50 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -3492,834 +3534,14 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>7</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -4333,76 +3555,6 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -4544,8 +3696,43 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -4553,6 +3740,20 @@
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -4580,6 +3781,13 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -4588,6 +3796,798 @@
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>7</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>13</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -4729,7 +4729,14 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>8</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>8</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -4764,28 +4771,21 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>8</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>4</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -4962,7 +4962,7 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>8</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -5181,7 +5181,7 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>8</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -5407,7 +5407,7 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
+				<SubType>8</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
@@ -5498,218 +5498,6 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROCK</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -5893,13 +5681,6 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>0</SubType>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
@@ -5921,7 +5702,7 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
+				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -5929,6 +5710,13 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
@@ -6126,6 +5914,218 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_GRASS</Type>
+				<SubType>0</SubType>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_ROCK</Type>
 				<SubType>0</SubType>
 			</Tile>
@@ -6184,28 +6184,28 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
-				<Type>TERRAIN_GRASS</Type>
+				<Type>TERRAIN_WATER</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
-				<Type>TERRAIN_GRASS</Type>
+				<Type>TERRAIN_WATER</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
-				<Type>TERRAIN_GRASS</Type>
+				<Type>TERRAIN_WATER</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
-				<Type>TERRAIN_GRASS</Type>
+				<Type>TERRAIN_WATER</Type>
 				<SubType>0</SubType>
 			</Tile>
 			<Tile>

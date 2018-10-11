@@ -14,7 +14,7 @@ namespace RGRPG.Controllers
     public class MapEditorController : MonoBehaviour
     {
 
-        private class TerrainButtonActionData : ScriptableObject
+        private class TerrainButtonActionData
         {
             public TerrainType type;
             public int subType;
@@ -73,6 +73,14 @@ namespace RGRPG.Controllers
 
 		WorldScene currentScene;
 
+
+        // see https://answers.unity.com/questions/1079066/how-can-i-prevent-my-raycast-from-passing-through.html
+#if UNITY_EDITOR
+        private int fingerID = -1; 
+# else
+        private int fingerID = 0;
+#endif
+
         void Start()
         {
             if (instance == null)
@@ -123,6 +131,8 @@ namespace RGRPG.Controllers
                     buttonText.text = tileTypeName + " " + i;
 
                     TerrainButtonActionData buttonAction = new TerrainButtonActionData(t, i);
+                    buttonAction.type = t;
+                    buttonAction.subType = i;
                     terrainButton.onClick.AddListener(buttonAction.action);
                 }
                 if (tileSubTypes.Length > 1)
@@ -135,6 +145,11 @@ namespace RGRPG.Controllers
                     buttonText.text = tileTypeName + " RANDOM";
 
                     TerrainButtonActionData buttonAction = new TerrainButtonActionData(t, 0, true, 0, tileSubTypes.Length);
+                    buttonAction.type = t;
+                    buttonAction.subType = 0;
+                    buttonAction.random = true;
+                    buttonAction.minI = 0;
+                    buttonAction.maxI = tileSubTypes.Length;
                     terrainButton.onClick.AddListener(buttonAction.action);
                 }
             }
@@ -148,8 +163,8 @@ namespace RGRPG.Controllers
 
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
-            // mouse pressed
-            if (Input.GetMouseButton(0))
+            // mouse pressed and not clicking on UI element
+            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject(fingerID))
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

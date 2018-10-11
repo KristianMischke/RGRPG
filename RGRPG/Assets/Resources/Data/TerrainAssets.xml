@@ -8,20 +8,20 @@
 	</Entry>
 	<Entry>
 		<zType>TERRAIN_GRASS</zType>
-		<SpriteSheet>Sprites/grass_tile</SpriteSheet>
-		<SpriteName>grass_tile_@</SpriteName>
+		<SpriteSheet>Sprites/umbc_tile_1_0</SpriteSheet>
+		<SpriteName>grass_@</SpriteName>
 		<bHasMultiple>1</bHasMultiple>
 	</Entry>	
 	<Entry>
 		<zType>TERRAIN_SIDEWALK</zType>
-		<SpriteSheet>Sprites/sidewalk_tile_draft2</SpriteSheet>
-		<SpriteName>sidewalk_tile_draft2_@</SpriteName>
+		<SpriteSheet>Sprites/umbc_tile_1_0</SpriteSheet>
+		<SpriteName>sidewalk_@</SpriteName>
 		<bHasMultiple>1</bHasMultiple>
 	</Entry>
 	<Entry>
 		<zType>TERRAIN_DIRT</zType>
-		<SpriteSheet>Sprites/tiles</SpriteSheet>
-		<SpriteName>dirt_0</SpriteName>
+		<SpriteSheet>Sprites/umbc_tile_1_0</SpriteSheet>
+		<SpriteName>dirt_@</SpriteName>
 		<bHasMultiple/>
 	</Entry>
 	<Entry>
