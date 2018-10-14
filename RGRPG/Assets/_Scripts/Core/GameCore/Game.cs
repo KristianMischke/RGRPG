@@ -104,8 +104,8 @@ namespace RGRPG.Core
             scenes = new List<WorldScene>();
 
             WorldScene newScene = new WorldScene(30, 30);
-            TextAsset worldXMLTest = Resources.Load<TextAsset>(@"Data\WorldSceneTest"); // currently just loads a test scene. TODO: change behaviour
-            currentScene.LoadXml(worldXMLTest.text);
+            TextAsset worldXMLTest = Resources.Load<TextAsset>(@"Data\worldTest"); // currently just loads a test scene. TODO: change behaviour
+            newScene.LoadXml(worldXMLTest.text);
 
             scenes.Add(newScene);
             startScene = newScene;
