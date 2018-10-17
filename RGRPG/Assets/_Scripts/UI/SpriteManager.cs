@@ -87,15 +87,64 @@ namespace RGRPG.Controllers
             {
                 string zType;
                 GameXMLLoader.ReadXMLValue(entry, "zType", out zType);
-                string spriteSheet;
-                GameXMLLoader.ReadXMLValue(entry, "SpriteSheet", out spriteSheet);
-                string spriteName;
-                GameXMLLoader.ReadXMLValue(entry, "SpriteName", out spriteName);
-                bool hasMultiple;
-                GameXMLLoader.ReadXMLValue(entry, "bHasMultiple", out hasMultiple);
-                
-                Sprite[] sheet = Resources.LoadAll<Sprite>(spriteSheet);
-                assetDB[type][zType] = new AssetData(zType, spriteSheet, spriteName, sheet, hasMultiple);
+
+                switch (type)
+                {
+                    default:
+                        string spriteSheet;
+                        GameXMLLoader.ReadXMLValue(entry, "SpriteSheet", out spriteSheet);
+                        string spriteName;
+                        GameXMLLoader.ReadXMLValue(entry, "SpriteName", out spriteName);
+                        bool hasMultiple;
+                        GameXMLLoader.ReadXMLValue(entry, "bHasMultiple", out hasMultiple);
+
+                        Sprite[] sheet = Resources.LoadAll<Sprite>(spriteSheet);
+                        assetDB[type][zType] = new AssetData(zType, spriteSheet, spriteName, sheet, hasMultiple);
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Loads in terrain data from and xml string
+        /// </summary>
+        /// <param name="xml">The string to load from</param>
+        public static void LoadCharacterAssetsXml(string xml)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+            LoadCharacterAssets(doc);
+        }
+
+        public static void LoadCharacterAssets(XmlDocument doc)
+        {
+            XmlNode docElem = doc.DocumentElement;
+
+            if (!assetDB.ContainsKey(AssetType.CHARACTER_COMBAT))
+            {
+                assetDB.Add(AssetType.CHARACTER_COMBAT, new Dictionary<string, AssetData>());
+            }
+            if (!assetDB.ContainsKey(AssetType.CHARACTER_WORLD))
+            {
+                assetDB.Add(AssetType.CHARACTER_WORLD, new Dictionary<string, AssetData>());
+            }
+
+            foreach (XmlNode entry in docElem.ChildNodes)
+            {
+                string zType;
+                GameXMLLoader.ReadXMLValue(entry, "zType", out zType);
+
+                string overWorldSheet;
+                GameXMLLoader.ReadXMLValue(entry, "OverworldSheet", out overWorldSheet);
+                string combatSprite;
+                GameXMLLoader.ReadXMLValue(entry, "CombatSprite", out combatSprite);
+
+
+                Sprite[] sheet1 = Resources.LoadAll<Sprite>(combatSprite);
+                assetDB[AssetType.CHARACTER_COMBAT][zType] = new AssetData(zType, combatSprite, "", sheet1, false);
+
+                Sprite[] sheet2 = Resources.LoadAll<Sprite>(overWorldSheet);
+                assetDB[AssetType.CHARACTER_WORLD][zType] = new AssetData(zType, overWorldSheet, "", sheet2, true);
             }
         }
 

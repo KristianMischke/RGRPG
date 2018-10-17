@@ -66,8 +66,11 @@ namespace RGRPG.Controllers
             if (instance == null)
                 instance = this;
 
-            TextAsset worldXMLTest = Resources.Load<TextAsset>(@"Data\TerrainAssets");
-            SpriteManager.LoadSpriteAssetsXml(worldXMLTest.text, SpriteManager.AssetType.TERRAIN);
+            TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
+            SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
+
+            TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
+            SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
 
             if (worldObjectContainer == null)
             {
@@ -167,7 +170,7 @@ namespace RGRPG.Controllers
                 for (int i = 0; i < enemyControllers.Count; i++)
                 {
                     CharacterController enemyController = enemyControllers[i];
-                    if (enemyController.character.Type == TempCharacterType.Enemy && !enemyController.character.IsAlive())
+                    if (!enemyController.character.IsAlive())
                     {
                         enemyControllers.RemoveAt(i);
                         Destroy(enemyController.gameObject);

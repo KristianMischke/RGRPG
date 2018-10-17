@@ -4,17 +4,6 @@ using UnityEngine;
 
 namespace RGRPG.Core
 {
-
-    //TODO: change these
-    public enum TempCharacterType
-    {
-        Player,
-        Enemy,
-
-        COUNT
-    }
-
-
     /// <summary>
     ///     Data representation that stores all the attributes of a character
     /// </summary>
@@ -33,7 +22,8 @@ namespace RGRPG.Core
     /// </remarks>
     public class Character
     {
-        protected TempCharacterType type;
+        protected CharacterClassType classType;
+        protected CharacterType type;
         protected string name;
 
         protected int health;
@@ -46,7 +36,8 @@ namespace RGRPG.Core
 
         protected List<ICharacterAction> actions;
 
-        public TempCharacterType Type { get { return type; } }
+        public CharacterClassType ClassType { get { return classType; } }
+        public CharacterType Type { get { return type; } }
         public string Name { get { return name; } }
         public int Health { get { return health; } }
         public int Attack { get { return attack; } }
@@ -58,8 +49,9 @@ namespace RGRPG.Core
 
         public Character() { }
 
-        public Character(TempCharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Character(CharacterClassType classType, CharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
         {
+            this.classType = classType;
             this.type = type;
             this.name = name;
             this.health = health;
@@ -136,11 +128,12 @@ namespace RGRPG.Core
         protected float range = 5;
         protected float maxR = 7;
 
-        public Enemy(Vector2 pos, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Enemy(CharacterClassType classType, CharacterType type, Vector2 pos, string name, int health, int attack, int defense, List<ICharacterAction> actions)
         {
+            this.classType = classType;
+            this.type = type;
             this.position = pos;
             this.fixedPosition = pos;
-            this.type = TempCharacterType.Enemy;
             this.name = name;
             this.health = health;
             this.attack = attack;
@@ -150,9 +143,9 @@ namespace RGRPG.Core
 
 
         /// <summary>
-        /// Basic AI random walk
+        ///     Basic AI random walk
         /// </summary>
-        /// <param name="scene">Reference to the scene the enemy is walking in to make sure that it chooses a traversable tile to walk on <see cref="RGRPG.Core.TerrainTile.traversable"/></param>
+        /// <param name="scene">Reference to the scene the enemy is walking in to make sure that it chooses a traversable tile to walk on <see cref="TerrainTile.traversable"/></param>
         /// <param name="deltaTime">The amount of time that has passed in the last game loop</param>
         public void UpdateAI(WorldScene scene, float deltaTime)
         {

@@ -119,13 +119,13 @@ namespace RGRPG.Core
             // maybe the selected players should be passed in as parameters into this function (that might be good for when multiplayer comes around)
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character(TempCharacterType.Player, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
+                players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_AUSTIN, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
                 players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
             }
 
             // for now just add one enemy. TODO: spawn more
-            enemies.Add(new Enemy(new Vector2(15, 12), "Enemy", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25) }));
-            enemies.Add(new Enemy(new Vector2(28, 28), "Enemy 2", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 20) }));
+            enemies.Add(new Enemy(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_SQUIRREL, new Vector2(15, 12), "Squirrel", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25) }));
+            enemies.Add(new Enemy(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_GOOSE, new Vector2(28, 28), "Evil Goose", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 20) }));
 
             selectedCharacter = players[0];
 
