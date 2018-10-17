@@ -33,19 +33,12 @@ namespace RGRPG.Controllers
                     this.random = random;
                     this.minI = minI;
                     this.maxI = maxI;
-                    action = () => { SetRandom(); };
+                    action = () => { MapEditorController.SetPaintType(type, subType, random, minI, maxI); };
                 }
                 else
                 {
                     action = () => { MapEditorController.SetPaintType(type, subType); };
                 }
-            }
-
-            public void SetRandom()
-            {
-                subType = Random.Range(minI, maxI); //TODO: understand delegates better so that you can evaluate why this random value is only picked the first time
-                MapEditorController.SetPaintType(type, subType);
-                action = () => { SetRandom(); };
             }
         }
 
@@ -99,7 +92,7 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
-            fileInput.text = Application.dataPath + @"\Resources\Data\world.xml";
+            fileInput.text = Application.dataPath + @"\Resources\Data\worldTest.xml";
 
             currentScene = new WorldScene(30,30);
             currentScene.Load(fileInput.text);
@@ -177,12 +170,22 @@ namespace RGRPG.Controllers
                     TerrainTileController tileController = objectHit.GetComponent<TerrainTileController>();
                     if (tileController != null) // has a tileController
                     {
-                        TerrainTile t = currentScene.GetTileAtIndices(tileController.tilePosition);
-                        currentScene.SetTile(t.Position, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp)); //TODO: align to paint tool
+                        TerrainTile t = currentScene.GetTileAtIndices(tileController.tilePosition); //this is the tile that the user clicked
+                        DoPaint(t);
                     }
                 }
             }
 
+        }
+
+        /// <summary>
+        ///     Applies the correct paint operation to the scene
+        /// </summary>
+        /// <param name="t">The targeted tile</param>
+        private void DoPaint(TerrainTile t)
+        {
+            //TODO: implement paint size here (maybe paint shape, if we want that)
+            currentScene.SetTile(t.Position, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
         }
 
 		public void SetWidth(string stringWidth)
@@ -205,10 +208,15 @@ namespace RGRPG.Controllers
             worldSceneController.ResetScene();
         }
 
-        public static void SetPaintType(TerrainType type, int subType = 0)
+        public static void SetPaintType(TerrainType type, int subType = 0, bool random = false, int minI = 0, int maxI = 0)
         {
             paintType = type;
             paintSubType = subType;
+
+            if (random)
+            {
+                paintSubType = Random.Range(minI, maxI);
+            }
         }
 
         public void Save()

@@ -6,6 +6,7 @@ using UnityEngine;
 using RGRPG.Core;
 using System.Xml;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace RGRPG.Controllers
 {
@@ -112,7 +113,31 @@ namespace RGRPG.Controllers
         {
             AssetData data = getAssetData(type, zType);
 
-            return data.spriteSheet.Where(x => x.name.Contains(data.spriteName.Replace("@", ""))).ToArray();
+            if (data.hasMultiple)
+            {
+                string pattern = "^(?<name>" + data.spriteName.Replace("@", @"(?<id>\d*)") + ")$";
+                Regex rx = new Regex(pattern);
+
+                List<Sprite> sprites = new List<Sprite>();
+
+                foreach (Sprite s in data.spriteSheet)
+                {
+                    Match match = rx.Match(s.name);
+                    GroupCollection groups = match.Groups;
+
+                    if (match.Success)
+                    {
+                        sprites.Add(s);
+                    }
+                }
+
+                return sprites.ToArray();
+            }
+
+            if (data.spriteSheet.Length == 1)
+                return data.spriteSheet;
+
+            return data.spriteSheet.Where(x => x.name == data.spriteName).ToArray();
         }
 
         public static Sprite getSprite(AssetType type, string zType, int i = 0)
