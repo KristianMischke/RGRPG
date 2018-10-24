@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using RGRPG.Core.Generics;
+
 namespace RGRPG.Core
 {
     /// <summary>
@@ -69,10 +71,12 @@ namespace RGRPG.Core
         // for combat
         protected CombatState currentCombatState = CombatState.NONE;
         protected int turnCounter = 0;
+        protected int prevTurnCounter = -1;
         protected int roundCounter = 0;
         protected List<Character> combatEnemies = new List<Character>(); //TODO: do we want to be able to fight multiple enemies at a time?
         protected Dictionary<Character, Queue<ICharacterAction>> characterTurns;
         protected List<Character> turnOrder;
+        protected bool doNextCombatStep = false;
 
         // allows for public access, but not public assignment
         public GameState CurrentGameState { get { return currentGameState; } }
@@ -89,6 +93,7 @@ namespace RGRPG.Core
         public List<Character> TurnOrder { get { return turnOrder; } } 
 
         public Queue<string> gameMessages = new Queue<string>();
+        public Queue<PairStruct<Character, ICharacterAction>> gameCombatActionQueue = new Queue<PairStruct<Character, ICharacterAction>>();
 
         public Game()
         {
@@ -153,7 +158,7 @@ namespace RGRPG.Core
         /// <summary>
         ///     Tells all the enemies to execute their AI
         /// </summary>
-        void UpdateAI()
+        private void UpdateAI()
         {
             foreach (Enemy e in enemies)
             {
@@ -165,7 +170,7 @@ namespace RGRPG.Core
         /// <summary>
         ///     Executes the combat logic based on the current combat state
         /// </summary>
-        void DoCombat()
+        private void DoCombat()
         {
             switch (currentCombatState)
             {
@@ -179,7 +184,7 @@ namespace RGRPG.Core
                     currentCombatState = CombatState.PickTurnOrder;
                     break;
 
-                // picks the turn order before actions are chosen (when implementing GameServer, this information will be hidden until everyone has subbmitted their actions)
+                // picks the turn order before actions are chosen (TODO: when implementing GameServer, this information will be hidden until everyone has subbmitted their actions)
                 case CombatState.PickTurnOrder:
                     RollDiceForTurnOrder();
                     currentCombatState = CombatState.ChooseEnemyActions;
@@ -204,8 +209,10 @@ namespace RGRPG.Core
                     }
                     else
                     {
-                        ProcessNextCombatTurn();
-                        turnCounter++;
+                        if (doNextCombatStep)
+                        {
+                            ProcessNextCombatAction();
+                        }
                     }
                     break;
 
@@ -213,6 +220,7 @@ namespace RGRPG.Core
                 case CombatState.NextRound:
                     roundCounter++;
                     turnCounter = 0;
+                    prevTurnCounter = -1;
                     LogMessage("ROUND #" + roundCounter + " DONE");
                     foreach (Character c in players)
                         c.Reset();
@@ -248,7 +256,7 @@ namespace RGRPG.Core
         /// <summary>
         ///     Gets the random order for the enemies and players involved in combat
         /// </summary>
-        void RollDiceForTurnOrder()
+        private void RollDiceForTurnOrder()
         {
             List<Character> characters = new List<Character>();
             characters.AddRange(combatEnemies);
@@ -265,7 +273,7 @@ namespace RGRPG.Core
         /// <summary>
         ///     Changes the combat state depending on whether or not the player, enemies, or no one has won
         /// </summary>
-        void CheckExitConditions()
+        private void CheckExitConditions()
         {
             bool allEnemiesDead = true;
             foreach (Enemy e in combatEnemies)
@@ -296,13 +304,21 @@ namespace RGRPG.Core
         /// <summary>
         ///     Executes all the combat actions that the current character has queued up
         /// </summary>
-        void ProcessNextCombatTurn()
+        private void ProcessNextCombatAction()
         {
+            // get the player who is currently executing their turn
             Character currentTurn = turnOrder[turnCounter];
-            LogMessage("Processing " + currentTurn.Name + "'s Turn");
+
+            // we have switched to another player's turn
+            if (prevTurnCounter != turnCounter)
+            {
+                gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, new BeginTurnAction()));
+            }
+
+            // execute the next action
             if (characterTurns.ContainsKey(currentTurn))
             {
-                while (characterTurns[currentTurn].Count > 0)
+                if (characterTurns[currentTurn].Count > 0)
                 {
                     ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
                     if (currentAction.ManaCost() > currentTurn.Mana)
@@ -312,15 +328,26 @@ namespace RGRPG.Core
                     else
                     {
                         currentTurn.ChangeMana(-currentAction.ManaCost());
-                        LogMessage("Executing Action: " + currentAction.GetName());
+                        //LogMessage("Executing Action: " + currentAction.GetName()); //TODO: don't log messages for attacks, instead handle attack messages in ICharacterAction and use the gameCombatActionQueue in GameController.cs to add those messages to the Marque
                         currentAction.DoAction();
+
+                        gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, currentAction));
                     }
                 }
             }
             else
             {
-                LogMessage("PASS");
+                gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, new PassTurnAction()));
             }
+
+            // move to the next character if they aren't doing anthing OR have finished their moves
+            if (!characterTurns.ContainsKey(currentTurn) || characterTurns[currentTurn].Count == 0)
+            {
+                prevTurnCounter = turnCounter;
+                turnCounter++;
+            }
+
+            doNextCombatStep = false;
         }
 
         /// <summary>
@@ -330,6 +357,11 @@ namespace RGRPG.Core
         {
             if (currentGameState == GameState.Combat && currentCombatState == CombatState.PlayersChooseActions)
                 currentCombatState = CombatState.ExecuteTurns;
+        }
+
+        public void ProcessNextCombatStep()
+        {
+            doNextCombatStep = true;
         }
 
         /// <summary>

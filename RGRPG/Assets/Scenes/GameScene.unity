@@ -758,7 +758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f5d3b1f4848144aaf69ab902d016e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marquee: {fileID: 1943375990900612, guid: 7e705c908dfb8de4eb37008a27452bdf, type: 2}
+  textTimerObject: {fileID: 1943375990900612, guid: 7e705c908dfb8de4eb37008a27452bdf,
+    type: 2}
 --- !u!114 &1491949489
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -201,7 +201,7 @@ namespace RGRPG.Controllers
             Sprite[] sheet = data.spriteSheet;
             if (sheet != null && sheet.Length > 0)
             {
-                Debug.Log(data.spriteName.Replace("@", i.ToString()));
+                //Debug.Log(data.spriteName.Replace("@", i.ToString()));
                 return sheet.Single(x => x.name == data.spriteName.Replace("@", i.ToString()));
             }
 

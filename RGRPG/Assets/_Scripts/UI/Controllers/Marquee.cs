@@ -11,40 +11,63 @@ namespace RGRPG.Controllers
     /// </summary>
     public class Marquee : MonoBehaviour
     {
-        const float TIME_PER_CHAR = 0.1f;
+        public static Marquee instance;
+
+        const float TIME_PER_CHAR = 0.03f;
         const float TIME_AFTER_MESSAGE = 1f;
 
         public TextMeshProUGUI textObject;
-        public static Marquee instance;
 
-        private string message;
+        private Queue<string> multiMessage = new Queue<string>();
         int charsDisplayed = 0;
-        //public float scrollSpeed = 50;
         float timer = TIME_AFTER_MESSAGE;
         bool isStarted = false;
-        bool finishedText = true;
+        bool finishedSingle = true;
 
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
 
-        //Rect messageRect;
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
 
         public void StartTimer()
         {
             isStarted = true;
         }
 
-        public void ResetTimer(string text, bool pause = true)
+        public void ResetTimer(string message = null, bool pause = true)
         {
-            this.message = text;
+            Queue<string> multiMessage = new Queue<string>();
+            if (message != null)
+            {
+                multiMessage.Enqueue(message);
+            }
+            ResetTimer(multiMessage, pause);
+        }
+
+        public void ResetTimer(Queue<string> multiMessage, bool pause = true)
+        {
+            this.multiMessage.Clear();
+            this.multiMessage = multiMessage;
             timer = 0;
             isStarted = !pause;
             isStarted = false;
-            finishedText = false;
+            finishedSingle = false;
             charsDisplayed = 0;
+        }
+
+        public void AddToMultiMessage(string message)
+        {
+            multiMessage.Enqueue(message);
         }
 
         public bool IsFinished()
         {
-            return finishedText && timer >= TIME_AFTER_MESSAGE;
+            return multiMessage.Count == 0 && timer >= TIME_AFTER_MESSAGE;
         }
 
         void Start()
@@ -58,45 +81,27 @@ namespace RGRPG.Controllers
             if (isStarted)
             {
                 timer += Time.deltaTime;
-                if (timer >= TIME_PER_CHAR && !finishedText)
+                if (timer >= TIME_PER_CHAR && !finishedSingle && multiMessage.Count > 0)
                 {
                     charsDisplayed++;
                     timer = 0;
-                    if (charsDisplayed == message.Length)
-                        finishedText = true;
+                    if (multiMessage.Count > 0 && charsDisplayed == multiMessage.Peek().Length)
+                    {
+                        finishedSingle = true;
+                    }
                 }
             }
-            if (message != null)
-                textObject.SetText(message.Substring(0, charsDisplayed));
+            if (multiMessage != null && multiMessage.Count > 0 && multiMessage.Peek() != null)
+            {
+                textObject.SetText(multiMessage.Peek().Substring(0, charsDisplayed));
+            }
+
+            if (finishedSingle && multiMessage.Count > 0 && timer > TIME_AFTER_MESSAGE)
+            {
+                multiMessage.Dequeue();
+                finishedSingle = false;
+                charsDisplayed = 0;
+            }
         }
-
-
-        //void OnGUI(string text)
-        //{
-        //    this.message = text;
-        //    // Set up message's rect if we haven't already.
-        //    if (messageRect.width == 0)
-        //    {
-        //        var dimensions = GUI.skin.label.CalcSize(new GUIContent(message));
-
-        //        // Start message past the left side of the screen.
-        //        messageRect.x = -dimensions.x;
-        //        messageRect.width = dimensions.x;
-        //        messageRect.height = dimensions.y;
-        //    }
-
-
-
-        //    //messageRect.x += Time.deltaTime * scrollSpeed;
-
-
-        //    // If message has moved past the right side, move it back to the left.
-        //    if (messageRect.x > Screen.width)
-        //    {
-        //        messageRect.x = -messageRect.width;
-        //    }
-
-        //    //GUI.Label(messageRect, message);
-        //}
     }
 }

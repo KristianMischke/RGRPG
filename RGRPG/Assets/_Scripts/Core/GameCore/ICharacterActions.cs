@@ -20,6 +20,38 @@ namespace RGRPG.Core
         bool HasAmount();
     }
 
+    /// <summary>
+    ///     Basic, no-op action for marking the beginning of a characters turn
+    /// </summary>
+    public class BeginTurnAction : ICharacterAction
+    {
+        public BeginTurnAction() { }
+        public void SetTargets(List<Character> targets) { }
+        public void DoAction() { }
+
+        public int ManaCost() { return 0; }
+
+        public string GetName() { return "BEGIN TURN"; }
+        public int GetAmount() { return 0; }
+        public bool HasAmount() { return false; }
+    }
+
+    /// <summary>
+    ///     Basic, no-op action for marking a character passing their turn
+    /// </summary>
+    public class PassTurnAction : ICharacterAction
+    {
+        public PassTurnAction() { }
+        public void SetTargets(List<Character> targets) { }
+        public void DoAction() { }
+
+        public int ManaCost() { return 0; }
+
+        public string GetName() { return "PASS TURN"; }
+        public int GetAmount() { return 0; }
+        public bool HasAmount() { return false; }
+    }
+
 
     /// <summary>
     ///     The basic attack action which can vary in damage and mana cost
