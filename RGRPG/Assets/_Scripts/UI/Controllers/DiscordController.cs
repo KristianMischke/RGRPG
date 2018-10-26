@@ -21,7 +21,7 @@ public class DiscordController : MonoBehaviour
     private static DiscordController instance;
     public static DiscordController Instance { get { return instance; } }
 
-    public DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence(); //This is fucking bullshit <---why?
+    public DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence();
     public string applicationId = "491261225381003274"; //TODO: secure app ID
     public string optionalSteamId;
     public int callbackCalls;

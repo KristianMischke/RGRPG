@@ -3,36 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiceController : MonoBehaviour
+namespace RGRPG.Controllers
 {
-    private Button Die;
-    private Text DieText;
-
-
-    // Use this for initialization
-    void Start()
+    /// <summary>
+    ///     Controls the in-combat dice
+    /// </summary>
+    public class DiceController : MonoBehaviour
     {
-        Die = GetComponentInChildren<Button>();
-        //Debug.Log(Die);
-        DieText = Die.transform.GetComponentInChildren<Text>();
-        
-        Die.onClick.AddListener(RollDice);
-        ResetDie();
-    }
+        private Button Die;
+        private Text DieText;
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
+        // Use this for initialization
+        void Start()
+        {
+            Die = GetComponentInChildren<Button>();
+            //Debug.Log(Die);
+            DieText = Die.transform.GetComponentInChildren<Text>();
 
-    public void ResetDie()
-    {
-        DieText.text = "Roll Die";
-    }
+            Die.onClick.AddListener(RollDice);
+            ResetDie();
+        }
 
-    public void RollDice()
-    {
-        DieText.text = ((int)Random.Range(1f, 7f)).ToString();
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void ResetDie()
+        {
+            DieText.text = "Roll Die";
+        }
+
+        public void SetNumber(int number)
+        {
+            DieText.text = number.ToString();
+        }
+
+        public void RollDice()
+        {
+            DieText.text = ((int)Random.Range(1f, 7f)).ToString();
+        }
     }
 }

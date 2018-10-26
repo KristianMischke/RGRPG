@@ -4,18 +4,25 @@ using UnityEngine;
 
 namespace RGRPG.Core
 {
-
-    //TODO: change these
-    public enum CharacterType
-    {
-        Player,
-        Enemy,
-
-        COUNT
-    }
-
+    /// <summary>
+    ///     Data representation that stores all the attributes of a character
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         Both players and enemies classify as "characters"
+    ///         Data such as health, position and battle actions are stored here
+    ///     </para>
+    ///     <para>
+    ///         Debating on whether or not we should put attack and defense here,
+    ///         because we are also dealing with similar structures in the ICharacterActions class (<see cref="ICharacterAction"/>)
+    ///     </para>
+    ///     <para>
+    ///         Characters are controlled by Game.cs (<see cref="Game"/>) and is also used as a data representation in UI elements
+    ///     </para>
+    /// </remarks>
     public class Character
     {
+        protected CharacterClassType classType;
         protected CharacterType type;
         protected string name;
 
@@ -29,6 +36,7 @@ namespace RGRPG.Core
 
         protected List<ICharacterAction> actions;
 
+        public CharacterClassType ClassType { get { return classType; } }
         public CharacterType Type { get { return type; } }
         public string Name { get { return name; } }
         public int Health { get { return health; } }
@@ -41,8 +49,9 @@ namespace RGRPG.Core
 
         public Character() { }
 
-        public Character(CharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Character(CharacterClassType classType, CharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
         {
+            this.classType = classType;
             this.type = type;
             this.name = name;
             this.health = health;
@@ -119,11 +128,12 @@ namespace RGRPG.Core
         protected float range = 5;
         protected float maxR = 7;
 
-        public Enemy(Vector2 pos, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Enemy(CharacterClassType classType, CharacterType type, Vector2 pos, string name, int health, int attack, int defense, List<ICharacterAction> actions)
         {
+            this.classType = classType;
+            this.type = type;
             this.position = pos;
             this.fixedPosition = pos;
-            this.type = CharacterType.Enemy;
             this.name = name;
             this.health = health;
             this.attack = attack;
@@ -131,6 +141,12 @@ namespace RGRPG.Core
             this.actions = actions;
         }
 
+
+        /// <summary>
+        ///     Basic AI random walk
+        /// </summary>
+        /// <param name="scene">Reference to the scene the enemy is walking in to make sure that it chooses a traversable tile to walk on <see cref="TerrainTile.traversable"/></param>
+        /// <param name="deltaTime">The amount of time that has passed in the last game loop</param>
         public void UpdateAI(WorldScene scene, float deltaTime)
         {
             if (isAtTarget && isDoneWaiting) {

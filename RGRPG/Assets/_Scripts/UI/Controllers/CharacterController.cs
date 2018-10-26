@@ -7,7 +7,9 @@ using TMPro;
 
 namespace RGRPG.Controllers
 {
-
+    /// <summary>
+    ///     Controls the in-world and in-combat characters
+    /// </summary>
     public class CharacterController : MonoBehaviour
     {
         // Scene Object References
@@ -23,7 +25,8 @@ namespace RGRPG.Controllers
 
         // Data
         public Character character;
-        bool firstUpdate = true;
+
+        private bool firstUpdate = true;
 
         // Use this for initialization
         void Start()
@@ -38,13 +41,14 @@ namespace RGRPG.Controllers
         void Update()
         {
             if (character == null)
+            {
                 return;
+            }
 
             if (firstUpdate)
             {
-                LoadCharacterImage();
-
-                firstUpdate = false;
+                SetSprite();
+                firstUpdate = true;
             }
 
             transform.localPosition = character.Position;
@@ -58,29 +62,33 @@ namespace RGRPG.Controllers
             healthBarFill.sizeDelta = new Vector2(healthPercentage * healthBarFillParent.sizeDelta.x, healthBarFill.sizeDelta.y);
         }
 
+        /// <summary>
+        ///     Initialize the character for this controller
+        /// </summary>
+        /// <param name="character"></param>
         public void SetCharacter(Character character)
         {
             this.character = character;
         }
 
-        void LoadCharacterImage()
+        /// <summary>
+        ///     Load the art for the character
+        /// </summary>
+        void SetSprite()
         {
             if (character == null)
                 return;
 
             Sprite image;
-            switch (character.Type)
+            if (GameController.instance.IsInCombat())
             {
-                case CharacterType.Player:
-                    image = Resources.Load<Sprite>("Sprites/baby");
-                    break;
-                case CharacterType.Enemy:
-                    image = Resources.Load<Sprite>("Sprites/troll");
-                    break;
-                default:
-                    image = Resources.Load<Sprite>("Sprites/baby");
-                    break;
+                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, System.Enum.GetName(typeof(CharacterType), character.Type));
             }
+            else
+            {
+                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, System.Enum.GetName(typeof(CharacterType), character.Type));
+            }
+            
 
             spriteRenderer.sprite = image;
             spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);

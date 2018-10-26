@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +9,14 @@ using TMPro;
 
 namespace RGRPG.Controllers
 {
-
+    /// <summary>
+    ///     Controls the HUD (Head Up Display) for a character
+    /// </summary>
     public class CharacterHUDController : MonoBehaviour
     {
         // Prefabs
         public GameObject actionView;
-
+   
         // Scene Object References
         public GameObject nameTextObject;
         public GameObject healthTextObject;
@@ -25,11 +27,14 @@ namespace RGRPG.Controllers
         public GameObject healthBarFillObject;
         public GameObject manaBarFillParentObject;
         public GameObject manaBarFillObject;
+        public GameObject dieView;
 
         RectTransform healthBarFillParent;
         RectTransform healthBarFill;
         RectTransform manaBarFillParent;
         RectTransform manaBarFill;
+
+        DiceController myDie;
 
         // Data
         public Character character;
@@ -46,6 +51,8 @@ namespace RGRPG.Controllers
 
             manaBarFillParent = manaBarFillParentObject.GetComponent<RectTransform>();
             manaBarFill = manaBarFillObject.GetComponent<RectTransform>();
+
+            myDie = dieView.GetComponent<DiceController>();
         }
 
         // Update is called once per frame
@@ -70,9 +77,13 @@ namespace RGRPG.Controllers
             float manaPercentage = Mathf.Min(character.Mana / 100f, 1);
             manaBarFill.sizeDelta = new Vector2(manaPercentage * manaBarFillParent.sizeDelta.x, manaBarFill.sizeDelta.y);
 
-
+            myDie.SetNumber(GameController.instance.GetDiceRoll(character));
+            myDie.gameObject.SetActive(GameController.instance.GetDiceRoll(character) != -1);
         }
 
+        /// <summary>
+        ///     Allows the user to select a character to controll TODO: this will change with the new movement system
+        /// </summary>
         public void SelectAction() {
             if(overrideAction != null)
             {
@@ -86,6 +97,10 @@ namespace RGRPG.Controllers
             EventSystem.current.SetSelectedGameObject(null);
         }
 
+        /// <summary>
+        ///     Sets up the <see cref="CharacterActionController"/>s for the character's HUD
+        /// </summary>
+        /// <param name="character"></param>
         public void Init(Character character, Action selectAction = null)
         {
             this.character = character;

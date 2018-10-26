@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Assets>
+	<Entry>
+		<zType>NONE</zType>
+		<SpriteSheet>Sprites/troll</SpriteSheet>
+		<SpriteName/>
+		<bHasMultiple/>
+	</Entry>
+	<Entry>
+		<zType>TERRAIN_GRASS</zType>
+		<SpriteSheet>Sprites/umbc_tile_1_0</SpriteSheet>
+		<SpriteName>grass_@</SpriteName>
+		<bHasMultiple>1</bHasMultiple>
+	</Entry>	
+	<Entry>
+		<zType>TERRAIN_SIDEWALK</zType>
+		<SpriteSheet>Sprites/umbc_tile_1_0</SpriteSheet>
+		<SpriteName>sidewalk_@</SpriteName>
+		<bHasMultiple>1</bHasMultiple>
+	</Entry>
+	<Entry>
+		<zType>TERRAIN_DIRT</zType>
+		<SpriteSheet>Sprites/umbc_tile_1_0</SpriteSheet>
+		<SpriteName>dirt_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+	</Entry>
+	<Entry>
+		<zType>TERRAIN_ROCK</zType>
+		<SpriteSheet>Sprites/stone</SpriteSheet>
+		<SpriteName/>
+		<bHasMultiple/>
+	</Entry>
+	<Entry>
+		<zType>TERRAIN_WATER</zType>
+		<SpriteSheet>Sprites/stone</SpriteSheet>
+		<SpriteName></SpriteName>
+		<bHasMultiple/>
+	</Entry>
+</Assets>
