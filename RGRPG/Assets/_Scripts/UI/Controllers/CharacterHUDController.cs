@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,8 @@ namespace RGRPG.Controllers
 
         // Data
         public Character character;
+
+        public Action overrideAction = null;
 
         // Use this for initialization
         void Start()
@@ -71,13 +74,22 @@ namespace RGRPG.Controllers
         }
 
         public void SelectAction() {
-            GameController.instance.SelectCharacter(character);
+            if(overrideAction != null)
+            {
+                overrideAction.Invoke();
+            }
+            else
+            {
+                GameController.instance.SelectCharacter(character);
+            }
+
             EventSystem.current.SetSelectedGameObject(null);
         }
 
-        public void Init(Character character)
+        public void Init(Character character, Action selectAction = null)
         {
             this.character = character;
+            this.overrideAction = selectAction;
 
             foreach (ICharacterAction action in character.Actions)
             {
