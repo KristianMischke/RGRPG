@@ -64,11 +64,11 @@ namespace RGRPG.Controllers
 
             //TODO: get list of all characters from system that Kristian is developing
             // for now, just use dummy list
-            Players.Add(new Character(CharacterType.Player, "test1", 100, 10, 10, new List<ICharacterAction>()));
-            Players.Add(new Character(CharacterType.Player, "test2", 100, 10, 10, new List<ICharacterAction>()));
-            Players.Add(new Character(CharacterType.Player, "test3", 100, 10, 10, new List<ICharacterAction>()));
-            Players.Add(new Character(CharacterType.Player, "test4", 100, 10, 10, new List<ICharacterAction>()));
-            Players.Add(new Character(CharacterType.Player, "test5", 100, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_AUSTIN, "test1", 100, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_AUSTIN, "test2", 100, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_AUSTIN, "test3", 100, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_AUSTIN, "test4", 100, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_AUSTIN, "test5", 100, 10, 10, new List<ICharacterAction>()));
 
 
             for (int i = 0; i < Players.Count; i++)

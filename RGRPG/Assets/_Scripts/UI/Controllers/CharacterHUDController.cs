@@ -77,8 +77,11 @@ namespace RGRPG.Controllers
             float manaPercentage = Mathf.Min(character.Mana / 100f, 1);
             manaBarFill.sizeDelta = new Vector2(manaPercentage * manaBarFillParent.sizeDelta.x, manaBarFill.sizeDelta.y);
 
-            myDie.SetNumber(GameController.instance.GetDiceRoll(character));
-            myDie.gameObject.SetActive(GameController.instance.GetDiceRoll(character) != -1);
+            if (GameController.instance != null)
+            {
+                myDie.SetNumber(GameController.instance.GetDiceRoll(character));
+                myDie.gameObject.SetActive(GameController.instance.GetDiceRoll(character) != -1);
+            }
         }
 
         /// <summary>
