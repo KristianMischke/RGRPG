@@ -54,12 +54,22 @@ namespace RGRPG.Controllers
         public TMP_InputField fileInput;
         public Button saveButton;
 
+        public Slider radiusSlider;
+
         // Prefabs
         public GameObject worldSceneView;
         public GameObject terrainTileButton;
 
         // Data
+        static Vector2Int NEGATIVEONE = Vector2Int.one * -1;
         SceneController worldSceneController;
+
+        private Vector2Int thisPosition = NEGATIVEONE;
+        private Vector2Int lastPosition = NEGATIVEONE;
+
+        public int radius;
+
+        public TMP_Text sliderText;
 
         static TerrainType paintType = TerrainType.NONE;
         static int paintSubType = 0;
@@ -152,11 +162,14 @@ namespace RGRPG.Controllers
 
         void Update()
         {
+            lastPosition = thisPosition;
             worldObjectContainer.SetActive(true);
-
+            radius = (int)radiusSlider.value;
+            sliderText.text = ""+radius;
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
             // mouse pressed and not clicking on UI element
+            thisPosition = NEGATIVEONE;
             if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject(fingerID))
             {
                 RaycastHit hit;
@@ -171,7 +184,33 @@ namespace RGRPG.Controllers
                     if (tileController != null) // has a tileController
                     {
                         TerrainTile t = currentScene.GetTileAtIndices(tileController.tilePosition); //this is the tile that the user clicked
-                        DoPaint(t);
+                        thisPosition = t.Position;
+                        if (thisPosition != NEGATIVEONE && lastPosition != NEGATIVEONE){
+                            //drag
+                            Vector2Int i = lastPosition;
+                            while ( i != thisPosition){
+                                TerrainTile z = currentScene.GetTileAtIndices(i); //this is the tile that position
+                                DoPaint(z);
+                                if (i.x < thisPosition.x){
+                                    i.x ++;
+                                }
+                                else if (i.x > thisPosition.x){
+                                    i.x --;
+                                }
+                                if (i.y < thisPosition.y){
+                                    i.y ++;
+                                }
+                                else if (i.y > thisPosition.y){
+                                    i.y --;
+                                }
+                            }
+                        }
+                        else if (thisPosition !=  NEGATIVEONE){
+                            //click
+                            DoPaint(t);
+                        }
+                    
+                      
                     }
                 }
             }
@@ -182,10 +221,19 @@ namespace RGRPG.Controllers
         ///     Applies the correct paint operation to the scene
         /// </summary>
         /// <param name="t">The targeted tile</param>
+  
         private void DoPaint(TerrainTile t)
         {
-            //TODO: implement paint size here (maybe paint shape, if we want that)
-            currentScene.SetTile(t.Position, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
+            //TODO: implement paint size here (maybe paint shape, if we want that
+            for (int x = t.Position.x - radius; x <= t.Position.x + radius; x++){
+                for (int y = t.Position.y - radius; y <= t.Position.y + radius; y++){
+                    Vector2Int tilePosition = new Vector2Int(x, y);
+                    //if (Vector2Int.Distance(tilePosition, t.Position) < radius){
+                        currentScene.SetTile(tilePosition, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
+                    //}
+                }
+            }
+            
         }
 
 		public void SetWidth(string stringWidth)
