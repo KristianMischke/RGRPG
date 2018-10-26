@@ -22,18 +22,23 @@
     {
         NONE = 0,
 
-        ATTACKER,
-        MAGE,
-        SUPPORT,
-        HEALER,
-        THEIF
+        CLASS_ATTACKER,
+        CLASS_MAGE,
+        CLASS_SUPPORT,
+        CLASS_HEALER,
+        CLASS_THEIF
     }
 
     public enum CharacterType
     {
         NONE = 0,
 
-        AUSTIN,
+        // Players
+        CHARACTER_AUSTIN,
+
+        // Enemies
+        CHARACTER_SQUIRREL,
+        CHARACTER_GOOSE,
     }
 
 

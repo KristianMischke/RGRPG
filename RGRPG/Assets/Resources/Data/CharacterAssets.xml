@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Assets>
+	<Entry>
+		<zType>NONE</zType>
+    <Class>NONE</Class>
+    <OverworldSheet>Sprites/troll</OverworldSheet>
+    <CombatSprite>Sprites/troll</CombatSprite>
+	</Entry>
+	<Entry>
+		<zType>CHARACTER_AUSTIN</zType>
+    <Class>CLASS_ATTACKER</Class>
+		<OverworldSheet>Sprites/austin_f</OverworldSheet>
+    <CombatSprite>Sprites/austin_f</CombatSprite>
+	</Entry>	
+	<Entry>
+		<zType>CHARACTER_SQUIRREL</zType>
+    <Class>CLASS_ATTACKER</Class>
+    <OverworldSheet>Sprites/squirrel</OverworldSheet>
+    <CombatSprite>Sprites/squirrel colored</CombatSprite>
+	</Entry>
+	<Entry>
+		<zType>CHARACTER_GOOSE</zType>
+    <Class>CLASS_ATTACKER</Class>
+    <OverworldSheet>Sprites/goose</OverworldSheet>
+    <CombatSprite>Sprites/goose colored</CombatSprite>
+	</Entry>
+</Assets>

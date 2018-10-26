@@ -25,7 +25,8 @@ namespace RGRPG.Controllers
 
         // Data
         public Character character;
-        bool firstUpdate = true;
+
+        private bool firstUpdate = true;
 
         // Use this for initialization
         void Start()
@@ -40,13 +41,14 @@ namespace RGRPG.Controllers
         void Update()
         {
             if (character == null)
+            {
                 return;
+            }
 
             if (firstUpdate)
             {
-                LoadCharacterImage();
-
-                firstUpdate = false;
+                SetSprite();
+                firstUpdate = true;
             }
 
             transform.localPosition = character.Position;
@@ -72,27 +74,21 @@ namespace RGRPG.Controllers
         /// <summary>
         ///     Load the art for the character
         /// </summary>
-        void LoadCharacterImage()
+        void SetSprite()
         {
             if (character == null)
                 return;
 
-            //TODO: handle different combat art than world art (will need to store this info in the character XML)
-            //TODO: might not be a bad idea to have a static SpriteLoader script that associates characters with an over-world and combat filepath using dictionaries
-
             Sprite image;
-            switch (character.Type)
+            if (GameController.instance.IsInCombat())
             {
-                case TempCharacterType.Player:
-                    image = Resources.Load<Sprite>("Sprites/baby");
-                    break;
-                case TempCharacterType.Enemy:
-                    image = Resources.Load<Sprite>("Sprites/squirrel");
-                    break;
-                default:
-                    image = Resources.Load<Sprite>("Sprites/baby");
-                    break;
+                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, System.Enum.GetName(typeof(CharacterType), character.Type));
             }
+            else
+            {
+                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, System.Enum.GetName(typeof(CharacterType), character.Type));
+            }
+            
 
             spriteRenderer.sprite = image;
             spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);

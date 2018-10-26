@@ -6,6 +6,7 @@ using UnityEngine;
 using RGRPG.Core;
 using System.Xml;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace RGRPG.Controllers
 {
@@ -86,15 +87,64 @@ namespace RGRPG.Controllers
             {
                 string zType;
                 GameXMLLoader.ReadXMLValue(entry, "zType", out zType);
-                string spriteSheet;
-                GameXMLLoader.ReadXMLValue(entry, "SpriteSheet", out spriteSheet);
-                string spriteName;
-                GameXMLLoader.ReadXMLValue(entry, "SpriteName", out spriteName);
-                bool hasMultiple;
-                GameXMLLoader.ReadXMLValue(entry, "bHasMultiple", out hasMultiple);
-                
-                Sprite[] sheet = Resources.LoadAll<Sprite>(spriteSheet);
-                assetDB[type][zType] = new AssetData(zType, spriteSheet, spriteName, sheet, hasMultiple);
+
+                switch (type)
+                {
+                    default:
+                        string spriteSheet;
+                        GameXMLLoader.ReadXMLValue(entry, "SpriteSheet", out spriteSheet);
+                        string spriteName;
+                        GameXMLLoader.ReadXMLValue(entry, "SpriteName", out spriteName);
+                        bool hasMultiple;
+                        GameXMLLoader.ReadXMLValue(entry, "bHasMultiple", out hasMultiple);
+
+                        Sprite[] sheet = Resources.LoadAll<Sprite>(spriteSheet);
+                        assetDB[type][zType] = new AssetData(zType, spriteSheet, spriteName, sheet, hasMultiple);
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Loads in terrain data from and xml string
+        /// </summary>
+        /// <param name="xml">The string to load from</param>
+        public static void LoadCharacterAssetsXml(string xml)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+            LoadCharacterAssets(doc);
+        }
+
+        public static void LoadCharacterAssets(XmlDocument doc)
+        {
+            XmlNode docElem = doc.DocumentElement;
+
+            if (!assetDB.ContainsKey(AssetType.CHARACTER_COMBAT))
+            {
+                assetDB.Add(AssetType.CHARACTER_COMBAT, new Dictionary<string, AssetData>());
+            }
+            if (!assetDB.ContainsKey(AssetType.CHARACTER_WORLD))
+            {
+                assetDB.Add(AssetType.CHARACTER_WORLD, new Dictionary<string, AssetData>());
+            }
+
+            foreach (XmlNode entry in docElem.ChildNodes)
+            {
+                string zType;
+                GameXMLLoader.ReadXMLValue(entry, "zType", out zType);
+
+                string overWorldSheet;
+                GameXMLLoader.ReadXMLValue(entry, "OverworldSheet", out overWorldSheet);
+                string combatSprite;
+                GameXMLLoader.ReadXMLValue(entry, "CombatSprite", out combatSprite);
+
+
+                Sprite[] sheet1 = Resources.LoadAll<Sprite>(combatSprite);
+                assetDB[AssetType.CHARACTER_COMBAT][zType] = new AssetData(zType, combatSprite, "", sheet1, false);
+
+                Sprite[] sheet2 = Resources.LoadAll<Sprite>(overWorldSheet);
+                assetDB[AssetType.CHARACTER_WORLD][zType] = new AssetData(zType, overWorldSheet, "", sheet2, true);
             }
         }
 
@@ -112,7 +162,31 @@ namespace RGRPG.Controllers
         {
             AssetData data = getAssetData(type, zType);
 
-            return data.spriteSheet.Where(x => x.name.Contains(data.spriteName.Replace("@", ""))).ToArray();
+            if (data.hasMultiple)
+            {
+                string pattern = "^(?<name>" + data.spriteName.Replace("@", @"(?<id>\d*)") + ")$";
+                Regex rx = new Regex(pattern);
+
+                List<Sprite> sprites = new List<Sprite>();
+
+                foreach (Sprite s in data.spriteSheet)
+                {
+                    Match match = rx.Match(s.name);
+                    GroupCollection groups = match.Groups;
+
+                    if (match.Success)
+                    {
+                        sprites.Add(s);
+                    }
+                }
+
+                return sprites.ToArray();
+            }
+
+            if (data.spriteSheet.Length == 1)
+                return data.spriteSheet;
+
+            return data.spriteSheet.Where(x => x.name == data.spriteName).ToArray();
         }
 
         public static Sprite getSprite(AssetType type, string zType, int i = 0)
@@ -127,7 +201,7 @@ namespace RGRPG.Controllers
             Sprite[] sheet = data.spriteSheet;
             if (sheet != null && sheet.Length > 0)
             {
-                Debug.Log(data.spriteName.Replace("@", i.ToString()));
+                //Debug.Log(data.spriteName.Replace("@", i.ToString()));
                 return sheet.Single(x => x.name == data.spriteName.Replace("@", i.ToString()));
             }
 

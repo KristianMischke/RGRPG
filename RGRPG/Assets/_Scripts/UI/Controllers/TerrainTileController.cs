@@ -24,8 +24,6 @@ namespace RGRPG.Controllers
 
         private TerrainTile prevTileReference; // used for checking if the tile changed and needs to undergo a visual update
 
-        bool firstUpdate = true;
-
         // Use this for initialization
         void Start()
         {

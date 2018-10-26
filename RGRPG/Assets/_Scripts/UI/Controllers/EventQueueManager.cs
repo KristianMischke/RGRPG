@@ -12,7 +12,7 @@ namespace RGRPG.Controllers
         public static EventQueueManager instance;
 
         // Prefabs
-        public GameObject Marquee;
+        public GameObject textTimerObject;
 
         // Use this for initialization
         void Start()
@@ -28,17 +28,9 @@ namespace RGRPG.Controllers
 
         public void AddEventMessage(string text)
         {
-            GameObject marqueeObject = Instantiate(Marquee);
-            marqueeObject.transform.SetParent(transform);
-
-            //EventTextTimer textTimer = textTimerObject.GetComponent<EventTextTimer>();
-            //textTimer.InitTimer(text, 4, 0);
-            //textTimer.ResetTimer();
-
-            //Marquee marquee = marqueeObject.GetComponent<Marquee>();
-            //marquee.ResetTimer(text);
-            //marquee.StartTimer();
-
+            EventTextTimer textTimer = textTimerObject.GetComponent<EventTextTimer>();
+            textTimer.InitTimer(text, 4, 0);
+            textTimer.ResetTimer();
         }
     }
 }

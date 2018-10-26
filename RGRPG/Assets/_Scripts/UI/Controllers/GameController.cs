@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using RGRPG.Core;
 using UnityEngine.SceneManagement;
+using RGRPG.Core.Generics;
 
 namespace RGRPG.Controllers
 {
@@ -66,8 +67,11 @@ namespace RGRPG.Controllers
             if (instance == null)
                 instance = this;
 
-            TextAsset worldXMLTest = Resources.Load<TextAsset>(@"Data\TerrainAssets");
-            SpriteManager.LoadSpriteAssetsXml(worldXMLTest.text, SpriteManager.AssetType.TERRAIN);
+            TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
+            SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
+
+            TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
+            SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
 
             if (worldObjectContainer == null)
             {
@@ -167,7 +171,7 @@ namespace RGRPG.Controllers
                 for (int i = 0; i < enemyControllers.Count; i++)
                 {
                     CharacterController enemyController = enemyControllers[i];
-                    if (enemyController.character.Type == TempCharacterType.Enemy && !enemyController.character.IsAlive())
+                    if (!enemyController.character.IsAlive())
                     {
                         enemyControllers.RemoveAt(i);
                         Destroy(enemyController.gameObject);
@@ -177,11 +181,39 @@ namespace RGRPG.Controllers
                 MoveSelectedCharacter();
             }
 
-            if (game.gameMessages.Count > 0 && Marquee.instance.IsFinished())
+            if (game.gameMessages.Count > 0)
             {
-                //EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
-                Marquee.instance.ResetTimer(game.gameMessages.Dequeue());
-                Marquee.instance.StartTimer();
+                EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
+                //Marquee.instance.ResetTimer(game.gameMessages.Dequeue());
+                //Marquee.instance.StartTimer();
+            }
+
+            if (IsInCombat() && Marquee.instance.IsFinished())
+            {
+                if (game.gameCombatActionQueue.Count > 0)
+                {
+                    PairStruct<Character, ICharacterAction> characterAction = game.gameCombatActionQueue.Dequeue();
+
+                    if (!(characterAction.second is BeginTurnAction))
+                    {
+                        Marquee.instance.ResetTimer();
+                        Marquee.instance.AddToMultiMessage(characterAction.first.Name + " does: " + characterAction.second.GetName());
+                        Marquee.instance.StartTimer();
+                    }
+                }
+                else
+                {
+                    game.ProcessNextCombatStep();
+                }
+            }
+
+            if (!IsInCombat() && Marquee.instance.IsFinished())
+            {
+                Marquee.instance.Hide();
+            }
+            else
+            {
+                Marquee.instance.Show();
             }
 
             if (Input.GetKey(KeyCode.Escape))
@@ -280,9 +312,9 @@ namespace RGRPG.Controllers
         public int GetDiceRoll(Character targetCharacter)
         {
 
-            if (game.TurnOrder == null || game.TurnOrder.Count == 0)
+            if (game.TurnOrder == null || game.TurnOrder.Count == 0 || game.CurrentCombatState != CombatState.ExecuteTurns)
             {
-                return 0;
+                return -1;
             }
             return game.TurnOrder.Count - game.TurnOrder.IndexOf(targetCharacter);
         }
