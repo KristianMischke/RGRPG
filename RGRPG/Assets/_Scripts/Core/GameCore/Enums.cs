@@ -13,8 +13,7 @@
         TERRAIN_GRASS,
         TERRAIN_DIRT,
         TERRAIN_SIDEWALK,
-        TERRAIN_ROCK,
-        TERRAIN_WATER
+        TERRAIN_ROCK
     }
 
 

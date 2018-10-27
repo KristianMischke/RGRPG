@@ -9,19 +9,19 @@
 	<Entry>
 		<zType>CHARACTER_AUSTIN</zType>
     <Class>CLASS_ATTACKER</Class>
-		<OverworldSheet>Sprites/austin_f</OverworldSheet>
-    <CombatSprite>Sprites/austin_f</CombatSprite>
+		<OverworldSheet>Sprites/Pixel/austin_f</OverworldSheet>
+    <CombatSprite>Sprites/Pixel/austin_f</CombatSprite>
 	</Entry>	
 	<Entry>
 		<zType>CHARACTER_SQUIRREL</zType>
     <Class>CLASS_ATTACKER</Class>
-    <OverworldSheet>Sprites/squirrel</OverworldSheet>
-    <CombatSprite>Sprites/squirrel colored</CombatSprite>
+    <OverworldSheet>Sprites/Pixel/squirrel</OverworldSheet>
+    <CombatSprite>Sprites/Not Pixel/squirrel colored</CombatSprite>
 	</Entry>
 	<Entry>
 		<zType>CHARACTER_GOOSE</zType>
     <Class>CLASS_ATTACKER</Class>
-    <OverworldSheet>Sprites/goose</OverworldSheet>
-    <CombatSprite>Sprites/goose colored</CombatSprite>
+    <OverworldSheet>Sprites/Pixel/goose</OverworldSheet>
+    <CombatSprite>Sprites/Not Pixel/goose colored</CombatSprite>
 	</Entry>
 </Assets>

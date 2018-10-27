@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using TMPro;
 using RGRPG.Core;
+using Crosstales.FB;    
 
 namespace RGRPG.Controllers
 {
@@ -44,8 +45,9 @@ namespace RGRPG.Controllers
 
         public InputField widthInput;
         public InputField heightInput;
-        public TMP_InputField fileInput;
+        public TMP_Text filePathLabel;
         public Button saveButton;
+        public Button loadButton;
 
         public Slider radiusSlider;
         public TMP_Text sliderText;
@@ -97,10 +99,7 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
-            fileInput.text = Application.dataPath + @"\Resources\Data\worldTest.xml";
-
-            currentScene = new WorldScene(30,30);
-            currentScene.Load(fileInput.text);
+            LoadScene(Application.dataPath + @"\Resources\Data\worldTest.xml"); //default scene for now
 
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);
@@ -111,6 +110,8 @@ namespace RGRPG.Controllers
             worldSceneController.ResetScene();
 
             // setup UI listeners
+            widthInput.text = currentScene.Width.ToString();
+            heightInput.text = currentScene.Height.ToString();
             widthInput.onEndEdit.AddListener(SetWidth);
             heightInput.onEndEdit.AddListener(SetHeight);
 
@@ -151,6 +152,7 @@ namespace RGRPG.Controllers
             }
 
             saveButton.onClick.AddListener(Save);
+            loadButton.onClick.AddListener(Load);
         }
 
         void Update()
@@ -269,9 +271,45 @@ namespace RGRPG.Controllers
 
         public void Save()
         {
-            currentScene.Save(fileInput.text);
+            EventSystem.current.SetSelectedGameObject(null);
+            string extensions = "xml";
+
+            string path = FileBrowser.SaveFile("Save Map File", "", "MyMap", extensions);
+
+            if(!string.IsNullOrEmpty(path))
+                filePathLabel.text = path;
+
+            currentScene.Save(path);
         }
-	}
+
+        public void Load()
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            string extensions = "xml";
+
+            string path = FileBrowser.OpenSingleFile("Open Map file", "", extensions);
+
+            if (!string.IsNullOrEmpty(path))
+                filePathLabel.text = path;
+
+            LoadScene(path);
+        }
+
+        public void LoadScene(string filepath)
+        {
+            if (string.IsNullOrEmpty(filepath))
+                return;
+
+            filePathLabel.text = filepath;
+
+            if(currentScene == null)
+                currentScene = new WorldScene(30, 30);
+            currentScene.Load(filepath);
+
+            if(worldSceneController != null)
+                worldSceneController.ResetScene();
+        }
+    }
 
 	
 

@@ -110,6 +110,9 @@ namespace RGRPG.Core
         /// <param name="filepath">Path to save the file to</param>
         public void Save(string filepath)
         {
+            if (string.IsNullOrEmpty(filepath))
+                return;
+
             using (XmlWriter writer = XmlWriter.Create(filepath, GameXMLLoader.GetDefaultXMLSettings()))
             {
                 writer.WriteStartDocument();
