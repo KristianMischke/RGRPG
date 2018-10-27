@@ -57,7 +57,8 @@ namespace RGRPG.Controllers
             Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, System.Enum.GetName(typeof(TerrainType), prevTileReference.Type), prevTileReference.SubType);
 
             spriteRenderer.sprite = image;
-            spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
+            if(image != null)
+                spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
         }
     }
 }

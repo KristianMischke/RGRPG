@@ -18,30 +18,23 @@ namespace RGRPG.Controllers
         {
             public TerrainType type;
             public int subType;
+            public bool random;
+
             public UnityAction action;
 
-            public bool random;
-            public int minI, maxI;
-
-            public TerrainButtonActionData(TerrainType t, int i, bool random = false, int minI = 0, int maxI = 0)
+            public TerrainButtonActionData(TerrainType t, int i, bool random = false)
             {
                 type = t;
                 subType = i;
-
-                if (random && maxI > minI)
-                {
-                    this.random = random;
-                    this.minI = minI;
-                    this.maxI = maxI;
-                    action = () => { MapEditorController.SetPaintType(type, subType, random, minI, maxI); };
-                }
-                else
-                {
-                    action = () => { MapEditorController.SetPaintType(type, subType); };
-                }
+                this.random = random;
+    
+                action = () => {
+                    MapEditorController.SetPaintType(type, subType, random);
+                };               
             }
         }
 
+        public static readonly Vector2Int NEGATIVE_ONE = Vector2Int.one * -1;
         public static MapEditorController instance;
 
         // Scene Object References
@@ -55,26 +48,28 @@ namespace RGRPG.Controllers
         public Button saveButton;
 
         public Slider radiusSlider;
+        public TMP_Text sliderText;
 
         // Prefabs
         public GameObject worldSceneView;
         public GameObject terrainTileButton;
 
         // Data
-        static Vector2Int NEGATIVEONE = Vector2Int.one * -1;
         SceneController worldSceneController;
 
-        private Vector2Int thisPosition = NEGATIVEONE;
-        private Vector2Int lastPosition = NEGATIVEONE;
+        Dictionary<TerrainType, int> terrainToSubCount = new Dictionary<TerrainType, int>();
 
-        public int radius;
+        //the "cursor" position in map coordinates
+        private Vector2Int thisPosition = NEGATIVE_ONE;
+        private Vector2Int lastPosition = NEGATIVE_ONE;
 
-        public TMP_Text sliderText;
-
+        //paint features
         static TerrainType paintType = TerrainType.NONE;
         static int paintSubType = 0;
+        static bool randomPaint = false;
+        static int radius;
 
-		WorldScene currentScene;
+        WorldScene currentScene;
 
 
         // see https://answers.unity.com/questions/1079066/how-can-i-prevent-my-raycast-from-passing-through.html
@@ -134,9 +129,12 @@ namespace RGRPG.Controllers
                     buttonText.text = tileTypeName + " " + i;
 
                     TerrainButtonActionData buttonAction = new TerrainButtonActionData(t, i);
-                    buttonAction.type = t;
-                    buttonAction.subType = i;
                     terrainButton.onClick.AddListener(buttonAction.action);
+
+                    if (!terrainToSubCount.ContainsKey(t))
+                    {
+                        terrainToSubCount.Add(t, tileSubTypes.Length);
+                    }
                 }
                 if (tileSubTypes.Length > 1)
                 {
@@ -147,12 +145,7 @@ namespace RGRPG.Controllers
                     Text buttonText = terrainButtonObj.GetComponentInChildren<Text>();
                     buttonText.text = tileTypeName + " RANDOM";
 
-                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(t, 0, true, 0, tileSubTypes.Length);
-                    buttonAction.type = t;
-                    buttonAction.subType = 0;
-                    buttonAction.random = true;
-                    buttonAction.minI = 0;
-                    buttonAction.maxI = tileSubTypes.Length;
+                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(t, 0, true);
                     terrainButton.onClick.AddListener(buttonAction.action);
                 }
             }
@@ -169,7 +162,7 @@ namespace RGRPG.Controllers
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
             // mouse pressed and not clicking on UI element
-            thisPosition = NEGATIVEONE;
+            thisPosition = NEGATIVE_ONE;
             if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject(fingerID))
             {
                 RaycastHit hit;
@@ -185,7 +178,7 @@ namespace RGRPG.Controllers
                     {
                         TerrainTile t = currentScene.GetTileAtIndices(tileController.tilePosition); //this is the tile that the user clicked
                         thisPosition = t.Position;
-                        if (thisPosition != NEGATIVEONE && lastPosition != NEGATIVEONE){
+                        if (thisPosition != NEGATIVE_ONE && lastPosition != NEGATIVE_ONE && Mathf.FloorToInt(Vector2Int.Distance(lastPosition, thisPosition)) > 1){
                             //drag
                             Vector2Int i = lastPosition;
                             while ( i != thisPosition){
@@ -205,7 +198,7 @@ namespace RGRPG.Controllers
                                 }
                             }
                         }
-                        else if (thisPosition !=  NEGATIVEONE){
+                        else if (thisPosition !=  NEGATIVE_ONE){
                             //click
                             DoPaint(t);
                         }
@@ -221,7 +214,6 @@ namespace RGRPG.Controllers
         ///     Applies the correct paint operation to the scene
         /// </summary>
         /// <param name="t">The targeted tile</param>
-  
         private void DoPaint(TerrainTile t)
         {
             //TODO: implement paint size here (maybe paint shape, if we want that
@@ -229,14 +221,26 @@ namespace RGRPG.Controllers
                 for (int y = t.Position.y - radius; y <= t.Position.y + radius; y++){
                     Vector2Int tilePosition = new Vector2Int(x, y);
                     //if (Vector2Int.Distance(tilePosition, t.Position) < radius){
-                        currentScene.SetTile(tilePosition, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
+                    PaintSingleTile(tilePosition);
+                        //currentScene.SetTile(tilePosition, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
                     //}
                 }
             }
             
         }
 
-		public void SetWidth(string stringWidth)
+        private void PaintSingleTile(Vector2Int tilePosition)
+        {
+            if (randomPaint)
+            {
+                paintSubType = Random.Range(0, terrainToSubCount[paintType]);
+            }
+            TerrainTile t = currentScene.GetTileAtIndices(tilePosition);
+            if(t != null)
+                currentScene.SetTile(tilePosition, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
+        }
+
+        public void SetWidth(string stringWidth)
         {
             int width = currentScene.Width;
             int.TryParse(stringWidth, out width);
@@ -256,15 +260,11 @@ namespace RGRPG.Controllers
             worldSceneController.ResetScene();
         }
 
-        public static void SetPaintType(TerrainType type, int subType = 0, bool random = false, int minI = 0, int maxI = 0)
+        public static void SetPaintType(TerrainType type, int subType = 0, bool random = false)
         {
             paintType = type;
             paintSubType = subType;
-
-            if (random)
-            {
-                paintSubType = Random.Range(minI, maxI);
-            }
+            randomPaint = random;
         }
 
         public void Save()
