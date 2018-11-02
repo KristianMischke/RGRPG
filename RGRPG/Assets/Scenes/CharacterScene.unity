@@ -516,8 +516,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 268.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 400, y: 307.38}
+  m_SizeDelta: {x: 160, y: 107.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405636459
 MonoBehaviour:
@@ -628,8 +628,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: 268.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 240, y: 307.38}
+  m_SizeDelta: {x: 160, y: 107.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500896027
 MonoBehaviour:
@@ -740,8 +740,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 720, y: 268.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 720, y: 307.4}
+  m_SizeDelta: {x: 160, y: 107.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547945673
 MonoBehaviour:
@@ -997,8 +997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbd961b5e414654bcaf00e13105d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharPrefab: {fileID: 1518724566799982, guid: 301ebeb2dbb6f416084974aa92bb40be, type: 2}
-  CharPrefabs: []
+  CharPrefab: {fileID: 1668457201175230, guid: fd505e5e548b9ea4a9d52594f706df44, type: 2}
+  CharPortraits: []
   ButtonArray:
   - {fileID: 547945673}
   - {fileID: 1294946747}
@@ -1039,8 +1039,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 560, y: 268.71}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 560, y: 307.38004}
+  m_SizeDelta: {x: 160, y: 107.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294946747
 MonoBehaviour:

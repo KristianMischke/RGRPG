@@ -41,7 +41,7 @@ public class MainMenuController : MonoBehaviour
 
         StartButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("CharacterScene");
         });
 
         OptionsButton.onClick.AddListener(() =>
