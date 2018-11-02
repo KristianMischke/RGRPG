@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RGRPG.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace RGRPG.Controllers
@@ -13,7 +14,7 @@ namespace RGRPG.Controllers
         public GameObject CharPrefab;
 
         public List<Character> Players = new List<Character>();
-        public List<GameObject> CharPrefabs = new List<GameObject>();
+        public List<CharacterHUDController> CharPortraits = new List<CharacterHUDController>();
 
         private Character[] PlayerSelected = new Character[4];
         private int CurrentUser = 0;
@@ -46,9 +47,24 @@ namespace RGRPG.Controllers
                     //Debug.Log(j);
 
                     CurrentUser = j;
+
                 });
             }
 
+            SubmitButton.onClick.AddListener(() =>
+            {
+                bool isValid = true;
+                for (int i = 0; i < PlayerSelected.Length; i++)
+                {
+                    if (PlayerSelected[i] == null)
+                    {
+                        isValid = false;
+
+                    }
+                }
+                if (isValid)
+                    SceneManager.LoadScene("GameScene");
+            });
 
         }
 
@@ -74,6 +90,8 @@ namespace RGRPG.Controllers
                 GameObject playerHUDView = Instantiate(CharPrefab);
                 playerHUDView.transform.SetParent(this.transform);
                 CharacterHUDController hud = playerHUDView.GetComponent<CharacterHUDController>();
+                CharPortraits.Add(hud);
+
                 int j = i;
 
                 hud.Init(c, () => {
@@ -89,6 +107,15 @@ namespace RGRPG.Controllers
             //Debug.Log(i);
             PlayerSelected[CurrentUser] = Players[i];
 
+            Text buttonText = ButtonArray[CurrentUser].GetComponentInChildren<Text>();
+            //Debug.Log(ButtonArray[i] == null);
+            buttonText.text = "Player " + (CurrentUser + 1) + ": " + Players[i].Name;
+
+
+        }
+
+        public void SelectPortrait()
+        {
 
         }
 
