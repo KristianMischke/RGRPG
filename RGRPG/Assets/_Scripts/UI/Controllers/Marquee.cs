@@ -70,6 +70,11 @@ namespace RGRPG.Controllers
             return multiMessage.Count == 0 && timer >= TIME_AFTER_MESSAGE;
         }
 
+        public void Clear()
+        {
+            textObject.text = "";
+        }
+
         void Start()
         {
             instance = this;

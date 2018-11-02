@@ -34,10 +34,12 @@
 
         // Players
         CHARACTER_AUSTIN,
+        CHARACTER_SETH,
 
         // Enemies
         CHARACTER_SQUIRREL,
         CHARACTER_GOOSE,
+        CHARACTER_ZOMBIE,
     }
 
 

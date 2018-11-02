@@ -210,6 +210,7 @@ namespace RGRPG.Controllers
             if (!IsInCombat() && Marquee.instance.IsFinished())
             {
                 Marquee.instance.Hide();
+                Marquee.instance.Clear();
             }
             else
             {

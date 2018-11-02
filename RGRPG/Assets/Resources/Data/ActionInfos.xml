@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Assets>
+	<Entry>
+		<zType>NONE</zType>
+    <Name>None</Name>
+    <Quips>
+      <Item>There is an error</Item>
+    </Quips>
+	</Entry>
+  <Entry>
+    <zType>HEAL_ACTION</zType>
+    <Quips>
+      <Item>heals</Item>
+    </Quips>
+  </Entry>
+  <Entry>
+    <zType>ATTACK_ACTION</zType>
+    <Quips>
+      <Item>attacks</Item>
+    </Quips>
+  </Entry>
+  <Entry>
+    <zType>DEFEND_ACTION</zType>
+    <Quips>
+      <Item>Defends</Item>
+    </Quips>
+  </Entry>
+</Assets>

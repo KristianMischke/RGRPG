@@ -3,25 +3,82 @@
 	<Entry>
 		<zType>NONE</zType>
     <Class>NONE</Class>
+    <Name>None</Name>
     <OverworldSheet>Sprites/troll</OverworldSheet>
     <CombatSprite>Sprites/troll</CombatSprite>
+    <CharacterPortrait>Sprites/troll</CharacterPortrait>
+    <bEnemy/>
+    <iHealth></iHealth>
+    <iMagic></iMagic>
+    <iDefense></iDefense>
+    <ActionList>
+      <Item>
+        <zType>NONE</zType>
+        <Name>Uh Oh</Name>
+        <Quips>
+          <Item>error</Item>
+        </Quips>
+      </Item>
+    </ActionList>
 	</Entry>
 	<Entry>
 		<zType>CHARACTER_AUSTIN</zType>
-    <Class>CLASS_ATTACKER</Class>
+    <Class>CLASS_HEALER</Class>
+    <Name>Austin</Name>
 		<OverworldSheet>Sprites/Pixel/austin_f</OverworldSheet>
     <CombatSprite>Sprites/Pixel/austin_f</CombatSprite>
-	</Entry>	
+    <CharacterPortrait>Sprites/Not Pixel/Austin_Portrait</CharacterPortrait>
+    <bEnemy/>
+    <iHealth>100</iHealth>
+    <iMagic>80</iMagic>
+    <iDefense>40</iDefense>
+    <ActionList>
+      <Item>
+        <zType>HEAL_ACTION</zType>
+        <Name>Self Heal</Name>
+        <Quips>
+          <Item>heal me</Item>
+        </Quips>
+      </Item>
+    </ActionList>
+	</Entry>
+  <Entry>
+    <zType>CHARACTER_SETH</zType>
+    <Class>CLASS_ATTACKER</Class>
+    <Name>Seth</Name>
+    <OverworldSheet>Sprites/Pixel/seth_f</OverworldSheet>
+    <CombatSprite>Sprites/Pixel/seth_f</CombatSprite>
+    <CharacterPortrait>Sprites/Not Pixel/Seth_Portrait</CharacterPortrait>
+    <bEnemy/>
+    <iHealth>100</iHealth>
+    <iMagic>90</iMagic>
+    <iDefense>40</iDefense>
+    <ActionList></ActionList>
+  </Entry>
 	<Entry>
 		<zType>CHARACTER_SQUIRREL</zType>
     <Class>CLASS_ATTACKER</Class>
+    <Name>Plump Squirrel</Name>
     <OverworldSheet>Sprites/Pixel/squirrel</OverworldSheet>
     <CombatSprite>Sprites/Not Pixel/squirrel colored</CombatSprite>
+    <CharacterPortrait></CharacterPortrait>
+    <bEnemy>1</bEnemy>
+    <iHealth>50</iHealth>
+    <iMagic>30</iMagic>
+    <iDefense>100</iDefense>
+    <ActionList></ActionList>
 	</Entry>
 	<Entry>
 		<zType>CHARACTER_GOOSE</zType>
     <Class>CLASS_ATTACKER</Class>
+    <Name>Demon Goose</Name>
     <OverworldSheet>Sprites/Pixel/goose</OverworldSheet>
     <CombatSprite>Sprites/Not Pixel/goose colored</CombatSprite>
+    <CharacterPortrait></CharacterPortrait>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
 	</Entry>
 </Assets>
