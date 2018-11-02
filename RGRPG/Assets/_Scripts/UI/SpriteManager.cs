@@ -42,6 +42,7 @@ namespace RGRPG.Controllers
 
             CHARACTER_WORLD,
             CHARACTER_COMBAT,
+            CHARACTER_PORTRAIT,
             TERRAIN
         }
         
@@ -128,6 +129,10 @@ namespace RGRPG.Controllers
             {
                 assetDB.Add(AssetType.CHARACTER_WORLD, new Dictionary<string, AssetData>());
             }
+            if (!assetDB.ContainsKey(AssetType.CHARACTER_PORTRAIT))
+            {
+                assetDB.Add(AssetType.CHARACTER_PORTRAIT, new Dictionary<string, AssetData>());
+            }
 
             foreach (XmlNode entry in docElem.ChildNodes)
             {
@@ -138,13 +143,17 @@ namespace RGRPG.Controllers
                 GameXMLLoader.ReadXMLValue(entry, "OverworldSheet", out overWorldSheet);
                 string combatSprite;
                 GameXMLLoader.ReadXMLValue(entry, "CombatSprite", out combatSprite);
-
+                string portraitSprite;
+                GameXMLLoader.ReadXMLValue(entry, "CharacterPortrait", out portraitSprite);
 
                 Sprite[] sheet1 = Resources.LoadAll<Sprite>(combatSprite);
                 assetDB[AssetType.CHARACTER_COMBAT][zType] = new AssetData(zType, combatSprite, "", sheet1, false);
 
                 Sprite[] sheet2 = Resources.LoadAll<Sprite>(overWorldSheet);
                 assetDB[AssetType.CHARACTER_WORLD][zType] = new AssetData(zType, overWorldSheet, "", sheet2, true);
+
+                Sprite[] sheet3 = Resources.LoadAll<Sprite>(portraitSprite);
+                assetDB[AssetType.CHARACTER_PORTRAIT][zType] = new AssetData(zType, portraitSprite, "", sheet3, false);
             }
         }
 

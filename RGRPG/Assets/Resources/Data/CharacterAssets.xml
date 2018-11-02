@@ -55,6 +55,32 @@
     <iDefense>40</iDefense>
     <ActionList></ActionList>
   </Entry>
+  <Entry>
+    <zType>CHARACTER_RIKA</zType>
+    <Class>CLASS_MAGE</Class>
+    <Name>Rika</Name>
+    <OverworldSheet></OverworldSheet>
+    <CombatSprite></CombatSprite>
+    <CharacterPortrait></CharacterPortrait>
+    <bEnemy/>
+    <iHealth>100</iHealth>
+    <iMagic>90</iMagic>
+    <iDefense>40</iDefense>
+    <ActionList></ActionList>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_MEREDITH</zType>
+    <Class>CLASS_SUPPORT</Class>
+    <Name>Meredith</Name>
+    <OverworldSheet></OverworldSheet>
+    <CombatSprite></CombatSprite>
+    <CharacterPortrait></CharacterPortrait>
+    <bEnemy/>
+    <iHealth>100</iHealth>
+    <iMagic>90</iMagic>
+    <iDefense>40</iDefense>
+    <ActionList></ActionList>
+  </Entry>
 	<Entry>
 		<zType>CHARACTER_SQUIRREL</zType>
     <Class>CLASS_ATTACKER</Class>

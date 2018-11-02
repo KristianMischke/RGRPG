@@ -32,6 +32,11 @@ namespace RGRPG.Controllers
         // Use this for initialization
         void Start()
         {
+
+            // TODO: run GameController simultaneously so that we don't have to load these assets
+            TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
+            SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
+
             SelectButton(0);
             LoadCharPortraits();
 
@@ -73,10 +78,10 @@ namespace RGRPG.Controllers
                 Character c = Players[i];
                 GameObject playerHUDView = Instantiate(CharPrefab);
                 playerHUDView.transform.SetParent(this.transform);
-                CharacterHUDController hud = playerHUDView.GetComponent<CharacterHUDController>();
+                CharacterPortraitController portrait = playerHUDView.GetComponent<CharacterPortraitController>();
                 int j = i;
 
-                hud.Init(c, () => {
+                portrait.Init(c, () => {
                     SelectCharacter(j);
                 });
 
