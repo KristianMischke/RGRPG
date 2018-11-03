@@ -16,6 +16,7 @@ namespace RGRPG.Controllers
 
         public SpriteRenderer spriteRenderer;
         public SpriteRenderer borderRenderer;
+        public SpriteRenderer spawnRenderer;
 
         // Prefabs
 
@@ -58,7 +59,8 @@ namespace RGRPG.Controllers
 
             spriteRenderer.sprite = image;
 
-            borderRenderer.gameObject.SetActive(!prevTileReference.Traversable);
+            borderRenderer.gameObject.SetActive(!prevTileReference.Traversable && MapEditorController.instance != null);
+            spawnRenderer.gameObject.SetActive(prevTileReference.IsSpawn && MapEditorController.instance != null);
         }
     }
 }

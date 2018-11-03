@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using RGRPG.Core.Generics;
+using System.Xml;
 
 namespace RGRPG.Core
 {
@@ -59,7 +60,7 @@ namespace RGRPG.Core
         protected GameState currentGameState = GameState.Starting;
 
         // scenes
-        protected List<WorldScene> scenes;
+        protected Dictionary<string, WorldScene> scenes;
         protected WorldScene startScene;
         protected WorldScene currentScene;
 
@@ -81,7 +82,7 @@ namespace RGRPG.Core
         // allows for public access, but not public assignment
         public GameState CurrentGameState { get { return currentGameState; } }
         public CombatState CurrentCombatState { get { return currentCombatState; } }
-        public List<WorldScene> Scenes { get { return scenes; } }
+        public Dictionary<string, WorldScene> Scenes { get { return scenes; } }
         public WorldScene StartScene { get { return startScene; } }
         public WorldScene CurrentScene { get { return currentScene; } }
         public List<Character> Players { get { return players; } }
@@ -105,16 +106,7 @@ namespace RGRPG.Core
         /// </summary>
         private void Init()
         {
-            //TODO: load scenes from files, for now just have one scene
-            scenes = new List<WorldScene>();
-
-            WorldScene newScene = new WorldScene(30, 30);
-            TextAsset worldXMLTest = Resources.Load<TextAsset>(@"Data\worldTest"); // currently just loads a test scene. TODO: change behaviour
-            newScene.LoadXml(worldXMLTest.text);
-
-            scenes.Add(newScene);
-            startScene = newScene;
-            currentScene = newScene;
+            LoadScenes();
 
 
             players = new List<Character>();
@@ -136,6 +128,46 @@ namespace RGRPG.Core
 
             currentGameState = GameState.WorldMovement;
             currentCombatState = CombatState.NONE;
+        }
+
+        /// <summary>
+        ///     Loads the list of scenes from the GameScenes.xml file
+        /// </summary>
+        private void LoadScenes()
+        {
+            //TODO: KRISTIAN: this is where GameInfos will come in handy, for keeping track of all the loaded scenes and their types
+
+            scenes = new Dictionary<string, WorldScene>();
+
+            TextAsset gameScenesXML = Resources.Load<TextAsset>(@"Data\GameScenes");
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(gameScenesXML.text);
+
+            XmlNode docElem = doc.DocumentElement;
+
+            foreach (XmlNode sceneNode in docElem.ChildNodes)
+            {
+                string type;
+                GameXMLLoader.ReadXMLValue(sceneNode, "zType", out type);
+                string name;
+                GameXMLLoader.ReadXMLValue(sceneNode, "Name", out name);
+                string filePath;
+                GameXMLLoader.ReadXMLValue(sceneNode, "File", out filePath);
+                bool firstScene;
+                GameXMLLoader.ReadXMLValue(sceneNode, "bFirst", out firstScene);
+
+                WorldScene newScene = new WorldScene(SceneType.NONE, name); // <-- needs to be changed to actually take a type (when GameInfos is implemented)
+                TextAsset sceneXML = Resources.Load<TextAsset>(filePath);
+                newScene.LoadXml(sceneXML.text);
+
+                scenes.Add(type, newScene);
+
+                if (firstScene || scenes.Count == 1)
+                {
+                    startScene = newScene;
+                    currentScene = newScene;
+                }
+            }
         }
 
         /// <summary>

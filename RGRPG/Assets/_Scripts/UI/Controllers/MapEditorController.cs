@@ -53,6 +53,7 @@ namespace RGRPG.Controllers
         public TMP_Text sliderText;
 
         public Toggle traversableToggle;
+        public Toggle spawnToggle;
 
         // Prefabs
         public GameObject worldSceneView;
@@ -71,6 +72,7 @@ namespace RGRPG.Controllers
         static TerrainType paintType = TerrainType.NONE;
         static int paintSubType = 0;
         static bool paintTraversable = true;
+        static bool paintSpawn = false;
         static bool randomPaint = false;
         static int radius;
 
@@ -102,7 +104,7 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
-            LoadScene(Application.dataPath + @"\Resources\Data\worldTest.xml"); //default scene for now
+            LoadScene(Application.dataPath + @"\Resources\Data\Scenes\worldTest.xml"); //default scene for now
 
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);
@@ -165,6 +167,7 @@ namespace RGRPG.Controllers
             radius = (int)radiusSlider.value;
             sliderText.text = ""+radius;
             paintTraversable = traversableToggle.isOn;
+            paintSpawn = spawnToggle.isOn;
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
             // mouse pressed and not clicking on UI element
@@ -247,11 +250,11 @@ namespace RGRPG.Controllers
                 if (paintType == TerrainType.NONE)
                 {
                     // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
-                    currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.Elevation, t.ElevationRamp));
+                    currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.Elevation, t.ElevationRamp, paintSpawn));
                 }
                 else
                 {
-                    currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
+                    currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp, t.IsSpawn));
                 }
             }
         }
@@ -288,7 +291,7 @@ namespace RGRPG.Controllers
             EventSystem.current.SetSelectedGameObject(null);
             string extensions = "xml";
 
-            string path = FileBrowser.SaveFile("Save Map File", "", "MyMap", extensions);
+            string path = FileBrowser.SaveFile("Save Map File", "", "MyMap", extensions); // TODO: copy file name of map here
 
             if(!string.IsNullOrEmpty(path))
                 filePathLabel.text = path;
@@ -317,7 +320,7 @@ namespace RGRPG.Controllers
             filePathLabel.text = filepath;
 
             if(currentScene == null)
-                currentScene = new WorldScene(30, 30);
+                currentScene = new WorldScene(SceneType.NONE, "");
             currentScene.Load(filepath);
 
             if(worldSceneController != null)

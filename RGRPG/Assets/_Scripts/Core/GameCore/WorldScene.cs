@@ -14,6 +14,8 @@ namespace RGRPG.Core
     /// </remarks>
     public class WorldScene
     {
+        protected SceneType type;
+        protected string name;
         protected int width, height;
         protected TerrainTile[,] terrainTiles;
 
@@ -21,29 +23,10 @@ namespace RGRPG.Core
         public int Height { get { return height; } }
         public TerrainTile[,] TerrainTiles { get { return terrainTiles; } }
 
-        public WorldScene(int width, int height)
+        public WorldScene(SceneType type, string name)
         {
-            this.width = width;
-            this.height = height;
-
-            this.terrainTiles = new TerrainTile[width, height];
-
-            Init();
-        }
-
-        public void Init()
-        {
-
-            /*for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    bool isEdge = x == 0 || x == width - 1 || y == 0 || y == height - 1;
-                    terrainTiles[x, y] = new TerrainTile((TerrainType)Random.Range(1, 3), !isEdge);
-                }
-            }*/
-
-            
+            this.type = type;
+            this.name = name;
         }
 
         /// <summary>
@@ -96,7 +79,9 @@ namespace RGRPG.Core
                     GameXMLLoader.ReadXMLValue(tileNode, "Elevation", out elevation);
                     bool elevationRamp;
                     GameXMLLoader.ReadXMLValue(tileNode, "ElevationRamp", out elevationRamp);
-                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), subType, elevation, elevationRamp);
+                    bool isSpawn;
+                    GameXMLLoader.ReadXMLValue(tileNode, "Spawn", out isSpawn);
+                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), subType, elevation, elevationRamp, isSpawn);
 
                     j++;
                 }
@@ -133,6 +118,7 @@ namespace RGRPG.Core
                         GameXMLLoader.WriteXMLValue(writer, "Traversable", terrainTiles[i, j].Traversable);
                         GameXMLLoader.WriteXMLValue(writer, "Type", terrainTiles[i, j].Type.ToString());
                         GameXMLLoader.WriteXMLValue(writer, "SubType", terrainTiles[i, j].SubType.ToString());
+                        GameXMLLoader.WriteXMLValue(writer, "Spawn", terrainTiles[i, j].IsSpawn);
 
                         writer.WriteEndElement();
                     }

@@ -16,6 +16,8 @@ namespace RGRPG.Core
         protected bool elevationRamp; //TODO: if we decide to have elevation, then this will determine a tile that ramps up/down elevation
         protected Vector2Int position;
 
+        protected bool isSpawn;
+
 
         public TerrainType Type { get { return type; } }
         public int SubType { get { return subType; } }
@@ -23,8 +25,9 @@ namespace RGRPG.Core
         public int Elevation { get { return elevation; } }
         public bool ElevationRamp { get { return elevationRamp; } }
         public Vector2Int Position { get { return position; } }
+        public bool IsSpawn { get { return isSpawn; } }
 
-        public TerrainTile(TerrainType type, bool traversable, Vector2Int position, int subType = 0, int elevation = 0, bool elevationRamp = false)
+        public TerrainTile(TerrainType type, bool traversable, Vector2Int position, int subType = 0, int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
         {
             this.type = type;
             this.subType = subType;
@@ -32,9 +35,10 @@ namespace RGRPG.Core
             this.position = position;
             this.elevation = elevation;
             this.elevationRamp = elevationRamp;
+            this.isSpawn = isSpawn;
         }
 
-        public TerrainTile(TerrainType type, bool traversable, int positionX, int positionY, int subType = 0, int elevation = 0, bool elevationRamp = false)
+        public TerrainTile(TerrainType type, bool traversable, int positionX, int positionY, int subType = 0, int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
         {
             this.type = type;
             this.subType = subType;
@@ -42,6 +46,7 @@ namespace RGRPG.Core
             this.position = new Vector2Int(positionX, positionY);
             this.elevation = elevation;
             this.elevationRamp = elevationRamp;
+            this.isSpawn = isSpawn;
         }
 
         public bool Equals(TerrainTile other, bool ignoreSubType = false)
@@ -51,7 +56,8 @@ namespace RGRPG.Core
                 traversable == other.traversable &&
                 elevation == other.elevation &&
                 elevationRamp == other.elevationRamp &&
-                position == other.position;
+                position == other.position &&
+                isSpawn == other.isSpawn;
         }
 
     }

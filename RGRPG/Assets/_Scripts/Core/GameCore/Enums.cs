@@ -47,4 +47,11 @@
 
 
 
+    public enum SceneType
+    {
+        NONE = 0
+    }
+
+
+
 }
