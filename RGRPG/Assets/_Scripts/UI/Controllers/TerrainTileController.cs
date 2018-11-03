@@ -15,6 +15,7 @@ namespace RGRPG.Controllers
         // Scene Object References
 
         public SpriteRenderer spriteRenderer;
+        public SpriteRenderer borderRenderer;
 
         // Prefabs
 
@@ -27,7 +28,6 @@ namespace RGRPG.Controllers
         // Use this for initialization
         void Start()
         {
-            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         // Update is called once per frame
@@ -57,8 +57,8 @@ namespace RGRPG.Controllers
             Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, System.Enum.GetName(typeof(TerrainType), prevTileReference.Type), prevTileReference.SubType);
 
             spriteRenderer.sprite = image;
-            if(image != null)
-                spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
+
+            borderRenderer.gameObject.SetActive(!prevTileReference.Traversable);
         }
     }
 }

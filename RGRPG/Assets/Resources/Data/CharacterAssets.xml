@@ -111,7 +111,7 @@
     <zType>CHARACTER_BEE</zType>
     <Class>NONE</Class>
     <Name>Chick'fil'B</Name>
-    <OverworldSheet>Sprites/troll</OverworldSheet>
+    <OverworldSheet>Sprites/Not Pixel/Bee_colored</OverworldSheet>
     <CombatSprite>Sprites/Not Pixel/Bee_colored</CombatSprite>
     <CharacterPortrait>Sprites/Not Pixel/Bee_colored</CharacterPortrait>
     <bEnemy>1</bEnemy>
@@ -123,8 +123,8 @@
   <Entry>
     <zType>CHARACTER_ZOMBIE</zType>
     <Class>NONE</Class>
-    <Name>Caffinated Student</Name>
-    <OverworldSheet>Sprites/troll</OverworldSheet>
+    <Name>Caffine-Dependent Student</Name>
+    <OverworldSheet>Sprites/Not Pixel/Sleep-Deprived_Student_colored</OverworldSheet>
     <CombatSprite>Sprites/Not Pixel/Sleep-Deprived_Student_colored</CombatSprite>
     <CharacterPortrait>Sprites/Not Pixel/Sleep-Deprived_Student_colored</CharacterPortrait>
     <bEnemy>1</bEnemy>

@@ -52,6 +52,8 @@ namespace RGRPG.Controllers
         public Slider radiusSlider;
         public TMP_Text sliderText;
 
+        public Toggle traversableToggle;
+
         // Prefabs
         public GameObject worldSceneView;
         public GameObject terrainTileButton;
@@ -68,6 +70,7 @@ namespace RGRPG.Controllers
         //paint features
         static TerrainType paintType = TerrainType.NONE;
         static int paintSubType = 0;
+        static bool paintTraversable = true;
         static bool randomPaint = false;
         static int radius;
 
@@ -161,6 +164,7 @@ namespace RGRPG.Controllers
             worldObjectContainer.SetActive(true);
             radius = (int)radiusSlider.value;
             sliderText.text = ""+radius;
+            paintTraversable = traversableToggle.isOn;
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
             // mouse pressed and not clicking on UI element
@@ -238,8 +242,18 @@ namespace RGRPG.Controllers
                 paintSubType = Random.Range(0, terrainToSubCount[paintType]);
             }
             TerrainTile t = currentScene.GetTileAtIndices(tilePosition);
-            if(t != null)
-                currentScene.SetTile(tilePosition, new TerrainTile(paintType, t.Traversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
+            if (t != null)
+            {
+                if (paintType == TerrainType.NONE)
+                {
+                    // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
+                    currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.Elevation, t.ElevationRamp));
+                }
+                else
+                {
+                    currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp));
+                }
+            }
         }
 
         public void SetWidth(string stringWidth)
