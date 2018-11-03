@@ -35,10 +35,13 @@
         // Players
         CHARACTER_AUSTIN,
         CHARACTER_SETH,
+        CHARACTER_RIKA,
+        CHARACTER_MEREDITH,
 
         // Enemies
         CHARACTER_SQUIRREL,
         CHARACTER_GOOSE,
+        CHARACTER_BEE,
         CHARACTER_ZOMBIE,
     }
 

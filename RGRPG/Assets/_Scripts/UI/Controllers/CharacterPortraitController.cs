@@ -100,6 +100,10 @@ namespace RGRPG.Controllers
 
             Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_PORTRAIT, System.Enum.GetName(typeof(CharacterType), character.Type));
 
+
+            //TODO: apply an offset to the portrait image based on which character it is (when implementing GameInfos)
+
+
             portraitImageObject.sprite = image;
             //spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
         }

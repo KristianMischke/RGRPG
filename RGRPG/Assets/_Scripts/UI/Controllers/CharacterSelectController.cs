@@ -85,9 +85,10 @@ namespace RGRPG.Controllers
 
             //TODO: get list of all characters from system that Kristian is developing
             // for now, just use dummy list
-            Players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_SETH, "Seth", 100, 10, 10, new List<ICharacterAction>()));
-            Players.Add(new Character(CharacterClassType.CLASS_HEALER, CharacterType.CHARACTER_AUSTIN, "Austin", 100, 10, 10, new List<ICharacterAction>()));
-
+            Players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_SETH, "Seth", 65, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_HEALER, CharacterType.CHARACTER_AUSTIN, "Austin", 55, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_MAGE, CharacterType.CHARACTER_RIKA, "Rika", 40, 10, 10, new List<ICharacterAction>()));
+            Players.Add(new Character(CharacterClassType.CLASS_SUPPORT, CharacterType.CHARACTER_MEREDITH, "Meredith", 75, 10, 10, new List<ICharacterAction>()));
 
             for (int i = 0; i < Players.Count; i++)
             {

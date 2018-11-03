@@ -11,15 +11,7 @@
     <iHealth></iHealth>
     <iMagic></iMagic>
     <iDefense></iDefense>
-    <ActionList>
-      <Item>
-        <zType>NONE</zType>
-        <Name>Uh Oh</Name>
-        <Quips>
-          <Item>error</Item>
-        </Quips>
-      </Item>
-    </ActionList>
+    <ActionList></ActionList>
 	</Entry>
 	<Entry>
 		<zType>CHARACTER_AUSTIN</zType>
@@ -29,17 +21,13 @@
     <CombatSprite>Sprites/Pixel/austin_f</CombatSprite>
     <CharacterPortrait>Sprites/Not Pixel/Austin_Portrait</CharacterPortrait>
     <bEnemy/>
-    <iHealth>100</iHealth>
+    <iHealth>55</iHealth>
     <iMagic>80</iMagic>
-    <iDefense>40</iDefense>
+    <iDefense>25</iDefense>
     <ActionList>
-      <Item>
-        <zType>HEAL_ACTION</zType>
-        <Name>Self Heal</Name>
-        <Quips>
-          <Item>heal me</Item>
-        </Quips>
-      </Item>
+      <Item>ACTION_AUSTIN_SELF_HEAL</Item>
+      <Item>ACTION_AUSTIN_ALLY_HEAL</Item>
+      <Item>ACTION_AUSTIN_GROUP_HEAL</Item>
     </ActionList>
 	</Entry>
   <Entry>
@@ -50,10 +38,14 @@
     <CombatSprite>Sprites/Pixel/seth_f</CombatSprite>
     <CharacterPortrait>Sprites/Not Pixel/Seth_Portrait</CharacterPortrait>
     <bEnemy/>
-    <iHealth>100</iHealth>
-    <iMagic>90</iMagic>
+    <iHealth>65</iHealth>
+    <iMagic>25</iMagic>
     <iDefense>40</iDefense>
-    <ActionList></ActionList>
+    <ActionList>
+      <Item>ACTION_SETH_COUNTER</Item>
+      <Item>ACTION_SETH_CHARGE</Item>
+      <Item>ACTION_SETH_SHINING_BLADE</Item>
+    </ActionList>
   </Entry>
   <Entry>
     <zType>CHARACTER_RIKA</zType>
@@ -63,10 +55,14 @@
     <CombatSprite></CombatSprite>
     <CharacterPortrait></CharacterPortrait>
     <bEnemy/>
-    <iHealth>100</iHealth>
-    <iMagic>90</iMagic>
-    <iDefense>40</iDefense>
-    <ActionList></ActionList>
+    <iHealth>40</iHealth>
+    <iMagic>60</iMagic>
+    <iDefense>20</iDefense>
+    <ActionList>
+      <Item>ACTION_RIKA_LIFE_DRAIN</Item>
+      <Item>ACTION_RIKA_EMBER</Item>
+      <Item>ACTION_RIKA_NECROMANCER</Item>
+    </ActionList>
   </Entry>
   <Entry>
     <zType>CHARACTER_MEREDITH</zType>
@@ -76,18 +72,22 @@
     <CombatSprite></CombatSprite>
     <CharacterPortrait></CharacterPortrait>
     <bEnemy/>
-    <iHealth>100</iHealth>
-    <iMagic>90</iMagic>
-    <iDefense>40</iDefense>
-    <ActionList></ActionList>
+    <iHealth>75</iHealth>
+    <iMagic>50</iMagic>
+    <iDefense>60</iDefense>
+    <ActionList>
+      <Item>ACTION_MEREDITH_ALL_YOU_GOT</Item>
+      <Item>ACTION_MEREDITH_ON_YOUR_TOES</Item>
+      <Item>ACTION_MEREDITH_UP_THE_PACE </Item>
+    </ActionList>
   </Entry>
 	<Entry>
 		<zType>CHARACTER_SQUIRREL</zType>
-    <Class>CLASS_ATTACKER</Class>
+    <Class>NONE</Class>
     <Name>Plump Squirrel</Name>
     <OverworldSheet>Sprites/Pixel/squirrel</OverworldSheet>
     <CombatSprite>Sprites/Not Pixel/squirrel colored</CombatSprite>
-    <CharacterPortrait></CharacterPortrait>
+    <CharacterPortrait>Sprites/Not Pixel/squirrel colored</CharacterPortrait>
     <bEnemy>1</bEnemy>
     <iHealth>50</iHealth>
     <iMagic>30</iMagic>
@@ -96,15 +96,41 @@
 	</Entry>
 	<Entry>
 		<zType>CHARACTER_GOOSE</zType>
-    <Class>CLASS_ATTACKER</Class>
+    <Class>NONE</Class>
     <Name>Demon Goose</Name>
     <OverworldSheet>Sprites/Pixel/goose</OverworldSheet>
     <CombatSprite>Sprites/Not Pixel/goose colored</CombatSprite>
-    <CharacterPortrait></CharacterPortrait>
+    <CharacterPortrait>Sprites/Not Pixel/goose colored</CharacterPortrait>
     <bEnemy>1</bEnemy>
     <iHealth>60</iHealth>
     <iMagic>40</iMagic>
     <iDefense>50</iDefense>
     <ActionList></ActionList>
 	</Entry>
+  <Entry>
+    <zType>CHARACTER_BEE</zType>
+    <Class>NONE</Class>
+    <Name>Chick'fil'B</Name>
+    <OverworldSheet>Sprites/troll</OverworldSheet>
+    <CombatSprite>Sprites/Not Pixel/Bee_colored</CombatSprite>
+    <CharacterPortrait>Sprites/Not Pixel/Bee_colored</CharacterPortrait>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_ZOMBIE</zType>
+    <Class>NONE</Class>
+    <Name>Caffinated Student</Name>
+    <OverworldSheet>Sprites/troll</OverworldSheet>
+    <CombatSprite>Sprites/Not Pixel/Sleep-Deprived_Student_colored</CombatSprite>
+    <CharacterPortrait>Sprites/Not Pixel/Sleep-Deprived_Student_colored</CharacterPortrait>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+  </Entry>
 </Assets>

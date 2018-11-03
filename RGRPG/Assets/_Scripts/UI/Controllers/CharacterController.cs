@@ -92,6 +92,9 @@ namespace RGRPG.Controllers
 
             spriteRenderer.sprite = image;
             spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
+
+            if (GameController.instance.IsInCombat())
+                spriteRenderer.transform.localScale *= 4;
         }
 
     }
