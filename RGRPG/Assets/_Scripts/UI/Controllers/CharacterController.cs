@@ -82,11 +82,11 @@ namespace RGRPG.Controllers
             Sprite image;
             if (GameController.instance.IsInCombat())
             {
-                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, System.Enum.GetName(typeof(CharacterType), character.Type));
+                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, character.Type);
             }
             else
             {
-                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, System.Enum.GetName(typeof(CharacterType), character.Type));
+                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, character.Type);
             }
             
 

@@ -57,6 +57,8 @@ namespace RGRPG.Core
     /// </remarks>
     public class Game
     {
+        protected GameInfos infos;
+
         protected GameState currentGameState = GameState.Starting;
 
         // scenes
@@ -80,6 +82,8 @@ namespace RGRPG.Core
         protected bool doNextCombatStep = false;
 
         // allows for public access, but not public assignment
+        public GameInfos Infos { get { return infos; } }
+
         public GameState CurrentGameState { get { return currentGameState; } }
         public CombatState CurrentCombatState { get { return currentCombatState; } }
         public Dictionary<string, WorldScene> Scenes { get { return scenes; } }
@@ -106,6 +110,8 @@ namespace RGRPG.Core
         /// </summary>
         private void Init()
         {
+            infos = new GameInfos();
+
             LoadScenes();
 
 
@@ -116,13 +122,13 @@ namespace RGRPG.Core
             // maybe the selected players should be passed in as parameters into this function (that might be good for when multiplayer comes around)
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_AUSTIN, "Player " + (i + 1), 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
+                players.Add(new Character(this, "CHARACTER_AUSTIN", new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
                 players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
             }
 
             // for now just add one enemy. TODO: spawn more
-            enemies.Add(new Enemy(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_SQUIRREL, new Vector2(15, 12), "Squirrel", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 25) }));
-            enemies.Add(new Enemy(CharacterClassType.CLASS_ATTACKER, CharacterType.CHARACTER_GOOSE, new Vector2(28, 28), "Evil Goose", 100, 0, 0, new List<ICharacterAction> { new AttackAction(10, 20) }));
+            enemies.Add(new Enemy(this, "CHARACTER_SQUIRREL", new Vector2(15, 12), new List<ICharacterAction> { new AttackAction(10, 25) }));
+            enemies.Add(new Enemy(this, "CHARACTER_GOOSE", new Vector2(28, 28), new List<ICharacterAction> { new AttackAction(10, 20) }));
 
             selectedCharacter = players[0];
 
@@ -139,7 +145,7 @@ namespace RGRPG.Core
 
             scenes = new Dictionary<string, WorldScene>();
 
-            TextAsset gameScenesXML = Resources.Load<TextAsset>(@"Data\GameScenes");
+            TextAsset gameScenesXML = Resources.Load<TextAsset>(@"Data\Infos\GameScenes");
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(gameScenesXML.text);
 
