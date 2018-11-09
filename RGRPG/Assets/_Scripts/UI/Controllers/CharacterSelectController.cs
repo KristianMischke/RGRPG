@@ -35,8 +35,8 @@ namespace RGRPG.Controllers
         {
 
             // TODO: run GameController simultaneously so that we don't have to load these assets
-            TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
-            SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
+            //TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
+            //SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
 
             SelectButton(0);
             LoadCharPortraits();
