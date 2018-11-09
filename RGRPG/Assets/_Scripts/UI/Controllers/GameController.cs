@@ -70,8 +70,9 @@ namespace RGRPG.Controllers
             TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
             SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
 
-            TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
-            SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
+            //TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\Infos\CharacterAssets");
+            //SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
+
 
             if (worldObjectContainer == null)
             {

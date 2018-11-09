@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Assets>
+<Root>
 	<Entry>
 		<zType>NONE</zType>
     <Class>NONE</Class>
     <Name>None</Name>
-    <OverworldSheet>Sprites/troll</OverworldSheet>
-    <CombatSprite>Sprites/troll</CombatSprite>
-    <CharacterPortrait>Sprites/troll</CharacterPortrait>
+    <zOverworldSheet>Sprites/troll</zOverworldSheet>
+    <zCombatSprite>Sprites/troll</zCombatSprite>
+    <zPortraitSprite>Sprites/troll</zPortraitSprite>
     <bEnemy/>
     <iHealth></iHealth>
     <iMagic></iMagic>
@@ -17,9 +17,9 @@
 		<zType>CHARACTER_AUSTIN</zType>
     <Class>CLASS_HEALER</Class>
     <Name>Austin</Name>
-		<OverworldSheet>Sprites/Pixel/austin_f</OverworldSheet>
-    <CombatSprite>Sprites/Pixel/austin_f</CombatSprite>
-    <CharacterPortrait>Sprites/Not Pixel/Austin_Portrait</CharacterPortrait>
+		<zOverworldSheet>Sprites/Pixel/austin_f</zOverworldSheet>
+    <zCombatSprite>Sprites/Pixel/austin_f</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Austin_Portrait</zPortraitSprite>
     <bEnemy/>
     <iHealth>55</iHealth>
     <iMagic>80</iMagic>
@@ -34,9 +34,9 @@
     <zType>CHARACTER_SETH</zType>
     <Class>CLASS_ATTACKER</Class>
     <Name>Seth</Name>
-    <OverworldSheet>Sprites/Pixel/seth_f</OverworldSheet>
-    <CombatSprite>Sprites/Pixel/seth_f</CombatSprite>
-    <CharacterPortrait>Sprites/Not Pixel/Seth_Portrait</CharacterPortrait>
+    <zOverworldSheet>Sprites/Pixel/seth_f</zOverworldSheet>
+    <zCombatSprite>Sprites/Pixel/seth_f</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Seth_Portrait</zPortraitSprite>
     <bEnemy/>
     <iHealth>65</iHealth>
     <iMagic>25</iMagic>
@@ -51,9 +51,9 @@
     <zType>CHARACTER_RIKA</zType>
     <Class>CLASS_MAGE</Class>
     <Name>Rika</Name>
-    <OverworldSheet></OverworldSheet>
-    <CombatSprite></CombatSprite>
-    <CharacterPortrait></CharacterPortrait>
+    <zOverworldSheet></zOverworldSheet>
+    <zCombatSprite></zCombatSprite>
+    <zPortraitSprite></zPortraitSprite>
     <bEnemy/>
     <iHealth>40</iHealth>
     <iMagic>60</iMagic>
@@ -68,9 +68,9 @@
     <zType>CHARACTER_MEREDITH</zType>
     <Class>CLASS_SUPPORT</Class>
     <Name>Meredith</Name>
-    <OverworldSheet></OverworldSheet>
-    <CombatSprite></CombatSprite>
-    <CharacterPortrait></CharacterPortrait>
+    <zOverworldSheet></zOverworldSheet>
+    <zCombatSprite></zCombatSprite>
+    <zPortraitSprite></zPortraitSprite>
     <bEnemy/>
     <iHealth>75</iHealth>
     <iMagic>50</iMagic>
@@ -85,9 +85,9 @@
 		<zType>CHARACTER_SQUIRREL</zType>
     <Class>NONE</Class>
     <Name>Plump Squirrel</Name>
-    <OverworldSheet>Sprites/Pixel/squirrel</OverworldSheet>
-    <CombatSprite>Sprites/Not Pixel/squirrel colored</CombatSprite>
-    <CharacterPortrait>Sprites/Not Pixel/squirrel colored</CharacterPortrait>
+    <zOverworldSheet>Sprites/Pixel/squirrel</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/squirrel colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/squirrel colored</zPortraitSprite>
     <bEnemy>1</bEnemy>
     <iHealth>50</iHealth>
     <iMagic>30</iMagic>
@@ -98,9 +98,9 @@
 		<zType>CHARACTER_GOOSE</zType>
     <Class>NONE</Class>
     <Name>Demon Goose</Name>
-    <OverworldSheet>Sprites/Pixel/goose</OverworldSheet>
-    <CombatSprite>Sprites/Not Pixel/goose colored</CombatSprite>
-    <CharacterPortrait>Sprites/Not Pixel/goose colored</CharacterPortrait>
+    <zOverworldSheet>Sprites/Pixel/goose</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/goose colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/goose colored</zPortraitSprite>
     <bEnemy>1</bEnemy>
     <iHealth>60</iHealth>
     <iMagic>40</iMagic>
@@ -111,9 +111,9 @@
     <zType>CHARACTER_BEE</zType>
     <Class>NONE</Class>
     <Name>Chick'fil'B</Name>
-    <OverworldSheet>Sprites/Not Pixel/Bee_colored</OverworldSheet>
-    <CombatSprite>Sprites/Not Pixel/Bee_colored</CombatSprite>
-    <CharacterPortrait>Sprites/Not Pixel/Bee_colored</CharacterPortrait>
+    <zOverworldSheet>Sprites/Not Pixel/Bee_colored</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Bee_colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Bee_colored</zPortraitSprite>
     <bEnemy>1</bEnemy>
     <iHealth>60</iHealth>
     <iMagic>40</iMagic>
@@ -124,13 +124,13 @@
     <zType>CHARACTER_ZOMBIE</zType>
     <Class>NONE</Class>
     <Name>Caffine-Dependent Student</Name>
-    <OverworldSheet>Sprites/Not Pixel/Sleep-Deprived_Student_colored</OverworldSheet>
-    <CombatSprite>Sprites/Not Pixel/Sleep-Deprived_Student_colored</CombatSprite>
-    <CharacterPortrait>Sprites/Not Pixel/Sleep-Deprived_Student_colored</CharacterPortrait>
+    <zOverworldSheet>Sprites/Not Pixel/Sleep-Deprived_Student_colored</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Sleep-Deprived_Student_colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Sleep-Deprived_Student_colored</zPortraitSprite>
     <bEnemy>1</bEnemy>
     <iHealth>60</iHealth>
     <iMagic>40</iMagic>
     <iDefense>50</iDefense>
     <ActionList></ActionList>
   </Entry>
-</Assets>
+</Root>

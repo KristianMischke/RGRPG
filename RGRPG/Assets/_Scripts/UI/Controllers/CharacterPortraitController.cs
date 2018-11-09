@@ -98,7 +98,7 @@ namespace RGRPG.Controllers
             if (character == null)
                 return;
 
-            Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_PORTRAIT, System.Enum.GetName(typeof(CharacterType), character.Type));
+            Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_PORTRAIT, character.Type);
 
 
             //TODO: apply an offset to the portrait image based on which character it is (when implementing GameInfos)
