@@ -1,4 +1,5 @@
-﻿namespace RGRPG.Core
+﻿
+namespace RGRPG.Core
 {
 
 
@@ -13,7 +14,8 @@
         TERRAIN_GRASS,
         TERRAIN_DIRT,
         TERRAIN_SIDEWALK,
-        TERRAIN_ROCK
+        TERRAIN_ROCK,
+        TERRAIN_BLACK
     }
 
 

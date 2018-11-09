@@ -30,4 +30,10 @@
 		<SpriteName/>
 		<bHasMultiple/>
 	</Entry>
+	<Entry>
+		<zType>TERRAIN_BLACK</zType>
+		<SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>black</SpriteName>
+		<bHasMultiple/>
+	</Entry>
 </Assets>
