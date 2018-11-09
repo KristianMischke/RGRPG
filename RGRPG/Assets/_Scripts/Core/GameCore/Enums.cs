@@ -17,7 +17,7 @@
     }
 
 
-    public enum CharacterClassType
+    /*public enum CharacterClassType
     {
         NONE = 0,
 
@@ -26,9 +26,9 @@
         CLASS_SUPPORT,
         CLASS_HEALER,
         CLASS_THEIF
-    }
+    }*/
 
-    public enum CharacterType
+    /*public enum CharacterType
     {
         NONE = 0,
 
@@ -43,7 +43,7 @@
         CHARACTER_GOOSE,
         CHARACTER_BEE,
         CHARACTER_ZOMBIE,
-    }
+    }*/
 
 
 

@@ -117,6 +117,21 @@ namespace RGRPG.Controllers
             LoadCharacterAssets(doc);
         }
 
+        public static void LoadAsset(AssetType assetType, string zType, string filepath, string spriteName = "", bool hasMultiple = false)
+        {
+            if (!assetDB.ContainsKey(assetType))
+            {
+                assetDB.Add(assetType, new Dictionary<string, AssetData>());
+            }
+            if (assetDB[assetType].ContainsKey(zType))
+            {
+                Debug.LogError("Already added sprite of type: " + assetType.ToString() + " : " + zType);
+            }
+
+            Sprite[] sheet = Resources.LoadAll<Sprite>(filepath);
+            assetDB[assetType][zType] = new AssetData(zType, filepath, spriteName, sheet, hasMultiple);
+        }
+
         public static void LoadCharacterAssets(XmlDocument doc)
         {
             XmlNode docElem = doc.DocumentElement;

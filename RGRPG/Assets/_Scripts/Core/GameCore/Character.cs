@@ -22,9 +22,8 @@ namespace RGRPG.Core
     /// </remarks>
     public class Character
     {
-        protected CharacterClassType classType;
-        protected CharacterType type;
-        protected string name;
+        protected InfoCharacter myInfo;
+        protected string zType;
 
         protected int health;
         protected int attack; //TODO: we need to consider how we are storing the attack (should it be in the character or the action or both?
@@ -36,9 +35,9 @@ namespace RGRPG.Core
 
         protected List<ICharacterAction> actions;
 
-        public CharacterClassType ClassType { get { return classType; } }
-        public CharacterType Type { get { return type; } }
-        public string Name { get { return name; } }
+        public string Type { get { return zType; } }
+        public string ClassType { get { return myInfo.Class; } }        
+        public string Name { get { return myInfo.Name; } }
         public int Health { get { return health; } }
         public int Attack { get { return attack; } }
         public int Defense { get { return defense; } }
@@ -49,15 +48,15 @@ namespace RGRPG.Core
 
         public Character() { }
 
-        public Character(CharacterClassType classType, CharacterType type, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Character(Game myGame, string zType, List<ICharacterAction> actions)
         {
-            this.classType = classType;
-            this.type = type;
-            this.name = name;
-            this.health = health;
-            this.attack = attack;
-            this.defense = defense;
-            this.actions = actions;
+            this.zType = zType;
+            this.myInfo = myGame.Infos.Get<InfoCharacter>(zType);
+            this.health = myInfo.Health;
+            //TODO deal with MP
+            this.defense = myInfo.Defence;
+            
+            this.actions = actions; //TODO: load actions from infos
         }
 
         public void Damage(int amount)
@@ -128,17 +127,18 @@ namespace RGRPG.Core
         protected float range = 5;
         protected float maxR = 7;
 
-        public Enemy(CharacterClassType classType, CharacterType type, Vector2 pos, string name, int health, int attack, int defense, List<ICharacterAction> actions)
+        public Enemy(Game myGame, string zType, Vector2 pos, List<ICharacterAction> actions)
         {
-            this.classType = classType;
-            this.type = type;
+            this.zType = zType;
+            this.myInfo = myGame.Infos.Get<InfoCharacter>(zType);
+            this.health = myInfo.Health;
+            //TODO deal with MP
+            this.defense = myInfo.Defence;
+
+            this.actions = actions; //TODO: load actions from infos
+            
             this.position = pos;
             this.fixedPosition = pos;
-            this.name = name;
-            this.health = health;
-            this.attack = attack;
-            this.defense = defense;
-            this.actions = actions;
         }
 
 

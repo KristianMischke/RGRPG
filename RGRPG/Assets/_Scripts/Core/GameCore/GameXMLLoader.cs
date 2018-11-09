@@ -146,6 +146,32 @@ namespace RGRPG.Core
         }
 
         /// <summary>
+        ///     Tries to read a list of values from the given xml tag within the given node
+        /// </summary>
+        /// <param name="node">The node to get the child value from</param>
+        /// <param name="zName">The name of the child node you're looking for</param>
+        /// <param name="value">The value of the child node you're looking for</param>
+        public static void ReadXMLStringList(XmlNode node, string zName, out List<string> value)
+        {
+            value = null;
+
+            XmlNode listRoot;
+            if (TryGetChild(node, zName, out listRoot))
+            {
+                value = new List<string>();
+
+                foreach(XmlNode child in listRoot.ChildNodes)
+                {
+                    if (child.Name == "Item")
+                    {
+                        string childValue = child.InnerText;
+                        value.Add(childValue);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         ///     Tries to read an Enum of type T value from the given xml tag within the given node
         /// </summary>
         /// <param name="node">The node to get the child value from</param>
