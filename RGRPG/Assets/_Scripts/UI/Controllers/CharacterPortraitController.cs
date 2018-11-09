@@ -105,6 +105,7 @@ namespace RGRPG.Controllers
 
 
             portraitImageObject.sprite = image;
+            portraitImageObject.transform.position += new Vector3(character.MyInfo.PortraitOffsetX, character.MyInfo.PortraitOffsetY);
             //spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
         }
     }

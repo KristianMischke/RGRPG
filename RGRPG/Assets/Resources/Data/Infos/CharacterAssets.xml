@@ -12,6 +12,8 @@
     <iMagic></iMagic>
     <iDefense></iDefense>
     <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
 	</Entry>
 	<Entry>
 		<zType>CHARACTER_AUSTIN</zType>
@@ -29,6 +31,8 @@
       <Item>ACTION_AUSTIN_ALLY_HEAL</Item>
       <Item>ACTION_AUSTIN_GROUP_HEAL</Item>
     </ActionList>
+    <portraitOffsetX>50</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
 	</Entry>
   <Entry>
     <zType>CHARACTER_SETH</zType>
@@ -46,6 +50,8 @@
       <Item>ACTION_SETH_CHARGE</Item>
       <Item>ACTION_SETH_SHINING_BLADE</Item>
     </ActionList>
+    <portraitOffsetX>120</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
   </Entry>
   <Entry>
     <zType>CHARACTER_RIKA</zType>
@@ -63,6 +69,8 @@
       <Item>ACTION_RIKA_EMBER</Item>
       <Item>ACTION_RIKA_NECROMANCER</Item>
     </ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
   </Entry>
   <Entry>
     <zType>CHARACTER_MEREDITH</zType>
@@ -80,6 +88,8 @@
       <Item>ACTION_MEREDITH_ON_YOUR_TOES</Item>
       <Item>ACTION_MEREDITH_UP_THE_PACE </Item>
     </ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
   </Entry>
 	<Entry>
 		<zType>CHARACTER_SQUIRREL</zType>
@@ -93,6 +103,8 @@
     <iMagic>30</iMagic>
     <iDefense>100</iDefense>
     <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
 	</Entry>
 	<Entry>
 		<zType>CHARACTER_GOOSE</zType>
@@ -106,6 +118,8 @@
     <iMagic>40</iMagic>
     <iDefense>50</iDefense>
     <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
 	</Entry>
   <Entry>
     <zType>CHARACTER_BEE</zType>
@@ -119,6 +133,8 @@
     <iMagic>40</iMagic>
     <iDefense>50</iDefense>
     <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
   </Entry>
   <Entry>
     <zType>CHARACTER_ZOMBIE</zType>
@@ -132,5 +148,7 @@
     <iMagic>40</iMagic>
     <iDefense>50</iDefense>
     <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
   </Entry>
 </Root>

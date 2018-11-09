@@ -34,7 +34,7 @@ namespace RGRPG.Core
         protected float radius = 0.5f;
 
         protected List<ICharacterAction> actions;
-
+        public InfoCharacter MyInfo { get {return myInfo;}}
         public string Type { get { return zType; } }
         public string ClassType { get { return myInfo.Class; } }        
         public string Name { get { return myInfo.Name; } }

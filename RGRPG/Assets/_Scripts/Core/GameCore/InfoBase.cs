@@ -32,6 +32,9 @@ namespace RGRPG.Core
         int iDefense;
         List<string> actionList;
 
+        float portraitOffsetX;
+        float portraitOffsetY;
+
         public string Class { get { return zClass; } }
         public string Name  { get { return zName; } }
         public bool IsEnemy { get { return bEnemy; } }
@@ -40,6 +43,8 @@ namespace RGRPG.Core
         public int Defence  { get { return iDefense; } }
         public List<string> ActionListTypes { get { return actionList; } }
 
+        public float PortraitOffsetX {get { return portraitOffsetX; }}
+        public float PortraitOffsetY{get { return portraitOffsetY; }}
         override public void LoadInfo(XmlNode node)
         {
             base.LoadInfo(node);
@@ -53,7 +58,9 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "iMagic",          out iMagic);
             GameXMLLoader.ReadXMLValue(node, "iDefense",        out iDefense);
             GameXMLLoader.ReadXMLStringList(node, "ActionList", out actionList);
-            
+            GameXMLLoader.ReadXMLValue(node, "portraitOffsetX",        out portraitOffsetX);
+            GameXMLLoader.ReadXMLValue(node, "portraitOffsetY",        out portraitOffsetY);
+
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD, zType, zOverworldSheet, "", true);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_COMBAT, zType, zCombatSprite);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_PORTRAIT, zType, zPortraitSprite);
