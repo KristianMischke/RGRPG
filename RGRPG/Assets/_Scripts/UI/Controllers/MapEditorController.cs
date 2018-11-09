@@ -99,7 +99,7 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
-            LoadScene(Application.dataPath + @"\Resources\Data\worldTest.xml"); //default scene for now
+            LoadScene(Application.dataPath + @"\Resources\Data\Scenes\worldTest.xml"); //default scene for now
 
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);
@@ -312,7 +312,7 @@ namespace RGRPG.Controllers
             filePathLabel.text = filepath;
 
             if(currentScene == null)
-                currentScene = new WorldScene(30, 30);
+                currentScene = new WorldScene(SceneType.NONE, "");
             currentScene.Load(filepath);
 
             if(worldSceneController != null)
