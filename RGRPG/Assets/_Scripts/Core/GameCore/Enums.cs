@@ -15,7 +15,8 @@ namespace RGRPG.Core
         TERRAIN_DIRT,
         TERRAIN_SIDEWALK,
         TERRAIN_ROCK,
-        TERRAIN_BLACK
+        TERRAIN_BLACK,
+        TERRAIN_DIRT_TOP
     }
 
 

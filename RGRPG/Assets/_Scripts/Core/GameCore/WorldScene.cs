@@ -73,6 +73,8 @@ namespace RGRPG.Core
                     GameXMLLoader.ReadXMLValue(tileNode, "Type", out type);
                     int subType;
                     GameXMLLoader.ReadXMLValue(tileNode, "SubType", out subType);
+                    TerrainType overlayType;
+                    GameXMLLoader.ReadXMLValue(tileNode, "OverlayType", out overlayType);
                     bool traversable;
                     GameXMLLoader.ReadXMLValue(tileNode, "Traversable", out traversable);
                     int elevation;
@@ -81,7 +83,7 @@ namespace RGRPG.Core
                     GameXMLLoader.ReadXMLValue(tileNode, "ElevationRamp", out elevationRamp);
                     bool isSpawn;
                     GameXMLLoader.ReadXMLValue(tileNode, "Spawn", out isSpawn);
-                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), subType, elevation, elevationRamp, isSpawn);
+                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), subType, overlayType ,elevation, elevationRamp, isSpawn);
 
                     j++;
                 }
@@ -118,6 +120,7 @@ namespace RGRPG.Core
                         GameXMLLoader.WriteXMLValue(writer, "Traversable", terrainTiles[i, j].Traversable);
                         GameXMLLoader.WriteXMLValue(writer, "Type", terrainTiles[i, j].Type.ToString());
                         GameXMLLoader.WriteXMLValue(writer, "SubType", terrainTiles[i, j].SubType.ToString());
+                        GameXMLLoader.WriteXMLValue(writer, "OverlayType", terrainTiles[i, j].OverlayType.ToString());
                         GameXMLLoader.WriteXMLValue(writer, "Spawn", terrainTiles[i, j].IsSpawn);
 
                         writer.WriteEndElement();

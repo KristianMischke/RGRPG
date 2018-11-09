@@ -36,4 +36,10 @@
     <SpriteName>black</SpriteName>
 		<bHasMultiple/>
 	</Entry>
+  <Entry>
+    <zType>TERRAIN_DIRT_TOP</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>dirt_top_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+  </Entry>
 </Assets>

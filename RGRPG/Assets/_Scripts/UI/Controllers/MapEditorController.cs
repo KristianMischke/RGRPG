@@ -53,6 +53,7 @@ namespace RGRPG.Controllers
         public TMP_Text sliderText;
 
         public Toggle traversableToggle;
+        public Toggle overlayToggle;
         public Toggle spawnToggle;
 
         // Prefabs
@@ -71,6 +72,7 @@ namespace RGRPG.Controllers
         //paint features
         static TerrainType paintType = TerrainType.NONE;
         static int paintSubType = 0;
+        static bool isPaintingOverlay = false;
         static bool paintTraversable = true;
         static bool paintSpawn = false;
         static bool randomPaint = false;
@@ -167,6 +169,7 @@ namespace RGRPG.Controllers
             radius = (int)radiusSlider.value;
             sliderText.text = ""+radius;
             paintTraversable = traversableToggle.isOn;
+            isPaintingOverlay = overlayToggle.isOn;
             paintSpawn = spawnToggle.isOn;
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
@@ -250,11 +253,18 @@ namespace RGRPG.Controllers
                 if (paintType == TerrainType.NONE)
                 {
                     // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
-                    currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.Elevation, t.ElevationRamp, paintSpawn));
+                    currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType,t.OverlayType ,t.Elevation, t.ElevationRamp, paintSpawn));
                 }
                 else
                 {
-                    currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                    if (isPaintingOverlay)
+                    {
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, paintSubType, paintType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                    }
+                    else
+                    {
+                        currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                    }
                 }
             }
         }
