@@ -12,6 +12,7 @@ namespace RGRPG.Core
     /// </remarks>
     public interface ICharacterAction
     {
+        List<Character> GetTargets();
         void SetTargets(List<Character> targets);
         void DoAction();
         int ManaCost();
@@ -26,6 +27,7 @@ namespace RGRPG.Core
     public class BeginTurnAction : ICharacterAction
     {
         public BeginTurnAction() { }
+        public List<Character> GetTargets() { return null; }
         public void SetTargets(List<Character> targets) { }
         public void DoAction() { }
 
@@ -42,6 +44,7 @@ namespace RGRPG.Core
     public class PassTurnAction : ICharacterAction
     {
         public PassTurnAction() { }
+        public List<Character> GetTargets() { return null; }
         public void SetTargets(List<Character> targets) { }
         public void DoAction() { }
 
@@ -67,6 +70,11 @@ namespace RGRPG.Core
         {
             this.damage = damage;
             this.manaCost = manaCost;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
         }
 
         public void SetTargets(List<Character> targets)
@@ -111,6 +119,11 @@ namespace RGRPG.Core
             this.manaCost = manaCost;
         }
 
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
         public void SetTargets(List<Character> targets)
         {
             this.targets = targets;
@@ -151,6 +164,11 @@ namespace RGRPG.Core
         {
             this.heal = heal;
             this.manaCost = manaCost;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
         }
 
         public void SetTargets(List<Character> targets)
