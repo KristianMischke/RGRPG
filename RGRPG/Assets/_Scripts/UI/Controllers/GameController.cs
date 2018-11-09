@@ -26,6 +26,7 @@ namespace RGRPG.Controllers
         public GameObject combatObjectContainer;
         public GameObject canvasObject;
         public GameObject playerHUDList;
+        public GameObject animationController;
 
         
         [HideInInspector]
@@ -46,6 +47,7 @@ namespace RGRPG.Controllers
         public GameObject worldSceneView;
         public GameObject characterView;
         public GameObject characterHUDView;
+
 
         // Data
         Game game;
@@ -70,8 +72,9 @@ namespace RGRPG.Controllers
             TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
             SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
 
-            TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
-            SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
+            //TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\Infos\CharacterAssets");
+            //SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
+
 
             if (worldObjectContainer == null)
             {
@@ -199,6 +202,19 @@ namespace RGRPG.Controllers
                         Marquee.instance.ResetTimer();
                         Marquee.instance.AddToMultiMessage(characterAction.first.Name + " does: " + characterAction.second.GetName());
                         Marquee.instance.StartTimer();
+
+
+                        // set up UI character controller
+                       
+
+                        //create action animation HUD controller, attach here, need an init function that takes in the Icharacteraction from characteraction.second
+                        //inside of this class, compare 
+                        //CharacterHUDController playerHUDController = playerHUDView.GetComponent<CharacterHUDController>();
+                        //playerHUDController.Init(characterAction.second);
+
+                        AnimationHUDController actionHUDController = animationController.GetComponent<AnimationHUDController>();
+                        actionHUDController.executeAction(characterAction.second);
+                        //TODO: //characterAction.second.GetType() == typeof(HealAction) <--- put this in the ActionAnimationHUDController to determine wich image to show
                     }
                 }
                 else

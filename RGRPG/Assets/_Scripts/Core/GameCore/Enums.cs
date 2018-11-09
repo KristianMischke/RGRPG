@@ -20,7 +20,7 @@ namespace RGRPG.Core
     }
 
 
-    public enum CharacterClassType
+    /*public enum CharacterClassType
     {
         NONE = 0,
 
@@ -29,9 +29,9 @@ namespace RGRPG.Core
         CLASS_SUPPORT,
         CLASS_HEALER,
         CLASS_THEIF
-    }
+    }*/
 
-    public enum CharacterType
+    /*public enum CharacterType
     {
         NONE = 0,
 
@@ -46,7 +46,7 @@ namespace RGRPG.Core
         CHARACTER_GOOSE,
         CHARACTER_BEE,
         CHARACTER_ZOMBIE,
-    }
+    }*/
 
 
 

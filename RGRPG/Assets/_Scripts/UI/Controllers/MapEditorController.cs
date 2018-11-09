@@ -240,6 +240,15 @@ namespace RGRPG.Controllers
             }
             
         }
+        /* private void FillBucket(TerrainTile t){
+            TerrainTile tileNow = t;
+            if () {
+
+            }
+            else {
+
+            }
+        } */
 
         private void PaintSingleTile(Vector2Int tilePosition)
         {
@@ -248,6 +257,7 @@ namespace RGRPG.Controllers
                 paintSubType = Random.Range(0, terrainToSubCount[paintType]);
             }
             TerrainTile t = currentScene.GetTileAtIndices(tilePosition);
+
             if (t != null)
             {
                 if (paintType == TerrainType.NONE)
@@ -301,7 +311,7 @@ namespace RGRPG.Controllers
             EventSystem.current.SetSelectedGameObject(null);
             string extensions = "xml";
 
-            string path = FileBrowser.SaveFile("Save Map File", "", "MyMap", extensions); // TODO: copy file name of map here
+            string path = FileBrowser.SaveFile("Save Map File", "", "MyMap", extensions);
 
             if(!string.IsNullOrEmpty(path))
                 filePathLabel.text = path;
