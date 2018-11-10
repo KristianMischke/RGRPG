@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Assets>
 	<Entry>
-		<zType>NONE</zType>
+		<zType>TERRAIN_NONE</zType>
 		<SpriteSheet>Sprites/troll</SpriteSheet>
 		<SpriteName/>
 		<bHasMultiple/>

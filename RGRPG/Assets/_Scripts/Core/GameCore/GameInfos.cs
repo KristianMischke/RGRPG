@@ -49,6 +49,8 @@ namespace RGRPG.Core
         {
             infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoCharacters" + ".xml", LoadNodes<InfoCharacter>));
             infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoActions" + ".xml", LoadNodes<InfoAction>));
+            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoScenes" + ".xml", LoadNodes<InfoScene>));
+            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoTerrain" + ".xml", LoadNodes<InfoTerrain>));
         }
 
         void LoadInfos()
@@ -95,7 +97,7 @@ namespace RGRPG.Core
                 throw new System.Exception("Cannot find the entry " + zType + " as " + typeof(T).ToString());
         }
 
-        public List<T> GetAll<T>() where T : InfoBase
+        public List<T> GetAll<T>(bool ignoreNone = true) where T : InfoBase
         {
             List<T> list = new List<T>();
 
@@ -103,7 +105,7 @@ namespace RGRPG.Core
 
             foreach (InfoBase i in baseList)
             {
-                if(i.ZType != "NONE")
+                if(!i.ZType.Contains("NONE"))
                     list.Add(i as T);
             }
 

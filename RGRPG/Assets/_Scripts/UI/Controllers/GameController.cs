@@ -93,12 +93,6 @@ namespace RGRPG.Controllers
         {
             DiscordController.Instance.InOverworld();
 
-            TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
-            SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
-
-            
-
-
             if (worldObjectContainer == null)
             {
                 worldObjectContainer = GameObject.Find("WorldObjects");

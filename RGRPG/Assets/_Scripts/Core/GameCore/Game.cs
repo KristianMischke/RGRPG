@@ -134,34 +134,17 @@ namespace RGRPG.Core
         /// </summary>
         private void LoadScenes()
         {
-            //TODO: KRISTIAN: this is where GameInfos will come in handy, for keeping track of all the loaded scenes and their types
-
             scenes = new Dictionary<string, WorldScene>();
 
-            TextAsset gameScenesXML = Resources.Load<TextAsset>(@"Data\Infos\InfoScenes");
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(gameScenesXML.text);
-
-            XmlNode docElem = doc.DocumentElement;
-
-            foreach (XmlNode sceneNode in docElem.ChildNodes)
+            foreach (InfoScene infoScene in infos.GetAll<InfoScene>())
             {
-                string type;
-                GameXMLLoader.ReadXMLValue(sceneNode, "zType", out type);
-                string name;
-                GameXMLLoader.ReadXMLValue(sceneNode, "Name", out name);
-                string filePath;
-                GameXMLLoader.ReadXMLValue(sceneNode, "File", out filePath);
-                bool firstScene;
-                GameXMLLoader.ReadXMLValue(sceneNode, "bFirst", out firstScene);
-
-                WorldScene newScene = new WorldScene(SceneType.NONE, name); // <-- needs to be changed to actually take a type (when GameInfos is implemented)
-                TextAsset sceneXML = Resources.Load<TextAsset>(filePath);
+                WorldScene newScene = new WorldScene(infos.Get<InfoScene>(infoScene.ZType));
+                TextAsset sceneXML = Resources.Load<TextAsset>(infoScene.FilePath);
                 newScene.LoadXml(sceneXML.text);
 
-                scenes.Add(type, newScene);
+                scenes.Add(infoScene.ZType, newScene);
 
-                if (firstScene || scenes.Count == 1)
+                if (infoScene.IsFirst || scenes.Count == 1)
                 {
                     startScene = newScene;
                     currentScene = newScene;

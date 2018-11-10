@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Assets>
   <Entry>
+    <zType>SCENE_NONE</zType>
+    <Name>None</Name>
+    <File/>
+    <bFirst/>
+  </Entry>
+  <Entry>
     <zType>SCENE_START</zType>
     <Name>This is the beginning scene</Name>
     <File>Data/Scenes/worldTest</File>

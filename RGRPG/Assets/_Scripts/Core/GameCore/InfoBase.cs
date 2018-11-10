@@ -86,4 +86,45 @@ namespace RGRPG.Core
         }
     }
 
+    public class InfoScene : InfoBase
+    {
+        string zName;
+        string filePath;
+        bool isFirst;
+
+        public string Name { get { return zName; } }
+        public string FilePath { get { return filePath; } }
+        public bool IsFirst { get { return isFirst; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "Name", out zName);
+            GameXMLLoader.ReadXMLValue(node, "File", out filePath);
+            GameXMLLoader.ReadXMLValue(node, "bFirst", out isFirst);
+        }
+    }
+
+    public class InfoTerrain : InfoBase
+    {
+        string spriteSheet;
+        string spriteName;
+        bool hasMultiple;
+
+        public string SpriteSheet { get { return spriteSheet; } }
+        public string SpriteName { get { return spriteName; } }
+        public bool HasMultiple { get { return hasMultiple; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "SpriteSheet", out spriteSheet);
+            GameXMLLoader.ReadXMLValue(node, "SpriteName", out spriteName);
+            GameXMLLoader.ReadXMLValue(node, "bHasMultiple", out hasMultiple);
+
+            //load asset
+            SpriteManager.LoadAsset(SpriteManager.AssetType.TERRAIN, zType, spriteSheet, SpriteName, hasMultiple);
+        }
+    }
+
 }

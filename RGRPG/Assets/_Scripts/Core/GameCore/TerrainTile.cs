@@ -9,9 +9,9 @@ namespace RGRPG.Core
     /// </summary>
     public class TerrainTile
     {
-        protected TerrainType type;
+        protected string type;
         protected int subType;
-        protected TerrainType overlayType;
+        protected string overlayType;
         protected bool traversable; // can this tile be traversed by characters?
         protected int elevation; //TODO: do we need this? terrain that is a different "height", like cliffs and plateaus
         protected bool elevationRamp; //TODO: if we decide to have elevation, then this will determine a tile that ramps up/down elevation
@@ -20,34 +20,32 @@ namespace RGRPG.Core
         protected bool isSpawn;
 
         
-        public TerrainType Type { get { return type; } }
+        public string Type { get { return type; } }
         public int SubType { get { return subType; } }
-        public TerrainType OverlayType { get { return overlayType; } }
+        public string OverlayType { get { return overlayType; } }
         public bool Traversable { get { return traversable; } }
         public int Elevation { get { return elevation; } }
         public bool ElevationRamp { get { return elevationRamp; } }
         public Vector2Int Position { get { return position; } }
         public bool IsSpawn { get { return isSpawn; } }
 
-        public TerrainTile(TerrainType type, bool traversable, Vector2Int position, int subType = 0, TerrainType overlayType = TerrainType.NONE, int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
+        public TerrainTile(string type, bool traversable, Vector2Int position, int subType = 0, string overlayType = "TERRAIN_NONE", int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
+        {
+            Init(type, traversable, position, subType, overlayType, elevation, elevationRamp, isSpawn);
+        }
+
+        public TerrainTile(string type, bool traversable, int positionX, int positionY, int subType = 0, string overlayType = "TERRAIN_NONE", int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
+        {
+            Init(type, traversable, new Vector2Int(positionX, positionY), subType, overlayType, elevation, elevationRamp, isSpawn);
+        }
+
+        private void Init(string type, bool traversable, Vector2Int position, int subType, string overlayType, int elevation, bool elevationRamp, bool isSpawn)
         {
             this.type = type;
             this.subType = subType;
             this.overlayType = overlayType;
             this.traversable = traversable;
             this.position = position;
-            this.elevation = elevation;
-            this.elevationRamp = elevationRamp;
-            this.isSpawn = isSpawn;
-        }
-
-        public TerrainTile(TerrainType type, bool traversable, int positionX, int positionY, int subType = 0, TerrainType overlayType = TerrainType.NONE, int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
-        {
-            this.type = type;
-            this.subType = subType;
-            this.overlayType = overlayType;
-            this.traversable = traversable;
-            this.position = new Vector2Int(positionX, positionY);
             this.elevation = elevation;
             this.elevationRamp = elevationRamp;
             this.isSpawn = isSpawn;

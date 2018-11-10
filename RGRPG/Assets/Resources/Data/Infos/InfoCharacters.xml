@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Root>
 	<Entry>
-		<zType>NONE</zType>
-    <Class>NONE</Class>
+		<zType>CHARACTER_NONE</zType>
+    <Class>CLASS_NONE</Class>
     <Name>None</Name>
     <zOverworldSheet>Sprites/troll</zOverworldSheet>
     <zCombatSprite>Sprites/troll</zCombatSprite>

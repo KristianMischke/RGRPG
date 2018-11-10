@@ -55,9 +55,9 @@ namespace RGRPG.Controllers
         /// </summary>
         public void SetSprite()
         {
-            spriteRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, System.Enum.GetName(typeof(TerrainType), prevTileReference.Type), prevTileReference.SubType);
-            overlayRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, System.Enum.GetName(typeof(TerrainType), prevTileReference.OverlayType));
-            overlayRenderer.gameObject.SetActive(prevTileReference.OverlayType != TerrainType.NONE);
+            spriteRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, prevTileReference.Type, prevTileReference.SubType);
+            overlayRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, prevTileReference.OverlayType);
+            overlayRenderer.gameObject.SetActive(prevTileReference.OverlayType != "TERRAIN_NONE");
             borderRenderer.gameObject.SetActive(!prevTileReference.Traversable && MapEditorController.instance != null);
             spawnRenderer.gameObject.SetActive(prevTileReference.IsSpawn && MapEditorController.instance != null);
         }

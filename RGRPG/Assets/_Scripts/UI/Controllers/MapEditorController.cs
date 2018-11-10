@@ -17,13 +17,13 @@ namespace RGRPG.Controllers
 
         private class TerrainButtonActionData
         {
-            public TerrainType type;
+            public string type;
             public int subType;
             public bool random;
 
             public UnityAction action;
 
-            public TerrainButtonActionData(TerrainType t, int i, bool random = false)
+            public TerrainButtonActionData(string t, int i, bool random = false)
             {
                 type = t;
                 subType = i;
@@ -63,14 +63,14 @@ namespace RGRPG.Controllers
         // Data
         SceneController worldSceneController;
 
-        Dictionary<TerrainType, int> terrainToSubCount = new Dictionary<TerrainType, int>();
+        Dictionary<string, int> terrainToSubCount = new Dictionary<string, int>();
 
         //the "cursor" position in map coordinates
         private Vector2Int thisPosition = NEGATIVE_ONE;
         private Vector2Int lastPosition = NEGATIVE_ONE;
 
         //paint features
-        static TerrainType paintType = TerrainType.NONE;
+        static string paintType = "TERRAIN_NONE";
         static int paintSubType = 0;
         static bool isPaintingOverlay = false;
         static bool paintTraversable = true;
@@ -79,6 +79,7 @@ namespace RGRPG.Controllers
         static int radius;
 
         WorldScene currentScene;
+        GameInfos infos;
 
 
         // see https://answers.unity.com/questions/1079066/how-can-i-prevent-my-raycast-from-passing-through.html
@@ -98,8 +99,7 @@ namespace RGRPG.Controllers
                 worldObjectContainer = GameObject.Find("WorldObjects");
             }
 
-            TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
-            SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
+            infos = new GameInfos();
 
             if (canvasObject == null)
             {
@@ -123,10 +123,10 @@ namespace RGRPG.Controllers
             heightInput.onEndEdit.AddListener(SetHeight);
 
             // add buttons for the different tile types and sub types
-            foreach (TerrainType t in System.Enum.GetValues(typeof(TerrainType)))
+            foreach (InfoTerrain infoTerrain in infos.GetAll<InfoTerrain>(false))
             {
-                string tileTypeName = System.Enum.GetName(typeof(TerrainType), t);
-                Sprite[] tileSubTypes = SpriteManager.getSpriteSheet(SpriteManager.AssetType.TERRAIN, tileTypeName);
+                string tileType = infoTerrain.ZType;
+                Sprite[] tileSubTypes = SpriteManager.getSpriteSheet(SpriteManager.AssetType.TERRAIN, tileType);
                 for (int i = 0; i < tileSubTypes.Length; i++)
                 {
                     GameObject terrainButtonObj = Instantiate(terrainTileButton, terrainTileButtonContainer.transform);
@@ -134,14 +134,14 @@ namespace RGRPG.Controllers
                     terrainButton.image.sprite = tileSubTypes[i];
 
                     Text buttonText = terrainButtonObj.GetComponentInChildren<Text>();
-                    buttonText.text = tileTypeName + " " + i;
+                    buttonText.text = tileType + " " + i;
 
-                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(t, i);
+                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(tileType, i);
                     terrainButton.onClick.AddListener(buttonAction.action);
 
-                    if (!terrainToSubCount.ContainsKey(t))
+                    if (!terrainToSubCount.ContainsKey(tileType))
                     {
-                        terrainToSubCount.Add(t, tileSubTypes.Length);
+                        terrainToSubCount.Add(tileType, tileSubTypes.Length);
                     }
                 }
                 if (tileSubTypes.Length > 1)
@@ -151,9 +151,9 @@ namespace RGRPG.Controllers
                     terrainButton.image.sprite = tileSubTypes[0]; //TODO: maybe figure out how to cycle through the images to show that it will be random
 
                     Text buttonText = terrainButtonObj.GetComponentInChildren<Text>();
-                    buttonText.text = tileTypeName + " RANDOM";
+                    buttonText.text = tileType + " RANDOM";
 
-                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(t, 0, true);
+                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(tileType, 0, true);
                     terrainButton.onClick.AddListener(buttonAction.action);
                 }
             }
@@ -260,7 +260,7 @@ namespace RGRPG.Controllers
 
             if (t != null)
             {
-                if (paintType == TerrainType.NONE)
+                if (paintType == "TERRAIN_NONE")
                 {
                     // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
                     currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType,t.OverlayType ,t.Elevation, t.ElevationRamp, paintSpawn));
@@ -299,7 +299,7 @@ namespace RGRPG.Controllers
             worldSceneController.ResetScene();
         }
 
-        public static void SetPaintType(TerrainType type, int subType = 0, bool random = false)
+        public static void SetPaintType(string type, int subType = 0, bool random = false)
         {
             paintType = type;
             paintSubType = subType;
@@ -339,8 +339,10 @@ namespace RGRPG.Controllers
 
             filePathLabel.text = filepath;
 
-            if(currentScene == null)
-                currentScene = new WorldScene(SceneType.NONE, "");
+            if (currentScene == null)
+            {
+                currentScene = new WorldScene(infos.Get<InfoScene>("SCENE_NONE"));
+            }
             currentScene.Load(filepath);
 
             if(worldSceneController != null)

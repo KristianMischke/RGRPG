@@ -14,19 +14,21 @@ namespace RGRPG.Core
     /// </remarks>
     public class WorldScene
     {
-        protected SceneType type;
-        protected string name;
+        protected InfoScene myInfo;
         protected int width, height;
         protected TerrainTile[,] terrainTiles;
+
+        public InfoScene MyInfo { get { return myInfo; } }
+        public string ZType { get { return myInfo.ZType; } }
+
 
         public int Width { get { return width; } }
         public int Height { get { return height; } }
         public TerrainTile[,] TerrainTiles { get { return terrainTiles; } }
 
-        public WorldScene(SceneType type, string name)
+        public WorldScene(InfoScene myInfo)
         {
-            this.type = type;
-            this.name = name;
+            this.myInfo = myInfo;
         }
 
         /// <summary>
@@ -69,11 +71,11 @@ namespace RGRPG.Core
                 int j = 0;
                 foreach (XmlNode tileNode in terrainRowNode.ChildNodes)
                 {
-                    TerrainType type;
+                    string type;
                     GameXMLLoader.ReadXMLValue(tileNode, "Type", out type);
                     int subType;
                     GameXMLLoader.ReadXMLValue(tileNode, "SubType", out subType);
-                    TerrainType overlayType;
+                    string overlayType;
                     GameXMLLoader.ReadXMLValue(tileNode, "OverlayType", out overlayType);
                     bool traversable;
                     GameXMLLoader.ReadXMLValue(tileNode, "Traversable", out traversable);
@@ -303,7 +305,7 @@ namespace RGRPG.Core
                         else
                         {
                             // otherwise create a new tile
-                            newTiles[x, y] = new TerrainTile(TerrainType.TERRAIN_GRASS, true, x, y);
+                            newTiles[x, y] = new TerrainTile("TERRAIN_GRASS", true, x, y);
                         }
                     }
                 }
