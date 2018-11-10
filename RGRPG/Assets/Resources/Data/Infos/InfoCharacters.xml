@@ -140,9 +140,9 @@
     <zType>CHARACTER_ZOMBIE</zType>
     <Class>NONE</Class>
     <Name>Caffine-Dependent Student</Name>
-    <zOverworldSheet>Sprites/Not Pixel/Sleep-Deprived_Student_colored</zOverworldSheet>
-    <zCombatSprite>Sprites/Not Pixel/Sleep-Deprived_Student_colored</zCombatSprite>
-    <zPortraitSprite>Sprites/Not Pixel/Sleep-Deprived_Student_colored</zPortraitSprite>
+    <zOverworldSheet>Sprites/Not Pixel/Sleep-Deprived Student colored</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Sleep-Deprived Student colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Sleep-Deprived Student colored</zPortraitSprite>
     <bEnemy>1</bEnemy>
     <iHealth>60</iHealth>
     <iMagic>40</iMagic>

@@ -127,10 +127,10 @@ namespace RGRPG.Core
         protected float range = 5;
         protected float maxR = 7;
 
-        public Enemy(Game myGame, string zType, Vector2 pos, List<ICharacterAction> actions)
+        public Enemy(Game myGame, InfoCharacter myInfo, Vector2 pos, List<ICharacterAction> actions)
         {
-            this.zType = zType;
-            this.myInfo = myGame.Infos.Get<InfoCharacter>(zType);
+            this.myInfo = myInfo;
+            this.zType = myInfo.ZType;
             this.health = myInfo.Health;
             //TODO deal with MP
             this.defense = myInfo.Defence;

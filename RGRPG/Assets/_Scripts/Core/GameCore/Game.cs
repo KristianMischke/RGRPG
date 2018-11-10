@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 using RGRPG.Core.Generics;
@@ -118,11 +119,11 @@ namespace RGRPG.Core
             players = new List<Character>();
             enemies = new List<Enemy>();
 
-            
-
-            // for now just add one enemy. TODO: spawn more
-            enemies.Add(new Enemy(this, "CHARACTER_SQUIRREL", new Vector2(15, 12), new List<ICharacterAction> { new AttackAction(10, 25) }));
-            enemies.Add(new Enemy(this, "CHARACTER_GOOSE", new Vector2(28, 28), new List<ICharacterAction> { new AttackAction(10, 20) }));
+            // for now just add all the enemies
+            foreach (InfoCharacter enemy in infos.GetAll<InfoCharacter>().FindAll(x => x.IsEnemy).ToList())
+            {
+                enemies.Add(new Enemy(this, enemy, new Vector2(Random.Range(0, currentScene.Width), Random.Range(0, currentScene.Height)), new List<ICharacterAction> { new AttackAction(10, 25) }));
+            }
 
             currentGameState = GameState.WorldMovement;
             currentCombatState = CombatState.NONE;
@@ -137,7 +138,7 @@ namespace RGRPG.Core
 
             scenes = new Dictionary<string, WorldScene>();
 
-            TextAsset gameScenesXML = Resources.Load<TextAsset>(@"Data\Infos\GameScenes");
+            TextAsset gameScenesXML = Resources.Load<TextAsset>(@"Data\Infos\InfoScenes");
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(gameScenesXML.text);
 

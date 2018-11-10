@@ -122,7 +122,7 @@ namespace RGRPG.Controllers
 
             if (animationController == null)
             {
-                animationController = FindObjectOfType<AnimationHUDController>().gameObject;
+                animationController = canvasObject; //TEMP!!!!!!!!!!  //FindObjectOfType<AnimationHUDController>().gameObject;
             }
 
             playerControllers = new List<CharacterController>();

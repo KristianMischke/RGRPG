@@ -47,8 +47,8 @@ namespace RGRPG.Core
 
         void InitInfoFiles()
         {
-            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "CharacterAssets" + ".xml", LoadNodes<InfoCharacter>));
-            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "ActionInfos" + ".xml", LoadNodes<InfoAction>));
+            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoCharacters" + ".xml", LoadNodes<InfoCharacter>));
+            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoActions" + ".xml", LoadNodes<InfoAction>));
         }
 
         void LoadInfos()
