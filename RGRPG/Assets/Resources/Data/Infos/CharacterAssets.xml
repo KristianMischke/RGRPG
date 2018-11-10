@@ -59,7 +59,7 @@
     <Name>Rika</Name>
     <zOverworldSheet></zOverworldSheet>
     <zCombatSprite></zCombatSprite>
-    <zPortraitSprite></zPortraitSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Rika_Portrait</zPortraitSprite>
     <bEnemy/>
     <iHealth>40</iHealth>
     <iMagic>60</iMagic>
@@ -69,7 +69,7 @@
       <Item>ACTION_RIKA_EMBER</Item>
       <Item>ACTION_RIKA_NECROMANCER</Item>
     </ActionList>
-    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetX>250</portraitOffsetX>
     <portraitOffsetY>0</portraitOffsetY>
   </Entry>
   <Entry>
