@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Assets>
+<Root>
 	<Entry>
 		<zType>TERRAIN_NONE</zType>
 		<SpriteSheet>Sprites/troll</SpriteSheet>
 		<SpriteName/>
 		<bHasMultiple/>
 	</Entry>
-	<Entry>
-		<zType>TERRAIN_GRASS</zType>
-		<SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
-		<SpriteName>grass_@</SpriteName>
-		<bHasMultiple>1</bHasMultiple>
-	</Entry>	
-	<Entry>
+  <Entry>
+    <zType>TERRAIN_GRASS</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>grass_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_TALL_GRASS</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>tall_grass_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+  </Entry>
+  <Entry>
 		<zType>TERRAIN_SIDEWALK</zType>
 		<SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
 		<SpriteName>sidewalk_@</SpriteName>
@@ -24,6 +30,18 @@
 		<SpriteName>dirt_@</SpriteName>
     <bHasMultiple>1</bHasMultiple>
 	</Entry>
+  <Entry>
+    <zType>TERRAIN_BRICK</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>brick_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_ROOF_TOP</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>roof_top_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+  </Entry>
 	<Entry>
 		<zType>TERRAIN_ROCK</zType>
 		<SpriteSheet>Sprites/stone</SpriteSheet>
@@ -36,10 +54,4 @@
     <SpriteName>black</SpriteName>
 		<bHasMultiple/>
 	</Entry>
-  <Entry>
-    <zType>TERRAIN_DIRT_TOP</zType>
-    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
-    <SpriteName>dirt_top_@</SpriteName>
-    <bHasMultiple>1</bHasMultiple>
-  </Entry>
-</Assets>
+</Root>

@@ -18,6 +18,8 @@ namespace RGRPG.Controllers
         public SpriteRenderer borderRenderer; //traversibley/n
         public SpriteRenderer spawnRenderer; //spawn square
         public SpriteRenderer overlayRenderer;
+        public SpriteRenderer propRenderer;
+        public SpriteRenderer entityRenderer;
         // Prefabs
 
         // Data
@@ -56,10 +58,19 @@ namespace RGRPG.Controllers
         public void SetSprite()
         {
             spriteRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, prevTileReference.Type, prevTileReference.SubType);
-            overlayRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, prevTileReference.OverlayType);
-            overlayRenderer.gameObject.SetActive(prevTileReference.OverlayType != "TERRAIN_NONE");
+
+            overlayRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, prevTileReference.OverlayType, prevTileReference.OverlaySubType);
+            overlayRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.OverlayType) && !prevTileReference.OverlayType.Contains("NONE"));
+
+            propRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.TERRAIN, prevTileReference.PropType);
+
+            entityRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, prevTileReference.EntityType);
+            propRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.PropType) && !prevTileReference.PropType.Contains("NONE"));
+
+            // map editor only
             borderRenderer.gameObject.SetActive(!prevTileReference.Traversable && MapEditorController.instance != null);
             spawnRenderer.gameObject.SetActive(prevTileReference.IsSpawn && MapEditorController.instance != null);
+            entityRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.EntityType) && !prevTileReference.EntityType.Contains("NONE") && MapEditorController.instance != null);
         }
     }
 }

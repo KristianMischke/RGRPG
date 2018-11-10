@@ -111,19 +111,12 @@ namespace RGRPG.Core
         /// </summary>
         private void Init()
         {
-            infos = new GameInfos();
-
-            LoadScenes();
-
-
             players = new List<Character>();
             enemies = new List<Enemy>();
 
-            // for now just add all the enemies
-            foreach (InfoCharacter enemy in infos.GetAll<InfoCharacter>().FindAll(x => x.IsEnemy).ToList())
-            {
-                enemies.Add(new Enemy(this, enemy, new Vector2(Random.Range(0, currentScene.Width), Random.Range(0, currentScene.Height)), new List<ICharacterAction> { new AttackAction(10, 25) }));
-            }
+            infos = new GameInfos();
+
+            LoadScenes();
 
             currentGameState = GameState.WorldMovement;
             currentCombatState = CombatState.NONE;
@@ -141,6 +134,7 @@ namespace RGRPG.Core
                 WorldScene newScene = new WorldScene(infos.Get<InfoScene>(infoScene.ZType));
                 TextAsset sceneXML = Resources.Load<TextAsset>(infoScene.FilePath);
                 newScene.LoadXml(sceneXML.text);
+                newScene.SpawnEntities(this, enemies);
 
                 scenes.Add(infoScene.ZType, newScene);
 

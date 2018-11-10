@@ -15,7 +15,7 @@ namespace RGRPG.Controllers
     public class MapEditorController : MonoBehaviour
     {
 
-        private class TerrainButtonActionData
+        private class ButtonActionData
         {
             public string type;
             public int subType;
@@ -23,7 +23,7 @@ namespace RGRPG.Controllers
 
             public UnityAction action;
 
-            public TerrainButtonActionData(string t, int i, bool random = false)
+            public ButtonActionData(string t, int i, bool random = false)
             {
                 type = t;
                 subType = i;
@@ -38,10 +38,21 @@ namespace RGRPG.Controllers
         public static readonly Vector2Int NEGATIVE_ONE = Vector2Int.one * -1;
         public static MapEditorController instance;
 
+        readonly string[] PAINT_TYPE_OPTIONS = new string[]
+        {
+            "TERRAIN",
+            "TERRAIN_OVERLAYS",
+            "TERRAIN_PROPS",
+            "ENTITIES"
+        };
+
         // Scene Object References
         public GameObject worldObjectContainer;
         public GameObject canvasObject;
         public GameObject terrainTileButtonContainer;
+        public GameObject terrainOverlayButtonContainer;
+        public GameObject terrainPropButtonContainer;
+        public GameObject entityButtonContainer;
 
         public InputField widthInput;
         public InputField heightInput;
@@ -55,6 +66,8 @@ namespace RGRPG.Controllers
         public Toggle traversableToggle;
         public Toggle overlayToggle;
         public Toggle spawnToggle;
+
+        public Dropdown paintKindDropdown;
 
         // Prefabs
         public GameObject worldSceneView;
@@ -122,44 +135,68 @@ namespace RGRPG.Controllers
             widthInput.onEndEdit.AddListener(SetWidth);
             heightInput.onEndEdit.AddListener(SetHeight);
 
-            // add buttons for the different tile types and sub types
-            foreach (InfoTerrain infoTerrain in infos.GetAll<InfoTerrain>(false))
-            {
-                string tileType = infoTerrain.ZType;
-                Sprite[] tileSubTypes = SpriteManager.getSpriteSheet(SpriteManager.AssetType.TERRAIN, tileType);
-                for (int i = 0; i < tileSubTypes.Length; i++)
-                {
-                    GameObject terrainButtonObj = Instantiate(terrainTileButton, terrainTileButtonContainer.transform);
-                    Button terrainButton = terrainButtonObj.GetComponentInChildren<Button>();
-                    terrainButton.image.sprite = tileSubTypes[i];
+            // setup dropdown options
+            paintKindDropdown.options = new List<Dropdown.OptionData>();
+            foreach(string option in PAINT_TYPE_OPTIONS)
+                paintKindDropdown.options.Add(new Dropdown.OptionData(option));
+            
+            paintKindDropdown.onValueChanged.AddListener(SetButtonContainer);
+            paintKindDropdown.value = 0;
+            SetButtonContainer(0);
 
-                    Text buttonText = terrainButtonObj.GetComponentInChildren<Text>();
-                    buttonText.text = tileType + " " + i;
-
-                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(tileType, i);
-                    terrainButton.onClick.AddListener(buttonAction.action);
-
-                    if (!terrainToSubCount.ContainsKey(tileType))
-                    {
-                        terrainToSubCount.Add(tileType, tileSubTypes.Length);
-                    }
-                }
-                if (tileSubTypes.Length > 1)
-                {
-                    GameObject terrainButtonObj = Instantiate(terrainTileButton, terrainTileButtonContainer.transform);
-                    Button terrainButton = terrainButtonObj.GetComponentInChildren<Button>();
-                    terrainButton.image.sprite = tileSubTypes[0]; //TODO: maybe figure out how to cycle through the images to show that it will be random
-
-                    Text buttonText = terrainButtonObj.GetComponentInChildren<Text>();
-                    buttonText.text = tileType + " RANDOM";
-
-                    TerrainButtonActionData buttonAction = new TerrainButtonActionData(tileType, 0, true);
-                    terrainButton.onClick.AddListener(buttonAction.action);
-                }
-            }
+            CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainTileButtonContainer, infos.GetAll<InfoTerrain>(false));
+            CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainOverlayButtonContainer, infos.GetAll<InfoTerrainOverlay>(false));
+            CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainPropButtonContainer, infos.GetAll<InfoTerrainProp>(false));
+            CreatePanelButtons(SpriteManager.AssetType.CHARACTER_WORLD, entityButtonContainer, infos.GetAll<InfoCharacter>(false).FindAll(x => x.IsEnemy));
 
             saveButton.onClick.AddListener(Save);
             loadButton.onClick.AddListener(Load);
+        }
+
+
+        void CreatePanelButtons<T>(SpriteManager.AssetType assetType, GameObject container, List<T> infosList) where T : InfoBase
+        {
+            // add buttons for the different tile types and sub types
+            foreach (T thisInfo in infosList)
+            {
+                string zType = thisInfo.ZType;
+                Sprite[] tileSubTypes = SpriteManager.getSpriteSheet(assetType, zType);
+                for (int i = 0; i < tileSubTypes.Length; i++)
+                {
+                    CreateButton(container, tileSubTypes[i], zType + " " + i, zType, i);
+                    
+                    if (!terrainToSubCount.ContainsKey(zType))
+                    {
+                        terrainToSubCount.Add(zType, tileSubTypes.Length);
+                    }
+                }
+
+                bool doRandomButton = false;
+                if (thisInfo as InfoTerrain != null)
+                    doRandomButton = (thisInfo as InfoTerrain).HasMultiple;
+                if (thisInfo as InfoTerrainOverlay != null)
+                    doRandomButton = (thisInfo as InfoTerrainOverlay).HasMultiple;
+                if (thisInfo as InfoTerrainProp != null)
+                    doRandomButton = (thisInfo as InfoTerrainProp).HasMultiple;
+
+                if (doRandomButton)
+                {
+                    CreateButton(container, tileSubTypes[0], zType + " RANDOM", zType, 0, true); //TODO: maybe figure out how to cycle through the images to show that it will be random
+                }
+            }
+        }
+
+        void CreateButton(GameObject container, Sprite sprite, string buttonString, string zType, int subType, bool random = false)
+        {
+            GameObject ButtonObj = Instantiate(terrainTileButton, container.transform);
+            Button button = ButtonObj.GetComponentInChildren<Button>();
+            button.image.sprite = sprite;
+
+            Text buttonText = ButtonObj.GetComponentInChildren<Text>();
+            buttonText.text = buttonString;
+
+            ButtonActionData buttonAction = new ButtonActionData(zType, subType, random);
+            button.onClick.AddListener(buttonAction.action);
         }
 
         void Update()
@@ -171,6 +208,7 @@ namespace RGRPG.Controllers
             paintTraversable = traversableToggle.isOn;
             isPaintingOverlay = overlayToggle.isOn;
             paintSpawn = spawnToggle.isOn;
+
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
             // mouse pressed and not clicking on UI element
@@ -260,21 +298,29 @@ namespace RGRPG.Controllers
 
             if (t != null)
             {
-                if (paintType == "TERRAIN_NONE")
+
+                switch (paintKindDropdown.value)
                 {
-                    // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
-                    currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType,t.OverlayType ,t.Elevation, t.ElevationRamp, paintSpawn));
-                }
-                else
-                {
-                    if (isPaintingOverlay)
-                    {
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, paintSubType, paintType, t.Elevation, t.ElevationRamp, t.IsSpawn));
-                    }
-                    else
-                    {
-                        currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.Elevation, t.ElevationRamp, t.IsSpawn));
-                    }
+                    case 0: // TERRAIN
+                        if (paintType.Contains("NONE"))
+                        {
+                            // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
+                            currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, paintSpawn));
+                        }
+                        else
+                        {
+                            currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                        }
+                        break;
+                    case 1: // OVERLAYs
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, paintType, paintSubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                        break;
+                    case 2: // PROPS
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, paintType, t.EntityType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                        break;
+                    case 3: // ENTITIES
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, true, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, paintType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                        break;
                 }
             }
         }
@@ -284,7 +330,7 @@ namespace RGRPG.Controllers
             int width = currentScene.Width;
             int.TryParse(stringWidth, out width);
 
-            currentScene.AdjustDimensions(width, currentScene.Height);
+            currentScene.AdjustDimensions(width, currentScene.Height, paintKindDropdown.value == 0 ? paintType : "TERRAIN_NONE");
             Debug.Log(currentScene.Width);
             worldSceneController.ResetScene();
         }
@@ -294,7 +340,7 @@ namespace RGRPG.Controllers
             int height = currentScene.Height;
 			int.TryParse(stringHeight, out height);
 
-            currentScene.AdjustDimensions(currentScene.Width, height);
+            currentScene.AdjustDimensions(currentScene.Width, height, paintKindDropdown.value == 0 ? paintType : "TERRAIN_NONE");
             Debug.Log(currentScene.Height);
             worldSceneController.ResetScene();
         }
@@ -304,6 +350,32 @@ namespace RGRPG.Controllers
             paintType = type;
             paintSubType = subType;
             randomPaint = random;
+        }
+
+        public void SetButtonContainer(int choice)
+        {
+            paintType = "NONE";
+            paintSubType = 0;
+
+            terrainTileButtonContainer.SetActive(false);
+            terrainOverlayButtonContainer.SetActive(false);
+            terrainPropButtonContainer.SetActive(false);
+            entityButtonContainer.SetActive(false);
+            switch (choice)
+            {
+                case 0:
+                    terrainTileButtonContainer.SetActive(true);
+                    break;
+                case 1:
+                    terrainOverlayButtonContainer.SetActive(true);
+                    break;
+                case 2:
+                    terrainPropButtonContainer.SetActive(true);
+                    break;
+                case 3:
+                    entityButtonContainer.SetActive(true);
+                    break;
+            }
         }
 
         public void Save()

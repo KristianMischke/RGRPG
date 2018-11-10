@@ -4,6 +4,8 @@ using System.Xml;
 using System;
 using UnityEngine;
 
+using RGRPG.Controllers;
+
 namespace RGRPG.Core
 {
 
@@ -47,10 +49,13 @@ namespace RGRPG.Core
 
         void InitInfoFiles()
         {
+            SpriteManager.LoadAsset(SpriteManager.AssetType.NONE, "NONE", "Sprites/troll");
             infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoCharacters" + ".xml", LoadNodes<InfoCharacter>));
             infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoActions" + ".xml", LoadNodes<InfoAction>));
             infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoScenes" + ".xml", LoadNodes<InfoScene>));
             infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoTerrain" + ".xml", LoadNodes<InfoTerrain>));
+            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoTerrainOverlays" + ".xml", LoadNodes<InfoTerrainOverlay>));
+            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "InfoTerrainProps" + ".xml", LoadNodes<InfoTerrainProp>));
         }
 
         void LoadInfos()
@@ -105,7 +110,7 @@ namespace RGRPG.Core
 
             foreach (InfoBase i in baseList)
             {
-                if(!i.ZType.Contains("NONE"))
+                if(!(i.ZType.Contains("NONE") && ignoreNone))
                     list.Add(i as T);
             }
 

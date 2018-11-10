@@ -107,6 +107,12 @@ namespace RGRPG.Controllers
 
         public static Sprite getSprite(AssetType type, string zType, int i = 0)
         {
+            if (string.IsNullOrEmpty(zType))
+            {
+                type = AssetType.NONE;
+                zType = "NONE";
+            }
+
             AssetData data = getAssetData(type, zType);
 
             if (string.IsNullOrEmpty(data.spriteName))

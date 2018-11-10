@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Entry>
+    <zType>TERRAIN_OVERLAY_NONE</zType>
+    <SpriteSheet>Sprites/troll</SpriteSheet>
+    <SpriteName/>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_OVERLAY_DIRT</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>dirt_top_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+  </Entry>
+</Root>

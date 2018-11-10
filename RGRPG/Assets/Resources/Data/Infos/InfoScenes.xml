@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Assets>
+<Root>
   <Entry>
     <zType>SCENE_NONE</zType>
     <Name>None</Name>
@@ -18,4 +18,4 @@
     <File>Data/Scenes/myMap</File>
     <bFirst/>
   </Entry>
-</Assets>
+</Root>

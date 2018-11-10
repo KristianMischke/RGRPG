@@ -61,7 +61,7 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "portraitOffsetY", out portraitOffsetY);
 
             // load assets
-            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD, zType, zOverworldSheet, "", true);
+            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD, zType, zOverworldSheet);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_COMBAT, zType, zCombatSprite);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_PORTRAIT, zType, zPortraitSprite);
         }
@@ -126,5 +126,50 @@ namespace RGRPG.Core
             SpriteManager.LoadAsset(SpriteManager.AssetType.TERRAIN, zType, spriteSheet, SpriteName, hasMultiple);
         }
     }
+
+    public class InfoTerrainOverlay : InfoBase
+    {
+        string spriteSheet;
+        string spriteName;
+        bool hasMultiple;
+
+        public string SpriteSheet { get { return spriteSheet; } }
+        public string SpriteName { get { return spriteName; } }
+        public bool HasMultiple { get { return hasMultiple; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "SpriteSheet", out spriteSheet);
+            GameXMLLoader.ReadXMLValue(node, "SpriteName", out spriteName);
+            GameXMLLoader.ReadXMLValue(node, "bHasMultiple", out hasMultiple);
+
+            //load asset
+            SpriteManager.LoadAsset(SpriteManager.AssetType.TERRAIN, zType, spriteSheet, SpriteName, hasMultiple);
+        }
+    }
+
+    public class InfoTerrainProp : InfoBase
+    {
+        string spriteSheet;
+        string spriteName;
+        bool hasMultiple;
+
+        public string SpriteSheet { get { return spriteSheet; } }
+        public string SpriteName { get { return spriteName; } }
+        public bool HasMultiple { get { return hasMultiple; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "SpriteSheet", out spriteSheet);
+            GameXMLLoader.ReadXMLValue(node, "SpriteName", out spriteName);
+            GameXMLLoader.ReadXMLValue(node, "bHasMultiple", out hasMultiple);
+
+            //load asset
+            SpriteManager.LoadAsset(SpriteManager.AssetType.TERRAIN, zType, spriteSheet, SpriteName, hasMultiple);
+        }
+    }
+
 
 }

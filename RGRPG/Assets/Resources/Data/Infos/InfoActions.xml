@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Assets>
+<Root>
 	<Entry>
 		<zType>ACTION_RIKA_LIFE_DRAIN</zType>
     <Name>Life Drain</Name>
@@ -96,4 +96,4 @@
       <Item></Item>
     </Quips>
   </Entry>
-</Assets>
+</Root>
