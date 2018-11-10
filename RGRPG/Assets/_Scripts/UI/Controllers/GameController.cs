@@ -50,10 +50,27 @@ namespace RGRPG.Controllers
 
 
         // Data
+        bool inGame = false;
+        bool firstGameUpdate = true;
         Game game;
+
+        public GameInfos Infos { get { return game.Infos; } }
 
         private void OnEnable()
         {
+            // This class acts kind of like a singleton
+            if (instance != null)
+            {
+                Destroy(this.gameObject); // an instance of GameController already exists, so we should not make a second one
+                return;   
+            }
+
+
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+
+            game = new Game();
+
             // if the discord controller hasn't been initialized, then initialize it
             if (DiscordController.Instance == null)
             {
@@ -64,10 +81,17 @@ namespace RGRPG.Controllers
 
         void Start()
         {
-            DiscordController.Instance.InOverworld();
 
-            if (instance == null)
-                instance = this;
+            if (SceneManager.GetActiveScene().name == "GameScene")
+            {
+                SelectCharacters(Infos.GetAll<InfoCharacter>().FindAll(x => !x.IsEnemy).ToArray());
+            }
+
+        }
+
+        private void InitOverworld()
+        {
+            DiscordController.Instance.InOverworld();
 
             TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
             SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
@@ -91,10 +115,18 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
+            if (playerHUDList == null)
+            {
+                playerHUDList = GameObject.Find("PlayerList");
+            }
+
+            if (animationController == null)
+            {
+                animationController = FindObjectOfType<AnimationHUDController>().gameObject;
+            }
+
             playerControllers = new List<CharacterController>();
             enemyControllers = new List<CharacterController>();
-
-            game = new Game();
 
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);
@@ -111,7 +143,7 @@ namespace RGRPG.Controllers
                 GameObject playerView = Instantiate(characterView);
                 playerView.transform.SetParent(worldObjectContainer.transform);
                 playerView.name = playerData.Name;
-                
+
                 CharacterController playerController = playerView.GetComponent<CharacterController>();
                 playerController.SetCharacter(playerData);
                 playerControllers.Add(playerController);
@@ -146,10 +178,23 @@ namespace RGRPG.Controllers
             combatEnemiesController[0].transform.SetParent(combatObjectContainer.transform);
         }
 
+        public void SelectCharacters(InfoCharacter[] playerSelections)
+        {
+            game.SelectCharacters(playerSelections);
+            inGame = true;
+        }
+
         void Update()
         {
-            if (game == null)
+            if (game == null || !inGame)
                 return;
+
+            if (firstGameUpdate)
+            {
+                //if (SceneManager.GetActiveScene().name == "GameScene")
+                    InitOverworld();
+                firstGameUpdate = false;
+            }
 
             game.GameLoop();
 

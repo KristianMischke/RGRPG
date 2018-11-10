@@ -17,18 +17,18 @@ namespace RGRPG.Core
         class InfoFile
         {
             XmlDocument document;
-            Action<XmlDocument, Dictionary<string, InfoBase>> loadNodes;
+            Action<XmlDocument, Dictionary<string, InfoBase>, Dictionary<Type, List<InfoBase>>> loadNodes;
 
-            public InfoFile(string path, Action<XmlDocument, Dictionary<string, InfoBase>> LoadNodes)
+            public InfoFile(string path, Action<XmlDocument, Dictionary<string, InfoBase>, Dictionary<Type, List<InfoBase>>> LoadNodes)
             {
                 document = new XmlDocument();
                 document.Load(path);
                 loadNodes = LoadNodes;
             }
 
-            public void LoadNodes(Dictionary<string, InfoBase> infoObjects)
+            public void LoadNodes(Dictionary<string, InfoBase> infoObjects, Dictionary<Type, List<InfoBase>> infoObjectsList)
             {
-                loadNodes(document, infoObjects);
+                loadNodes(document, infoObjects, infoObjectsList);
             }
 
         }
@@ -36,6 +36,7 @@ namespace RGRPG.Core
         List<InfoFile> infoFiles = new List<InfoFile>();
 
         Dictionary<string, InfoBase> infoObjects = new Dictionary<string, InfoBase>();
+        Dictionary<Type, List<InfoBase>> infoObjectsList = new Dictionary<Type, List<InfoBase>>();
 
         public GameInfos()
         {
@@ -47,17 +48,18 @@ namespace RGRPG.Core
         void InitInfoFiles()
         {
             infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "CharacterAssets" + ".xml", LoadNodes<InfoCharacter>));
+            infoFiles.Add(new InfoFile(Application.dataPath.ToString() + INFO_PATH + "ActionInfos" + ".xml", LoadNodes<InfoAction>));
         }
 
         void LoadInfos()
         {
             foreach (InfoFile infoFile in infoFiles)
             {
-                infoFile.LoadNodes(infoObjects);
+                infoFile.LoadNodes(infoObjects, infoObjectsList);
             }
         }
 
-        void LoadNodes<T>(XmlDocument document, Dictionary<string, InfoBase> infoObjects) where T : InfoBase, new()
+        void LoadNodes<T>(XmlDocument document, Dictionary<string, InfoBase> infoObjects, Dictionary<Type, List<InfoBase>> infoObjectsList) where T : InfoBase, new()
         {
             foreach (XmlNode entry in document.DocumentElement.ChildNodes)
             {
@@ -67,7 +69,16 @@ namespace RGRPG.Core
                 if (infoObjects.ContainsKey(obj.ZType))
                     Debug.LogError("Info type " + obj.ZType + " already exists!");
                 else
+                {
                     infoObjects[obj.ZType] = obj;
+
+                    if (!infoObjectsList.ContainsKey(typeof(T)))
+                    {
+                        infoObjectsList[typeof(T)] = new List<InfoBase>();
+                    }
+
+                    infoObjectsList[typeof(T)].Add(obj);
+                }
             }
         }
 
@@ -82,6 +93,21 @@ namespace RGRPG.Core
                 return targetType;
             else
                 throw new System.Exception("Cannot find the entry " + zType + " as " + typeof(T).ToString());
+        }
+
+        public List<T> GetAll<T>() where T : InfoBase
+        {
+            List<T> list = new List<T>();
+
+            List<InfoBase> baseList = infoObjectsList[typeof(T)];
+
+            foreach (InfoBase i in baseList)
+            {
+                if(i.ZType != "NONE")
+                    list.Add(i as T);
+            }
+
+            return list;
         }
 
     }

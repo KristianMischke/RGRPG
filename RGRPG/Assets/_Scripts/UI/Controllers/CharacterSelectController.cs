@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using RGRPG.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,19 +14,13 @@ namespace RGRPG.Controllers
     {
         public GameObject CharPrefab;
 
-        public List<Character> Players = new List<Character>();
+        public List<InfoCharacter> Players = new List<InfoCharacter>();
         public List<CharacterPortraitController> CharPortraits = new List<CharacterPortraitController>();
 
-        private Character[] PlayerSelected = new Character[4];
+        private InfoCharacter[] PlayerSelected = new InfoCharacter[4];
         private int CurrentUser = 0;
 
-
         public Button[] ButtonArray = new Button[4];
-        //public Button ButtonOne;
-        //public Button ButtonTwo;
-        //public Button ButtonThree;
-        //public Button ButtonFour;
-
         public Button SubmitButton;
 
 
@@ -33,10 +28,6 @@ namespace RGRPG.Controllers
         // Use this for initialization
         void Start()
         {
-
-            // TODO: run GameController simultaneously so that we don't have to load these assets
-            //TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\CharacterAssets");
-            //SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
 
             SelectButton(0);
             LoadCharPortraits();
@@ -68,7 +59,10 @@ namespace RGRPG.Controllers
                     }
                 }
                 if (isValid)
+                {
+                    GameController.instance.SelectCharacters(PlayerSelected);
                     SceneManager.LoadScene("GameScene");
+                }
             });
 
         }
@@ -83,17 +77,15 @@ namespace RGRPG.Controllers
         public void LoadCharPortraits()
         {
 
-            //TODO: get list of all characters from system that Kristian is developing
-            // for now, just use dummy list
-            Game tempTest = new Game();
-            Players.Add(new Character(tempTest, "CHARACTER_SETH", new List<ICharacterAction>()));
-            Players.Add(new Character(tempTest, "CHARACTER_AUSTIN", new List<ICharacterAction>()));
-            Players.Add(new Character(tempTest, "CHARACTER_RIKA", new List<ICharacterAction>()));
-            Players.Add(new Character(tempTest, "CHARACTER_MEREDITH", new List<ICharacterAction>()));
+            // load non-enemy characters from the game infos
+            GameController.instance.Infos.GetAll<InfoCharacter>().FindAll(x => !x.IsEnemy).ToList()
+            .ForEach(x => {
+                Players.Add(x);
+            });
 
             for (int i = 0; i < Players.Count; i++)
             {
-                Character c = Players[i];
+                InfoCharacter c = Players[i];
                 GameObject playerHUDView = Instantiate(CharPrefab);
                 playerHUDView.transform.SetParent(this.transform);
                
@@ -121,43 +113,16 @@ namespace RGRPG.Controllers
 
         }
 
-        public void SelectPortrait()
-        {
-
-        }
-
         public void SelectButton(int i)
         {
             for (int j = 0; j < ButtonArray.Length; j++)
             {
                 Button b = ButtonArray[j];
 
-                if (j == i) {
-
-
-
-                    //ColorBlock selectedBlock = new ColorBlock();
-                    //selectedBlock.normalColor = new Color(1f, 0.92f, 0.016f, 1f);
-                    //selectedBlock.pressedColor = new Color(1f, 0.92f, 0.016f, 1f);
-                    //selectedBlock.disabledColor = new Color(1f, 0.92f, 0.016f, 1f);
-                    //selectedBlock.highlightedColor = new Color(1f, 0.92f, 0.016f, 1f);
-                    //b.colors = selectedBlock;
+                if (j == i)
                     b.GetComponent<Image>().color = Color.yellow;
-
-                } else {
-
-
-
-                    //ColorBlock selectedBlock = new ColorBlock();
-                    //selectedBlock.normalColor = new Color(1f, 1f, 1f, 1f);
-                    //selectedBlock.pressedColor = new Color(1f, 1f, 1f, 1f);
-                    //selectedBlock.disabledColor = new Color(1f, 1f, 1f, 1f);
-                    //selectedBlock.highlightedColor = new Color(1f, 1f, 1f, 1f);
-                    //b.colors = selectedBlock;
+                else
                     b.GetComponent<Image>().color = Color.white;
-
-                }
-
             }
         }
 

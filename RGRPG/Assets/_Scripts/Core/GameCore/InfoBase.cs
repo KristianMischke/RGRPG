@@ -31,7 +31,6 @@ namespace RGRPG.Core
         int iMagic;
         int iDefense;
         List<string> actionList;
-
         float portraitOffsetX;
         float portraitOffsetY;
 
@@ -43,8 +42,8 @@ namespace RGRPG.Core
         public int Defence  { get { return iDefense; } }
         public List<string> ActionListTypes { get { return actionList; } }
 
-        public float PortraitOffsetX {get { return portraitOffsetX; }}
-        public float PortraitOffsetY{get { return portraitOffsetY; }}
+        public float PortraitOffsetX { get { return portraitOffsetX; } }
+        public float PortraitOffsetY { get { return portraitOffsetY; } }
         override public void LoadInfo(XmlNode node)
         {
             base.LoadInfo(node);
@@ -58,12 +57,32 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "iMagic",          out iMagic);
             GameXMLLoader.ReadXMLValue(node, "iDefense",        out iDefense);
             GameXMLLoader.ReadXMLStringList(node, "ActionList", out actionList);
-            GameXMLLoader.ReadXMLValue(node, "portraitOffsetX",        out portraitOffsetX);
-            GameXMLLoader.ReadXMLValue(node, "portraitOffsetY",        out portraitOffsetY);
+            GameXMLLoader.ReadXMLValue(node, "portraitOffsetX", out portraitOffsetX);
+            GameXMLLoader.ReadXMLValue(node, "portraitOffsetY", out portraitOffsetY);
 
+            // load assets
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD, zType, zOverworldSheet, "", true);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_COMBAT, zType, zCombatSprite);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_PORTRAIT, zType, zPortraitSprite);
+        }
+    }
+
+    public class InfoAction : InfoBase
+    {
+        string zName;
+        string zDescription;
+        List<string> quipList;
+
+        public string Name { get { return zName; } }
+        public string Description { get { return zDescription; } }
+        public List<string> Quips { get { return quipList; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "Name", out zName);
+            GameXMLLoader.ReadXMLValue(node, "Description", out zDescription);
+            GameXMLLoader.ReadXMLStringList(node, "Quips", out quipList);
         }
     }
 

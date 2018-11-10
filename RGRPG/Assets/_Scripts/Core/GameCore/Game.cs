@@ -118,19 +118,11 @@ namespace RGRPG.Core
             players = new List<Character>();
             enemies = new List<Enemy>();
 
-            // for now just create 4 players with equal stats, TODO: players need to be loaded from XML then selected by the user(s)...
-            // maybe the selected players should be passed in as parameters into this function (that might be good for when multiplayer comes around)
-            for (int i = 0; i < 4; i++)
-            {
-                players.Add(new Character(this, "CHARACTER_AUSTIN", new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
-                players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
-            }
+            
 
             // for now just add one enemy. TODO: spawn more
             enemies.Add(new Enemy(this, "CHARACTER_SQUIRREL", new Vector2(15, 12), new List<ICharacterAction> { new AttackAction(10, 25) }));
             enemies.Add(new Enemy(this, "CHARACTER_GOOSE", new Vector2(28, 28), new List<ICharacterAction> { new AttackAction(10, 20) }));
-
-            selectedCharacter = players[0];
 
             currentGameState = GameState.WorldMovement;
             currentCombatState = CombatState.NONE;
@@ -174,6 +166,21 @@ namespace RGRPG.Core
                     currentScene = newScene;
                 }
             }
+        }
+
+        /// <summary>
+        ///     Initializes the players' characters
+        /// </summary>
+        /// <param name="playerSelections">The indexed infos for teh selected characters. Assumes length is 4</param>
+        public void SelectCharacters(InfoCharacter[] playerSelections)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                players.Add(new Character(this, playerSelections[i], new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
+                players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1); //TODO spawn to spawn tiles
+            }
+
+            selectedCharacter = players[0];
         }
 
         /// <summary>

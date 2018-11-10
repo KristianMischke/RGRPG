@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4987847550316300}
   - component: {fileID: 114143378573784632}
   - component: {fileID: 114284002306489388}
+  - component: {fileID: 114121011415106282}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: GameController
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114121011415106282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675081235607040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec6182d0002e43e38e8d7b5f5f1cf52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114143378573784632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,6 +68,7 @@ MonoBehaviour:
   combatObjectContainer: {fileID: 0}
   canvasObject: {fileID: 0}
   playerHUDList: {fileID: 0}
+  animationController: {fileID: 0}
   playerControllers: []
   playerHUDControllers: []
   enemyControllers: []
