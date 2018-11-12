@@ -11,6 +11,7 @@ public class SpriteAutoSizer : MonoBehaviour
 
     private Sprite mySprite;
     public bool changed = true;
+    public bool maintainAspectRatio;
 
     // behaviours that have a sprite
     private SpriteRenderer worldRenderer;
@@ -35,7 +36,15 @@ public class SpriteAutoSizer : MonoBehaviour
 
         if (mySprite != null && changed)
         {
-            transform.localScale = new Vector2(actualSize.x / mySprite.bounds.size.x, actualSize.y / mySprite.bounds.size.y);
+            if (maintainAspectRatio)
+            {
+                float aspect = Mathf.Min(actualSize.x, actualSize.y) / mySprite.bounds.size.x;
+                transform.localScale = new Vector2(aspect, aspect);
+            }
+            else
+            {
+                transform.localScale = new Vector2(actualSize.x / mySprite.bounds.size.x, actualSize.y / mySprite.bounds.size.y);
+            }
             changed = false;
         }
     }

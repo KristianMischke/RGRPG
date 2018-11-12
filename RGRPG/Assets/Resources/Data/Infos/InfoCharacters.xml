@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+	<Entry>
+		<zType>CHARACTER_NONE</zType>
+    <Class>CLASS_NONE</Class>
+    <Name>None</Name>
+    <zOverworldSheet>Sprites/troll</zOverworldSheet>
+    <zCombatSprite>Sprites/troll</zCombatSprite>
+    <zPortraitSprite>Sprites/troll</zPortraitSprite>
+    <bEnemy/>
+    <iHealth></iHealth>
+    <iMagic></iMagic>
+    <iDefense></iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+	</Entry>
+	<Entry>
+		<zType>CHARACTER_AUSTIN</zType>
+    <Class>CLASS_HEALER</Class>
+    <Name>Austin</Name>
+		<zOverworldSheet>Sprites/Pixel/austin_f</zOverworldSheet>
+    <zCombatSprite>Sprites/Pixel/austin_f</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Austin_Portrait</zPortraitSprite>
+    <bEnemy/>
+    <iHealth>55</iHealth>
+    <iMagic>80</iMagic>
+    <iDefense>25</iDefense>
+    <ActionList>
+      <Item>ACTION_AUSTIN_SELF_HEAL</Item>
+      <Item>ACTION_AUSTIN_ALLY_HEAL</Item>
+      <Item>ACTION_AUSTIN_GROUP_HEAL</Item>
+    </ActionList>
+    <portraitOffsetX>50</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+	</Entry>
+  <Entry>
+    <zType>CHARACTER_SETH</zType>
+    <Class>CLASS_ATTACKER</Class>
+    <Name>Seth</Name>
+    <zOverworldSheet>Sprites/Pixel/seth_f</zOverworldSheet>
+    <zCombatSprite>Sprites/Pixel/seth_f</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Seth_Portrait</zPortraitSprite>
+    <bEnemy/>
+    <iHealth>65</iHealth>
+    <iMagic>25</iMagic>
+    <iDefense>40</iDefense>
+    <ActionList>
+      <Item>ACTION_SETH_COUNTER</Item>
+      <Item>ACTION_SETH_CHARGE</Item>
+      <Item>ACTION_SETH_SHINING_BLADE</Item>
+    </ActionList>
+    <portraitOffsetX>120</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_RIKA</zType>
+    <Class>CLASS_MAGE</Class>
+    <Name>Rika</Name>
+    <zOverworldSheet></zOverworldSheet>
+    <zCombatSprite></zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Rika_Portrait</zPortraitSprite>
+    <bEnemy/>
+    <iHealth>40</iHealth>
+    <iMagic>60</iMagic>
+    <iDefense>20</iDefense>
+    <ActionList>
+      <Item>ACTION_RIKA_LIFE_DRAIN</Item>
+      <Item>ACTION_RIKA_EMBER</Item>
+      <Item>ACTION_RIKA_NECROMANCER</Item>
+    </ActionList>
+    <portraitOffsetX>250</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_MEREDITH</zType>
+    <Class>CLASS_SUPPORT</Class>
+    <Name>Meredith</Name>
+    <zOverworldSheet></zOverworldSheet>
+    <zCombatSprite></zCombatSprite>
+    <zPortraitSprite></zPortraitSprite>
+    <bEnemy/>
+    <iHealth>75</iHealth>
+    <iMagic>50</iMagic>
+    <iDefense>60</iDefense>
+    <ActionList>
+      <Item>ACTION_MEREDITH_ALL_YOU_GOT</Item>
+      <Item>ACTION_MEREDITH_ON_YOUR_TOES</Item>
+      <Item>ACTION_MEREDITH_UP_THE_PACE </Item>
+    </ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+	<Entry>
+		<zType>CHARACTER_SQUIRREL</zType>
+    <Class>NONE</Class>
+    <Name>Plump Squirrel</Name>
+    <zOverworldSheet>Sprites/Pixel/squirrel</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/squirrel colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/squirrel colored</zPortraitSprite>
+    <bEnemy>1</bEnemy>
+    <iHealth>50</iHealth>
+    <iMagic>30</iMagic>
+    <iDefense>100</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+	</Entry>
+	<Entry>
+		<zType>CHARACTER_GOOSE</zType>
+    <Class>NONE</Class>
+    <Name>Demon Goose</Name>
+    <zOverworldSheet>Sprites/Pixel/goose</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/goose colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/goose colored</zPortraitSprite>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+	</Entry>
+  <Entry>
+    <zType>CHARACTER_BEE</zType>
+    <Class>NONE</Class>
+    <Name>Chick'fil'B</Name>
+    <zOverworldSheet>Sprites/Not Pixel/Bee_colored</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Bee_colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Bee_colored</zPortraitSprite>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_ZOMBIE</zType>
+    <Class>NONE</Class>
+    <Name>Caffine-Dependent Student</Name>
+    <zOverworldSheet>Sprites/Not Pixel/Sleep-Deprived Student colored</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Sleep-Deprived Student colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Sleep-Deprived Student colored</zPortraitSprite>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+</Root>

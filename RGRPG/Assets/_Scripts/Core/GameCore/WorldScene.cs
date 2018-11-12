@@ -14,19 +14,21 @@ namespace RGRPG.Core
     /// </remarks>
     public class WorldScene
     {
-        protected SceneType type;
-        protected string name;
+        protected InfoScene myInfo;
         protected int width, height;
         protected TerrainTile[,] terrainTiles;
+
+        public InfoScene MyInfo { get { return myInfo; } }
+        public string ZType { get { return myInfo.ZType; } }
+
 
         public int Width { get { return width; } }
         public int Height { get { return height; } }
         public TerrainTile[,] TerrainTiles { get { return terrainTiles; } }
 
-        public WorldScene(SceneType type, string name)
+        public WorldScene(InfoScene myInfo)
         {
-            this.type = type;
-            this.name = name;
+            this.myInfo = myInfo;
         }
 
         /// <summary>
@@ -69,20 +71,7 @@ namespace RGRPG.Core
                 int j = 0;
                 foreach (XmlNode tileNode in terrainRowNode.ChildNodes)
                 {
-                    TerrainType type;
-                    GameXMLLoader.ReadXMLValue(tileNode, "Type", out type);
-                    int subType;
-                    GameXMLLoader.ReadXMLValue(tileNode, "SubType", out subType);
-                    bool traversable;
-                    GameXMLLoader.ReadXMLValue(tileNode, "Traversable", out traversable);
-                    int elevation;
-                    GameXMLLoader.ReadXMLValue(tileNode, "Elevation", out elevation);
-                    bool elevationRamp;
-                    GameXMLLoader.ReadXMLValue(tileNode, "ElevationRamp", out elevationRamp);
-                    bool isSpawn;
-                    GameXMLLoader.ReadXMLValue(tileNode, "Spawn", out isSpawn);
-                    terrainTiles[i, j] = new TerrainTile(type, traversable, new Vector2Int(i, j), subType, elevation, elevationRamp, isSpawn);
-
+                    terrainTiles[i, j] = new TerrainTile(tileNode, i, j);
                     j++;
                 }
                 i++;
@@ -111,16 +100,7 @@ namespace RGRPG.Core
                     writer.WriteStartElement("TerrainRow");
                     for (int j = 0; j < terrainTiles.GetLength(1); j++)
                     {
-                        writer.WriteStartElement("Tile");
-
-                        GameXMLLoader.WriteXMLValue(writer, "Elevation", terrainTiles[i, j].Elevation);
-                        GameXMLLoader.WriteXMLValue(writer, "ElevationRamp", terrainTiles[i, j].ElevationRamp);
-                        GameXMLLoader.WriteXMLValue(writer, "Traversable", terrainTiles[i, j].Traversable);
-                        GameXMLLoader.WriteXMLValue(writer, "Type", terrainTiles[i, j].Type.ToString());
-                        GameXMLLoader.WriteXMLValue(writer, "SubType", terrainTiles[i, j].SubType.ToString());
-                        GameXMLLoader.WriteXMLValue(writer, "Spawn", terrainTiles[i, j].IsSpawn);
-
-                        writer.WriteEndElement();
+                        terrainTiles[i, j].WriteXml(writer);
                     }
                     writer.WriteEndElement();
                 }
@@ -130,6 +110,22 @@ namespace RGRPG.Core
                 writer.WriteEndDocument();
                 writer.Flush();
                 writer.Close();
+            }
+        }
+
+        public void SpawnEntities(Game game, List<Enemy> entities)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    string entityType = terrainTiles[x, y].EntityType;
+
+                    if (!string.IsNullOrEmpty(entityType))
+                    {
+                        entities.Add(new Enemy(game, game.Infos.Get<InfoCharacter>(entityType), new Vector2(x, y), new List<ICharacterAction> { new AttackAction(10, 25) }));
+                    }
+                }
             }
         }
 
@@ -275,7 +271,7 @@ namespace RGRPG.Core
         /// <param name="height">New height for the map</param>
         /// <param name="expandUp">Whether or not the map should add blank tiles to the top of the map or not</param>
         /// <param name="expandRight">Whether or not the map should add blank tiles to the right of the map or not</param>
-        public void AdjustDimensions(int width, int height, bool expandUp = true, bool expandRight = true)
+        public void AdjustDimensions(int width, int height, string fillTileType, bool expandUp = true, bool expandRight = true)
         {
             if (width > 0 && height > 0)
             {
@@ -300,7 +296,7 @@ namespace RGRPG.Core
                         else
                         {
                             // otherwise create a new tile
-                            newTiles[x, y] = new TerrainTile(TerrainType.TERRAIN_GRASS, true, x, y);
+                            newTiles[x, y] = new TerrainTile(fillTileType, true, x, y);
                         }
                     }
                 }

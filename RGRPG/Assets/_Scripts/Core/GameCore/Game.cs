@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 using RGRPG.Core.Generics;
@@ -110,27 +111,12 @@ namespace RGRPG.Core
         /// </summary>
         private void Init()
         {
-            infos = new GameInfos();
-
-            LoadScenes();
-
-
             players = new List<Character>();
             enemies = new List<Enemy>();
 
-            // for now just create 4 players with equal stats, TODO: players need to be loaded from XML then selected by the user(s)...
-            // maybe the selected players should be passed in as parameters into this function (that might be good for when multiplayer comes around)
-            for (int i = 0; i < 4; i++)
-            {
-                players.Add(new Character(this, "CHARACTER_AUSTIN", new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
-                players[i].SetPosition(Random.Range(1, startScene.Width-1), 1);
-            }
+            infos = new GameInfos();
 
-            // for now just add one enemy. TODO: spawn more
-            enemies.Add(new Enemy(this, "CHARACTER_SQUIRREL", new Vector2(15, 12), new List<ICharacterAction> { new AttackAction(10, 25) }));
-            enemies.Add(new Enemy(this, "CHARACTER_GOOSE", new Vector2(28, 28), new List<ICharacterAction> { new AttackAction(10, 20) }));
-
-            selectedCharacter = players[0];
+            LoadScenes();
 
             currentGameState = GameState.WorldMovement;
             currentCombatState = CombatState.NONE;
@@ -141,39 +127,38 @@ namespace RGRPG.Core
         /// </summary>
         private void LoadScenes()
         {
-            //TODO: KRISTIAN: this is where GameInfos will come in handy, for keeping track of all the loaded scenes and their types
-
             scenes = new Dictionary<string, WorldScene>();
 
-            TextAsset gameScenesXML = Resources.Load<TextAsset>(@"Data\Infos\GameScenes");
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(gameScenesXML.text);
-
-            XmlNode docElem = doc.DocumentElement;
-
-            foreach (XmlNode sceneNode in docElem.ChildNodes)
+            foreach (InfoScene infoScene in infos.GetAll<InfoScene>())
             {
-                string type;
-                GameXMLLoader.ReadXMLValue(sceneNode, "zType", out type);
-                string name;
-                GameXMLLoader.ReadXMLValue(sceneNode, "Name", out name);
-                string filePath;
-                GameXMLLoader.ReadXMLValue(sceneNode, "File", out filePath);
-                bool firstScene;
-                GameXMLLoader.ReadXMLValue(sceneNode, "bFirst", out firstScene);
-
-                WorldScene newScene = new WorldScene(SceneType.NONE, name); // <-- needs to be changed to actually take a type (when GameInfos is implemented)
-                TextAsset sceneXML = Resources.Load<TextAsset>(filePath);
+                WorldScene newScene = new WorldScene(infos.Get<InfoScene>(infoScene.ZType));
+                TextAsset sceneXML = Resources.Load<TextAsset>(infoScene.FilePath);
                 newScene.LoadXml(sceneXML.text);
+                newScene.SpawnEntities(this, enemies);
 
-                scenes.Add(type, newScene);
+                scenes.Add(infoScene.ZType, newScene);
 
-                if (firstScene || scenes.Count == 1)
+                if (infoScene.IsFirst || scenes.Count == 1)
                 {
                     startScene = newScene;
                     currentScene = newScene;
                 }
             }
+        }
+
+        /// <summary>
+        ///     Initializes the players' characters
+        /// </summary>
+        /// <param name="playerSelections">The indexed infos for teh selected characters. Assumes length is 4</param>
+        public void SelectCharacters(InfoCharacter[] playerSelections)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                players.Add(new Character(this, playerSelections[i], new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
+                players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1); //TODO spawn to spawn tiles
+            }
+
+            selectedCharacter = players[0];
         }
 
         /// <summary>

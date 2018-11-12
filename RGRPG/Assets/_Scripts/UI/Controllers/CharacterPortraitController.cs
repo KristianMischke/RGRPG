@@ -26,7 +26,7 @@ namespace RGRPG.Controllers
         public Image portraitImageObject;
 
         // Data
-        public Character character;
+        public InfoCharacter character;
 
         public Action selectAction = null;
 
@@ -52,13 +52,12 @@ namespace RGRPG.Controllers
 
             TextMeshProUGUI nameText = nameTextObject.GetComponent<TextMeshProUGUI>();
             nameText.text = character.Name;
-            nameText.color = character.IsAlive() ? new Color(1, 1, 1) : new Color(1, 0, 0);
 
             TextMeshProUGUI healthText = healthTextObject.GetComponent<TextMeshProUGUI>();
             healthText.text = "HP " + character.Health.ToString();
 
             TextMeshProUGUI manaText = manaTextObject.GetComponent<TextMeshProUGUI>();
-            manaText.text = "MN " + character.Mana.ToString();
+            manaText.text = "MN " + character.Magic.ToString();
         }
 
         /// <summary>
@@ -75,19 +74,21 @@ namespace RGRPG.Controllers
         ///     Sets up the <see cref="CharacterActionController"/>s for the character's HUD
         /// </summary>
         /// <param name="character"></param>
-        public void Init(Character character, Action selectAction)
+        public void Init(InfoCharacter character, Action selectAction)
         {
             this.character = character;
             this.selectAction = selectAction;
 
-            foreach (ICharacterAction action in character.Actions)
+
+            //TODO: load actions VIA INFOS
+            /*foreach (ICharacterAction action in character.Actions)
             {
                 GameObject actionObject = Instantiate(actionView);
                 actionObject.transform.SetParent(actionList.transform);
 
                 CharacterActionController actionController = actionObject.GetComponent<CharacterActionController>();
                 actionController.Init(action, character);
-            }
+            }*/
         }
 
         /// <summary>
@@ -98,14 +99,14 @@ namespace RGRPG.Controllers
             if (character == null)
                 return;
 
-            Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_PORTRAIT, character.Type);
+            Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_PORTRAIT, character.ZType);
 
 
             //TODO: apply an offset to the portrait image based on which character it is (when implementing GameInfos)
 
 
             portraitImageObject.sprite = image;
-            portraitImageObject.transform.position += new Vector3(character.MyInfo.PortraitOffsetX, character.MyInfo.PortraitOffsetY);
+            portraitImageObject.transform.position += new Vector3(character.PortraitOffsetX, character.PortraitOffsetY);
             //spriteRenderer.transform.localScale = new Vector2(1 / image.bounds.size.x, 1 / image.bounds.size.y);
         }
     }

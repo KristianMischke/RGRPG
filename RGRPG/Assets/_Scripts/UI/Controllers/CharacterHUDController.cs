@@ -37,9 +37,9 @@ namespace RGRPG.Controllers
         DiceController myDie;
 
         // Data
-        public Character character;
+        Character character;
 
-        public Action overrideAction = null;
+        Action overrideAction = null;
 
         // Use this for initialization
         void Start()

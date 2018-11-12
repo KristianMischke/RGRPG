@@ -23,9 +23,9 @@ namespace RGRPG.Controllers
 
         // Scene Object References
         public GameObject worldObjectContainer;
-        public GameObject combatObjectContainer;
         public GameObject canvasObject;
         public GameObject playerHUDList;
+        public GameObject opponentHUDList;
         public GameObject animationController;
 
         
@@ -36,10 +36,9 @@ namespace RGRPG.Controllers
         [HideInInspector]
         public List<CharacterController> enemyControllers;
         [HideInInspector]
-        public List<CharacterHUDController> enemyHUDControllers;
-
+        public Pool<OpponentHUDController> enemyHUDPool;
         [HideInInspector]
-        public List<CharacterController> combatEnemiesController;
+        public List<OpponentHUDController> combatEnemyHUDs;
 
         // Prefabs
         public GameObject DiscordControllerObject;
@@ -47,13 +46,31 @@ namespace RGRPG.Controllers
         public GameObject worldSceneView;
         public GameObject characterView;
         public GameObject characterHUDView;
+        public GameObject opponentHUDView;
 
 
         // Data
+        bool inGame = false;
+        bool firstGameUpdate = true;
         Game game;
+
+        public GameInfos Infos { get { return game.Infos; } }
 
         private void OnEnable()
         {
+            // This class acts kind of like a singleton
+            if (instance != null)
+            {
+                Destroy(this.gameObject); // an instance of GameController already exists, so we should not make a second one
+                return;   
+            }
+
+
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+
+            game = new Game();
+
             // if the discord controller hasn't been initialized, then initialize it
             if (DiscordController.Instance == null)
             {
@@ -64,26 +81,21 @@ namespace RGRPG.Controllers
 
         void Start()
         {
+
+            if (SceneManager.GetActiveScene().name == "GameScene")
+            {
+                SelectCharacters(Infos.GetAll<InfoCharacter>().FindAll(x => !x.IsEnemy).ToArray());
+            }
+
+        }
+
+        private void InitOverworld()
+        {
             DiscordController.Instance.InOverworld();
-
-            if (instance == null)
-                instance = this;
-
-            TextAsset terrainXMLText = Resources.Load<TextAsset>(@"Data\TerrainAssets");
-            SpriteManager.LoadSpriteAssetsXml(terrainXMLText.text, SpriteManager.AssetType.TERRAIN);
-
-            //TextAsset characterXMLText = Resources.Load<TextAsset>(@"Data\Infos\CharacterAssets");
-            //SpriteManager.LoadCharacterAssetsXml(characterXMLText.text);
-
 
             if (worldObjectContainer == null)
             {
                 worldObjectContainer = GameObject.Find("WorldObjects");
-            }
-
-            if (combatObjectContainer == null)
-            {
-                combatObjectContainer = GameObject.Find("CombatObjects");
             }
 
             if (canvasObject == null)
@@ -91,10 +103,40 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
+            if (playerHUDList == null)
+            {
+                playerHUDList = GameObject.Find("PlayerList");
+            }
+
+            if (opponentHUDList == null)
+            {
+                opponentHUDList = GameObject.Find("EnemyList");
+            }
+
+            if (animationController == null)
+            {
+                animationController = canvasObject; //TEMP!!!!!!!!!!  //FindObjectOfType<AnimationHUDController>().gameObject;
+            }
+
             playerControllers = new List<CharacterController>();
             enemyControllers = new List<CharacterController>();
 
-            game = new Game();
+            combatEnemyHUDs = new List<OpponentHUDController>();
+            enemyHUDPool = new Pool<OpponentHUDController>(
+            x =>
+            {
+                combatEnemyHUDs.Add(x);
+                x.gameObject.SetActive(true);
+            }, x =>
+            {
+                combatEnemyHUDs.Remove(x);
+                x.gameObject.SetActive(false);
+            }, () =>
+            {
+                OpponentHUDController x = Instantiate(opponentHUDView, opponentHUDList.transform).GetComponent<OpponentHUDController>();
+                combatEnemyHUDs.Add(x);
+                return x;
+            });
 
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);
@@ -111,7 +153,7 @@ namespace RGRPG.Controllers
                 GameObject playerView = Instantiate(characterView);
                 playerView.transform.SetParent(worldObjectContainer.transform);
                 playerView.name = playerData.Name;
-                
+
                 CharacterController playerController = playerView.GetComponent<CharacterController>();
                 playerController.SetCharacter(playerData);
                 playerControllers.Add(playerController);
@@ -138,32 +180,52 @@ namespace RGRPG.Controllers
                 enemyController.SetCharacter(enemyData);
                 enemyControllers.Add(enemyController);
             }
+        }
 
-            // add a character controller for combat view (this will show the enemy in battles)
-            // TODO: make this adjustable for bands of enemies
-            GameObject combatEnemyObject = Instantiate(characterView);
-            combatEnemiesController.Add(combatEnemyObject.GetComponent<CharacterController>());
-            combatEnemiesController[0].transform.SetParent(combatObjectContainer.transform);
+        public void SelectCharacters(InfoCharacter[] playerSelections)
+        {
+            game.SelectCharacters(playerSelections);
+            inGame = true;
         }
 
         void Update()
         {
-            if (game == null)
+            if (game == null || !inGame)
                 return;
+
+            if (firstGameUpdate)
+            {
+                //if (SceneManager.GetActiveScene().name == "GameScene")
+                    InitOverworld();
+                firstGameUpdate = false;
+            }
 
             game.GameLoop();
 
             worldObjectContainer.SetActive(!game.IsInCombat);
-            combatObjectContainer.SetActive(game.IsInCombat);
+            opponentHUDList.SetActive(game.IsInCombat);
 
             if (game.IsInCombat)
             {
                 DiscordController.Instance.InBattle();
-                combatEnemiesController[0].SetCharacter(game.CombatEnemies[0]);
-                Camera.main.transform.parent.GetComponent<CameraController>().followObject = combatEnemiesController[0].gameObject;
+
+                if (game.CurrentCombatState == CombatState.BeginCombat)
+                {
+                    foreach (Character c in game.CombatEnemies)
+                    {
+                        OpponentHUDController opponent = enemyHUDPool.Get();
+                        opponent.Init(c); //TODO selectAction for choosing enemy target
+                    }
+                }
 
                 if (game.CurrentCombatState == CombatState.EndCombat)
                 {
+
+                    foreach (OpponentHUDController x in combatEnemyHUDs)
+                    {
+                        enemyHUDPool.Deactivate(x);
+                    }
+
                     SelectCharacter(game.SelectedCharacter);
                 }
             }

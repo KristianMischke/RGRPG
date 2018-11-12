@@ -31,7 +31,6 @@ namespace RGRPG.Core
         int iMagic;
         int iDefense;
         List<string> actionList;
-
         float portraitOffsetX;
         float portraitOffsetY;
 
@@ -43,8 +42,8 @@ namespace RGRPG.Core
         public int Defence  { get { return iDefense; } }
         public List<string> ActionListTypes { get { return actionList; } }
 
-        public float PortraitOffsetX {get { return portraitOffsetX; }}
-        public float PortraitOffsetY{get { return portraitOffsetY; }}
+        public float PortraitOffsetX { get { return portraitOffsetX; } }
+        public float PortraitOffsetY { get { return portraitOffsetY; } }
         override public void LoadInfo(XmlNode node)
         {
             base.LoadInfo(node);
@@ -58,13 +57,119 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "iMagic",          out iMagic);
             GameXMLLoader.ReadXMLValue(node, "iDefense",        out iDefense);
             GameXMLLoader.ReadXMLStringList(node, "ActionList", out actionList);
-            GameXMLLoader.ReadXMLValue(node, "portraitOffsetX",        out portraitOffsetX);
-            GameXMLLoader.ReadXMLValue(node, "portraitOffsetY",        out portraitOffsetY);
+            GameXMLLoader.ReadXMLValue(node, "portraitOffsetX", out portraitOffsetX);
+            GameXMLLoader.ReadXMLValue(node, "portraitOffsetY", out portraitOffsetY);
 
-            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD, zType, zOverworldSheet, "", true);
+            // load assets
+            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD, zType, zOverworldSheet);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_COMBAT, zType, zCombatSprite);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_PORTRAIT, zType, zPortraitSprite);
         }
     }
+
+    public class InfoAction : InfoBase
+    {
+        string zName;
+        string zDescription;
+        List<string> quipList;
+
+        public string Name { get { return zName; } }
+        public string Description { get { return zDescription; } }
+        public List<string> Quips { get { return quipList; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "Name", out zName);
+            GameXMLLoader.ReadXMLValue(node, "Description", out zDescription);
+            GameXMLLoader.ReadXMLStringList(node, "Quips", out quipList);
+        }
+    }
+
+    public class InfoScene : InfoBase
+    {
+        string zName;
+        string filePath;
+        bool isFirst;
+
+        public string Name { get { return zName; } }
+        public string FilePath { get { return filePath; } }
+        public bool IsFirst { get { return isFirst; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "Name", out zName);
+            GameXMLLoader.ReadXMLValue(node, "File", out filePath);
+            GameXMLLoader.ReadXMLValue(node, "bFirst", out isFirst);
+        }
+    }
+
+    public class InfoTerrain : InfoBase
+    {
+        string spriteSheet;
+        string spriteName;
+        bool hasMultiple;
+
+        public string SpriteSheet { get { return spriteSheet; } }
+        public string SpriteName { get { return spriteName; } }
+        public bool HasMultiple { get { return hasMultiple; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "SpriteSheet", out spriteSheet);
+            GameXMLLoader.ReadXMLValue(node, "SpriteName", out spriteName);
+            GameXMLLoader.ReadXMLValue(node, "bHasMultiple", out hasMultiple);
+
+            //load asset
+            SpriteManager.LoadAsset(SpriteManager.AssetType.TERRAIN, zType, spriteSheet, SpriteName, hasMultiple);
+        }
+    }
+
+    public class InfoTerrainOverlay : InfoBase
+    {
+        string spriteSheet;
+        string spriteName;
+        bool hasMultiple;
+
+        public string SpriteSheet { get { return spriteSheet; } }
+        public string SpriteName { get { return spriteName; } }
+        public bool HasMultiple { get { return hasMultiple; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "SpriteSheet", out spriteSheet);
+            GameXMLLoader.ReadXMLValue(node, "SpriteName", out spriteName);
+            GameXMLLoader.ReadXMLValue(node, "bHasMultiple", out hasMultiple);
+
+            //load asset
+            SpriteManager.LoadAsset(SpriteManager.AssetType.TERRAIN, zType, spriteSheet, SpriteName, hasMultiple);
+        }
+    }
+
+    public class InfoTerrainProp : InfoBase
+    {
+        string spriteSheet;
+        string spriteName;
+        bool hasMultiple;
+
+        public string SpriteSheet { get { return spriteSheet; } }
+        public string SpriteName { get { return spriteName; } }
+        public bool HasMultiple { get { return hasMultiple; } }
+
+        override public void LoadInfo(XmlNode node)
+        {
+            base.LoadInfo(node);
+            GameXMLLoader.ReadXMLValue(node, "SpriteSheet", out spriteSheet);
+            GameXMLLoader.ReadXMLValue(node, "SpriteName", out spriteName);
+            GameXMLLoader.ReadXMLValue(node, "bHasMultiple", out hasMultiple);
+
+            //load asset
+            SpriteManager.LoadAsset(SpriteManager.AssetType.TERRAIN, zType, spriteSheet, SpriteName, hasMultiple);
+        }
+    }
+
 
 }

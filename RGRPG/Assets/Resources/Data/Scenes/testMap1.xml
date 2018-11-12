@@ -3482,19 +3482,7 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>2</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<Spawn></Spawn>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
+				<Type>TERRAIN_DIRT</Type>
 				<SubType>1</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
@@ -3506,8 +3494,20 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>3</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>1</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<Spawn></Spawn>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>1</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -3844,8 +3844,8 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>10</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>1</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -4206,8 +4206,8 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>8</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>1</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -4580,8 +4580,8 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_GRASS</Type>
-				<SubType>11</SubType>
+				<Type>TERRAIN_DIRT</Type>
+				<SubType>1</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
