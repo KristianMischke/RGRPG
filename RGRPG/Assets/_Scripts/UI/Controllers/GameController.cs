@@ -205,12 +205,6 @@ namespace RGRPG.Controllers
 
 
                         // set up UI character controller
-                       
-
-                        //create action animation HUD controller, attach here, need an init function that takes in the Icharacteraction from characteraction.second
-                        //inside of this class, compare 
-                        //CharacterHUDController playerHUDController = playerHUDView.GetComponent<CharacterHUDController>();
-                        //playerHUDController.Init(characterAction.second);
 
                         AnimationHUDController actionHUDController = animationController.GetComponent<AnimationHUDController>();
                         actionHUDController.executeAction(characterAction.second);
