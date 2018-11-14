@@ -17,6 +17,7 @@ namespace RGRPG.Core
         protected InfoScene myInfo;
         protected int width, height;
         protected TerrainTile[,] terrainTiles;
+        protected bool isIndoors;
 
         public InfoScene MyInfo { get { return myInfo; } }
         public string ZType { get { return myInfo.ZType; } }
@@ -25,6 +26,7 @@ namespace RGRPG.Core
         public int Width { get { return width; } }
         public int Height { get { return height; } }
         public TerrainTile[,] TerrainTiles { get { return terrainTiles; } }
+        public bool IsIndoors { get { return isIndoors; } }
 
         public WorldScene(InfoScene myInfo)
         {
@@ -63,6 +65,7 @@ namespace RGRPG.Core
 
             GameXMLLoader.ReadXMLValue(docElem, "Width", out width);
             GameXMLLoader.ReadXMLValue(docElem, "Height", out height);
+            GameXMLLoader.ReadXMLValue(docElem, "bIsIndoors", out isIndoors);
 
             terrainTiles = new TerrainTile[width, height];
             int i = 0;
@@ -93,6 +96,7 @@ namespace RGRPG.Core
                 writer.WriteStartElement("WorldScene");
                 GameXMLLoader.WriteXMLValue(writer, "Width", width);
                 GameXMLLoader.WriteXMLValue(writer, "Height", height);
+                GameXMLLoader.WriteXMLValue(writer, "bIsIndoors", isIndoors);
 
                 writer.WriteStartElement("Terrain");
                 for (int i = 0; i < terrainTiles.GetLength(0); i++)
@@ -113,7 +117,7 @@ namespace RGRPG.Core
             }
         }
 
-        public void SpawnEntities(Game game, List<Enemy> entities)
+        public void LoadDefaultEntities(Game game, List<Enemy> entities)
         {
             for (int x = 0; x < width; x++)
             {
@@ -237,6 +241,14 @@ namespace RGRPG.Core
                 : terrainTiles[xIndex, yIndex];
         }
 
+
+
+        ///////////////////////////////////////////////////////
+        //       SETTERS FOR PURPOSE OF MAP EDITOR BELOW
+        //////////////////////////////////////////////////////
+
+
+
         /// <summary>
         ///     Sets the tile at the position. (safely fails if out of bounds)
         /// </summary>
@@ -303,6 +315,11 @@ namespace RGRPG.Core
 
                 terrainTiles = newTiles;           
             }
+        }
+
+        public void SetIndoors(bool indoors)
+        {
+            this.isIndoors = indoors;
         }
     }
 }

@@ -56,6 +56,10 @@ namespace RGRPG.Controllers
 
         public GameInfos Infos { get { return game.Infos; } }
 
+        public List<Character> CombatEnemies { get { return game.CombatEnemies; } }
+        public bool IsInCombat { get { return game.IsInCombat; } }
+        public bool IsIndoors { get { return game.CurrentScene.IsIndoors; } }
+
         private void OnEnable()
         {
             // This class acts kind of like a singleton
@@ -204,6 +208,7 @@ namespace RGRPG.Controllers
 
             worldObjectContainer.SetActive(!game.IsInCombat);
             opponentHUDList.SetActive(game.IsInCombat);
+            
 
             if (game.IsInCombat)
             {
@@ -253,7 +258,7 @@ namespace RGRPG.Controllers
                 //Marquee.instance.StartTimer();
             }
 
-            if (IsInCombat() && Marquee.instance.IsFinished())
+            if (IsInCombat && Marquee.instance.IsFinished())
             {
                 if (game.gameCombatActionQueue.Count > 0)
                 {
@@ -285,7 +290,7 @@ namespace RGRPG.Controllers
                 }
             }
 
-            if (!IsInCombat() && Marquee.instance.IsFinished())
+            if (!IsInCombat && Marquee.instance.IsFinished())
             {
                 Marquee.instance.Hide();
                 Marquee.instance.Clear();
@@ -362,25 +367,11 @@ namespace RGRPG.Controllers
         }
 
         /// <summary>
-        ///     Gets the current enemie(s) in combat
-        /// </summary>
-        /// <returns></returns>
-        public List<Character> GetCombatEnemies()
-        {
-            return game.CombatEnemies;
-        }
-
-        /// <summary>
         ///     Tells the game that the user is done inputting his combat actions
         /// </summary>
         public void FinishPlayerTurnInput()
         {
             game.FinishPlayerTurnInput();
-        }
-
-        public bool IsInCombat()
-        {
-            return game.IsInCombat;
         }
 
         /// <summary>

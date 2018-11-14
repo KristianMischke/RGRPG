@@ -39,7 +39,7 @@ namespace RGRPG.Controllers
             if (action == null)
                 return;
 
-            actionButton.interactable = character.IsAlive() && GameController.instance.IsInCombat();
+            actionButton.interactable = character.IsAlive() && GameController.instance.IsInCombat;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace RGRPG.Controllers
             else if (action.GetType() == typeof(HealAction))
                 GameController.instance.RecordAction(action, character, character);
             else
-                GameController.instance.RecordAction(action, character, GameController.instance.GetCombatEnemies()[0]);
+                GameController.instance.RecordAction(action, character, GameController.instance.CombatEnemies[0]);
 
             EventSystem.current.SetSelectedGameObject(null);
         }

@@ -210,7 +210,11 @@ namespace RGRPG.Core
         public static bool TryGetChild(XmlNode node, string zName, out XmlNode child)
         {
             child = null;
-            foreach(XmlNode c in node.ChildNodes)
+
+            if (node == null)
+                return false;
+
+            foreach (XmlNode c in node.ChildNodes)
             {
                 if (c.Name == zName)
                 {

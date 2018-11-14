@@ -134,7 +134,7 @@ namespace RGRPG.Core
                 WorldScene newScene = new WorldScene(infos.Get<InfoScene>(infoScene.ZType));
                 TextAsset sceneXML = Resources.Load<TextAsset>(infoScene.FilePath);
                 newScene.LoadXml(sceneXML.text);
-                newScene.SpawnEntities(this, enemies);
+                newScene.LoadDefaultEntities(this, enemies);
 
                 scenes.Add(infoScene.ZType, newScene);
 

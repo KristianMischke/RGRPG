@@ -107,7 +107,7 @@ namespace RGRPG.Controllers
 
         public static Sprite getSprite(AssetType type, string zType, int i = 0)
         {
-            if (string.IsNullOrEmpty(zType))
+            if (type == AssetType.NONE || string.IsNullOrEmpty(zType))
             {
                 type = AssetType.NONE;
                 zType = "NONE";
@@ -117,7 +117,8 @@ namespace RGRPG.Controllers
 
             if (string.IsNullOrEmpty(data.spriteName))
             {
-                return data.spriteSheet[0];
+                if(data.spriteSheet != null && data.spriteSheet.Length > 0)
+                    return data.spriteSheet[0];
             }
 
             Sprite[] sheet = data.spriteSheet;
@@ -133,6 +134,9 @@ namespace RGRPG.Controllers
                     }
                 }
             }
+
+            if(assetDB.ContainsKey(AssetType.NONE) && assetDB[AssetType.NONE].ContainsKey("NONE") && assetDB[AssetType.NONE]["NONE"].spriteSheet != null)
+                return assetDB[AssetType.NONE]["NONE"].spriteSheet[0];
 
             return null;
         }

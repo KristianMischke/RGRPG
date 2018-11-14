@@ -66,7 +66,7 @@ namespace RGRPG.Controllers
                 return;
 
             // flip camera angle based on world or combat mode
-            if (GameController.instance.IsInCombat())
+            if (GameController.instance.IsInCombat)
             {
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
                 Camera.main.transform.localRotation = Quaternion.Euler(0, 0, 0);
