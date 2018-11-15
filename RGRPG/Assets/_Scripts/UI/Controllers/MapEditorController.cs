@@ -63,15 +63,18 @@ namespace RGRPG.Controllers
         public Slider radiusSlider;
         public TMP_Text sliderText;
 
+        public Toggle indoorsToggle;
         public Toggle traversableToggle;
         public Toggle overlayToggle;
         public Toggle spawnToggle;
+        public Toggle transitionToggle;
 
         public Dropdown paintKindDropdown;
 
         // Prefabs
         public GameObject worldSceneView;
         public GameObject terrainTileButton;
+        public GameObject dividerPrefab;
 
         // Data
         SceneController worldSceneController;
@@ -88,10 +91,11 @@ namespace RGRPG.Controllers
         static bool isPaintingOverlay = false;
         static bool paintTraversable = true;
         static bool paintSpawn = false;
+        static bool paintTransition = false;
         static bool randomPaint = false;
         static int radius;
 
-        WorldScene currentScene;
+        public WorldScene currentScene;
         GameInfos infos;
 
 
@@ -147,7 +151,7 @@ namespace RGRPG.Controllers
             CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainTileButtonContainer, infos.GetAll<InfoTerrain>(false));
             CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainOverlayButtonContainer, infos.GetAll<InfoTerrainOverlay>(false));
             CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainPropButtonContainer, infos.GetAll<InfoTerrainProp>(false));
-            CreatePanelButtons(SpriteManager.AssetType.CHARACTER_WORLD, entityButtonContainer, infos.GetAll<InfoCharacter>(false).FindAll(x => x.IsEnemy));
+            CreatePanelButtons(SpriteManager.AssetType.CHARACTER_WORLD, entityButtonContainer, infos.GetAll<InfoCharacter>(false).FindAll(x => x.IsEnemy || x.ZType == "CHARACTER_NONE"));
 
             saveButton.onClick.AddListener(Save);
             loadButton.onClick.AddListener(Load);
@@ -159,11 +163,14 @@ namespace RGRPG.Controllers
             // add buttons for the different tile types and sub types
             foreach (T thisInfo in infosList)
             {
+                int numButtonsAdded = 0;
+
                 string zType = thisInfo.ZType;
                 Sprite[] tileSubTypes = SpriteManager.getSpriteSheet(assetType, zType);
                 for (int i = 0; i < tileSubTypes.Length; i++)
                 {
                     CreateButton(container, tileSubTypes[i], zType + " " + i, zType, i);
+                    numButtonsAdded++;
                     
                     if (!terrainToSubCount.ContainsKey(zType))
                     {
@@ -182,6 +189,18 @@ namespace RGRPG.Controllers
                 if (doRandomButton)
                 {
                     CreateButton(container, tileSubTypes[0], zType + " RANDOM", zType, 0, true); //TODO: maybe figure out how to cycle through the images to show that it will be random
+                    numButtonsAdded++;
+                }
+
+                if (typeof(T) == typeof(InfoTerrain) || typeof(T) == typeof(InfoTerrain))
+                {
+                    if (numButtonsAdded % 3 != 0)
+                    {
+                        for (int i = 0; i < 3 - (numButtonsAdded % 3); i++)
+                        {
+                            Instantiate(dividerPrefab, container.transform);
+                        }
+                    }
                 }
             }
         }
@@ -207,7 +226,7 @@ namespace RGRPG.Controllers
             sliderText.text = ""+radius;
             paintTraversable = traversableToggle.isOn;
             isPaintingOverlay = overlayToggle.isOn;
-            paintSpawn = spawnToggle.isOn;
+            currentScene.SetIndoors(indoorsToggle.isOn);
 
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
@@ -305,21 +324,21 @@ namespace RGRPG.Controllers
                         if (paintType.Contains("NONE"))
                         {
                             // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
-                            currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, paintSpawn));
+                            currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
                         }
                         else
                         {
-                            currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                            currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
                         }
                         break;
                     case 1: // OVERLAYs
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, paintType, paintSubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, paintType, paintSubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
                         break;
                     case 2: // PROPS
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, paintType, t.EntityType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, paintType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
                         break;
                     case 3: // ENTITIES
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, true, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, paintType, t.Elevation, t.ElevationRamp, t.IsSpawn));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, true, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, paintType, t.Elevation, t.ElevationRamp, t.SpawnID));
                         break;
                 }
             }
@@ -378,12 +397,27 @@ namespace RGRPG.Controllers
             }
         }
 
+
+        public void SetPaintSpawn(bool isOn)
+        {
+            paintSpawn = isOn;
+            transitionToggle.isOn = paintTransition = isOn ? false : paintTransition;
+        }
+
+
+        public void SetPaintTransition(bool isOn)
+        {
+            paintTransition = isOn;
+            spawnToggle.isOn = paintSpawn = isOn ? false : paintSpawn;
+        }
+
+
         public void Save()
         {
             EventSystem.current.SetSelectedGameObject(null);
             string extensions = "xml";
 
-            string path = FileBrowser.SaveFile("Save Map File", "", "MyMap", extensions);
+            string path = FileBrowser.SaveFile("Save Map File", "", "___", extensions);
 
             if(!string.IsNullOrEmpty(path))
                 filePathLabel.text = path;

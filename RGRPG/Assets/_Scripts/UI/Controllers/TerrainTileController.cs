@@ -17,6 +17,7 @@ namespace RGRPG.Controllers
         public SpriteRenderer spriteRenderer; //actual tile
         public SpriteRenderer borderRenderer; //traversibley/n
         public SpriteRenderer spawnRenderer; //spawn square
+        public SpriteRenderer transitionRenderer; //transition check
         public SpriteRenderer overlayRenderer;
         public SpriteRenderer propRenderer;
         public SpriteRenderer entityRenderer;
@@ -39,11 +40,14 @@ namespace RGRPG.Controllers
             if (sceneReference != null)
             {
                 TerrainTile sceneTile = sceneReference.GetTileAtIndices(tilePosition);
-                if (prevTileReference == null || !prevTileReference.Equals(sceneTile))
+                if (sceneTile != null)
                 {
-                    // the last referece we got is not equal to the current one
-                    prevTileReference = sceneTile;
-                    SetSprite();
+                    if (prevTileReference == null || !prevTileReference.Equals(sceneTile))
+                    {
+                        // the last referece we got is not equal to the current one
+                        prevTileReference = sceneTile;
+                        SetSprite();
+                    }
                 }
             }
 
@@ -69,7 +73,8 @@ namespace RGRPG.Controllers
 
             // map editor only
             borderRenderer.gameObject.SetActive(!prevTileReference.Traversable && MapEditorController.instance != null);
-            spawnRenderer.gameObject.SetActive(prevTileReference.IsSpawn && MapEditorController.instance != null);
+            spawnRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.SpawnID) && MapEditorController.instance != null);
+            transitionRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.TransitionScene) && !string.IsNullOrEmpty(prevTileReference.TransitionSpawnID) && MapEditorController.instance != null);
             entityRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.EntityType) && !prevTileReference.EntityType.Contains("NONE") && MapEditorController.instance != null);
         }
     }

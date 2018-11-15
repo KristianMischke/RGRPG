@@ -22,7 +22,10 @@ namespace RGRPG.Core
         protected bool elevationRamp; //TODO: if we decide to have elevation, then this will determine a tile that ramps up/down elevation
         protected Vector2Int position;
 
-        protected bool isSpawn;
+        protected string spawnID;
+
+        protected string transitionScene;
+        protected string transitionSpawnID;
 
         
         public string Type { get { return type; } }
@@ -36,16 +39,18 @@ namespace RGRPG.Core
         public int Elevation { get { return elevation; } }
         public bool ElevationRamp { get { return elevationRamp; } }
         public Vector2Int Position { get { return position; } }
-        public bool IsSpawn { get { return isSpawn; } }
+        public string SpawnID { get { return spawnID; } }
+        public string TransitionScene { get { return transitionScene; } }
+        public string TransitionSpawnID { get { return transitionSpawnID; } }
 
-        public TerrainTile(string type, bool traversable, Vector2Int position, int subType = 0, string overlayType = "", int overlaySubType = 0, string propType = "", string entityType = "", int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
+        public TerrainTile(string type, bool traversable, Vector2Int position, int subType = 0, string overlayType = "", int overlaySubType = 0, string propType = "", string entityType = "", int elevation = 0, bool elevationRamp = false, string spawnID = "", string transitionScene = "", string transitionSpawnID = "")
         {
-            Init(type, traversable, position, subType, overlayType, overlaySubType, propType, entityType, elevation, elevationRamp, isSpawn);
+            Init(type, traversable, position, subType, overlayType, overlaySubType, propType, entityType, elevation, elevationRamp, spawnID, transitionScene, transitionSpawnID);
         }
 
-        public TerrainTile(string type, bool traversable, int positionX, int positionY, int subType = 0, string overlayType = "", int overlaySubType = 0, string propType = "", string entityType = "", int elevation = 0, bool elevationRamp = false, bool isSpawn = false)
+        public TerrainTile(string type, bool traversable, int positionX, int positionY, int subType = 0, string overlayType = "", int overlaySubType = 0, string propType = "", string entityType = "", int elevation = 0, bool elevationRamp = false, string spawnID = "", string transitionScene = "", string transitionSpawnID = "")
         {
-            Init(type, traversable, new Vector2Int(positionX, positionY), subType, overlayType, overlaySubType, propType, entityType, elevation, elevationRamp, isSpawn);
+            Init(type, traversable, new Vector2Int(positionX, positionY), subType, overlayType, overlaySubType, propType, entityType, elevation, elevationRamp, spawnID, transitionScene, transitionSpawnID);
         }
 
         public TerrainTile(XmlNode node, int positionX, int positionY)
@@ -59,12 +64,17 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "Traversable", out traversable);
             GameXMLLoader.ReadXMLValue(node, "Elevation", out elevation);
             GameXMLLoader.ReadXMLValue(node, "ElevationRamp", out elevationRamp);
-            GameXMLLoader.ReadXMLValue(node, "Spawn", out isSpawn);
+            GameXMLLoader.ReadXMLValue(node, "SpawnID", out spawnID);
+
+            XmlNode transitionNode = GameXMLLoader.TryGetChild(node, "Transition");
+            GameXMLLoader.ReadXMLValue(transitionNode, "Scene", out transitionScene);
+            GameXMLLoader.ReadXMLValue(transitionNode, "SpawnID", out transitionSpawnID);
+
 
             this.position = new Vector2Int(positionX, positionY);
         }
 
-        private void Init(string type, bool traversable, Vector2Int position, int subType, string overlayType, int overlaySubType, string propType, string entityType, int elevation, bool elevationRamp, bool isSpawn)
+        private void Init(string type, bool traversable, Vector2Int position, int subType, string overlayType, int overlaySubType, string propType, string entityType, int elevation, bool elevationRamp, string spawnID, string transitionScene, string transitionSpawnID)
         {
             this.type = type;
             this.subType = subType;
@@ -76,7 +86,9 @@ namespace RGRPG.Core
             this.position = position;
             this.elevation = elevation;
             this.elevationRamp = elevationRamp;
-            this.isSpawn = isSpawn;
+            this.spawnID = spawnID;
+            this.transitionScene = transitionScene;
+            this.transitionSpawnID = transitionSpawnID;
         }
 
         public bool Equals(TerrainTile other, bool ignoreSubType = false)
@@ -91,7 +103,9 @@ namespace RGRPG.Core
                 elevation == other.elevation &&
                 elevationRamp == other.elevationRamp &&
                 position == other.position &&
-                isSpawn == other.isSpawn;
+                spawnID == other.spawnID &&
+                transitionScene == other.transitionScene &&
+                transitionSpawnID == other.transitionSpawnID;
         }
 
         public void WriteXml(XmlWriter writer)
@@ -107,7 +121,12 @@ namespace RGRPG.Core
             GameXMLLoader.WriteXMLValue(writer, "OverlaySubType", overlaySubType.ToString());
             GameXMLLoader.WriteXMLValue(writer, "PropType", propType);
             GameXMLLoader.WriteXMLValue(writer, "EntityInitType", entityType);
-            GameXMLLoader.WriteXMLValue(writer, "Spawn", isSpawn);
+            GameXMLLoader.WriteXMLValue(writer, "SpawnID", spawnID);
+
+            writer.WriteStartElement("Transition");
+            GameXMLLoader.WriteXMLValue(writer, "Scene", transitionScene);
+            GameXMLLoader.WriteXMLValue(writer, "SpawnID", transitionSpawnID);
+            writer.WriteEndElement();
 
             writer.WriteEndElement();
         }

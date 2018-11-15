@@ -2,6 +2,7 @@
 <WorldScene>
 	<Width>40</Width>
 	<Height>30</Height>
+	<bIsIndoors></bIsIndoors>
 	<Terrain>
 		<TerrainRow>
 			<Tile>
