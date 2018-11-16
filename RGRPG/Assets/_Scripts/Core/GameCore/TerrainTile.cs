@@ -108,6 +108,19 @@ namespace RGRPG.Core
                 transitionSpawnID == other.transitionSpawnID;
         }
 
+        public bool EqualsMapEditor(TerrainTile other, bool ignoreSubType = false)
+        {
+            return type == other.type &&
+                (ignoreSubType || subType == other.subType) &&
+                overlayType == other.overlayType &&
+                (ignoreSubType || overlaySubType == other.overlaySubType) &&
+                propType == other.propType &&
+                entityType == other.entityType &&
+                traversable == other.traversable &&
+                elevation == other.elevation &&
+                elevationRamp == other.elevationRamp;
+        }
+
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteStartElement("Tile");

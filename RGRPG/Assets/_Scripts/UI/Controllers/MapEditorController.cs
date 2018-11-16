@@ -323,8 +323,8 @@ namespace RGRPG.Controllers
             while(tilesVisiting.Count != 0){
                 Vector2Int currentPosition = tilesVisiting[0];
                 TerrainTile t = currentScene.GetTileAtIndices(currentPosition);
-
-                if (t.Equals(startingTile)){
+                Debug.Log(currentPosition);
+                if (t.EqualsMapEditor(startingTile, paintIgnore) && !tilesVisited.Contains(currentPosition)){
                     PaintSingleTile(currentPosition);
                     tilesVisiting.Add(new Vector2Int (currentPosition.x + 1, currentPosition.y));
                     tilesVisiting.Add(new Vector2Int (currentPosition.x - 1, currentPosition.y));
