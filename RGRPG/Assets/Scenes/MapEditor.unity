@@ -2479,7 +2479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000039709244, y: -344.6}
+  m_AnchoredPosition: {x: 0.00003541652, y: -344.6}
   m_SizeDelta: {x: -0.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &765920671
@@ -2735,6 +2735,8 @@ MonoBehaviour:
   overlayToggle: {fileID: 486160249}
   spawnToggle: {fileID: 528838986}
   transitionToggle: {fileID: 425485409}
+  bucketToggle: {fileID: 357142094}
+  ignoreSub: {fileID: 1413848260}
   paintKindDropdown: {fileID: 1752958727}
   worldSceneView: {fileID: 1231192070236786, guid: 0a998299da7d7be46b0ef3de53d7c160,
     type: 2}

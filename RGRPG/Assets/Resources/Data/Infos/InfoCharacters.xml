@@ -57,7 +57,7 @@
     <zType>CHARACTER_RIKA</zType>
     <Class>CLASS_MAGE</Class>
     <Name>Rika</Name>
-    <zOverworldSheet></zOverworldSheet>
+    <zOverworldSheet>Sprites/Pixel/rika_f</zOverworldSheet>
     <zCombatSprite></zCombatSprite>
     <zPortraitSprite>Sprites/Not Pixel/Rika_Portrait</zPortraitSprite>
     <bEnemy/>
