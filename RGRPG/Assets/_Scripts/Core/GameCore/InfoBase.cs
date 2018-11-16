@@ -91,10 +91,12 @@ namespace RGRPG.Core
         string zName;
         string filePath;
         bool isFirst;
+        string firstSpawnID;
 
         public string Name { get { return zName; } }
         public string FilePath { get { return filePath; } }
         public bool IsFirst { get { return isFirst; } }
+        public string FirstSpawnID { get { return firstSpawnID; } }
 
         override public void LoadInfo(XmlNode node)
         {
@@ -102,6 +104,7 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "Name", out zName);
             GameXMLLoader.ReadXMLValue(node, "File", out filePath);
             GameXMLLoader.ReadXMLValue(node, "bFirst", out isFirst);
+            GameXMLLoader.ReadXMLValue(node, "firstSpawn", out firstSpawnID);
         }
     }
 
