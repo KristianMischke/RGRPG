@@ -105,6 +105,11 @@ namespace RGRPG.Core
             position = new Vector2(x, y);
         }
 
+        public void SetPosition(Vector2Int pos)
+        {
+            position = pos;
+        }
+
         public bool TouchingCharacter(Character other)
         {
             return Mathf.Pow(other.position.x - position.x, 2) + Mathf.Pow(other.position.y - position.y, 2) <= Mathf.Pow(radius + other.radius, 2);

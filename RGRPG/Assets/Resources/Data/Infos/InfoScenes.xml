@@ -5,17 +5,20 @@
     <Name>None</Name>
     <File/>
     <bFirst/>
+    <firstSpawn/>
   </Entry>
   <Entry>
     <zType>SCENE_START</zType>
     <Name>This is the beginning scene</Name>
     <File>Data/Scenes/worldTest</File>
     <bFirst>1</bFirst>
+    <firstSpawn>GAME_BEGIN</firstSpawn>
   </Entry>
   <Entry>
     <zType>SCENE_OTHER</zType>
     <Name>This is another scene</Name>
     <File>Data/Scenes/myMap</File>
     <bFirst/>
+    <firstSpawn/>
   </Entry>
 </Root>

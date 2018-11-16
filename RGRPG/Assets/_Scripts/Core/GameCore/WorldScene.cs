@@ -18,6 +18,7 @@ namespace RGRPG.Core
         protected int width, height;
         protected TerrainTile[,] terrainTiles;
         protected bool isIndoors;
+        protected Dictionary<string, Vector2Int> spawns;
 
         public InfoScene MyInfo { get { return myInfo; } }
         public string ZType { get { return myInfo.ZType; } }
@@ -31,6 +32,7 @@ namespace RGRPG.Core
         public WorldScene(InfoScene myInfo)
         {
             this.myInfo = myInfo;
+            spawns = new Dictionary<string, Vector2Int>();
         }
 
         /// <summary>
@@ -75,6 +77,10 @@ namespace RGRPG.Core
                 foreach (XmlNode tileNode in terrainRowNode.ChildNodes)
                 {
                     terrainTiles[i, j] = new TerrainTile(tileNode, i, j);
+                    if (!string.IsNullOrEmpty(terrainTiles[i, j].SpawnID))
+                    {
+                        spawns.Add(terrainTiles[i, j].SpawnID, new Vector2Int(i, j));
+                    }
                     j++;
                 }
                 i++;
@@ -117,6 +123,13 @@ namespace RGRPG.Core
             }
         }
 
+        public Vector2Int getSpawnPos(string spawnID)
+        {
+            Vector2Int tile = new Vector2Int(-2, -2);
+            spawns.TryGetValue(spawnID, out tile);
+            return tile;
+        }
+
         public void LoadDefaultEntities(Game game, List<Enemy> entities)
         {
             for (int x = 0; x < width; x++)
@@ -156,7 +169,7 @@ namespace RGRPG.Core
 
             // Get the next Y tile
             int ignoreX, nextTileY;
-            TerrainTile nextTileV = GetTileAt(character.Position.x, character.Position.y + signedRadiusY + dy, out ignoreX, out nextTileY);            
+            TerrainTile nextTileV = GetTileAt(character.Position.x, character.Position.y + signedRadiusY + dy, out ignoreX, out nextTileY);
             bool collisionY = nextTileV == null || !nextTileV.Traversable;
 
             // if there is a collision in the x direction, then adjust dx accordingly
@@ -298,8 +311,8 @@ namespace RGRPG.Core
                 {
                     for (int y = 0; y < height; y++)
                     {
-                        int oldX = x - (expandRight ? 0 :dW);
-                        int oldY = y - (expandUp ? 0 :dH);
+                        int oldX = x - (expandRight ? 0 : dW);
+                        int oldY = y - (expandUp ? 0 : dH);
                         if (oldX >= 0 && oldY >= 0 && oldX < terrainTiles.GetLength(0) && oldY < terrainTiles.GetLength(1))
                         {
                             // if the old tile is in the bounds of the the new area, then add it
@@ -313,7 +326,7 @@ namespace RGRPG.Core
                     }
                 }
 
-                terrainTiles = newTiles;           
+                terrainTiles = newTiles;
             }
         }
 

@@ -155,7 +155,8 @@ namespace RGRPG.Core
             for (int i = 0; i < 4; i++)
             {
                 players.Add(new Character(this, playerSelections[i], new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
-                players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1); //TODO spawn to spawn tiles
+                //players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1);
+                players[i].SetPosition(startScene.getSpawnPos(CurrentScene.MyInfo.FirstSpawnID));
             }
 
             selectedCharacter = players[0];
