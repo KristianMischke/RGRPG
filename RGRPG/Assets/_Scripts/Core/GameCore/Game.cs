@@ -406,6 +406,19 @@ namespace RGRPG.Core
         public void MoveSelectedCharacter(float dx, float dy)
         {
             selectedCharacter.Move(currentScene, dx, dy);
+            for (int i = 1; i <= players.Count; i++)
+            {
+                if (Vector2.Distance(players[i].Position, players[i - 1].Position) >= 1)
+                {
+                    //float dxi = (players[i - 1].Position.x - players[i].Position.x) / 2;
+                    //float dyi = (players[i - 1].Position.y - players[i].Position.y) / 2;
+                    float dxi = Mathf.Lerp(players[i].Position.x, players[i - 1].Position.x, .11f) - players[i].Position.x;
+                    float dyi = Mathf.Lerp(players[i].Position.y, players[i - 1].Position.y, .11f) - players[i].Position.y;
+
+                    players[i].Move(currentScene, dxi, dyi);
+                }
+            }
+            
         }
 
         /// <summary>
