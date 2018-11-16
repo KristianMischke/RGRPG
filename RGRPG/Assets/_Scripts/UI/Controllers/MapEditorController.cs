@@ -69,6 +69,10 @@ namespace RGRPG.Controllers
         public Toggle spawnToggle;
         public Toggle transitionToggle;
 
+        public Toggle bucketToggle;
+
+        public Toggle ignoreSub;
+
         public Dropdown paintKindDropdown;
 
         // Prefabs
@@ -94,6 +98,10 @@ namespace RGRPG.Controllers
         static bool paintTransition = false;
         static bool randomPaint = false;
         static int radius;
+
+        static bool paintFill = false;
+
+        static bool paintIgnore = false;
 
         public WorldScene currentScene;
         GameInfos infos;
@@ -227,6 +235,9 @@ namespace RGRPG.Controllers
             paintTraversable = traversableToggle.isOn;
             isPaintingOverlay = overlayToggle.isOn;
             currentScene.SetIndoors(indoorsToggle.isOn);
+            paintFill = bucketToggle.isOn;
+            paintIgnore = ignoreSub.isOn;
+            ignoreSub.enabled = bucketToggle.isOn;
 
 
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
@@ -247,31 +258,38 @@ namespace RGRPG.Controllers
                     {
                         TerrainTile t = currentScene.GetTileAtIndices(tileController.tilePosition); //this is the tile that the user clicked
                         thisPosition = t.Position;
-                        if (thisPosition != NEGATIVE_ONE && lastPosition != NEGATIVE_ONE && Mathf.FloorToInt(Vector2Int.Distance(lastPosition, thisPosition)) > 1){
-                            //drag
-                            Vector2Int i = lastPosition;
-                            while ( i != thisPosition){
-                                TerrainTile z = currentScene.GetTileAtIndices(i); //this is the tile that position
-                                DoPaint(z);
-                                if (i.x < thisPosition.x){
-                                    i.x ++;
-                                }
-                                else if (i.x > thisPosition.x){
-                                    i.x --;
-                                }
-                                if (i.y < thisPosition.y){
-                                    i.y ++;
-                                }
-                                else if (i.y > thisPosition.y){
-                                    i.y --;
+
+                        if (paintFill){
+                            FillBucket(thisPosition);
+                        }
+                        else {
+
+                        
+                            if (thisPosition != NEGATIVE_ONE && lastPosition != NEGATIVE_ONE && Mathf.FloorToInt(Vector2Int.Distance(lastPosition, thisPosition)) > 1){
+                                //drag
+                                Vector2Int i = lastPosition;
+                                while ( i != thisPosition){
+                                    TerrainTile z = currentScene.GetTileAtIndices(i); //this is the tile that position
+                                    DoPaint(z);
+                                    if (i.x < thisPosition.x){
+                                        i.x ++;
+                                    }
+                                    else if (i.x > thisPosition.x){
+                                        i.x --;
+                                    }
+                                    if (i.y < thisPosition.y){
+                                        i.y ++;
+                                    }
+                                    else if (i.y > thisPosition.y){
+                                        i.y --;
+                                    }
                                 }
                             }
+                            else if (thisPosition !=  NEGATIVE_ONE){
+                                //click
+                                DoPaint(t);
+                            }
                         }
-                        else if (thisPosition !=  NEGATIVE_ONE){
-                            //click
-                            DoPaint(t);
-                        }
-                    
                       
                     }
                 }
@@ -297,15 +315,28 @@ namespace RGRPG.Controllers
             }
             
         }
-        /* private void FillBucket(TerrainTile t){
-            TerrainTile tileNow = t;
-            if () {
+        private void FillBucket(Vector2Int tilePosition){
+            TerrainTile startingTile = currentScene.GetTileAtIndices(tilePosition);
+            List<Vector2Int> tilesVisited = new List<Vector2Int>();
+            List<Vector2Int> tilesVisiting = new List<Vector2Int>();
+            tilesVisiting.Add(tilePosition);
+            while(tilesVisiting.Count != 0){
+                Vector2Int currentPosition = tilesVisiting[0];
+                TerrainTile t = currentScene.GetTileAtIndices(currentPosition);
+                Debug.Log(currentPosition);
+                if (t.EqualsMapEditor(startingTile, paintIgnore) && !tilesVisited.Contains(currentPosition)){
+                    PaintSingleTile(currentPosition);
+                    tilesVisiting.Add(new Vector2Int (currentPosition.x + 1, currentPosition.y));
+                    tilesVisiting.Add(new Vector2Int (currentPosition.x - 1, currentPosition.y));
+                    tilesVisiting.Add(new Vector2Int (currentPosition.x, currentPosition.y + 1));
+                    tilesVisiting.Add(new Vector2Int (currentPosition.x, currentPosition.y - 1));
 
-            }
-            else {
+                }
 
+                tilesVisited.Add(tilesVisiting[0]);
+                tilesVisiting.RemoveAt(0);
             }
-        } */
+        }
 
         private void PaintSingleTile(Vector2Int tilePosition)
         {
