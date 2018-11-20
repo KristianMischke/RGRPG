@@ -1,0 +1,38 @@
+_______________________RGRPG TODO LIST_______________________________
+
+-Spawn and transition tiles
+--use IMGui to draw UI for setting information in map editor
+---add cancel button to the gui and make the popup stop map editor raycasts
+
+-Indicate enemy start positions in a scene
+-Indicate enemy spawn positions in a scene
+
+
+-Add action animation prefabs to InfoAction.xml
+
+-Create system that can allow for picking action targets
+--i.e. we need a flag to target all members of party (should work for both enemies and players
+--flag for one target (any)
+--flag for one target (only friends, or only opponents)
+--flag for self
+--flag for multiple targets???
+
+-When clicking an action, make an arrow/line draw from the action button to the mouse until you pick your targets (then there should be an arrow from the action to each of the targets before you submit your action
+
+
+___________LATER____________
+
+-Use character faces in Marquee when referencing a character
+-- https://docs.unity3d.com/Manual/StyledText.html
+
+
+
+_________WAAAAAY LATER_____________
+
+-Polish credits page
+--Maybe have character head art for each of the team members
+--Click on head art, or just name to take you to linkedIn profile or website for each team member
+
+-Atmosphere effects on the world
+
+-Combat backgrounds based on the location (either the scene, or the nearby tiles)

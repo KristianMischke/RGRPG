@@ -2505,7 +2505,7 @@
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
 				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
+				<SpawnID>BEGIN_GAME</SpawnID>
 				<Transition>
 					<Scene></Scene>
 					<SpawnID></SpawnID>
@@ -6387,16 +6387,16 @@
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>2</SubType>
+				<Type>TERRAIN_ROCK</Type>
+				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
+					<Scene>SCENE_OTHER</Scene>
+					<SpawnID>SPAWN_DOOR_0</SpawnID>
 				</Transition>
 			</Tile>
 			<Tile>

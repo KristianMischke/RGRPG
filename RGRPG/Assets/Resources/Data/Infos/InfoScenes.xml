@@ -12,12 +12,12 @@
     <Name>This is the beginning scene</Name>
     <File>Data/Scenes/worldTest</File>
     <bFirst>1</bFirst>
-    <firstSpawn>GAME_BEGIN</firstSpawn>
+    <firstSpawn>BEGIN_GAME</firstSpawn>
   </Entry>
   <Entry>
     <zType>SCENE_OTHER</zType>
     <Name>This is another scene</Name>
-    <File>Data/Scenes/myMap</File>
+    <File>Data/Scenes/MyMap</File>
     <bFirst/>
     <firstSpawn/>
   </Entry>

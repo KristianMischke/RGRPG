@@ -125,7 +125,7 @@ namespace RGRPG.Core
 
         public Vector2Int getSpawnPos(string spawnID)
         {
-            Vector2Int tile = new Vector2Int(-2, -2);
+            Vector2Int tile = new Vector2Int(-1, -1);
             spawns.TryGetValue(spawnID, out tile);
             return tile;
         }

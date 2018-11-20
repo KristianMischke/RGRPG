@@ -68,9 +68,7 @@ namespace RGRPG.Controllers
         public Toggle overlayToggle;
         public Toggle spawnToggle;
         public Toggle transitionToggle;
-
         public Toggle bucketToggle;
-
         public Toggle ignoreSub;
 
         public Dropdown paintKindDropdown;
@@ -98,10 +96,16 @@ namespace RGRPG.Controllers
         static bool paintTransition = false;
         static bool randomPaint = false;
         static int radius;
-
         static bool paintFill = false;
-
         static bool paintIgnore = false;
+
+        static Vector2Int editTileOverlay = NEGATIVE_ONE;
+        static bool raycastOn = true;
+        public static Vector2Int EditTileOverlay { get { return editTileOverlay; } }
+        public static void DoneTileOverlay() { editTileOverlay = NEGATIVE_ONE; raycastOn = true; }
+        public static bool PaintSpawn { get { return paintSpawn; } }
+        public static bool PaintTransition { get { return paintTransition; } }
+
 
         public WorldScene currentScene;
         GameInfos infos;
@@ -243,7 +247,7 @@ namespace RGRPG.Controllers
             // need to look into this: https://www.youtube.com/watch?v=QL6LOX5or84
             // mouse pressed and not clicking on UI element
             thisPosition = NEGATIVE_ONE;
-            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject(fingerID))
+            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject(fingerID) && raycastOn)
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -259,11 +263,23 @@ namespace RGRPG.Controllers
                         TerrainTile t = currentScene.GetTileAtIndices(tileController.tilePosition); //this is the tile that the user clicked
                         thisPosition = t.Position;
 
-                        if (paintFill){
+                        editTileOverlay = NEGATIVE_ONE;
+                        if (paintSpawn)
+                        {
+                            editTileOverlay = thisPosition;
+                            raycastOn = false;
+                        }
+                        else if (paintTransition)
+                        {
+                            editTileOverlay = thisPosition;
+                            raycastOn = false;
+                        }
+                        else if (paintFill)
+                        {
                             FillBucket(thisPosition);
                         }
-                        else {
-
+                        else
+                        {
                         
                             if (thisPosition != NEGATIVE_ONE && lastPosition != NEGATIVE_ONE && Mathf.FloorToInt(Vector2Int.Distance(lastPosition, thisPosition)) > 1){
                                 //drag
@@ -315,16 +331,23 @@ namespace RGRPG.Controllers
             }
             
         }
-        private void FillBucket(Vector2Int tilePosition){
+
+        private void FillBucket(Vector2Int tilePosition)
+        {
             TerrainTile startingTile = currentScene.GetTileAtIndices(tilePosition);
+
             List<Vector2Int> tilesVisited = new List<Vector2Int>();
             List<Vector2Int> tilesVisiting = new List<Vector2Int>();
             tilesVisiting.Add(tilePosition);
-            while(tilesVisiting.Count != 0){
+
+            while(tilesVisiting.Count != 0)
+            {
+
                 Vector2Int currentPosition = tilesVisiting[0];
                 TerrainTile t = currentScene.GetTileAtIndices(currentPosition);
-                Debug.Log(currentPosition);
-                if (t.EqualsMapEditor(startingTile, paintIgnore) && !tilesVisited.Contains(currentPosition)){
+
+                if (t.EqualsMapEditor(startingTile, paintIgnore) && !tilesVisited.Contains(currentPosition))
+                {
                     PaintSingleTile(currentPosition);
                     tilesVisiting.Add(new Vector2Int (currentPosition.x + 1, currentPosition.y));
                     tilesVisiting.Add(new Vector2Int (currentPosition.x - 1, currentPosition.y));
@@ -355,21 +378,21 @@ namespace RGRPG.Controllers
                         if (paintType.Contains("NONE"))
                         {
                             // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
-                            currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
+                            currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         }
                         else
                         {
-                            currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
+                            currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         }
                         break;
                     case 1: // OVERLAYs
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, paintType, paintSubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, paintType, paintSubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         break;
                     case 2: // PROPS
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, paintType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, paintType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         break;
                     case 3: // ENTITIES
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, true, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, paintType, t.Elevation, t.ElevationRamp, t.SpawnID));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, true, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, paintType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         break;
                 }
             }
@@ -432,14 +455,20 @@ namespace RGRPG.Controllers
         public void SetPaintSpawn(bool isOn)
         {
             paintSpawn = isOn;
-            transitionToggle.isOn = paintTransition = isOn ? false : paintTransition;
+            if (isOn)
+            {
+                transitionToggle.isOn = paintTransition = false;
+            }
         }
 
 
         public void SetPaintTransition(bool isOn)
         {
             paintTransition = isOn;
-            spawnToggle.isOn = paintSpawn = isOn ? false : paintSpawn;
+            if (isOn)
+            {
+                spawnToggle.isOn = paintSpawn = false;
+            }
         }
 
 
