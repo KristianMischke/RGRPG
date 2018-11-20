@@ -270,7 +270,6 @@ namespace RGRPG.Controllers
                         Marquee.instance.AddToMultiMessage(characterAction.first.Name + " does: " + characterAction.second.GetName());
                         Marquee.instance.StartTimer();
 
-
                         // set up UI character controller
 
                         AnimationHUDController actionHUDController = animationController.GetComponent<AnimationHUDController>();

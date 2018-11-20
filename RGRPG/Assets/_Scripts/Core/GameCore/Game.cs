@@ -406,7 +406,7 @@ namespace RGRPG.Core
         public void MoveSelectedCharacter(float dx, float dy)
         {
             selectedCharacter.Move(currentScene, dx, dy);
-            for (int i = 1; i <= players.Count; i++)
+            for (int i = 1; i < players.Count; i++)
             {
                 if (Vector2.Distance(players[i].Position, players[i - 1].Position) >= 1)
                 {

@@ -20,7 +20,7 @@ namespace RGRPG.Controllers
 
         private Queue<string> multiMessage = new Queue<string>();
         int charsDisplayed = 0;
-        float timer = TIME_AFTER_MESSAGE;
+        float timer = TIME_AFTER_MESSAGE*2;
         bool isStarted = false;
         bool finishedSingle = true;
 
