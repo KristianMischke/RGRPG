@@ -83,3 +83,5 @@ MonoBehaviour:
   terrainContainer: {fileID: 1325170244805748}
   terrainTileView: {fileID: 1101050596075120, guid: 94805ddbbc3073348b730fcbe5de6817,
     type: 2}
+  terrainTileViewMapEditor: {fileID: 1277299746708452, guid: 01d55cbd07ae02541bda8539f37ff2b3,
+    type: 2}

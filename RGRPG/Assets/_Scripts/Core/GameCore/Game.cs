@@ -66,10 +66,12 @@ namespace RGRPG.Core
         protected Dictionary<string, WorldScene> scenes;
         protected WorldScene startScene;
         protected WorldScene currentScene;
+        protected bool sceneTransitioned = false;
+        public bool SceneTransitioned { get { return sceneTransitioned; } }
 
         // characters
         protected List<Character> players;
-        protected List<Enemy> enemies;
+        protected Dictionary<string, List<Enemy>> enemies; // scene ID, enemies
         protected Character selectedCharacter;
 
         // for combat
@@ -91,7 +93,7 @@ namespace RGRPG.Core
         public WorldScene StartScene { get { return startScene; } }
         public WorldScene CurrentScene { get { return currentScene; } }
         public List<Character> Players { get { return players; } }
-        public List<Enemy> Enemies { get { return enemies; } }
+        public List<Enemy> Enemies { get { return enemies[currentScene.ZType]; } }
         public Character SelectedCharacter { get { return selectedCharacter; } }
 
         public bool IsInCombat { get { return currentGameState == GameState.Combat; } }
@@ -112,7 +114,7 @@ namespace RGRPG.Core
         private void Init()
         {
             players = new List<Character>();
-            enemies = new List<Enemy>();
+            enemies = new Dictionary<string, List<Enemy>>();
 
             infos = new GameInfos();
 
@@ -134,7 +136,8 @@ namespace RGRPG.Core
                 WorldScene newScene = new WorldScene(infos.Get<InfoScene>(infoScene.ZType));
                 TextAsset sceneXML = Resources.Load<TextAsset>(infoScene.FilePath);
                 newScene.LoadXml(sceneXML.text);
-                newScene.LoadDefaultEntities(this, enemies);
+                enemies.Add(infoScene.ZType, new List<Enemy>());
+                newScene.LoadDefaultEntities(this, enemies[infoScene.ZType]);
 
                 scenes.Add(infoScene.ZType, newScene);
 
@@ -167,10 +170,13 @@ namespace RGRPG.Core
         /// </summary>
         public void GameLoop()
         {
+            sceneTransitioned = false;
+
             switch(currentGameState)
             {
                 case GameState.WorldMovement:
                     UpdateAI();
+                    CheckSceneTransition();
                     CheckEncounterEnemy();
                     break;
                 case GameState.Combat:
@@ -184,7 +190,7 @@ namespace RGRPG.Core
         /// </summary>
         private void UpdateAI()
         {
-            foreach (Enemy e in enemies)
+            foreach (Enemy e in enemies[currentScene.ZType])
             {
                 e.UpdateAI(currentScene, Time.deltaTime);
             }
@@ -203,7 +209,7 @@ namespace RGRPG.Core
                     turnCounter = 0;
                     foreach (Character p in players)
                         p.SetMana(50);
-                    foreach (Enemy e in enemies)
+                    foreach (Enemy e in combatEnemies)
                         e.SetMana(50);
                     currentCombatState = CombatState.PickTurnOrder;
                     break;
@@ -248,14 +254,14 @@ namespace RGRPG.Core
                     LogMessage("ROUND #" + roundCounter + " DONE");
                     foreach (Character c in players)
                         c.Reset();
-                    for (int i = 0; i < enemies.Count; i++)
+                    for (int i = 0; i < enemies[currentScene.ZType].Count; i++)
                     {
-                        Enemy e = enemies[i];
+                        Enemy e = enemies[currentScene.ZType][i];
                         e.Reset();
                         if (!e.IsAlive())
                         {
                             //TODO: spill loot
-                            enemies.RemoveAt(i);
+                            enemies[currentScene.ZType].RemoveAt(i);
                         }
                     }
 
@@ -422,6 +428,49 @@ namespace RGRPG.Core
         }
 
         /// <summary>
+        ///     Checks to see if any players have moved over a transition tile
+        /// </summary>
+        void CheckSceneTransition()
+        {
+            if (currentGameState == GameState.Combat)
+                return;
+
+            foreach (Character player in players)
+            {
+                TerrainTile standingTile = currentScene.GetTileAt(player.Position);
+                if (standingTile.IsTransitionTile)
+                {
+                    TransitionToScene(standingTile.TransitionScene, standingTile.TransitionSpawnID);
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Transitions the game to a different scene
+        /// </summary>
+        /// <param name="sceneID">The ID of the scene to transition to</param>
+        /// <param name="spawnID">The ID of the tile to spawn at</param>
+        void TransitionToScene(string sceneID, string spawnID)
+        {
+            if (scenes.ContainsKey(sceneID))
+            {
+                // set new current scene
+                currentScene = scenes[sceneID];
+
+                Vector2Int spawnPos = currentScene.getSpawnPos(spawnID);
+
+                // put players at spawn tile
+                foreach (Character player in players)
+                {
+                    player.SetPosition(spawnPos);
+                }
+
+                sceneTransitioned = true;
+            }
+        }
+
+        /// <summary>
         ///     Checks to see if a player is touching an enemy to enter combat
         /// </summary>
         void CheckEncounterEnemy()
@@ -431,7 +480,7 @@ namespace RGRPG.Core
 
             foreach (Character player in players)
             {
-                foreach (Character enemy in enemies)
+                foreach (Character enemy in enemies[currentScene.ZType])
                 {
                     if (player.TouchingCharacter(enemy))
                     {

@@ -14,9 +14,10 @@ namespace RGRPG.Controllers
 
         // Prefabs
         public GameObject terrainTileView;
+        public GameObject terrainTileViewMapEditor;
 
         // Data
-        public WorldScene scene;
+        public WorldScene sceneRef;
 
         List<List<TerrainTileController>> activeTerrainTiles;
         Pool<TerrainTileController> terrainTilePool;
@@ -32,7 +33,7 @@ namespace RGRPG.Controllers
                 t.gameObject.SetActive(false);
             };
             Func<TerrainTileController> newTile = () => {
-                GameObject tileObject = Instantiate(terrainTileView);
+                GameObject tileObject = (MapEditorController.instance == null) ? Instantiate(terrainTileView) : Instantiate(terrainTileViewMapEditor);
                 tileObject.transform.SetParent(terrainContainer.transform);
 
                 TerrainTileController tileController = tileObject.GetComponent<TerrainTileController>();
@@ -56,16 +57,19 @@ namespace RGRPG.Controllers
             transform.localScale = Vector3.one;
         }
 
-        public void ResetScene()
+        public void ResetScene(WorldScene newSceneRef = null)
         {
-            if (scene == null)
+            if (newSceneRef != null)
+                sceneRef = newSceneRef;
+
+            if (sceneRef == null)
                 throw new System.Exception("Cannot Reset a NULL Scene");
 
-            for (int x = 0; x < scene.Width; x++)
+            for (int x = 0; x < sceneRef.Width; x++)
             {
-                for (int y = 0; y < scene.Height; y++)
+                for (int y = 0; y < sceneRef.Height; y++)
                 {
-                    TerrainTile tile = scene.TerrainTiles[x, y];
+                    TerrainTile tile = sceneRef.TerrainTiles[x, y];
 
                     if (x >= activeTerrainTiles.Count)
                     {
@@ -79,7 +83,7 @@ namespace RGRPG.Controllers
 
                     TerrainTileController tileController = activeTerrainTiles[x][y];
                     tileController.tilePosition = new Vector2Int(x, y);
-                    tileController.sceneReference = scene;
+                    tileController.sceneReference = sceneRef;
                 }
             }
 
@@ -87,13 +91,13 @@ namespace RGRPG.Controllers
             // add unused objects to the pool
             for (int i = activeTerrainTiles.Count - 1; i >= 0; i--)
             {
-                while (activeTerrainTiles[i].Count > scene.Height)
+                while (activeTerrainTiles[i].Count > sceneRef.Height)
                 {
                     terrainTilePool.Deactivate(activeTerrainTiles[i][activeTerrainTiles[i].Count - 1]);
                     activeTerrainTiles[i].RemoveAt(activeTerrainTiles[i].Count - 1);
                 }
 
-                if (i + 1 > scene.Width)
+                if (i + 1 > sceneRef.Width)
                 {
                     foreach (TerrainTileController t in activeTerrainTiles[i])
                     {

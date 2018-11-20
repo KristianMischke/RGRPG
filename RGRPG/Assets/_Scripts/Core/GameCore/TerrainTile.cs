@@ -43,6 +43,8 @@ namespace RGRPG.Core
         public string TransitionScene { get { return transitionScene; } }
         public string TransitionSpawnID { get { return transitionSpawnID; } }
 
+        public bool IsTransitionTile { get { return !string.IsNullOrEmpty(transitionScene) && !string.IsNullOrEmpty(transitionSpawnID); } }
+
         public TerrainTile(string type, bool traversable, Vector2Int position, int subType = 0, string overlayType = "", int overlaySubType = 0, string propType = "", string entityType = "", int elevation = 0, bool elevationRamp = false, string spawnID = "", string transitionScene = "", string transitionSpawnID = "")
         {
             Init(type, traversable, position, subType, overlayType, overlaySubType, propType, entityType, elevation, elevationRamp, spawnID, transitionScene, transitionSpawnID);

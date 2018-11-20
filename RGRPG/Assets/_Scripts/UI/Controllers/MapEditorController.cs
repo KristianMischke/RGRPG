@@ -113,10 +113,15 @@ namespace RGRPG.Controllers
 
         // see https://answers.unity.com/questions/1079066/how-can-i-prevent-my-raycast-from-passing-through.html
 #if UNITY_EDITOR
-        private int fingerID = -1; 
-# else
+        private int fingerID = -1;
+#else
         private int fingerID = 0;
 #endif
+
+        private void OnDisable()
+        {
+            instance = null;
+        }
 
         void Start()
         {
@@ -142,7 +147,7 @@ namespace RGRPG.Controllers
             worldSceneObject.transform.SetParent(worldObjectContainer.transform);
 
             worldSceneController = worldSceneObject.GetComponent<SceneController>();
-			worldSceneController.scene = currentScene;
+			worldSceneController.sceneRef = currentScene;
             worldSceneController.ResetScene();
 
             // setup UI listeners

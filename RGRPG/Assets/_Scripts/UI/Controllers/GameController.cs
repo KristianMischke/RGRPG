@@ -36,6 +36,8 @@ namespace RGRPG.Controllers
         [HideInInspector]
         public List<CharacterController> enemyControllers;
         [HideInInspector]
+        public Pool<CharacterController> worldEnemiesPool;
+        [HideInInspector]
         public Pool<OpponentHUDController> enemyHUDPool;
         [HideInInspector]
         public List<OpponentHUDController> combatEnemyHUDs;
@@ -53,6 +55,8 @@ namespace RGRPG.Controllers
         bool inGame = false;
         bool firstGameUpdate = true;
         Game game;
+
+        SceneController worldSceneController;
 
         public GameInfos Infos { get { return game.Infos; } }
 
@@ -123,7 +127,23 @@ namespace RGRPG.Controllers
             }
 
             playerControllers = new List<CharacterController>();
+
             enemyControllers = new List<CharacterController>();
+            worldEnemiesPool = new Pool<CharacterController>(
+            x =>
+            {
+                enemyControllers.Add(x);
+                x.gameObject.SetActive(true);
+            }, x =>
+            {
+                enemyControllers.Remove(x);
+                x.gameObject.SetActive(false);
+            }, () =>
+            {
+                CharacterController x = Instantiate(characterView, worldObjectContainer.transform).GetComponent<CharacterController>();
+                enemyControllers.Add(x);
+                return x;
+            });
 
             combatEnemyHUDs = new List<OpponentHUDController>();
             enemyHUDPool = new Pool<OpponentHUDController>(
@@ -145,10 +165,8 @@ namespace RGRPG.Controllers
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);
             worldSceneObject.transform.SetParent(worldObjectContainer.transform);
-
-            SceneController worldSceneController = worldSceneObject.GetComponent<SceneController>();
-            worldSceneController.scene = game.StartScene;
-            worldSceneController.ResetScene();
+            worldSceneController = worldSceneObject.GetComponent<SceneController>();
+            worldSceneController.ResetScene(game.StartScene);
 
             // set up the player controllers
             foreach (Character playerData in game.Players)
@@ -171,19 +189,6 @@ namespace RGRPG.Controllers
                 playerHUDControllers.Add(playerHUDController);
             }
             Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
-
-            // set up the enemy controllers
-            foreach (Character enemyData in game.Enemies)
-            {
-                // set up world character controller
-                GameObject enemyView = Instantiate(characterView);
-                enemyView.transform.SetParent(worldObjectContainer.transform);
-                enemyView.name = enemyData.Name;
-
-                CharacterController enemyController = enemyView.GetComponent<CharacterController>();
-                enemyController.SetCharacter(enemyData);
-                enemyControllers.Add(enemyController);
-            }
         }
 
         public void SelectCharacters(InfoCharacter[] playerSelections)
@@ -205,6 +210,21 @@ namespace RGRPG.Controllers
             }
 
             game.GameLoop();
+
+            // transitioned to a new scene
+            if (game.SceneTransitioned)
+            {
+                worldSceneController.ResetScene(game.CurrentScene);
+
+                // set up the enemy controllers
+                foreach (Character enemyData in game.Enemies)
+                {
+                    // set up world character controller
+                    CharacterController enemyController = worldEnemiesPool.Get();
+                    enemyController.gameObject.name = enemyData.Name;
+                    enemyController.SetCharacter(enemyData);
+                }
+            }
 
             worldObjectContainer.SetActive(!game.IsInCombat);
             opponentHUDList.SetActive(game.IsInCombat);
