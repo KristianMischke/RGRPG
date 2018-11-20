@@ -62,7 +62,7 @@ namespace RGRPG.Controllers
             TextMeshProUGUI healthText = healthTextObject.GetComponent<TextMeshProUGUI>();
             healthText.text = "HP " + character.Health.ToString();
 
-            float healthPercentage = Mathf.Min(character.Health / 100f, 1);
+            float healthPercentage = Mathf.Min(character.Health / (float)character.MyInfo.Health, 1);
             healthBarFill.sizeDelta = new Vector2(healthPercentage * healthBarFillParent.sizeDelta.x, healthBarFill.sizeDelta.y);
 
             if (GameController.instance != null)

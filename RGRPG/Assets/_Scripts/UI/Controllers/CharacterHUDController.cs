@@ -71,10 +71,10 @@ namespace RGRPG.Controllers
             TextMeshProUGUI manaText = manaTextObject.GetComponent<TextMeshProUGUI>();
             manaText.text = "MN " + character.Mana.ToString();
 
-            float healthPercentage = Mathf.Min(character.Health / 100f, 1);
+            float healthPercentage = Mathf.Min(character.Health / (float)character.MyInfo.Health, 1);
             healthBarFill.sizeDelta = new Vector2(healthPercentage * healthBarFillParent.sizeDelta.x, healthBarFill.sizeDelta.y);
 
-            float manaPercentage = Mathf.Min(character.Mana / 100f, 1);
+            float manaPercentage = Mathf.Min(character.Mana / (float)character.MyInfo.Magic, 1);
             manaBarFill.sizeDelta = new Vector2(manaPercentage * manaBarFillParent.sizeDelta.x, manaBarFill.sizeDelta.y);
 
             if (GameController.instance != null)

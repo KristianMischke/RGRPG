@@ -226,8 +226,9 @@ namespace RGRPG.Controllers
                 if (game.CurrentCombatState == CombatState.EndCombat)
                 {
 
-                    foreach (OpponentHUDController x in combatEnemyHUDs)
+                    for (int i = combatEnemyHUDs.Count-1; i >= 0; i--)
                     {
+                        OpponentHUDController x = combatEnemyHUDs[i];
                         enemyHUDPool.Deactivate(x);
                     }
 
