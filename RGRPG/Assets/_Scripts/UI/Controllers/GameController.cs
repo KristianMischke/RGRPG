@@ -97,6 +97,12 @@ namespace RGRPG.Controllers
 
         }
 
+        public void SelectCharacters(InfoCharacter[] playerSelections)
+        {
+            game.SelectCharacters(playerSelections);
+            inGame = true;
+        }
+
         private void InitOverworld()
         {
             DiscordController.Instance.InOverworld();
@@ -163,10 +169,11 @@ namespace RGRPG.Controllers
             });
 
             // set up the scene controller
-            GameObject worldSceneObject = Instantiate(worldSceneView);
-            worldSceneObject.transform.SetParent(worldObjectContainer.transform);
+            worldObjectContainer.SetActive(true);
+            GameObject worldSceneObject = Instantiate(worldSceneView, worldObjectContainer.transform);
             worldSceneController = worldSceneObject.GetComponent<SceneController>();
-            worldSceneController.ResetScene(game.StartScene);
+
+            RunSceneTransition();
 
             // set up the player controllers
             foreach (Character playerData in game.Players)
@@ -191,10 +198,30 @@ namespace RGRPG.Controllers
             Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
         }
 
-        public void SelectCharacters(InfoCharacter[] playerSelections)
+        private void RunSceneTransition()
         {
-            game.SelectCharacters(playerSelections);
-            inGame = true;
+
+            UpdateEnemyControllers();
+        }
+
+        private void UpdateEnemyControllers()
+        {
+            worldSceneController.ResetScene(game.CurrentScene);
+
+            // take down old enemy controllers
+            for (int i = enemyControllers.Count-1; i >= 0; i--)
+            {
+                worldEnemiesPool.Deactivate(enemyControllers[i]);
+            }
+
+            // set up the new enemy controllers
+            foreach (Character enemyData in game.Enemies)
+            {
+                // set up world character controller
+                CharacterController enemyController = worldEnemiesPool.Get();
+                enemyController.gameObject.name = enemyData.Name;
+                enemyController.SetCharacter(enemyData);
+            }
         }
 
         void Update()
@@ -214,16 +241,7 @@ namespace RGRPG.Controllers
             // transitioned to a new scene
             if (game.SceneTransitioned)
             {
-                worldSceneController.ResetScene(game.CurrentScene);
-
-                // set up the enemy controllers
-                foreach (Character enemyData in game.Enemies)
-                {
-                    // set up world character controller
-                    CharacterController enemyController = worldEnemiesPool.Get();
-                    enemyController.gameObject.name = enemyData.Name;
-                    enemyController.SetCharacter(enemyData);
-                }
+                RunSceneTransition();
             }
 
             worldObjectContainer.SetActive(!game.IsInCombat);
