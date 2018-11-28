@@ -23,7 +23,7 @@ namespace RGRPG.Controllers
             borderRenderer.gameObject.SetActive(!prevTileReference.Traversable && MapEditorController.instance != null);
             spawnRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.SpawnID) && MapEditorController.instance != null);
             transitionRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.TransitionScene) && !string.IsNullOrEmpty(prevTileReference.TransitionSpawnID) && MapEditorController.instance != null);
-            entityRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, prevTileReference.EntityType);
+            entityRenderer.sprite = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, prevTileReference.EntityType);
             entityRenderer.gameObject.SetActive(!string.IsNullOrEmpty(prevTileReference.EntityType) && !prevTileReference.EntityType.Contains("NONE") && MapEditorController.instance != null);
         }
 

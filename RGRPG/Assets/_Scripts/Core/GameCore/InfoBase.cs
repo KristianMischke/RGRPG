@@ -26,6 +26,7 @@ namespace RGRPG.Core
         string zOverworldSheet;
         string zCombatSprite;
         string zPortraitSprite;
+        bool bOverworldHasDirection;
         bool bEnemy;
         int iHealth;
         int iMagic;
@@ -52,6 +53,7 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "zOverworldSheet", out zOverworldSheet);
             GameXMLLoader.ReadXMLValue(node, "zCombatSprite",   out zCombatSprite);
             GameXMLLoader.ReadXMLValue(node, "zPortraitSprite", out zPortraitSprite);
+            GameXMLLoader.ReadXMLValue(node, "bOverworldHasDirection", out bOverworldHasDirection);
             GameXMLLoader.ReadXMLValue(node, "bEnemy",          out bEnemy);
             GameXMLLoader.ReadXMLValue(node, "iHealth",         out iHealth);
             GameXMLLoader.ReadXMLValue(node, "iMagic",          out iMagic);
@@ -60,8 +62,13 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "portraitOffsetX", out portraitOffsetX);
             GameXMLLoader.ReadXMLValue(node, "portraitOffsetY", out portraitOffsetY);
 
+            string[] path = zOverworldSheet.Split('/');
+            string spriteName = path[path.Length - 1] + "_&_@";
             // load assets
-            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD, zType, zOverworldSheet);
+            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD_UP, zType, zOverworldSheet, bOverworldHasDirection ? spriteName.Replace('&', 'u') : "", bOverworldHasDirection);
+            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD_LEFT, zType, zOverworldSheet, bOverworldHasDirection ? spriteName.Replace('&', 'l') : "", bOverworldHasDirection);
+            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD_RIGHT, zType, zOverworldSheet, bOverworldHasDirection ? spriteName.Replace('&', 'r') : "", bOverworldHasDirection);
+            SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_WORLD_DOWN, zType, zOverworldSheet, bOverworldHasDirection ? spriteName.Replace('&', 'd') : "", bOverworldHasDirection);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_COMBAT, zType, zCombatSprite);
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_PORTRAIT, zType, zPortraitSprite);
         }

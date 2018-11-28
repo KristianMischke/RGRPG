@@ -24,6 +24,9 @@ namespace RGRPG.Controllers
         SpriteRenderer spriteRenderer;
 
         // Data
+        private Vector2 prevPosition;
+        private float pDx;
+        private float pDy;
         public Character character;
 
         private bool firstUpdate = true;
@@ -45,10 +48,10 @@ namespace RGRPG.Controllers
                 return;
             }
 
-            if (firstUpdate)
+            if (firstUpdate || prevPosition != character.Position)
             {
                 SetSprite();
-                firstUpdate = true;
+                firstUpdate = false;
             }
 
             transform.localPosition = character.Position;
@@ -60,6 +63,8 @@ namespace RGRPG.Controllers
 
             float healthPercentage = Mathf.Min(character.Health / 100f, 1);
             healthBarFill.sizeDelta = new Vector2(healthPercentage * healthBarFillParent.sizeDelta.x, healthBarFill.sizeDelta.y);
+
+            prevPosition = character.Position;
         }
 
         /// <summary>
@@ -79,15 +84,39 @@ namespace RGRPG.Controllers
             if (character == null)
                 return;
 
-            Sprite image;
-            if (GameController.instance.IsInCombat)
+            SpriteManager.AssetType direction;
+
+            Vector2 worldMoveVector = character.Position - prevPosition;
+            //Vector2 moveVector = new Vector2(xMovement + yMovement, yMovement - xMovement);
+            //change in screen coordinates
+            float dx = worldMoveVector.x - worldMoveVector.y;
+            float dy = worldMoveVector.y + worldMoveVector.x;
+            if (dx == 0)
+                dx = pDx;
+            if (dy == 0)
+                dy = pDy;
+
+            if (Mathf.Abs(dx) > Mathf.Abs(dy))
             {
-                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, character.Type);
+                // moving left/right
+                if(dx < 0)
+                    direction = SpriteManager.AssetType.CHARACTER_WORLD_LEFT;
+                else
+                    direction = SpriteManager.AssetType.CHARACTER_WORLD_RIGHT;
             }
             else
             {
-                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, character.Type);
+                // moving up/down
+                if (dy > 0)
+                    direction = SpriteManager.AssetType.CHARACTER_WORLD_UP;
+                else
+                    direction = SpriteManager.AssetType.CHARACTER_WORLD_DOWN;
             }
+            pDx = dx;
+            pDy = dy;
+
+            Sprite image = SpriteManager.getSprite(direction, character.Type);
+       
             
 
             spriteRenderer.sprite = image;

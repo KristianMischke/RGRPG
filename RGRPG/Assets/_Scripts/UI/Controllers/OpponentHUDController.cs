@@ -107,16 +107,7 @@ namespace RGRPG.Controllers
             if (character == null)
                 return;
 
-            Sprite image;
-            if (GameController.instance.IsInCombat)
-            {
-                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, character.Type);
-            }
-            else
-            {
-                image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_WORLD, character.Type);
-            }
-
+            Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, character.Type);
 
             myImage.sprite = image;
         }

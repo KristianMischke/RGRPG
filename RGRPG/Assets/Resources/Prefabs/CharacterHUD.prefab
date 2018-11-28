@@ -813,12 +813,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26
+  m_fontSize: 28
   m_fontSizeBase: 26
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 28
   m_fontStyle: 16
   m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
@@ -851,7 +851,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -19.989326, y: 0, z: -17.76831, w: 17.768295}
   m_textInfo:
     textComponent: {fileID: 114864867910303914}
     characterCount: 4
@@ -1138,10 +1138,10 @@ RectTransform:
   m_Father: {fileID: 224532977026566162}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.16333333, y: 0.7882166}
-  m_AnchorMax: {x: 0.82000005, y: 0.9573197}
-  m_AnchoredPosition: {x: 2.5, y: 0}
-  m_SizeDelta: {x: 3, y: 2}
+  m_AnchorMin: {x: 0.1, y: 0.82355374}
+  m_AnchorMax: {x: 0.8966667, y: 0.93600005}
+  m_AnchoredPosition: {x: 1.5999985, y: -7.6}
+  m_SizeDelta: {x: -39, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224074170480749404
 RectTransform:

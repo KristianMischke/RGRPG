@@ -168,7 +168,7 @@ namespace RGRPG.Controllers
             CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainTileButtonContainer, infos.GetAll<InfoTerrain>(false));
             CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainOverlayButtonContainer, infos.GetAll<InfoTerrainOverlay>(false));
             CreatePanelButtons(SpriteManager.AssetType.TERRAIN, terrainPropButtonContainer, infos.GetAll<InfoTerrainProp>(false));
-            CreatePanelButtons(SpriteManager.AssetType.CHARACTER_WORLD, entityButtonContainer, infos.GetAll<InfoCharacter>(false).FindAll(x => x.IsEnemy || x.ZType == "CHARACTER_NONE"));
+            CreatePanelButtons(SpriteManager.AssetType.CHARACTER_COMBAT, entityButtonContainer, infos.GetAll<InfoCharacter>(false).FindAll(x => x.IsEnemy || x.ZType == "CHARACTER_NONE"));
 
             saveButton.onClick.AddListener(Save);
             loadButton.onClick.AddListener(Load);

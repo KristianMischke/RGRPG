@@ -40,7 +40,10 @@ namespace RGRPG.Controllers
         {
             NONE = 0,
 
-            CHARACTER_WORLD,
+            CHARACTER_WORLD_UP,
+            CHARACTER_WORLD_DOWN,
+            CHARACTER_WORLD_LEFT,
+            CHARACTER_WORLD_RIGHT,
             CHARACTER_COMBAT,
             CHARACTER_PORTRAIT,
             TERRAIN
