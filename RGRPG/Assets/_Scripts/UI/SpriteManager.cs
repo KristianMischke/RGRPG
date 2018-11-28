@@ -46,7 +46,8 @@ namespace RGRPG.Controllers
             CHARACTER_WORLD_RIGHT,
             CHARACTER_COMBAT,
             CHARACTER_PORTRAIT,
-            TERRAIN
+            TERRAIN,
+            COMBAT_BACKGROUND
         }
         
         private static Dictionary<AssetType, Dictionary<string, AssetData>> assetDB = new Dictionary<AssetType, Dictionary<string, AssetData>>();

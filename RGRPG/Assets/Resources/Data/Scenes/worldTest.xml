@@ -3,6 +3,7 @@
 	<Width>40</Width>
 	<Height>30</Height>
 	<bIsIndoors></bIsIndoors>
+  <BackgroundImage>Sprites/Backgrounds/IMG_20181117_132315098 copy</BackgroundImage>
 	<Terrain>
 		<TerrainRow>
 			<Tile>

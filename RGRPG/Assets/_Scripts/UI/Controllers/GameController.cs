@@ -63,6 +63,7 @@ namespace RGRPG.Controllers
         public List<Character> CombatEnemies { get { return game.CombatEnemies; } }
         public bool IsInCombat { get { return game.IsInCombat; } }
         public bool IsIndoors { get { return game.CurrentScene.IsIndoors; } }
+        public string CurrentSceneType { get { return game.CurrentScene.ZType; } }
 
         private void OnEnable()
         {

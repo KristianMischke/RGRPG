@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using RGRPG.Controllers;
+using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
@@ -18,12 +19,12 @@ namespace RGRPG.Core
         protected int width, height;
         protected TerrainTile[,] terrainTiles;
         protected bool isIndoors;
+        protected string backgroundImage;
+
         protected Dictionary<string, Vector2Int> spawns;
 
         public InfoScene MyInfo { get { return myInfo; } }
         public string ZType { get { return myInfo.ZType; } }
-
-
         public int Width { get { return width; } }
         public int Height { get { return height; } }
         public TerrainTile[,] TerrainTiles { get { return terrainTiles; } }
@@ -68,6 +69,7 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(docElem, "Width", out width);
             GameXMLLoader.ReadXMLValue(docElem, "Height", out height);
             GameXMLLoader.ReadXMLValue(docElem, "bIsIndoors", out isIndoors);
+            GameXMLLoader.ReadXMLValue(docElem, "BackgroundImage", out backgroundImage);
 
             terrainTiles = new TerrainTile[width, height];
             int i = 0;
@@ -85,6 +87,10 @@ namespace RGRPG.Core
                 }
                 i++;
             }
+
+
+            //load asset
+            SpriteManager.LoadAsset(SpriteManager.AssetType.COMBAT_BACKGROUND, myInfo.ZType, backgroundImage);
         }
 
         /// <summary>
@@ -103,6 +109,7 @@ namespace RGRPG.Core
                 GameXMLLoader.WriteXMLValue(writer, "Width", width);
                 GameXMLLoader.WriteXMLValue(writer, "Height", height);
                 GameXMLLoader.WriteXMLValue(writer, "bIsIndoors", isIndoors);
+                GameXMLLoader.WriteXMLValue(writer, "BackgroundImage", backgroundImage);
 
                 writer.WriteStartElement("Terrain");
                 for (int i = 0; i < terrainTiles.GetLength(0); i++)
