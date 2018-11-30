@@ -80,9 +80,9 @@
     <zType>CHARACTER_MEREDITH</zType>
     <Class>CLASS_SUPPORT</Class>
     <Name>Meredith</Name>
-    <zOverworldSheet></zOverworldSheet>
-    <zCombatSprite></zCombatSprite>
-    <zPortraitSprite></zPortraitSprite>
+    <zOverworldSheet>Sprites/Pixel/meredith</zOverworldSheet>
+    <zCombatSprite>Sprites/Pixel/meredith</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Meredith_Portrait</zPortraitSprite>
     <bOverworldHasDirection>1</bOverworldHasDirection>
     <bEnemy/>
     <iHealth>75</iHealth>
