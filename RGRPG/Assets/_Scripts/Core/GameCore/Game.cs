@@ -17,6 +17,9 @@ namespace RGRPG.Core
         WorldMovement,
         Combat,
 
+        Win,
+        Loss,
+
         COUNT
     }
 
@@ -207,10 +210,13 @@ namespace RGRPG.Core
                 // right now begining combat just resets mana. TODO: determine correct behavior
                 case CombatState.BeginCombat:
                     turnCounter = 0;
+
+                    //TODO: change mana behavior
                     foreach (Character p in players)
                         p.SetMana(50);
                     foreach (Enemy e in combatEnemies)
                         e.SetMana(50);
+
                     currentCombatState = CombatState.PickTurnOrder;
                     break;
 
@@ -222,8 +228,17 @@ namespace RGRPG.Core
 
                 // chooses who each enemy in combat will attack
                 case CombatState.ChooseEnemyActions:
-                    foreach(Enemy e in combatEnemies)
-                        RecordAction(e.Actions[0], e, players[Random.Range(0, players.Count)]);
+                    foreach (Enemy e in combatEnemies)
+                    {
+                        Character target = null;
+                        while (target == null)
+                        {
+                            int randIndex = Random.Range(0, players.Count);
+                            if(players[randIndex].IsAlive())
+                                target = players[randIndex];
+                        }
+                        RecordAction(e.Actions[0], e, target);
+                    }
                     currentCombatState = CombatState.PlayersChooseActions;
                     break;
 
@@ -305,10 +320,10 @@ namespace RGRPG.Core
         /// </summary>
         private void CheckExitConditions()
         {
-            bool allEnemiesDead = true;
+            bool allCombatEnemiesDead = true;
             foreach (Enemy e in combatEnemies)
             {
-                allEnemiesDead &= !e.IsAlive();
+                allCombatEnemiesDead &= !e.IsAlive();
             }
 
             bool allPlayersDead = true;
@@ -317,17 +332,29 @@ namespace RGRPG.Core
                 allPlayersDead &= !p.IsAlive();
             }
 
+            bool allEnemiesDead = true;
+            foreach (List<Enemy> sceneEnenies in enemies.Values)
+                foreach (Enemy e in sceneEnenies)
+                    allEnemiesDead &= !e.IsAlive();
+
             if (allPlayersDead)
             {
+                currentGameState = GameState.Loss;
                 LogMessage("The Enemie(s) Won!"); //TODO: actually store a win/lose state instead of just logging
+            }
+
+            if (allCombatEnemiesDead)
+            {
+                LogMessage("YOU Won this battle!"); //TODO: see ^
             }
 
             if (allEnemiesDead)
             {
-                LogMessage("YOU Won!"); //TODO: see ^
+                currentGameState = GameState.Win;
+                LogMessage("YOU WON THE GAME"); //TODO: beating all the enemies should not be the ultimate win condition (defeating the bosses should be)
             }
 
-            if (allEnemiesDead || allPlayersDead)
+            if (allCombatEnemiesDead || allPlayersDead)
                 currentCombatState = CombatState.EndCombat;
         }
 
@@ -339,35 +366,42 @@ namespace RGRPG.Core
             // get the player who is currently executing their turn
             Character currentTurn = turnOrder[turnCounter];
 
-            // we have switched to another player's turn
-            if (prevTurnCounter != turnCounter)
+            if (currentTurn.IsAlive())
             {
-                gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, new BeginTurnAction()));
-            }
-
-            // execute the next action
-            if (characterTurns.ContainsKey(currentTurn))
-            {
-                if (characterTurns[currentTurn].Count > 0)
+                // we have switched to another player's turn
+                if (prevTurnCounter != turnCounter)
                 {
-                    ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
-                    if (currentAction.ManaCost() > currentTurn.Mana)
-                    {
-                        LogMessage("NOT ENOUGH MANA");
-                    }
-                    else
-                    {
-                        currentTurn.ChangeMana(-currentAction.ManaCost());
-                        //LogMessage("Executing Action: " + currentAction.GetName()); //TODO: don't log messages for attacks, instead handle attack messages in ICharacterAction and use the gameCombatActionQueue in GameController.cs to add those messages to the Marque
-                        currentAction.DoAction();
+                    gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, new BeginTurnAction()));
+                }
 
-                        gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, currentAction));
+                // execute the next action
+                if (characterTurns.ContainsKey(currentTurn))
+                {
+                    if (characterTurns[currentTurn].Count > 0)
+                    {
+                        ICharacterAction currentAction = characterTurns[currentTurn].Dequeue();
+                        if (currentAction.ManaCost() > currentTurn.Mana)
+                        {
+                            LogMessage("NOT ENOUGH MANA");
+                        }
+                        else
+                        {
+                            currentTurn.ChangeMana(-currentAction.ManaCost());
+                            //LogMessage("Executing Action: " + currentAction.GetName()); //TODO: don't log messages for attacks, instead handle attack messages in ICharacterAction and use the gameCombatActionQueue in GameController.cs to add those messages to the Marque
+                            currentAction.DoAction();
+
+                            gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, currentAction));
+                        }
                     }
+                }
+                else
+                {
+                    gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, new PassTurnAction()));
                 }
             }
             else
             {
-                gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, new PassTurnAction()));
+                characterTurns[currentTurn].Clear();
             }
 
             // move to the next character if they aren't doing anthing OR have finished their moves

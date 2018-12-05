@@ -63,6 +63,9 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "OverlaySubType", out overlaySubType);
             GameXMLLoader.ReadXMLValue(node, "PropType", out propType);
             GameXMLLoader.ReadXMLValue(node, "EntityInitType", out entityType);
+            if (entityType == "CHARACTER_NONE")
+                entityType = "";
+
             GameXMLLoader.ReadXMLValue(node, "Traversable", out traversable);
             GameXMLLoader.ReadXMLValue(node, "Elevation", out elevation);
             GameXMLLoader.ReadXMLValue(node, "ElevationRamp", out elevationRamp);

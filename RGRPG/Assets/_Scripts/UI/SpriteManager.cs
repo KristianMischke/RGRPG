@@ -61,7 +61,7 @@ namespace RGRPG.Controllers
             }
             if (assetDB[assetType].ContainsKey(zType))
             {
-                Debug.LogError("Already added sprite of type: " + assetType.ToString() + " : " + zType);
+                Debug.LogWarning("Already added sprite of type: " + assetType.ToString() + " : " + zType);
             }
 
             Sprite[] sheet = Resources.LoadAll<Sprite>(filepath);

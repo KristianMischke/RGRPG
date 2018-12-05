@@ -27,6 +27,8 @@ namespace RGRPG.Controllers
         public GameObject playerHUDList;
         public GameObject opponentHUDList;
         public GameObject animationController;
+        public GameObject winScreen;
+        public GameObject loseScreen;
 
         
         [HideInInspector]
@@ -238,6 +240,18 @@ namespace RGRPG.Controllers
             }
 
             game.GameLoop();
+
+            if (game.CurrentGameState == GameState.Win)
+            {
+                winScreen.SetActive(true);
+                return;
+            }
+            if (game.CurrentGameState == GameState.Loss)
+            {
+                loseScreen.SetActive(true);
+                return;
+            }
+
 
             // transitioned to a new scene
             if (game.SceneTransitioned)

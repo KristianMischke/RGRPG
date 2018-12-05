@@ -61,12 +61,13 @@ namespace RGRPG.Core
 
         public void Damage(int amount)
         {
-            if (defense >= amount)
+            /*if (defense >= amount)
                 Debug.Log("Deflected damage!");
-            else if (health <= 0)
+            else*/
+            health -= amount;// - defense;
+
+            if (health <= 0)
                 health = 0;
-            else
-                health -= amount - defense;
         }
 
         public void SetShield(int amt)
@@ -82,16 +83,25 @@ namespace RGRPG.Core
         public void Heal(int amount)
         {
             health += amount;
+
+            if (health > myInfo.Health)
+                health = myInfo.Health;
         }
 
         public void SetMana(int amount)
         {
             mana = amount;
+
+            if (mana > myInfo.Magic)
+                mana = myInfo.Magic;
         }
 
         public void ChangeMana(int amount)
         {
             mana += amount;
+
+            if (mana > myInfo.Magic)
+                mana = myInfo.Magic;
         }
 
         public void Move(WorldScene scene, float dx, float dy)
