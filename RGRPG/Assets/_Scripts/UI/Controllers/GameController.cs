@@ -54,8 +54,9 @@ namespace RGRPG.Controllers
 
 
         // Data
+        bool overworldInitialized = false;
         bool inGame = false;
-        bool firstGameUpdate = true;
+        static bool firstGameUpdate = true;
         Game game;
 
         SceneController worldSceneController;
@@ -70,7 +71,7 @@ namespace RGRPG.Controllers
         private void OnEnable()
         {
             // This class acts kind of like a singleton
-            if (instance != null)
+            if (instance != null && instance != this)
             {
                 Destroy(this.gameObject); // an instance of GameController already exists, so we should not make a second one
                 return;   
@@ -114,6 +115,18 @@ namespace RGRPG.Controllers
             {
                 worldObjectContainer = GameObject.Find("WorldObjects");
             }
+
+            if (winScreen == null)
+            {
+                winScreen = GameObject.Find("WinScreen");
+            }
+            winScreen.SetActive(false);
+
+            if (loseScreen == null)
+            {
+                loseScreen = GameObject.Find("LossScreen");                
+            }
+            loseScreen.SetActive(false);
 
             if (canvasObject == null)
             {
@@ -199,6 +212,8 @@ namespace RGRPG.Controllers
                 playerHUDControllers.Add(playerHUDController);
             }
             Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+
+            overworldInitialized = true;
         }
 
         private void RunSceneTransition()
@@ -229,15 +244,21 @@ namespace RGRPG.Controllers
 
         void Update()
         {
-            if (game == null || !inGame)
+            if (game == null || !inGame || instance != this)
                 return;
 
             if (firstGameUpdate)
             {
-                //if (SceneManager.GetActiveScene().name == "GameScene")
+                if (SceneManager.GetActiveScene().name == "GameScene")
+                {
                     InitOverworld();
-                firstGameUpdate = false;
+                    firstGameUpdate = false;
+                    return;
+                }
             }
+
+            if (!overworldInitialized)
+                return;
 
             game.GameLoop();
 

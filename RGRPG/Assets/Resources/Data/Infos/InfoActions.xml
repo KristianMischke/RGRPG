@@ -16,10 +16,10 @@
       <Item></Item>
     </Quips>
     <SharpClass>
-      <Type>RGRPG.Core.Attack</Type>
+      <Type>RGRPG.Core.AttackAction</Type>
       <InitParams>
-        <iDamage></iDamage>
-        <iMana></iMana>
+        <Item>10</Item>
+        <Item></Item>
       </InitParams>
     </SharpClass>
   </Entry>
