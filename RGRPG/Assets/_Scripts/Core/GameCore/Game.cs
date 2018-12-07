@@ -231,13 +231,16 @@ namespace RGRPG.Core
                     foreach (Enemy e in combatEnemies)
                     {
                         Character target = null;
-                        while (target == null)
+                        int count = Players.Count;
+                        while (target == null && count > 0)
                         {
                             int randIndex = Random.Range(0, players.Count);
                             if(players[randIndex].IsAlive())
                                 target = players[randIndex];
+                            count--;
                         }
-                        RecordAction(e.Actions[0], e, target);
+                        if(count != 0)
+                            RecordAction(e.Actions[0], e, target);
                     }
                     currentCombatState = CombatState.PlayersChooseActions;
                     break;
@@ -401,7 +404,10 @@ namespace RGRPG.Core
             }
             else
             {
-                characterTurns[currentTurn].Clear();
+                if (characterTurns.ContainsKey(currentTurn))
+                {
+                    characterTurns[currentTurn].Clear();
+                }
             }
 
             // move to the next character if they aren't doing anthing OR have finished their moves
