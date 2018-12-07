@@ -15,6 +15,13 @@
     <Quips>
       <Item></Item>
     </Quips>
+    <SharpClass>
+      <Type>RGRPG.Core.Attack</Type>
+      <InitParams>
+        <iDamage></iDamage>
+        <iMana></iMana>
+      </InitParams>
+    </SharpClass>
   </Entry>
   <Entry>
     <zType>ACTION_RIKA_NECROMANCER</zType>

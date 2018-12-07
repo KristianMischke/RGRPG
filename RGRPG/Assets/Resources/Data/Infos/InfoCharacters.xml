@@ -93,7 +93,7 @@
       <Item>ACTION_MEREDITH_ON_YOUR_TOES</Item>
       <Item>ACTION_MEREDITH_UP_THE_PACE </Item>
     </ActionList>
-    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetX>120</portraitOffsetX>
     <portraitOffsetY>0</portraitOffsetY>
   </Entry>
 	<Entry>
@@ -132,7 +132,7 @@
     <zType>CHARACTER_BEE</zType>
     <Class>NONE</Class>
     <Name>Chick'fil'B</Name>
-    <zOverworldSheet>Sprites/Not Pixel/Bee_colored</zOverworldSheet>
+    <zOverworldSheet>Sprites/Pixel/bee</zOverworldSheet>
     <zCombatSprite>Sprites/Not Pixel/Bee_colored</zCombatSprite>
     <zPortraitSprite>Sprites/Not Pixel/Bee_colored</zPortraitSprite>
     <bOverworldHasDirection/>
@@ -148,7 +148,7 @@
     <zType>CHARACTER_ZOMBIE</zType>
     <Class>NONE</Class>
     <Name>Caffine-Dependent Student</Name>
-    <zOverworldSheet>Sprites/Not Pixel/Sleep-Deprived Student colored</zOverworldSheet>
+    <zOverworldSheet>Sprites/Pixel/zombie</zOverworldSheet>
     <zCombatSprite>Sprites/Not Pixel/Sleep-Deprived Student colored</zCombatSprite>
     <zPortraitSprite>Sprites/Not Pixel/Sleep-Deprived Student colored</zPortraitSprite>
     <bOverworldHasDirection/>
