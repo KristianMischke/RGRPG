@@ -124,7 +124,10 @@ TextureImporter:
     21300238: bicycle_0
     21300240: umbc_tile_1_0_120
     21300242: bush_0
-    21300244: black
+    21300244: brick_2
+    21300246: tree_1
+    21300248: door_0
+    21300250: chest_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -1670,7 +1673,7 @@ TextureImporter:
       name: tall_grass_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 15
         y: 64
         width: 16
         height: 16
@@ -1987,7 +1990,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: black
+      name: brick_2
       rect:
         serializedVersion: 2
         x: 128
@@ -2002,6 +2005,66 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1be4cd5429b6ab5448644d8d96350631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_1
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 16
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0cd7fab74c9f34ba11f0dc5c9340e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_0
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 80
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c56d0908b56276428bea02fda1be23b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest_0
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a658868e2a79db41b7a48dd0e95e6fe
       vertices: []
       indices: 
       edges: []

@@ -160,4 +160,68 @@
     <portraitOffsetX>0</portraitOffsetX>
     <portraitOffsetY>0</portraitOffsetY>
   </Entry>
+  <Entry>
+    <zType>CHARACTER_CRAB_KNIGHT</zType>
+    <Class>NONE</Class>
+    <Name>Crab Knight</Name>
+    <zOverworldSheet>Sprites/Pixel/crab</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Crab Knight colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Crab Knight colored</zPortraitSprite>
+    <bOverworldHasDirection/>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_GHOST_OF_ASSIGNMENTS_PAST</zType>
+    <Class>NONE</Class>
+    <Name>Ghost of Assignments Past</Name>
+    <zOverworldSheet>Sprites/Pixel/ghost</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Ghost of Assignments Past colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Ghost of Assignments Past colored</zPortraitSprite>
+    <bOverworldHasDirection/>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_PAPERWEIGHT</zType>
+    <Class>NONE</Class>
+    <Name>Paperweight</Name>
+    <zOverworldSheet>Sprites/Pixel/book2</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/Paperweight colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/Paperweight colored</zPortraitSprite>
+    <bOverworldHasDirection/>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
+  <Entry>
+    <zType>CHARACTER_THE_SWARM</zType>
+    <Class>NONE</Class>
+    <Name>The Swarm</Name>
+    <zOverworldSheet>Sprites/Pixel/moth</zOverworldSheet>
+    <zCombatSprite>Sprites/Not Pixel/The swarm colored</zCombatSprite>
+    <zPortraitSprite>Sprites/Not Pixel/The swarm colored</zPortraitSprite>
+    <bOverworldHasDirection/>
+    <bEnemy>1</bEnemy>
+    <iHealth>60</iHealth>
+    <iMagic>40</iMagic>
+    <iDefense>50</iDefense>
+    <ActionList></ActionList>
+    <portraitOffsetX>0</portraitOffsetX>
+    <portraitOffsetY>0</portraitOffsetY>
+  </Entry>
 </Root>

@@ -72,4 +72,16 @@
     <SpriteName>bush_0</SpriteName>
     <bHasMultiple/>
   </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_CHEST</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>chest_0</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_DOOR</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>door_0</SpriteName>
+    <bHasMultiple/>
+  </Entry>
 </Root>
