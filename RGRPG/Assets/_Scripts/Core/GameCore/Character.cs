@@ -22,6 +22,7 @@ namespace RGRPG.Core
     /// </remarks>
     public class Character
     {
+        protected Game myGame;
         protected InfoCharacter myInfo;
         protected string zType;
 
@@ -34,6 +35,8 @@ namespace RGRPG.Core
         protected float radius = 0.5f;
 
         protected List<ICharacterAction> actions;
+
+        public Game MyGame { get { return myGame; } }
         public InfoCharacter MyInfo { get {return myInfo;}}
         public string Type { get { return zType; } }
         public string ClassType { get { return myInfo.Class; } }        
@@ -50,13 +53,13 @@ namespace RGRPG.Core
 
         public Character(Game myGame, InfoCharacter myInfo, List<ICharacterAction> actions)
         {
+            this.myGame = myGame;
             this.myInfo = myInfo;
             this.zType = myInfo.ZType;
             this.health = myInfo.Health;
             //TODO deal with MP
-            this.defense = myInfo.Defence;
-            
-            this.actions = actions; //TODO: load actions from infos
+            this.defense = myInfo.Defense;
+            this.actions = actions;
         }
 
         public void Damage(int amount)
@@ -131,6 +134,7 @@ namespace RGRPG.Core
 
     }
 
+    //TODO: Think about whether or not Enemies should be stored basically the same way Characters are
     public class Enemy : Character
     {
         protected Vector2 fixedPosition;
@@ -142,15 +146,15 @@ namespace RGRPG.Core
         protected float range = 5;
         protected float maxR = 7;
 
-        public Enemy(Game myGame, InfoCharacter myInfo, Vector2 pos, List<ICharacterAction> actions)
+        public Enemy(Character baseCharacter, Vector2 pos)
         {
-            this.myInfo = myInfo;
-            this.zType = myInfo.ZType;
-            this.health = myInfo.Health;
+            this.myGame = baseCharacter.MyGame;
+            this.myInfo = baseCharacter.MyInfo;
+            this.zType = baseCharacter.MyInfo.ZType;
+            this.health = baseCharacter.MyInfo.Health;
             //TODO deal with MP
-            this.defense = myInfo.Defence;
-
-            this.actions = actions; //TODO: load actions from infos
+            this.defense = baseCharacter.MyInfo.Defense;
+            this.actions = baseCharacter.Actions;
             
             this.position = pos;
             this.fixedPosition = pos;

@@ -12,39 +12,35 @@ namespace RGRPG.Controllers
     /// <summary>
     ///     Controls the HUD (Head Up Display) for an opponent
     /// </summary>
-    public class OpponentHUDController : MonoBehaviour
+    public class OpponentHUDController : MonoBehaviour, ICharacterHUDController
     {
         // Prefabs
 
         // Scene Object References
         public GameObject healthTextObject;
-        public GameObject selectButtonObject;
-        public GameObject healthBarFillParentObject;
-        public GameObject healthBarFillObject;
-        public GameObject dieView;
+        public Button selectButton;
+        public RectTransform healthBarFillParent;
+        public RectTransform healthBarFill;
+        public DiceController myDie;
         public Image myImage;
-
-        RectTransform healthBarFillParent;
-        RectTransform healthBarFill;
-
-        DiceController myDie;
+        public Image targetImage;
 
         Action overrideAction;
 
         // Data
         Character character;
 
+        public Character Character { get { return character; } }
+        public Transform Transform { get { return transform; } }
+        public GameObject GameObject { get { return GameObject; } }
+
         bool firstUpdate = true;
 
         // Use this for initialization
         void Start()
         {
-            selectButtonObject.GetComponent<Button>().onClick.AddListener(SelectAction);
-
-            healthBarFillParent = healthBarFillParentObject.GetComponent<RectTransform>();
-            healthBarFill = healthBarFillObject.GetComponent<RectTransform>();
-
-            myDie = dieView.GetComponent<DiceController>();
+            selectButton.onClick.AddListener(SelectAction);
+            targetImage.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
@@ -110,6 +106,17 @@ namespace RGRPG.Controllers
             Sprite image = SpriteManager.getSprite(SpriteManager.AssetType.CHARACTER_COMBAT, character.Type);
 
             myImage.sprite = image;
+        }
+
+        public void SetTarget(bool isTarget)
+        {
+            SetTarget(isTarget, Color.white);
+        }
+
+        public void SetTarget(bool isTarget, Color targetColor)
+        {
+            targetImage.gameObject.SetActive(isTarget);
+            targetImage.color = targetColor;
         }
     }
 

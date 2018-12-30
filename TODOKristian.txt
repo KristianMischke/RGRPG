@@ -1,6 +1,8 @@
 _______________________RGRPG TODO LIST_______________________________
 
--Indicate enemy start positions in a scene
+
+TOOOOOODOOOO: figure out how to restrict action targets
+
 -Indicate enemy spawn positions in a scene
 
 

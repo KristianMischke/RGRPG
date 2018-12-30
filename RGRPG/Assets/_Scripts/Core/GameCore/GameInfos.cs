@@ -52,12 +52,13 @@ namespace RGRPG.Core
         void InitInfoFiles()
         {
             SpriteManager.LoadAsset(SpriteManager.AssetType.NONE, "NONE", "Sprites/troll");
-            infoFiles.Add(new InfoFile(INFO_PATH + "InfoCharacters", LoadNodes<InfoCharacter>));
-            infoFiles.Add(new InfoFile(INFO_PATH + "InfoActions", LoadNodes<InfoAction>));
-            infoFiles.Add(new InfoFile(INFO_PATH + "InfoScenes", LoadNodes<InfoScene>));
             infoFiles.Add(new InfoFile(INFO_PATH + "InfoTerrain", LoadNodes<InfoTerrain>));
             infoFiles.Add(new InfoFile(INFO_PATH + "InfoTerrainOverlays", LoadNodes<InfoTerrainOverlay>));
             infoFiles.Add(new InfoFile(INFO_PATH + "InfoTerrainProps", LoadNodes<InfoTerrainProp>));
+            infoFiles.Add(new InfoFile(INFO_PATH + "InfoScenes", LoadNodes<InfoScene>));
+            infoFiles.Add(new InfoFile(INFO_PATH + "InfoTargetTypes", LoadNodes<InfoTargetType>));
+            infoFiles.Add(new InfoFile(INFO_PATH + "InfoActions", LoadNodes<InfoAction>));
+            infoFiles.Add(new InfoFile(INFO_PATH + "InfoCharacters", LoadNodes<InfoCharacter>));
         }
 
         void LoadInfos()
@@ -73,7 +74,7 @@ namespace RGRPG.Core
             foreach (XmlNode entry in document.DocumentElement.ChildNodes)
             {
                 T obj = new T();
-                obj.LoadInfo(entry);
+                obj.LoadInfo(this, entry);
 
                 if (infoObjects.ContainsKey(obj.ZType))
                     Debug.LogError("Info type " + obj.ZType + " already exists!");

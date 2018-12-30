@@ -30,7 +30,7 @@ namespace RGRPG.Controllers
             actionButton.onClick.AddListener(ChooseAction);
 
             Text actionText = actionTextObject.GetComponent<Text>();
-            actionText.text = action.GetName() + (action.HasAmount() ? action.GetAmount().ToString() : ""); //TODO: we may want to split the attack amount from the button
+            actionText.text = action.GetDisplayText(); //TODO: we may want to split the attack amount from the button
         }
 
         // Update is called once per frame
@@ -58,15 +58,7 @@ namespace RGRPG.Controllers
         /// </summary>
         public void ChooseAction()
         {
-            // for now, heal and defend actions auto select the same character as the target
-            // and attack auto selects the enemy
-            // TODO: ability for users to choose targets of actions
-            if (action.GetType() == typeof(DefendAction))
-                GameController.instance.RecordAction(action, character, character);
-            else if (action.GetType() == typeof(HealAction))
-                GameController.instance.RecordAction(action, character, character);
-            else
-                GameController.instance.RecordAction(action, character, GameController.instance.CombatEnemies[0]);
+            GameController.instance.BeginRecordingAction(action, character);
 
             EventSystem.current.SetSelectedGameObject(null);
         }
