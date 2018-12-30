@@ -154,6 +154,7 @@ namespace RGRPG.Controllers
             {
                 doneTurnButton = GameObject.Find("DoneTurnButton").GetComponent<Button>();
             }
+            doneTurnButton.onClick.AddListener(() => FinishPlayerTurnInput());
 
             if (animationController == null)
             {

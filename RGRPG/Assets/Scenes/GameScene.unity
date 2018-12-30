@@ -288,18 +288,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 112943058}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1107107521}
-        m_MethodName: FinishPlayerTurnInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &112943058
@@ -631,7 +620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &847467516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -942,11 +931,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1378,12 +1367,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1087179399}
   m_CullTransparentMesh: 0
---- !u!114 &1107107521 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114143378573784632, guid: cac5682a211fe054094b9ddb598f4a4e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1697195853}
-  m_Script: {fileID: 11500000, guid: 3f8474a3d44af464d8399fcde3b4f214, type: 3}
 --- !u!1 &1114309917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,11 +1832,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2571,7 +2554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80153925fd9bd7418119001d1f1b8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healEvent: {fileID: 1527589636903816, guid: 839640bfdc4f7ae4b9b43c27918ab027, type: 2}
 --- !u!1 &2134088292
 GameObject:
   m_ObjectHideFlags: 0
