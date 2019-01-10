@@ -1,22 +1,8 @@
 _______________________RGRPG TODO LIST_______________________________
 
-
-TOOOOOODOOOO: figure out how to restrict action targets
-
 -Indicate enemy spawn positions in a scene
 
-
--Add action animation prefabs to InfoAction.xml
-
--Create system that can allow for picking action targets
---i.e. we need a flag to target all members of party (should work for both enemies and players
---flag for one target (any)
---flag for one target (only friends, or only opponents)
---flag for self
---flag for multiple targets???
-
--When clicking an action, make an arrow/line draw from the action button to the mouse until you pick your targets (then there should be an arrow from the action to each of the targets before you submit your action
-
+-Use icons for actions instead of just text
 
 -Combat backgrounds based on the location (either the scene, or the nearby tiles)
 --need to add to infos

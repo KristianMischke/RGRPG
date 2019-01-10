@@ -171,14 +171,14 @@ namespace RGRPG.Core
         /// <summary>
         ///     Controls the next iteration of the game loop, currently just switches from combat mode to world movement mode
         /// </summary>
-        public void GameLoop()
+        public void GameLoop(float deltaTime)
         {
             sceneTransitioned = false;
 
             switch(currentGameState)
             {
                 case GameState.WorldMovement:
-                    UpdateAI();
+                    UpdateAI(deltaTime);
                     CheckSceneTransition();
                     CheckEncounterEnemy();
                     break;
@@ -191,11 +191,11 @@ namespace RGRPG.Core
         /// <summary>
         ///     Tells all the enemies to execute their AI
         /// </summary>
-        private void UpdateAI()
+        private void UpdateAI(float deltaTime)
         {
             foreach (Enemy e in enemies[currentScene.ZType])
             {
-                e.UpdateAI(currentScene, Time.deltaTime);
+                e.UpdateAI(currentScene, deltaTime);
             }
         }
 

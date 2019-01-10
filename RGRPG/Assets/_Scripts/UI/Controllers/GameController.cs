@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using RGRPG.Core;
@@ -17,7 +18,7 @@ namespace RGRPG.Controllers
     ///         In the future, we will probably wrap this class with GameClientController and GameServerController, and thus move some of the functionality there
     ///     </para>
     /// </remarks>
-    public class GameController : MonoBehaviour
+    public class GameController : NetworkBehaviour
     {
 
         public static GameController instance;
@@ -101,7 +102,7 @@ namespace RGRPG.Controllers
         void Start()
         {
 
-            if (SceneManager.GetActiveScene().name == "GameScene")
+            if (SceneManager.GetActiveScene().name == "GameScene") // Hacky way of adding all four players when STARTING from the GameScene instead of the Menu
             {
                 SelectCharacters(Infos.GetAll<InfoCharacter>().FindAll(x => !x.IsEnemy).ToArray());
             }
@@ -274,7 +275,7 @@ namespace RGRPG.Controllers
             if (!overworldInitialized)
                 return;
 
-            game.GameLoop();
+            game.GameLoop(Time.deltaTime);
 
             if (game.CurrentGameState == GameState.Win)
             {
@@ -309,13 +310,13 @@ namespace RGRPG.Controllers
                     foreach (Character c in game.CombatEnemies)
                     {
                         OpponentHUDController opponent = enemyHUDPool.Get();
-                        opponent.Init(c); //TODO selectAction for choosing enemy target
+                        opponent.Init(c); //TODO selectAction for choosing enemy target (SERVER)
                     }
                 }
 
                 if (game.CurrentCombatState == CombatState.NextRound)
                 {
-                    currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
+                    currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>(); //(SERVER)
                 }
 
                 if (game.CurrentCombatState == CombatState.EndCombat)
@@ -341,7 +342,7 @@ namespace RGRPG.Controllers
                     }
                 }
 
-                MoveSelectedCharacter();
+                MoveSelectedCharacter(); // (CLIENT REQUEST)
             }
 
             if (game.gameMessages.Count > 0)
@@ -370,7 +371,7 @@ namespace RGRPG.Controllers
                 }
                 else
                 {
-                    game.ProcessNextCombatStep();
+                    game.ProcessNextCombatStep(); // (SERVER)
                 }
             }
 
