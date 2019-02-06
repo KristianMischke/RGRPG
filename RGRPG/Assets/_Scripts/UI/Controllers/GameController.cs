@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using RGRPG.Core;
 using UnityEngine.SceneManagement;
 using RGRPG.Core.Generics;
@@ -29,12 +30,13 @@ namespace RGRPG.Controllers
         public GameObject animationController;
         public GameObject winScreen;
         public GameObject loseScreen;
+        public Button doneTurnButton;
 
         
         [HideInInspector]
         public List<CharacterController> playerControllers;
         [HideInInspector]
-        public List<CharacterHUDController> playerHUDControllers;
+        public List<ICharacterHUDController> playerHUDControllers;
         [HideInInspector]
         public List<CharacterController> enemyControllers;
         [HideInInspector]
@@ -42,7 +44,7 @@ namespace RGRPG.Controllers
         [HideInInspector]
         public Pool<OpponentHUDController> enemyHUDPool;
         [HideInInspector]
-        public List<OpponentHUDController> combatEnemyHUDs;
+        public List<ICharacterHUDController> combatEnemyHUDs;
 
         // Prefabs
         public GameObject DiscordControllerObject;
@@ -54,9 +56,15 @@ namespace RGRPG.Controllers
 
 
         // Data
+        bool overworldInitialized = false;
         bool inGame = false;
-        bool firstGameUpdate = true;
+        static bool firstGameUpdate = true;
         Game game;
+        Dictionary<Character, Pair<ICharacterAction, List<Character>>> currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
+
+        Character currentSourceAction; //TODO: when implementing multiplayer, this will only be on the client, the server (i.e. host) will handle the dictionary above
+        public Character CurrentSourceAction { get { return currentSourceAction; } }
+
 
         SceneController worldSceneController;
 
@@ -70,7 +78,7 @@ namespace RGRPG.Controllers
         private void OnEnable()
         {
             // This class acts kind of like a singleton
-            if (instance != null)
+            if (instance != null && instance != this)
             {
                 Destroy(this.gameObject); // an instance of GameController already exists, so we should not make a second one
                 return;   
@@ -115,6 +123,18 @@ namespace RGRPG.Controllers
                 worldObjectContainer = GameObject.Find("WorldObjects");
             }
 
+            if (winScreen == null)
+            {
+                winScreen = GameObject.Find("WinScreen");
+            }
+            winScreen.SetActive(false);
+
+            if (loseScreen == null)
+            {
+                loseScreen = GameObject.Find("LossScreen");                
+            }
+            loseScreen.SetActive(false);
+
             if (canvasObject == null)
             {
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
@@ -129,6 +149,12 @@ namespace RGRPG.Controllers
             {
                 opponentHUDList = GameObject.Find("EnemyList");
             }
+
+            if (doneTurnButton == null)
+            {
+                doneTurnButton = GameObject.Find("DoneTurnButton").GetComponent<Button>();
+            }
+            doneTurnButton.onClick.AddListener(() => FinishPlayerTurnInput());
 
             if (animationController == null)
             {
@@ -154,7 +180,7 @@ namespace RGRPG.Controllers
                 return x;
             });
 
-            combatEnemyHUDs = new List<OpponentHUDController>();
+            combatEnemyHUDs = new List<ICharacterHUDController>();
             enemyHUDPool = new Pool<OpponentHUDController>(
             x =>
             {
@@ -178,6 +204,7 @@ namespace RGRPG.Controllers
 
             RunSceneTransition();
 
+            playerHUDControllers = new List<ICharacterHUDController>();
             // set up the player controllers
             foreach (Character playerData in game.Players)
             {
@@ -199,6 +226,8 @@ namespace RGRPG.Controllers
                 playerHUDControllers.Add(playerHUDController);
             }
             Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+
+            overworldInitialized = true;
         }
 
         private void RunSceneTransition()
@@ -229,15 +258,21 @@ namespace RGRPG.Controllers
 
         void Update()
         {
-            if (game == null || !inGame)
+            if (game == null || !inGame || instance != this)
                 return;
 
             if (firstGameUpdate)
             {
-                //if (SceneManager.GetActiveScene().name == "GameScene")
+                if (SceneManager.GetActiveScene().name == "GameScene")
+                {
                     InitOverworld();
-                firstGameUpdate = false;
+                    firstGameUpdate = false;
+                    return;
+                }
             }
+
+            if (!overworldInitialized)
+                return;
 
             game.GameLoop();
 
@@ -261,11 +296,13 @@ namespace RGRPG.Controllers
 
             worldObjectContainer.SetActive(!game.IsInCombat);
             opponentHUDList.SetActive(game.IsInCombat);
-            
 
+            doneTurnButton.gameObject.SetActive(game.IsInCombat);
             if (game.IsInCombat)
             {
                 DiscordController.Instance.InBattle();
+
+                doneTurnButton.GetComponentInChildren<Text>().text = currentSourceAction == null ? "SUBMIT TO BLACKBOARD" : "SUBMIT ACTION TARGETS";
 
                 if (game.CurrentCombatState == CombatState.BeginCombat)
                 {
@@ -276,16 +313,18 @@ namespace RGRPG.Controllers
                     }
                 }
 
+                if (game.CurrentCombatState == CombatState.NextRound)
+                {
+                    currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
+                }
+
                 if (game.CurrentCombatState == CombatState.EndCombat)
                 {
-
                     for (int i = combatEnemyHUDs.Count-1; i >= 0; i--)
                     {
-                        OpponentHUDController x = combatEnemyHUDs[i];
+                        OpponentHUDController x = combatEnemyHUDs[i] as OpponentHUDController;
                         enemyHUDPool.Deactivate(x);
                     }
-
-                    SelectCharacter(game.SelectedCharacter);
                 }
             }
             else
@@ -324,10 +363,8 @@ namespace RGRPG.Controllers
                         Marquee.instance.AddToMultiMessage(characterAction.first.Name + " does: " + characterAction.second.GetName());
                         Marquee.instance.StartTimer();
 
-                        // set up UI character controller
-
                         AnimationHUDController actionHUDController = animationController.GetComponent<AnimationHUDController>();
-                        actionHUDController.executeAction(characterAction.second);
+                        actionHUDController.executeAction(characterAction.first, characterAction.second);
                         //TODO: //characterAction.second.GetType() == typeof(HealAction) <--- put this in the ActionAnimationHUDController to determine wich image to show
                     }
                 }
@@ -395,22 +432,167 @@ namespace RGRPG.Controllers
         /// <param name="c"></param>
         public void SelectCharacter(Character c)
         {
-            game.SelectCharacter(c);
+            if (currentSourceAction == null)
+            {
+                game.SelectCharacter(c);
+            }
+            else
+            {
+                ToggleActionTarget(currentSourceAction, c);
+            }
 
             // update camera follow object
-            Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
-            EventSystem.current.SetSelectedGameObject(null);
+            //Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            //EventSystem.current.SetSelectedGameObject(null);
         }
 
-        /// <summary>
-        ///     Tell the game to record an action
-        /// </summary>
-        /// <param name="action"></param>
-        /// <param name="source"></param>
-        /// <param name="target"></param>
-        public void RecordAction(ICharacterAction action, Character source, Character target)
+        public void BeginRecordingAction(ICharacterAction action, Character source)
         {
-            game.RecordAction(action, source, target);
+            if (currentSourceAction != null && currentSourceAction != source) // Cannot choose another player's action while choosing this players action (but choosing a different action on this player will override an unfinished action on this player) TODO: adjust for client and server
+            {
+                Debug.Log("Finish picking targets before choosing another action");
+                return;
+            }
+            if (currentCharacterActions.ContainsKey(source))
+                currentCharacterActions.Remove(source);
+            currentSourceAction = source;
+            currentCharacterActions.Add(source, new Pair<ICharacterAction, List<Character>>(action, new List<Character>()));
+
+            InfoAction actionInfo = action.MyInfo;
+            switch (actionInfo.TargetType)
+            {
+                case "TARGET_NONE":
+                    break;
+                case "TARGET_SELF":
+                    currentCharacterActions[source].second.Add(source);
+                    break;
+                case "TARGET_TEAM":
+                    if (game.Players.Contains(source))
+                    {
+                        currentCharacterActions[source].second.AddRange(game.Players);
+                    }
+                    else if (game.CombatEnemies.Exists(x => x == source))
+                    {
+                        currentCharacterActions[source].second.AddRange(game.CombatEnemies);
+                    }
+                    break;
+                case "TARGET_OTHER_TEAM":
+                    if (game.Players.Contains(source))
+                    {
+                        currentCharacterActions[source].second.AddRange(game.CombatEnemies);
+                    }
+                    else if (game.CombatEnemies.Exists(x => x == source))
+                    {
+                        currentCharacterActions[source].second.AddRange(game.Players);
+                    }
+                    break;
+                case "TARGET_FRIEND":
+
+                    break;
+                case "TARGET_ENEMY":
+                    if(actionInfo.TargetData == game.CombatEnemies.Count)
+                        currentCharacterActions[source].second.AddRange(game.CombatEnemies);
+                    break;
+            }
+
+            List<ICharacterHUDController> allCharacterControllers = new List<ICharacterHUDController>();
+            allCharacterControllers.AddRange(playerHUDControllers);
+            allCharacterControllers.AddRange(combatEnemyHUDs);
+
+            foreach (ICharacterHUDController characterHUD in allCharacterControllers)
+            {
+                if (currentCharacterActions[source].second.Contains(characterHUD.Character))
+                    characterHUD.SetTarget(true);
+                else
+                    characterHUD.SetTarget(false);
+            }
+        }
+
+        public void ToggleActionTarget(Character source, Character target)
+        {
+            if (currentCharacterActions.ContainsKey(source))
+            {
+
+                InfoAction actionInfo = currentCharacterActions[source].first.MyInfo;
+                switch (actionInfo.TargetType)
+                {
+                    case "TARGET_NONE":
+                    case "TARGET_SELF":
+                    case "TARGET_TEAM":
+                    case "TARGET_OTHER_TEAM":
+                        return;
+
+                    case "TARGET_AMOUNT":
+                        if (currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target))
+                            return;
+                        break;
+                    case "TARGET_FRIEND":
+                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !game.Players.Contains(target) || target == source)
+                            return;
+                        break;
+                    case "TARGET_ENEMY":
+                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !game.CombatEnemies.Exists(x => x == target) || target == source)
+                            return;
+                        break;
+                }
+
+                List<ICharacterHUDController> allCharacterControllers = new List<ICharacterHUDController>();
+                allCharacterControllers.AddRange(playerHUDControllers);
+                allCharacterControllers.AddRange(combatEnemyHUDs);
+
+                if (currentCharacterActions[source].second.Contains(target))
+                {
+                    currentCharacterActions[source].second.Remove(target);
+                    allCharacterControllers.Find(x => x.Character == target).SetTarget(false);
+                }
+                else
+                {
+                    currentCharacterActions[source].second.Add(target);
+                    allCharacterControllers.Find(x => x.Character == target).SetTarget(true);
+                }
+            }
+            else
+            {
+                Debug.Log("Character " + source.Name + " did not begin recording an action, and thus cannot toggle the action targets");
+            }
+        }
+
+        public void FinishRecordingAction(Character source)
+        {
+            if (!currentCharacterActions.ContainsKey(source))
+                return;
+
+            InfoAction actionInfo = currentCharacterActions[source].first.MyInfo;
+            switch (actionInfo.TargetType)
+            {
+                case "TARGET_NONE":
+                case "TARGET_SELF":
+                case "TARGET_TEAM":
+                case "TARGET_OTHER_TEAM":
+                    break;
+
+                case "TARGET_AMOUNT":
+                case "TARGET_FRIEND":
+                case "TARGET_ENEMY":
+                    if (currentCharacterActions[source].second.Count > actionInfo.TargetData || currentCharacterActions[source].second.Count == 0)
+                        return;
+                    break;
+            }
+
+            game.RecordAction(currentCharacterActions[source].first, source, currentCharacterActions[source].second);
+            currentCharacterActions.Remove(source);
+            currentSourceAction = null;
+        }
+
+        public void ClearTargets()
+        {
+            List<ICharacterHUDController> allCharacterControllers = new List<ICharacterHUDController>();
+            allCharacterControllers.AddRange(playerHUDControllers);
+            allCharacterControllers.AddRange(combatEnemyHUDs);
+            foreach (ICharacterHUDController charHUD in allCharacterControllers)
+            {
+                charHUD.SetTarget(false);
+            }
         }
 
         /// <summary>
@@ -418,7 +600,11 @@ namespace RGRPG.Controllers
         /// </summary>
         public void FinishPlayerTurnInput()
         {
-            game.FinishPlayerTurnInput();
+            ClearTargets();
+            if (currentSourceAction == null)
+                game.FinishPlayerTurnInput();
+            else
+                FinishRecordingAction(currentSourceAction);
         }
 
         /// <summary>
@@ -434,6 +620,22 @@ namespace RGRPG.Controllers
                 return -1;
             }
             return game.TurnOrder.Count - game.TurnOrder.IndexOf(targetCharacter);
+        }
+
+        public Transform GetCharacterControllerPosition(Character c)
+        {
+            ICharacterHUDController hud = playerHUDControllers.Find(x => x.Character == c);
+            if (hud != null)
+            {
+                return hud.Transform;
+            }
+
+            ICharacterHUDController opponentHud = combatEnemyHUDs.Find(x => x.Character == c);
+
+            if (opponentHud != null)
+                return opponentHud.Transform;
+
+            return null;
         }
     }
 

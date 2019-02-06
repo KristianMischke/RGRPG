@@ -3,7 +3,19 @@
 	<Entry>
 		<zType>ACTION_RIKA_LIFE_DRAIN</zType>
     <Name>Life Drain</Name>
-    <Description>Takes 20 HP from enemy and heals 20 HP</Description>
+    <Description>Takes 20 HP from enemy and heals 20 HP</Description>    
+    <SharpClass>
+      <Type>RGRPG.Core.LifeDrainAction</Type>
+      <InitParams>
+        <thisInfo/>
+        <drainAmount>20</drainAmount>
+        <manaCost>20</manaCost>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_ENEMY</TargetType>
+    <TargetData>1</TargetData>
+    <SourceParticleEffect>Prefabs/Action Animations/HealAnimation</SourceParticleEffect>
+    <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
     <Quips>
       <Item></Item>
     </Quips>
@@ -12,6 +24,18 @@
     <zType>ACTION_RIKA_EMBER</zType>
     <Name>Ember</Name>
     <Description>Standard magic attack (much more powerful than physical attack)</Description>
+    <SharpClass>
+      <Type>RGRPG.Core.AttackAction</Type>
+      <InitParams>
+        <thisInfo/>
+        <damage>10</damage>
+        <manaCost>10</manaCost>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_ENEMY</TargetType>
+    <TargetData>1</TargetData>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
     <Quips>
       <Item></Item>
     </Quips>
@@ -20,6 +44,16 @@
     <zType>ACTION_RIKA_NECROMANCER</zType>
     <Name>Necromancer</Name>
     <Description>Revive a fallen party member with 50% HP</Description>
+    <SharpClass>
+      <Type>INSERT TYPE HERE</Type>
+      <InitParams>
+        <thisInfo/>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_FRIEND</TargetType>
+    <TargetData>1</TargetData>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect/>
     <Quips>
       <Item></Item>
     </Quips>
@@ -28,6 +62,16 @@
     <zType>ACTION_SETH_COUNTER</zType>
     <Name>Counter</Name>
     <Description>If attacked, will return 25% of incoming damage without taking damage</Description>
+    <SharpClass>
+      <Type>INSERT TYPE HERE</Type>
+      <InitParams>
+        <thisInfo/>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_SELF</TargetType>
+    <TargetData/>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect/>
     <Quips>
       <Item></Item>
     </Quips>
@@ -36,6 +80,16 @@
     <zType>ACTION_SETH_CHARGE</zType>
     <Name>Charge</Name>
     <Description>Adds 1.5x multiplier to next attack</Description>
+    <SharpClass>
+      <Type>INSERT TYPE HERE</Type>
+      <InitParams>
+        <thisInfo/>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_NONE</TargetType>
+    <TargetData/>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect/>
     <Quips>
       <Item></Item>
     </Quips>
@@ -44,6 +98,16 @@
     <zType>ACTION_SETH_SHINING_BLADE</zType>
     <Name>Shining Blade</Name>
     <Description>1/8 chance to perform a critical hit</Description>
+    <SharpClass>
+      <Type>INSERT TYPE HERE</Type>
+      <InitParams>
+        <thisInfo/>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_ENEMY</TargetType><!--need to confirm what this action is supposed to do...-->
+    <TargetData>1</TargetData>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect/>
     <Quips>
       <Item></Item>
     </Quips>
@@ -52,6 +116,18 @@
     <zType>ACTION_AUSTIN_SELF_HEAL</zType>
     <Name>Self Heal</Name>
     <Description>Heals 50 HP to self</Description>
+    <SharpClass>
+      <Type>RGRPG.Core.HealAction</Type>
+      <InitParams>
+        <thisInfo/>
+        <healAmount>50</healAmount>
+        <manaCost>10</manaCost>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_SELF</TargetType>
+    <TargetData/>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
     <Quips>
       <Item></Item>
     </Quips>
@@ -60,7 +136,19 @@
     <zType>ACTION_AUSTIN_ALLY_HEAL</zType>
     <Name>Ally Heal</Name>
     <Description>Heals 30 HP to party member</Description>
-    <Quips>
+    <SharpClass>
+      <Type>RGRPG.Core.HealAction</Type>
+      <InitParams>
+        <thisInfo/>
+        <healAmount>30</healAmount>
+        <manaCost>10</manaCost>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_FRIEND</TargetType>
+    <TargetData>1</TargetData>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
+  <Quips>
       <Item></Item>
     </Quips>
   </Entry>
@@ -68,6 +156,18 @@
     <zType>ACTION_AUSTIN_GROUP_HEAL</zType>
     <Name>Group Heal</Name>
     <Description>Heals 10 HP to entire party</Description>
+    <SharpClass>
+      <Type>RGRPG.Core.HealAction</Type>
+      <InitParams>
+        <thisInfo/>
+        <healAmount>10</healAmount>
+        <manaCost>40</manaCost>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_TEAM</TargetType>
+    <TargetData/>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
     <Quips>
       <Item></Item>
     </Quips>
@@ -76,6 +176,16 @@
     <zType>ACTION_MEREDITH_ALL_YOU_GOT</zType>
     <Name>Give it all you got!</Name>
     <Description>Increase attack of one party member</Description>
+    <SharpClass>
+      <Type>INSERT TYPE HERE</Type>
+      <InitParams>
+        <thisInfo/>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_FRIEND</TargetType>
+    <TargetData>1</TargetData>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect/>
     <Quips>
       <Item></Item>
     </Quips>
@@ -84,6 +194,16 @@
     <zType>ACTION_MEREDITH_ON_YOUR_TOES</zType>
     <Name>Stay on your toes!</Name>
     <Description>Increase defense of entire party</Description>
+    <SharpClass>
+      <Type>INSERT TYPE HERE</Type>
+      <InitParams>
+        <thisInfo/>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_TEAM</TargetType>
+    <TargetData/>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect/>
     <Quips>
       <Item></Item>
     </Quips>
@@ -92,6 +212,16 @@
     <zType>ACTION_MEREDITH_UP_THE_PACE</zType>
     <Name>Pick up the pace!</Name>
     <Description>Allows the next battle entity (includes enemies) in the turn order to have a x2 effect to their action</Description>
+    <SharpClass>
+      <Type>INSERT TYPE HERE</Type>
+      <InitParams>
+        <thisInfo/>
+      </InitParams>
+    </SharpClass>
+    <TargetType>TARGET_NONE</TargetType>
+    <TargetData/>
+    <SourceParticleEffect/>
+    <TargetsParticleEffect/>
     <Quips>
       <Item></Item>
     </Quips>

@@ -160,7 +160,7 @@ namespace RGRPG.Core
         {
             for (int i = 0; i < 4; i++)
             {
-                players.Add(new Character(this, playerSelections[i], new List<ICharacterAction> { new AttackAction(10, 25), new DefendAction(6, 10), new HealAction(9, 30) }));
+                players.Add(playerSelections[i].GenerateCharacter(this, infos));
                 //players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1);
                 players[i].SetPosition(startScene.getSpawnPos(CurrentScene.MyInfo.FirstSpawnID));
             }
@@ -231,13 +231,16 @@ namespace RGRPG.Core
                     foreach (Enemy e in combatEnemies)
                     {
                         Character target = null;
-                        while (target == null)
+                        int count = Players.Count;
+                        while (target == null && count > 0)
                         {
                             int randIndex = Random.Range(0, players.Count);
                             if(players[randIndex].IsAlive())
                                 target = players[randIndex];
+                            count--;
                         }
-                        RecordAction(e.Actions[0], e, target);
+                        if(count != 0 && e.Actions.Count > 0)
+                            RecordAction(e.Actions[0], e, new List<Character> { target });
                     }
                     currentCombatState = CombatState.PlayersChooseActions;
                     break;
@@ -388,7 +391,7 @@ namespace RGRPG.Core
                         {
                             currentTurn.ChangeMana(-currentAction.ManaCost());
                             //LogMessage("Executing Action: " + currentAction.GetName()); //TODO: don't log messages for attacks, instead handle attack messages in ICharacterAction and use the gameCombatActionQueue in GameController.cs to add those messages to the Marque
-                            currentAction.DoAction();
+                            currentAction.DoAction(currentTurn);
 
                             gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, currentAction));
                         }
@@ -401,7 +404,10 @@ namespace RGRPG.Core
             }
             else
             {
-                characterTurns[currentTurn].Clear();
+                if (characterTurns.ContainsKey(currentTurn))
+                {
+                    characterTurns[currentTurn].Clear();
+                }
             }
 
             // move to the next character if they aren't doing anthing OR have finished their moves
@@ -543,8 +549,8 @@ namespace RGRPG.Core
         /// </summary>
         /// <param name="action">The action to be executed</param>
         /// <param name="source">The character who is trying to execute the action</param>
-        /// <param name="target">The character who is the target of the action</param>
-        public void RecordAction(ICharacterAction action, Character source, Character target)
+        /// <param name="target">The characters who are the targets of the action</param>
+        public void RecordAction(ICharacterAction action, Character source, List<Character> targets)
         {
             if (currentGameState != GameState.Combat)
             {
@@ -566,7 +572,7 @@ namespace RGRPG.Core
             if (!characterTurns.ContainsKey(source))
                 characterTurns.Add(source, new Queue<ICharacterAction>());
 
-            action.SetTargets(new List<Character> { target });
+            action.SetTargets(targets);
             characterTurns[source].Enqueue(action);
             //LogMessage(source.Name + " -> " + action.GetName());
         }

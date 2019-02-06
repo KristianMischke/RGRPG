@@ -288,18 +288,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 112943058}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1107107521}
-        m_MethodName: FinishPlayerTurnInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &112943058
@@ -779,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &878737507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1378,12 +1367,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1087179399}
   m_CullTransparentMesh: 0
---- !u!114 &1107107521 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114143378573784632, guid: cac5682a211fe054094b9ddb598f4a4e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1697195853}
-  m_Script: {fileID: 11500000, guid: 3f8474a3d44af464d8399fcde3b4f214, type: 3}
 --- !u!1 &1114309917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1495,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1174944060}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1525,7 +1508,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fe64882890b06cf4d9f91e6dee1aebb3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1890,7 +1873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1459760696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2311,6 +2294,11 @@ Prefab:
       propertyPath: loseScreen
       value: 
       objectReference: {fileID: 1459760695}
+    - target: {fileID: 114143378573784632, guid: cac5682a211fe054094b9ddb598f4a4e,
+        type: 2}
+      propertyPath: doneTurnButton
+      value: 
+      objectReference: {fileID: 112943057}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac5682a211fe054094b9ddb598f4a4e, type: 2}
   m_IsPrefabAsset: 0
@@ -2523,7 +2511,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2566,7 +2554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80153925fd9bd7418119001d1f1b8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healEvent: {fileID: 1127581146074618, guid: f8ad5b8be10dfaa46b54bd634552d3b1, type: 2}
 --- !u!1 &2134088292
 GameObject:
   m_ObjectHideFlags: 0

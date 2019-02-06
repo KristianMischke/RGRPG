@@ -12,13 +12,66 @@ namespace RGRPG.Core
     /// </remarks>
     public interface ICharacterAction
     {
+        InfoAction MyInfo { get; }
+
+        /// <summary>
+        ///     Method that reports the targets of this action
+        /// </summary>
+        /// <returns></returns>
         List<Character> GetTargets();
+
+        /// <summary>
+        ///     Method that gives this action (a) target(s)
+        /// </summary>
+        /// <param name="targets"></param>
         void SetTargets(List<Character> targets);
-        void DoAction();
+
+        /// <summary>
+        ///     method to execute this action
+        /// </summary>
+        void DoAction(Character source);
+
+        /// <summary>
+        ///     How much mana will be spent when using this action
+        /// </summary>
+        /// <returns></returns>
         int ManaCost();
+
+        /// <summary>
+        ///     The name of the action
+        /// </summary>
+        /// <returns></returns>
         string GetName();
-        int GetAmount();
-        bool HasAmount();
+
+        /// <summary>
+        ///     String displayed on the action button
+        /// </summary>
+        /// <returns></returns>
+        string GetDisplayText();
+
+        /// <summary>
+        ///     The string that explains the details of the aaction
+        /// </summary>
+        /// <returns></returns>
+        string GetHelpText();
+    }
+
+    /// <summary>
+    ///     Basic, no-op action that is spawned if there was a failure detecting the correct action
+    /// </summary>
+    public class DudAction : ICharacterAction
+    {
+        public InfoAction MyInfo { get { return null; } }
+        public DudAction() { }
+        public List<Character> GetTargets() { return null; }
+        public void SetTargets(List<Character> targets) { }
+        public void DoAction(Character source) { }
+
+        public int ManaCost() { return 0; }
+
+        public string GetName() { return "DUD ACTION"; }
+        public string GetDisplayText() { return "<ERROR>"; }
+        public string GetHelpText() { return "Basic, no-op action that is spawned if there was a failure detecting the correct action"; }
     }
 
     /// <summary>
@@ -26,16 +79,17 @@ namespace RGRPG.Core
     /// </summary>
     public class BeginTurnAction : ICharacterAction
     {
+        public InfoAction MyInfo { get { return null; } }
         public BeginTurnAction() { }
         public List<Character> GetTargets() { return null; }
         public void SetTargets(List<Character> targets) { }
-        public void DoAction() { }
+        public void DoAction(Character source) { }
 
         public int ManaCost() { return 0; }
 
         public string GetName() { return "BEGIN TURN"; }
-        public int GetAmount() { return 0; }
-        public bool HasAmount() { return false; }
+        public string GetDisplayText() { return ""; }
+        public string GetHelpText() { return ""; }
     }
 
     /// <summary>
@@ -43,16 +97,17 @@ namespace RGRPG.Core
     /// </summary>
     public class PassTurnAction : ICharacterAction
     {
+        public InfoAction MyInfo { get { return null; } }
         public PassTurnAction() { }
         public List<Character> GetTargets() { return null; }
         public void SetTargets(List<Character> targets) { }
-        public void DoAction() { }
+        public void DoAction(Character source) { }
 
         public int ManaCost() { return 0; }
 
         public string GetName() { return "PASS TURN"; }
-        public int GetAmount() { return 0; }
-        public bool HasAmount() { return false; }
+        public string GetDisplayText() { return ""; }
+        public string GetHelpText() { return ""; }
     }
 
 
@@ -63,12 +118,18 @@ namespace RGRPG.Core
     {
         private List<Character> targets = new List<Character>();
 
-        private int damage;
+        private int amount;
         private int manaCost;
+        private InfoAction myInfo;
 
-        public AttackAction(int damage, int manaCost)
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public AttackAction() { }
+
+        public void Init(InfoAction myInfo, int damageAmount, int manaCost)
         {
-            this.damage = damage;
+            this.myInfo = myInfo;
+            this.amount = damageAmount;
             this.manaCost = manaCost;
         }
 
@@ -82,11 +143,11 @@ namespace RGRPG.Core
             this.targets = targets;
         }
 
-        public void DoAction()
+        public void DoAction(Character source)
         {
             foreach (Character c in targets)
             {
-                c.Damage(damage);
+                c.Damage(amount);
             }
         }
 
@@ -97,9 +158,9 @@ namespace RGRPG.Core
 
         public string GetName() { return "ATTACK"; }
 
-        public int GetAmount() { return damage; }
+        public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
 
-        public bool HasAmount() { return true; }
+        public string GetHelpText() { return "Deals " + amount + " to the targets"; }
 
     }
 
@@ -110,12 +171,18 @@ namespace RGRPG.Core
     {
         private List<Character> targets = new List<Character>();
 
-        private int shield;
+        private int amount;
         private int manaCost;
+        private InfoAction myInfo;
 
-        public DefendAction(int shield, int manaCost)
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public DefendAction() { }
+
+        public void Init(InfoAction myInfo, int amount, int manaCost)
         {
-            this.shield = shield;
+            this.myInfo = myInfo;
+            this.amount = amount;
             this.manaCost = manaCost;
         }
 
@@ -129,11 +196,11 @@ namespace RGRPG.Core
             this.targets = targets;
         }
 
-        public void DoAction()
+        public void DoAction(Character source)
         {
             foreach (Character c in targets)
             {
-                c.SetShield(shield);
+                c.SetShield(amount);
             }
         }
 
@@ -144,10 +211,9 @@ namespace RGRPG.Core
 
         public string GetName() { return "DEFEND"; }
 
-        public int GetAmount() { return shield; }
+        public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
 
-        public bool HasAmount() { return true; }
-
+        public string GetHelpText() { return "Prevents " + amount + " damage from hitting the targets"; }
     }
 
     /// <summary>
@@ -157,12 +223,18 @@ namespace RGRPG.Core
     {
         private List<Character> targets = new List<Character>();
 
-        private int heal;
+        private int amount;
         private int manaCost;
+        private InfoAction myInfo;
 
-        public HealAction(int heal, int manaCost)
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public HealAction() { }
+
+        public void Init(InfoAction myInfo, int healAmount, int manaCost)
         {
-            this.heal = heal;
+            this.myInfo = myInfo;
+            this.amount = healAmount;
             this.manaCost = manaCost;
         }
 
@@ -176,11 +248,11 @@ namespace RGRPG.Core
             this.targets = targets;
         }
 
-        public void DoAction()
+        public void DoAction(Character source)
         {
             foreach (Character c in targets)
             {
-                c.Heal(heal);
+                c.Heal(amount);
             }
         }
 
@@ -191,9 +263,62 @@ namespace RGRPG.Core
 
         public string GetName() { return "HEAL"; }
 
-        public int GetAmount() { return heal; }
+        public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
 
-        public bool HasAmount() { return true; }
+        public string GetHelpText() { return "Restores " + amount + " health to the targets"; }
+
+    }
+
+    /////////////////////////////////////Actions implemented for Infos
+
+    public class LifeDrainAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int amount;
+        private int manaCost;
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public LifeDrainAction() { }
+
+        public void Init(InfoAction myInfo, int drainAmount, int manaCost)
+        {
+            this.myInfo = myInfo;
+            this.amount = drainAmount;
+            this.manaCost = manaCost;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            source.Heal(amount);
+            foreach (Character c in targets)
+            {
+                c.Damage(amount / targets.Count);
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "HEAL"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
+
+        public string GetHelpText() { return "Restores " + amount + " health to the targets"; }
 
     }
 }

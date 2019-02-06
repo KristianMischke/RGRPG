@@ -69,6 +69,9 @@ MonoBehaviour:
   playerHUDList: {fileID: 0}
   opponentHUDList: {fileID: 0}
   animationController: {fileID: 0}
+  winScreen: {fileID: 0}
+  loseScreen: {fileID: 0}
+  doneTurnButton: {fileID: 0}
   playerControllers: []
   playerHUDControllers: []
   enemyControllers: []

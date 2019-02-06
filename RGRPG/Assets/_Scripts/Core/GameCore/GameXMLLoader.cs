@@ -151,7 +151,8 @@ namespace RGRPG.Core
         /// <param name="node">The node to get the child value from</param>
         /// <param name="zName">The name of the child node you're looking for</param>
         /// <param name="value">The value of the child node you're looking for</param>
-        public static void ReadXMLStringList(XmlNode node, string zName, out List<string> value)
+        /// <param name="ignoreChildName">When true, adds the InnerText of each child element. When false, only loads child elements with Name="Item"</param>
+        public static void ReadXMLStringList(XmlNode node, string zName, out List<string> value, bool ignoreChildName = false)
         {
             value = null;
 
@@ -162,10 +163,13 @@ namespace RGRPG.Core
 
                 foreach(XmlNode child in listRoot.ChildNodes)
                 {
-                    if (child.Name == "Item")
+                    if (child.NodeType == XmlNodeType.Element)
                     {
-                        string childValue = child.InnerText;
-                        value.Add(childValue);
+                        if (child.Name == "Item" || ignoreChildName)
+                        {
+                            string childValue = child.InnerText;
+                            value.Add(childValue);
+                        }
                     }
                 }
             }
@@ -191,7 +195,7 @@ namespace RGRPG.Core
         ///     Tries to get the child node of the given name
         /// </summary>
         /// <param name="node">The node to look in</param>
-        /// <param name="zName">The node you are looking for</param>
+        /// <param name="zName">The name of the node you are looking for</param>
         /// <returns>The target node, or null if none was found</returns>
         public static XmlNode TryGetChild(XmlNode node, string zName)
         {
@@ -204,7 +208,7 @@ namespace RGRPG.Core
         ///     Tries to get the child node of the given name
         /// </summary>
         /// <param name="node">The node to look in</param>
-        /// <param name="zName">The node you are looking for</param>
+        /// <param name="zName">The name of the node you are looking for</param>
         /// <param name="child">The target node</param>
         /// <returns>True if it was found, else false</returns>
         public static bool TryGetChild(XmlNode node, string zName, out XmlNode child)

@@ -9,10 +9,21 @@ using TMPro;
 
 namespace RGRPG.Controllers
 {
+    public interface ICharacterHUDController
+    {
+        GameObject GameObject { get; }
+        Transform Transform { get; }
+        Character Character { get; }
+        void SelectAction();
+        void Init(Character character, Action selectAction);
+        void SetTarget(bool isTarget);
+        void SetTarget(bool isTarget, Color targetColor);
+    }
+
     /// <summary>
     ///     Controls the HUD (Head Up Display) for a character
     /// </summary>
-    public class CharacterHUDController : MonoBehaviour
+    public class CharacterHUDController : MonoBehaviour, ICharacterHUDController
     {
         // Prefabs
         public GameObject actionView;
@@ -22,37 +33,28 @@ namespace RGRPG.Controllers
         public GameObject healthTextObject;
         public GameObject manaTextObject;
         public GameObject actionList;
-        public GameObject selectButtonObject;
-        public GameObject healthBarFillParentObject;
-        public GameObject healthBarFillObject;
-        public GameObject manaBarFillParentObject;
-        public GameObject manaBarFillObject;
-        public GameObject dieView;
-
-        RectTransform healthBarFillParent;
-        RectTransform healthBarFill;
-        RectTransform manaBarFillParent;
-        RectTransform manaBarFill;
-
-        DiceController myDie;
+        public Button selectButton;
+        public RectTransform healthBarFillParent;
+        public RectTransform healthBarFill;
+        public RectTransform manaBarFillParent;
+        public RectTransform manaBarFill;
+        public DiceController myDie;
+        public Image targetImage;
 
         // Data
         Character character;
+
+        public Character Character { get { return character; } }
+        public Transform Transform { get { return transform; } }
+        public GameObject GameObject { get { return GameObject; } }
 
         Action overrideAction = null;
 
         // Use this for initialization
         void Start()
         {
-            selectButtonObject.GetComponent<Button>().onClick.AddListener(SelectAction);
-
-            healthBarFillParent = healthBarFillParentObject.GetComponent<RectTransform>();
-            healthBarFill = healthBarFillObject.GetComponent<RectTransform>();
-
-            manaBarFillParent = manaBarFillParentObject.GetComponent<RectTransform>();
-            manaBarFill = manaBarFillObject.GetComponent<RectTransform>();
-
-            myDie = dieView.GetComponent<DiceController>();
+            selectButton.onClick.AddListener(SelectAction);
+            targetImage.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
@@ -117,6 +119,18 @@ namespace RGRPG.Controllers
                 CharacterActionController actionController = actionObject.GetComponent<CharacterActionController>();
                 actionController.Init(action, character);
             }
+        }
+
+
+        public void SetTarget(bool isTarget)
+        {
+            SetTarget(isTarget, Color.white);
+        }
+
+        public void SetTarget(bool isTarget, Color targetColor)
+        {
+            targetImage.gameObject.SetActive(isTarget);
+            targetImage.color = targetColor;
         }
     }
 

@@ -6023,7 +6023,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -7935,7 +7935,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_GHOST_OF_ASSIGNMENTS_PAST</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -10169,7 +10169,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -11261,7 +11261,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_PAPERWEIGHT</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
