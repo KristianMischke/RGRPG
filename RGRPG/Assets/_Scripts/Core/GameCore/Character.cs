@@ -27,7 +27,6 @@ namespace RGRPG.Core
         protected string zType;
 
         protected int health;
-        protected int attack; //TODO: we need to consider how we are storing the attack (should it be in the character or the action or both?
         protected int defense;
         protected int mana;
 
@@ -42,7 +41,6 @@ namespace RGRPG.Core
         public string ClassType { get { return myInfo.Class; } }        
         public string Name { get { return myInfo.Name; } }
         public int Health { get { return health; } }
-        public int Attack { get { return attack; } }
         public int Defense { get { return defense; } }
         public int Mana { get { return mana; } }
         public List<ICharacterAction> Actions { get { return actions; } }
@@ -60,6 +58,19 @@ namespace RGRPG.Core
             //TODO deal with MP
             this.defense = myInfo.Defense;
             this.actions = actions;
+        }
+
+        public const int NUM_SERIALIZED_FIELDS = 4;
+        public object[] Serialize()
+        {
+            return new object[] { health, defense, mana, position };
+        }
+        public void Deserialize(object[] data)
+        {
+            health = (int)data[0];
+            defense = (int)data[1];
+            mana = (int)data[2];
+            position = (Vector2)data[3];
         }
 
         public void Damage(int amount)
@@ -158,6 +169,26 @@ namespace RGRPG.Core
             
             this.position = pos;
             this.fixedPosition = pos;
+        }
+
+        new public const int NUM_SERIALIZED_FIELDS = 10;
+        new public object[] Serialize()
+        {
+            return new object[] { health, defense, mana, position, fixedPosition, targetPosition, moveTime, waitTime, isAtTarget, isDoneWaiting };
+        }
+        new public void Deserialize(object[] data)
+        {
+            health = (int)data[0];
+            defense = (int)data[1];
+            mana = (int)data[2];
+            position = (Vector2)data[3];
+
+            fixedPosition = (Vector2)data[4];
+            targetPosition = (Vector2)data[5];
+            moveTime = (float)data[6];
+            waitTime = (float)data[7];
+            isAtTarget = (bool)data[8];
+            isDoneWaiting = (bool)data[9];
         }
 
 

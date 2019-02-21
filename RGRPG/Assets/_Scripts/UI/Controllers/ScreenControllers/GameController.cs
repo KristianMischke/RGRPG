@@ -21,7 +21,15 @@ namespace RGRPG.Controllers
     public class GameController : NetworkBehaviour
     {
 
-        public static GameController instance;
+        /*
+         * 
+         * 
+         * GOAL: remove all instances of Client.Game
+         * 
+         * 
+         */
+
+        public static GameController instance; //TODO: remove
 
         // Scene Object References
         public GameObject worldObjectContainer;
@@ -58,9 +66,7 @@ namespace RGRPG.Controllers
 
         // Data
         bool overworldInitialized = false;
-        bool inGame = false;
         static bool firstGameUpdate = true;
-        Game game;
         Dictionary<Character, Pair<ICharacterAction, List<Character>>> currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
 
         Character currentSourceAction; //TODO: when implementing multiplayer, this will only be on the client, the server (i.e. host) will handle the dictionary above
@@ -69,50 +75,23 @@ namespace RGRPG.Controllers
 
         SceneController worldSceneController;
 
-        public GameInfos Infos { get { return game.Infos; } }
-
-        public List<Character> CombatEnemies { get { return game.CombatEnemies; } }
-        public bool IsInCombat { get { return game.IsInCombat; } }
-        public bool IsIndoors { get { return game.CurrentScene.IsIndoors; } }
-        public string CurrentSceneType { get { return game.CurrentScene.ZType; } }
+        public GameClient Client { get { return GameClient.instance; } }
+        public GameInfos Infos { get { return Client.Game.Infos; } }
+        public List<Character> CombatEnemies { get { return Client.Game.CombatEnemies; } }
+        public bool IsInCombat { get { return Client.Game.IsInCombat; } }
+        public bool IsIndoors { get { return Client.Game.CurrentScene.IsIndoors; } }
+        public string CurrentSceneType { get { return Client.Game.CurrentScene.ZType; } }
 
         private void OnEnable()
         {
-            // This class acts kind of like a singleton
-            if (instance != null && instance != this)
-            {
-                Destroy(this.gameObject); // an instance of GameController already exists, so we should not make a second one
-                return;   
-            }
-
-
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-
-            game = new Game();
-
             // if the discord controller hasn't been initialized, then initialize it
             if (DiscordController.Instance == null)
             {
                 GameObject controllerObject = Instantiate(DiscordControllerObject);
                 DontDestroyOnLoad(controllerObject);
             }
-        }
 
-        void Start()
-        {
-
-            if (SceneManager.GetActiveScene().name == "GameScene") // Hacky way of adding all four players when STARTING from the GameScene instead of the Menu
-            {
-                SelectCharacters(Infos.GetAll<InfoCharacter>().FindAll(x => !x.IsEnemy).ToArray());
-            }
-
-        }
-
-        public void SelectCharacters(InfoCharacter[] playerSelections)
-        {
-            game.SelectCharacters(playerSelections);
-            inGame = true;
+            instance = this;
         }
 
         private void InitOverworld()
@@ -207,7 +186,7 @@ namespace RGRPG.Controllers
 
             playerHUDControllers = new List<ICharacterHUDController>();
             // set up the player controllers
-            foreach (Character playerData in game.Players)
+            foreach (Character playerData in Client.Game.Players)
             {
                 // set up world character controller
                 GameObject playerView = Instantiate(characterView);
@@ -226,7 +205,7 @@ namespace RGRPG.Controllers
                 playerHUDController.Init(playerData);
                 playerHUDControllers.Add(playerHUDController);
             }
-            Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == Client.Game.SelectedCharacter).gameObject;
 
             overworldInitialized = true;
         }
@@ -239,7 +218,7 @@ namespace RGRPG.Controllers
 
         private void UpdateEnemyControllers()
         {
-            worldSceneController.ResetScene(game.CurrentScene);
+            worldSceneController.ResetScene(Client.Game.CurrentScene);
 
             // take down old enemy controllers
             for (int i = enemyControllers.Count-1; i >= 0; i--)
@@ -248,7 +227,7 @@ namespace RGRPG.Controllers
             }
 
             // set up the new enemy controllers
-            foreach (Character enemyData in game.Enemies)
+            foreach (Character enemyData in Client.Game.Enemies)
             {
                 // set up world character controller
                 CharacterController enemyController = worldEnemiesPool.Get();
@@ -259,7 +238,7 @@ namespace RGRPG.Controllers
 
         void Update()
         {
-            if (game == null || !inGame || instance != this)
+            if (Client.Game == null || instance != this)
                 return;
 
             if (firstGameUpdate)
@@ -275,14 +254,14 @@ namespace RGRPG.Controllers
             if (!overworldInitialized)
                 return;
 
-            game.GameLoop(Time.deltaTime);
+            Client.Game.GameLoop(Time.deltaTime);
 
-            if (game.CurrentGameState == GameState.Win)
+            if (Client.Game.CurrentGameState == GameState.Win)
             {
                 winScreen.SetActive(true);
                 return;
             }
-            if (game.CurrentGameState == GameState.Loss)
+            if (Client.Game.CurrentGameState == GameState.Loss)
             {
                 loseScreen.SetActive(true);
                 return;
@@ -290,36 +269,36 @@ namespace RGRPG.Controllers
 
 
             // transitioned to a new scene
-            if (game.SceneTransitioned)
+            if (Client.Game.SceneTransitioned)
             {
                 RunSceneTransition();
             }
 
-            worldObjectContainer.SetActive(!game.IsInCombat);
-            opponentHUDList.SetActive(game.IsInCombat);
+            worldObjectContainer.SetActive(!Client.Game.IsInCombat);
+            opponentHUDList.SetActive(Client.Game.IsInCombat);
 
-            doneTurnButton.gameObject.SetActive(game.IsInCombat);
-            if (game.IsInCombat)
+            doneTurnButton.gameObject.SetActive(Client.Game.IsInCombat);
+            if (Client.Game.IsInCombat)
             {
                 DiscordController.Instance.InBattle();
 
                 doneTurnButton.GetComponentInChildren<Text>().text = currentSourceAction == null ? "SUBMIT TO BLACKBOARD" : "SUBMIT ACTION TARGETS";
 
-                if (game.CurrentCombatState == CombatState.BeginCombat)
+                if (Client.Game.CurrentCombatState == CombatState.BeginCombat)
                 {
-                    foreach (Character c in game.CombatEnemies)
+                    foreach (Character c in Client.Game.CombatEnemies)
                     {
                         OpponentHUDController opponent = enemyHUDPool.Get();
                         opponent.Init(c); //TODO selectAction for choosing enemy target (SERVER)
                     }
                 }
 
-                if (game.CurrentCombatState == CombatState.NextRound)
+                if (Client.Game.CurrentCombatState == CombatState.NextRound)
                 {
                     currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>(); //(SERVER)
                 }
 
-                if (game.CurrentCombatState == CombatState.EndCombat)
+                if (Client.Game.CurrentCombatState == CombatState.EndCombat)
                 {
                     for (int i = combatEnemyHUDs.Count-1; i >= 0; i--)
                     {
@@ -345,18 +324,18 @@ namespace RGRPG.Controllers
                 MoveSelectedCharacter(); // (CLIENT REQUEST)
             }
 
-            if (game.gameMessages.Count > 0)
+            if (Client.Game.gameMessages.Count > 0)
             {
-                EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
-                //Marquee.instance.ResetTimer(game.gameMessages.Dequeue());
+                EventQueueManager.instance.AddEventMessage(Client.Game.gameMessages.Dequeue());
+                //Marquee.instance.ResetTimer(Client.Game.gameMessages.Dequeue());
                 //Marquee.instance.StartTimer();
             }
 
             if (IsInCombat && Marquee.instance.IsFinished())
             {
-                if (game.gameCombatActionQueue.Count > 0)
+                if (Client.Game.gameCombatActionQueue.Count > 0)
                 {
-                    PairStruct<Character, ICharacterAction> characterAction = game.gameCombatActionQueue.Dequeue();
+                    PairStruct<Character, ICharacterAction> characterAction = Client.Game.gameCombatActionQueue.Dequeue();
 
                     if (!(characterAction.second is BeginTurnAction))
                     {
@@ -371,7 +350,7 @@ namespace RGRPG.Controllers
                 }
                 else
                 {
-                    game.ProcessNextCombatStep(); // (SERVER)
+                    Client.Game.ProcessNextCombatStep(); // (SERVER)
                 }
             }
 
@@ -394,37 +373,29 @@ namespace RGRPG.Controllers
         /// </summary>
         void MoveSelectedCharacter()
         {
-            //TODO: things might need to be adjusted due to the camera tilt?!
-
-            float moveMagnitude = 4f;
-            float yMovement = 0;
-            float xMovement = 0;
+            int xInput = 0;
+            int yInput = 0;
 
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
-                yMovement = 1;
+                yInput = 1;
             }
             else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
-                yMovement = -1;
+                yInput = -1;
             }
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                xMovement = 1;
+                xInput = 1;
             }
             else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                xMovement = -1;
+                xInput = -1;
             }
 
-            Vector2 moveVector = new Vector2(xMovement + yMovement, yMovement- xMovement);
-            //moveVector = moveVector * new Vector2(1, 2);
-            moveVector.Normalize();
-            moveVector *= moveMagnitude*Time.deltaTime;
-
-            game.MoveSelectedCharacter(moveVector.x, moveVector.y);
-
+            if (xInput != 0 || yInput != 0)
+                Client.MoveCharacter(xInput, yInput);
         }
 
         /// <summary>
@@ -435,7 +406,7 @@ namespace RGRPG.Controllers
         {
             if (currentSourceAction == null)
             {
-                game.SelectCharacter(c);
+                Client.Game.SelectCharacter(c);
             }
             else
             {
@@ -443,7 +414,7 @@ namespace RGRPG.Controllers
             }
 
             // update camera follow object
-            //Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == game.SelectedCharacter).gameObject;
+            //Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == Client.Game.SelectedCharacter).gameObject;
             //EventSystem.current.SetSelectedGameObject(null);
         }
 
@@ -468,31 +439,31 @@ namespace RGRPG.Controllers
                     currentCharacterActions[source].second.Add(source);
                     break;
                 case "TARGET_TEAM":
-                    if (game.Players.Contains(source))
+                    if (Client.Game.Players.Contains(source))
                     {
-                        currentCharacterActions[source].second.AddRange(game.Players);
+                        currentCharacterActions[source].second.AddRange(Client.Game.Players);
                     }
-                    else if (game.CombatEnemies.Exists(x => x == source))
+                    else if (Client.Game.CombatEnemies.Exists(x => x == source))
                     {
-                        currentCharacterActions[source].second.AddRange(game.CombatEnemies);
+                        currentCharacterActions[source].second.AddRange(Client.Game.CombatEnemies);
                     }
                     break;
                 case "TARGET_OTHER_TEAM":
-                    if (game.Players.Contains(source))
+                    if (Client.Game.Players.Contains(source))
                     {
-                        currentCharacterActions[source].second.AddRange(game.CombatEnemies);
+                        currentCharacterActions[source].second.AddRange(Client.Game.CombatEnemies);
                     }
-                    else if (game.CombatEnemies.Exists(x => x == source))
+                    else if (Client.Game.CombatEnemies.Exists(x => x == source))
                     {
-                        currentCharacterActions[source].second.AddRange(game.Players);
+                        currentCharacterActions[source].second.AddRange(Client.Game.Players);
                     }
                     break;
                 case "TARGET_FRIEND":
 
                     break;
                 case "TARGET_ENEMY":
-                    if(actionInfo.TargetData == game.CombatEnemies.Count)
-                        currentCharacterActions[source].second.AddRange(game.CombatEnemies);
+                    if(actionInfo.TargetData == Client.Game.CombatEnemies.Count)
+                        currentCharacterActions[source].second.AddRange(Client.Game.CombatEnemies);
                     break;
             }
 
@@ -528,11 +499,11 @@ namespace RGRPG.Controllers
                             return;
                         break;
                     case "TARGET_FRIEND":
-                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !game.Players.Contains(target) || target == source)
+                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !Client.Game.Players.Contains(target) || target == source)
                             return;
                         break;
                     case "TARGET_ENEMY":
-                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !game.CombatEnemies.Exists(x => x == target) || target == source)
+                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !Client.Game.CombatEnemies.Exists(x => x == target) || target == source)
                             return;
                         break;
                 }
@@ -580,7 +551,7 @@ namespace RGRPG.Controllers
                     break;
             }
 
-            game.RecordAction(currentCharacterActions[source].first, source, currentCharacterActions[source].second);
+            Client.Game.RecordAction(currentCharacterActions[source].first, source, currentCharacterActions[source].second);
             currentCharacterActions.Remove(source);
             currentSourceAction = null;
         }
@@ -603,7 +574,7 @@ namespace RGRPG.Controllers
         {
             ClearTargets();
             if (currentSourceAction == null)
-                game.FinishPlayerTurnInput();
+                Client.Game.FinishPlayerTurnInput();
             else
                 FinishRecordingAction(currentSourceAction);
         }
@@ -616,11 +587,11 @@ namespace RGRPG.Controllers
         public int GetDiceRoll(Character targetCharacter)
         {
 
-            if (game.TurnOrder == null || game.TurnOrder.Count == 0 || game.CurrentCombatState != CombatState.ExecuteTurns)
+            if (Client.Game.TurnOrder == null || Client.Game.TurnOrder.Count == 0 || Client.Game.CurrentCombatState != CombatState.ExecuteTurns)
             {
                 return -1;
             }
-            return game.TurnOrder.Count - game.TurnOrder.IndexOf(targetCharacter);
+            return Client.Game.TurnOrder.Count - Client.Game.TurnOrder.IndexOf(targetCharacter);
         }
 
         public Transform GetCharacterControllerPosition(Character c)

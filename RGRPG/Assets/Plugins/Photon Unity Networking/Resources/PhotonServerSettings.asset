@@ -38,4 +38,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - ChatMessage
   - ClientConnect
+  - ReceiveClientConnect
   DisableAutoOpenWizard: 1

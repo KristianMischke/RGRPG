@@ -44,7 +44,7 @@ namespace RGRPG.Core
         public bool IsEnemy { get { return bEnemy; } }
         public int Health   { get { return iHealth; } }
         public int Magic    { get { return iMagic; } }
-        public int Defense  { get { return iDefense; } }
+        public int Defense { get { return iDefense; } }
         public List<InfoAction> ActionList { get { return actionList; } }
 
         public float PortraitOffsetX { get { return portraitOffsetX; } }

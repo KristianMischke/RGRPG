@@ -5,6 +5,14 @@ namespace RGRPG.Core.NetworkCore
 {
     public interface IGameClientManager
     {
-        void RequestClientID();
+        // Inital connection
+        void RequestClientID(bool isObserver);
+
+        // Character Selection Screen
+        void ChooseCharacterToPlay(string zType, int slot);
+        void SubmitCharacterSelection();
+
+        // In Game
+        void MoveCharacter(int xDirection, int yDirection);
     }
 }

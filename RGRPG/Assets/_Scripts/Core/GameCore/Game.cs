@@ -73,6 +73,8 @@ namespace RGRPG.Core
         public bool SceneTransitioned { get { return sceneTransitioned; } }
 
         // characters
+        protected int nextCharacterID = 0;
+        protected Dictionary<int, Character> allCharacters;
         protected List<Character> players;
         protected Dictionary<string, List<Enemy>> enemies; // scene ID, enemies
         protected Character selectedCharacter;
@@ -116,6 +118,7 @@ namespace RGRPG.Core
         /// </summary>
         private void Init()
         {
+            allCharacters = new Dictionary<int, Character>();
             players = new List<Character>();
             enemies = new Dictionary<string, List<Enemy>>();
 
@@ -142,6 +145,11 @@ namespace RGRPG.Core
                 enemies.Add(infoScene.ZType, new List<Enemy>());
                 newScene.LoadDefaultEntities(this, enemies[infoScene.ZType]);
 
+                foreach (Character c in enemies[infoScene.ZType])
+                {
+                    allCharacters[nextCharacterID++] = c;
+                }
+
                 scenes.Add(infoScene.ZType, newScene);
 
                 if (infoScene.IsFirst || scenes.Count == 1)
@@ -149,6 +157,75 @@ namespace RGRPG.Core
                     startScene = newScene;
                     currentScene = newScene;
                 }
+            }
+        }
+
+        public object[] SerializePlayers()
+        {
+            object[] allPlayerData = new object[(Character.NUM_SERIALIZED_FIELDS + 1) * players.Count];
+
+            int i = 0;
+            foreach (Character player in players)
+            {
+                object[] pData = player.Serialize();
+
+                allPlayerData[i] = allCharacters.Single(x => x.Value == player).Key;
+                i++;
+                for (int j = 0; j < pData.Length; j++)
+                {
+                    allPlayerData[i] = pData[j];
+                    i++;
+                }
+            }
+
+            return allPlayerData;
+        }
+
+        public object[] SerializeEnemies()
+        {
+            object[] allEnemyData = new object[(Enemy.NUM_SERIALIZED_FIELDS + 1) * Enemies.Count];
+
+            int i = 0;
+            foreach (Enemy enemy in Enemies)
+            {
+                object[] eData = enemy.Serialize();
+
+                allEnemyData[i] = allCharacters.Single(x => x.Value == enemy).Key;
+                i++;
+                for (int j = 0; j < eData.Length; j++)
+                {
+                    allEnemyData[i] = eData[j];
+                    i++;
+                }
+            }
+
+            return allEnemyData;
+        }
+
+        public void DeserializeCharacters(object[] data)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                int id = (int)data[i];
+                i++;
+
+                Character character = allCharacters[id];
+
+                int cDataLength = Character.NUM_SERIALIZED_FIELDS;
+                if (character is Enemy)
+                {
+                    cDataLength = Enemy.NUM_SERIALIZED_FIELDS;
+                }
+
+                object[] cData = new object[cDataLength];
+                for (int j = 0; j < cDataLength; j++)
+                {
+                    cData[j] = data[i];
+                    if(j < cDataLength-1)
+                        i++;
+                }
+
+                character.Deserialize(cData);
             }
         }
 
@@ -160,7 +237,27 @@ namespace RGRPG.Core
         {
             for (int i = 0; i < 4; i++)
             {
-                players.Add(playerSelections[i].GenerateCharacter(this, infos));
+                Character c = playerSelections[i].GenerateCharacter(this, infos);
+                allCharacters[nextCharacterID++] = c;
+                players.Add(c);
+                //players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1);
+                players[i].SetPosition(startScene.getSpawnPos(CurrentScene.MyInfo.FirstSpawnID));
+            }
+
+            selectedCharacter = players[0];
+        }
+
+        /// <summary>
+        ///     Initializes the players' characters
+        /// </summary>
+        /// <param name="playerSelections">The indexed infos for teh selected characters. Assumes length is 4</param>
+        public void SelectCharacters(string[] playerSelections)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Character c = Infos.Get<InfoCharacter>(playerSelections[i]).GenerateCharacter(this, infos);
+                allCharacters[nextCharacterID++] = c;
+                players.Add(c);
                 //players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1);
                 players[i].SetPosition(startScene.getSpawnPos(CurrentScene.MyInfo.FirstSpawnID));
             }
@@ -280,6 +377,9 @@ namespace RGRPG.Core
                         {
                             //TODO: spill loot
                             enemies[currentScene.ZType].RemoveAt(i);
+
+                            int id = allCharacters.Single(x => x.Value == e).Key;
+                            allCharacters.Remove(id);
                         }
                     }
 
@@ -490,20 +590,23 @@ namespace RGRPG.Core
         ///     Transitions the game to a different scene
         /// </summary>
         /// <param name="sceneID">The ID of the scene to transition to</param>
-        /// <param name="spawnID">The ID of the tile to spawn at</param>
-        void TransitionToScene(string sceneID, string spawnID)
+        /// <param name="spawnID">The ID of the tile to spawn at. (if null, only changes scene, doesn't set player's position.)</param>
+        public void TransitionToScene(string sceneID, string spawnID = null)
         {
             if (scenes.ContainsKey(sceneID))
             {
                 // set new current scene
                 currentScene = scenes[sceneID];
 
-                Vector2Int spawnPos = currentScene.getSpawnPos(spawnID);
-
-                // put players at spawn tile
-                foreach (Character player in players)
+                if (!string.IsNullOrEmpty(spawnID))
                 {
-                    player.SetPosition(spawnPos);
+                    Vector2Int spawnPos = currentScene.getSpawnPos(spawnID);
+
+                    // put players at spawn tile
+                    foreach (Character player in players)
+                    {
+                        player.SetPosition(spawnPos);
+                    }
                 }
 
                 sceneTransitioned = true;

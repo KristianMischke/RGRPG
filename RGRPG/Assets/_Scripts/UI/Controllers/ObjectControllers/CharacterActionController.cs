@@ -39,7 +39,7 @@ namespace RGRPG.Controllers
             if (action == null)
                 return;
 
-            actionButton.interactable = character.IsAlive() && GameController.instance.IsInCombat;
+            actionButton.interactable = character.IsAlive() && GameClient.instance.IsInCombat;
         }
 
         /// <summary>
