@@ -46,6 +46,15 @@ public class RPCInitialize
         Debug.Log("Discord: on main menu!");
 
         presence.details = "Main Menu";
+        presence.largeImageKey = "die";
+        presence.largeImageText = "Lobby";
+        presence.smallImageKey = "sword-medium";
+        presence.smallImageText = "Attacker";
+        presence.partyId = "ae488379-351d-4a4f-ad32-2b9b01c91657";
+        presence.partySize = 1;
+        presence.partyMax = 4;
+        //presence.spectateSecret = "MTIzNDV8MTIzNDV8MTMyNDU0";
+        presence.joinSecret = "yeet";
 
         DiscordRpc.UpdatePresence(presence);
     }
@@ -64,7 +73,26 @@ public class RPCInitialize
         presence.partySize = 1;
         presence.partyMax = 4;
         //presence.spectateSecret = "MTIzNDV8MTIzNDV8MTMyNDU0";
-        //presence.joinSecret = "MTI4NzM0OjFpMmhuZToxMjMxMjM= ";
+        presence.joinSecret = "MTI4NzM0OjFpMmhuZToxMjMxMjM= ";
+
+        DiscordRpc.UpdatePresence(presence);
+    }
+
+    public void SelectingCharacter()
+    {
+        //Debug.Log("Discord: in the lobby!");
+
+        presence.state = "Playing Solo";
+        presence.details = "Selecting Character";
+        presence.largeImageKey = "die";
+        presence.largeImageText = "Lobby";
+        presence.smallImageKey = "sword-medium";
+        presence.smallImageText = "Attacker";
+        presence.partyId = "ae488379-351d-4a4f-ad32-2b9b01c91657";
+        presence.partySize = 1;
+        presence.partyMax = 4;
+        //presence.spectateSecret = "MTIzNDV8MTIzNDV8MTMyNDU0";
+        presence.joinSecret = "MTI4NzM0OjFpMmhuZToxMjMxMjM= ";
 
         DiscordRpc.UpdatePresence(presence);
     }
