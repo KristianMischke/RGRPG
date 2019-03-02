@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1922988790364104}
+  m_RootGameObject: {fileID: 1149542405190884}
   m_IsPrefabAsset: 1
---- !u!1 &1922988790364104
+--- !u!1 &1149542405190884
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4594377297850106}
-  - component: {fileID: 114944362508033274}
+  - component: {fileID: 4188840498462938}
+  - component: {fileID: 114930003041829796}
   m_Layer: 0
-  m_Name: NetworkManagerSpawner
+  m_Name: SinglePlayerNetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4594377297850106
+--- !u!4 &4188840498462938
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1922988790364104}
+  m_GameObject: {fileID: 1149542405190884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 932.40717, y: 473.54416, z: -10.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,19 +40,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114944362508033274
+--- !u!114 &114930003041829796
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1922988790364104}
+  m_GameObject: {fileID: 1149542405190884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4cfaff2b544b3749a996bacb15ba6bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cc291d3f14116147a61e5c19989af87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singleplayerNetworkManager: {fileID: 1149542405190884, guid: 317eeba1e3a204041a5d3caf86dd152c,
-    type: 2}
-  punNetworkManager: {fileID: 1289315244655006, guid: 4e8bc8d4f67f0834a90a20a18e10584b,
-    type: 2}
-  discordNetworkManager: {fileID: 0}

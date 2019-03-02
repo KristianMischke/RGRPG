@@ -147,8 +147,7 @@ namespace RGRPG.Core
 
                     if (!string.IsNullOrEmpty(entityType))
                     {
-                        Character baseCharacter = game.Infos.Get<InfoCharacter>(entityType).GenerateCharacter(game, game.Infos);
-                        entities.Add(new Enemy(baseCharacter, new Vector2(x, y)));
+                        entities.Add(game.GenerateEnemy(entityType, new Vector2(x,y)));
                         //entities.Add(new Enemy(game, game.Infos.Get<InfoCharacter>(entityType), new Vector2(x, y), new List<ICharacterAction> { new AttackAction(20, 25) }));
                     }
                 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 namespace RGRPG.Core.NetworkCore
@@ -29,39 +28,17 @@ namespace RGRPG.Core.NetworkCore
             PhotonNetwork.OnEventCall += OnEvent;
         }
 
-        void Start()
-        {
-            PhotonNetwork.ConnectUsingSettings("v0.0");
-        }
-
         public void OnDisable()
         {
             PhotonNetwork.OnEventCall -= OnEvent;
         }
 
-        void OnConnectedToMaster()
-        {
-            Debug.Log("Connected to Master");
-
-            //GameLobby class that handles matchmaking
-            //TODO: view rooms list and creating private rooms
-            /*RoomOptions roomOptions = new RoomOptions();
-            roomOptions.IsVisible = false;
-            roomOptions.MaxPlayers = 4;
-            PhotonNetwork.JoinOrCreateRoom(nameEveryFriendKnows, roomOptions, TypedLobby.Default);*/
-
-            RoomOptions roomOptions = new RoomOptions();
-            roomOptions.IsVisible = true;
-            roomOptions.MaxPlayers = 4;
-            PhotonNetwork.JoinOrCreateRoom("Test Game", roomOptions, TypedLobby.Default);
-        }
-
-        void OnJoinedRoom()
+        void OnJoinedRoom() // TODO: change to be when the room is ready to enter the game
         {
             Debug.Log("Connected to Room");
 
             //PhotonNetwork.Instantiate("PhotonPlayer", Vector3.zero, Quaternion.identity, 0);
-            
+
             client = new GameClient(this, false); //TODO: eventually we will have "observer" players which means this code should take in a value for observer
 
             if (PhotonNetwork.isMasterClient)
@@ -256,6 +233,16 @@ namespace RGRPG.Core.NetworkCore
             bool reliable = true;
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent((byte)NetworkEvent.SCENE_UPDATE, sceneID, reliable, raiseEventOptions);
+        }
+
+        // combat messages
+        public void BroadcastBeginCombat(int[] enemyIDs)
+        {
+
+        }
+        public void BroadcastCombatState(int combatState)
+        {
+
         }
     }
 }

@@ -18,11 +18,25 @@ public class NetworkManagerSpawner : MonoBehaviour
     public GameObject punNetworkManager;
     public GameObject discordNetworkManager;
 
-    public NetworkManagerType spawnType = NetworkManagerType.NONE;
+    public static NetworkManagerSpawner instance;
 
-	void Start () {
+    private void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else if (instance != this)
+        {
+            Destroy(this);
+        }
+    }
+
+    public void SpawnNetowrkManager(NetworkManagerType type)
+    {
         GameObject networkManager;
-        switch (spawnType)
+        switch (type)
         {
             case NetworkManagerType.PHOTON:
                 networkManager = Instantiate(punNetworkManager);
@@ -36,5 +50,5 @@ public class NetworkManagerSpawner : MonoBehaviour
         }
 
         DontDestroyOnLoad(networkManager);
-	}
+    }
 }

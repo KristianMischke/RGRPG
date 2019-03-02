@@ -25,6 +25,7 @@ namespace RGRPG.Core
         protected Game myGame;
         protected InfoCharacter myInfo;
         protected string zType;
+        protected int id;
 
         protected int health;
         protected int defense;
@@ -36,9 +37,10 @@ namespace RGRPG.Core
         protected List<ICharacterAction> actions;
 
         public Game MyGame { get { return myGame; } }
-        public InfoCharacter MyInfo { get {return myInfo;}}
+        public InfoCharacter MyInfo { get { return myInfo; } }
         public string Type { get { return zType; } }
-        public string ClassType { get { return myInfo.Class; } }        
+        public int ID { get { return id; } }
+        public string ClassType { get { return myInfo.Class; } }
         public string Name { get { return myInfo.Name; } }
         public int Health { get { return health; } }
         public int Defense { get { return defense; } }
@@ -47,9 +49,7 @@ namespace RGRPG.Core
         public Vector2 Position { get { return position; } }
         public float Radius { get { return radius; } }
 
-        public Character() { }
-
-        public Character(Game myGame, InfoCharacter myInfo, List<ICharacterAction> actions)
+        public Character(Game myGame, InfoCharacter myInfo, List<ICharacterAction> actions, int id)
         {
             this.myGame = myGame;
             this.myInfo = myInfo;
@@ -58,6 +58,7 @@ namespace RGRPG.Core
             //TODO deal with MP
             this.defense = myInfo.Defense;
             this.actions = actions;
+            this.id = id;
         }
 
         public const int NUM_SERIALIZED_FIELDS = 4;
@@ -157,16 +158,8 @@ namespace RGRPG.Core
         protected float range = 5;
         protected float maxR = 7;
 
-        public Enemy(Character baseCharacter, Vector2 pos)
-        {
-            this.myGame = baseCharacter.MyGame;
-            this.myInfo = baseCharacter.MyInfo;
-            this.zType = baseCharacter.MyInfo.ZType;
-            this.health = baseCharacter.MyInfo.Health;
-            //TODO deal with MP
-            this.defense = baseCharacter.MyInfo.Defense;
-            this.actions = baseCharacter.Actions;
-            
+        public Enemy(Character baseCharacter, Vector2 pos) : base(baseCharacter.MyGame, baseCharacter.MyInfo, baseCharacter.Actions, baseCharacter.ID)
+        {   
             this.position = pos;
             this.fixedPosition = pos;
         }

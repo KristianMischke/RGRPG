@@ -192,15 +192,40 @@ namespace RGRPG.Core
                 return;
             }
             
-            game.GameLoop(deltaTime);
+            game.GameLoop(deltaTime); // GAME UPDATES
 
             if (game.SceneTransitioned)
                 serverManager.BroadcastSceneUpdate(game.CurrentScene.ZType);
 
             if (game.IsInCombat)
             {
+                if (game.PreviousCombatState != game.CurrentCombatState)
+                {
+                    // The combat state has changed this frame
+
+                    if (game.CurrentCombatState == CombatState.BeginCombat)
+                    {
+                        // we are beginning combat, so broadcast the new state with enemy info
+                        int[] enemyIds = new int[game.CombatEnemies.Count];
+
+                        for(int i = 0; i < game.CombatEnemies.Count; i++)
+                        {
+                            Character c = game.CombatEnemies[i];
+                            enemyIds[i] = c.ID;
+                        }
+
+                        serverManager.BroadcastBeginCombat(enemyIds);
+                    }
+                    else
+                    {
+                        // we are transitioning to a new combat state
+                        serverManager.BroadcastCombatState((int)game.CurrentCombatState);
+                    }
+                }
+
                 if (game.CurrentCombatState == CombatState.BeginCombat)
                 {
+
                     foreach (Character c in game.CombatEnemies)
                     {
                         //TODO selectAction for choosing enemy target (SERVER)
@@ -238,7 +263,7 @@ namespace RGRPG.Core
         }
 
         /// <summary>
-        ///     Allows the user to move the character with the arrow keys or WASD
+        ///     Recieves move instructions from the clients, applies them to the game and broadcasts the updated locations
         /// </summary>
         public void MoveCharacter(int xMovement, int yMovement)
         {

@@ -9,6 +9,8 @@ namespace RGRPG.Core.NetworkCore
 {
     public class SinglePlayerManager : MonoBehaviour, IGameClientManager, IGameServerManager
     {
+        const int SINGLE_PLAYER_CLIENT_ID = 0;
+
         GameServer server;
         GameClient client;
 
@@ -19,14 +21,18 @@ namespace RGRPG.Core.NetworkCore
             client = new GameClient(this, false);
         }
 
-        public void RequestClientID()
+        void Update()
         {
-            client.ClientID = 0;
-            server.RegisterClient(client.ClientID, false);
+            server.Update(Time.deltaTime);
+            client.Update(Time.deltaTime);
         }
 
         //---From Client---
-        public void RequestClientID(bool isObserver) { }
+        public void RequestClientID(bool isObserver)
+        {
+            client.ClientID = SINGLE_PLAYER_CLIENT_ID;
+            server.RegisterClient(client.ClientID, false);
+        }
 
         public void ChooseCharacterToPlay(string zType, int slot)
         {
@@ -43,7 +49,10 @@ namespace RGRPG.Core.NetworkCore
         }
 
         //---From Server---
-        public void BroadcastClientConnect(int id, int playerNumber, bool isObserver) { }
+        public void BroadcastClientConnect(int id, int playerNumber, bool isObserver)
+        {
+            client.MyPlayerNumber = playerNumber;
+        }
         public void SyncClientInfo(object[] data)
         {
             client.SyncClientData(data);
@@ -63,6 +72,16 @@ namespace RGRPG.Core.NetworkCore
             client.EnemyUpdate(data);
         }
         public void BroadcastSceneUpdate(string sceneID)
+        {
+            client.SceneUpdate(sceneID);
+        }
+
+        // combat messages
+        public void BroadcastBeginCombat(int[] enemyIDs)
+        {
+
+        }
+        public void BroadcastCombatState(int combatState)
         {
 
         }

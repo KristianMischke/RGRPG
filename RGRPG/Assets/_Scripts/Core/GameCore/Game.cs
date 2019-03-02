@@ -70,7 +70,7 @@ namespace RGRPG.Core
         protected WorldScene startScene;
         protected WorldScene currentScene;
         protected bool sceneTransitioned = false;
-        public bool SceneTransitioned { get { return sceneTransitioned; } }
+        public bool SceneTransitioned { get { bool temp = sceneTransitioned; sceneTransitioned = false; return temp; } }
 
         // characters
         protected int nextCharacterID = 0;
@@ -80,6 +80,7 @@ namespace RGRPG.Core
         protected Character selectedCharacter;
 
         // for combat
+        protected CombatState previousCombatState = CombatState.NONE;
         protected CombatState currentCombatState = CombatState.NONE;
         protected int turnCounter = 0;
         protected int prevTurnCounter = -1;
@@ -93,6 +94,7 @@ namespace RGRPG.Core
         public GameInfos Infos { get { return infos; } }
 
         public GameState CurrentGameState { get { return currentGameState; } }
+        public CombatState PreviousCombatState { get { return previousCombatState; } }
         public CombatState CurrentCombatState { get { return currentCombatState; } }
         public Dictionary<string, WorldScene> Scenes { get { return scenes; } }
         public WorldScene StartScene { get { return startScene; } }
@@ -145,11 +147,6 @@ namespace RGRPG.Core
                 enemies.Add(infoScene.ZType, new List<Enemy>());
                 newScene.LoadDefaultEntities(this, enemies[infoScene.ZType]);
 
-                foreach (Character c in enemies[infoScene.ZType])
-                {
-                    allCharacters[nextCharacterID++] = c;
-                }
-
                 scenes.Add(infoScene.ZType, newScene);
 
                 if (infoScene.IsFirst || scenes.Count == 1)
@@ -165,16 +162,21 @@ namespace RGRPG.Core
             object[] allPlayerData = new object[(Character.NUM_SERIALIZED_FIELDS + 1) * players.Count];
 
             int i = 0;
-            foreach (Character player in players)
+            foreach (KeyValuePair<int, Character> kvp in allCharacters)
             {
-                object[] pData = player.Serialize();
-
-                allPlayerData[i] = allCharacters.Single(x => x.Value == player).Key;
-                i++;
-                for (int j = 0; j < pData.Length; j++)
+                if (!(kvp.Value is Enemy))
                 {
-                    allPlayerData[i] = pData[j];
+                    Character player = kvp.Value;
+
+                    object[] eData = player.Serialize();
+
+                    allPlayerData[i] = kvp.Key;
                     i++;
+                    for (int j = 0; j < eData.Length; j++)
+                    {
+                        allPlayerData[i] = eData[j];
+                        i++;
+                    }
                 }
             }
 
@@ -186,16 +188,24 @@ namespace RGRPG.Core
             object[] allEnemyData = new object[(Enemy.NUM_SERIALIZED_FIELDS + 1) * Enemies.Count];
 
             int i = 0;
-            foreach (Enemy enemy in Enemies)
+            foreach (KeyValuePair<int, Character> kvp in allCharacters)
             {
-                object[] eData = enemy.Serialize();
-
-                allEnemyData[i] = allCharacters.Single(x => x.Value == enemy).Key;
-                i++;
-                for (int j = 0; j < eData.Length; j++)
+                if (kvp.Value is Enemy)
                 {
-                    allEnemyData[i] = eData[j];
-                    i++;
+                    Enemy enemy = kvp.Value as Enemy;
+                    if (Enemies.Contains(enemy))
+                    {
+
+                        object[] eData = enemy.Serialize();
+
+                        allEnemyData[i] = kvp.Key;
+                        i++;
+                        for (int j = 0; j < eData.Length; j++)
+                        {
+                            allEnemyData[i] = eData[j];
+                            i++;
+                        }
+                    }
                 }
             }
 
@@ -237,8 +247,7 @@ namespace RGRPG.Core
         {
             for (int i = 0; i < 4; i++)
             {
-                Character c = playerSelections[i].GenerateCharacter(this, infos);
-                allCharacters[nextCharacterID++] = c;
+                Character c = GenerateCharacter(playerSelections[i]);
                 players.Add(c);
                 //players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1);
                 players[i].SetPosition(startScene.getSpawnPos(CurrentScene.MyInfo.FirstSpawnID));
@@ -255,8 +264,7 @@ namespace RGRPG.Core
         {
             for (int i = 0; i < 4; i++)
             {
-                Character c = Infos.Get<InfoCharacter>(playerSelections[i]).GenerateCharacter(this, infos);
-                allCharacters[nextCharacterID++] = c;
+                Character c = GenerateCharacter(playerSelections[i]);
                 players.Add(c);
                 //players[i].SetPosition(Random.Range(1, startScene.Width - 1), 1);
                 players[i].SetPosition(startScene.getSpawnPos(CurrentScene.MyInfo.FirstSpawnID));
@@ -265,12 +273,36 @@ namespace RGRPG.Core
             selectedCharacter = players[0];
         }
 
+        public Character GenerateCharacter(string zType)
+        {
+            return GenerateCharacter(Infos.Get<InfoCharacter>(zType));
+        }
+        public Character GenerateCharacter(InfoCharacter infoCharacter)
+        {
+            Character c = infoCharacter.GenerateCharacter(this, infos, nextCharacterID);
+            allCharacters[nextCharacterID] = c;
+            nextCharacterID++;
+            return c;
+        }
+        public Enemy GenerateEnemy(string zType, Vector2 initialPosition)
+        {
+            return GenerateEnemy(Infos.Get<InfoCharacter>(zType), initialPosition);
+        }
+        public Enemy GenerateEnemy(InfoCharacter infoCharacter, Vector2 initialPosition)
+        {
+            Character c = infoCharacter.GenerateCharacter(this, infos, nextCharacterID);
+            Enemy e = new Enemy(c, initialPosition);
+            allCharacters[nextCharacterID] = e;
+            nextCharacterID++;
+            return e;
+        }
+
         /// <summary>
         ///     Controls the next iteration of the game loop, currently just switches from combat mode to world movement mode
         /// </summary>
         public void GameLoop(float deltaTime)
         {
-            sceneTransitioned = false;
+            previousCombatState = currentCombatState;
 
             switch(currentGameState)
             {

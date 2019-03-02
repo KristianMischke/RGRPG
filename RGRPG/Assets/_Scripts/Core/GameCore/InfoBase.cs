@@ -87,7 +87,7 @@ namespace RGRPG.Core
             SpriteManager.LoadAsset(SpriteManager.AssetType.CHARACTER_PORTRAIT, zType, zPortraitSprite);
         }
 
-        public Character GenerateCharacter(Game game, GameInfos infos)
+        public Character GenerateCharacter(Game game, GameInfos infos, int characterID)
         {
             List<ICharacterAction> characterActions = new List<ICharacterAction>();
 
@@ -100,7 +100,7 @@ namespace RGRPG.Core
                     characterActions.Add(new DudAction());
             }
 
-            return new Character(game, this, characterActions);
+            return new Character(game, this, characterActions, characterID);
         }
     }
 

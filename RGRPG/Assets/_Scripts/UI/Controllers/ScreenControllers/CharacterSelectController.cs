@@ -37,21 +37,32 @@ namespace RGRPG.Controllers
 
         void Start()
         {
-            ChooseNewSlot(0);
-            LoadCharPortraits();
-
-            for (int i = 0; i < playerSlotButtonArray.Length; i++)
-            {
-                int j = i;
-
-                playerSlotButtonArray[j].onClick.AddListener(() => OnButtonPressed(ItemType.PLAYER_SLOT_BUTTON, j));
-            }
-
-            readyButton.onClick.AddListener(() => OnButtonPressed(ItemType.READY_BUTTON));
+            
         }
+
+        bool firstUpdate = true;
 
         void Update()
         {
+            if (Client == null)
+                return;
+
+            if (firstUpdate)
+            {
+                ChooseNewSlot(0);
+                LoadCharPortraits();
+
+                for (int i = 0; i < playerSlotButtonArray.Length; i++)
+                {
+                    int j = i;
+
+                    playerSlotButtonArray[j].onClick.AddListener(() => OnButtonPressed(ItemType.PLAYER_SLOT_BUTTON, j));
+                }
+
+                readyButton.onClick.AddListener(() => OnButtonPressed(ItemType.READY_BUTTON));
+                firstUpdate = false;
+            }
+
             for (int i = 0; i < myPlayerSlots.Length; i++)
             {
                 myPlayerSlots[i] = GameCharacterSelectHelper.IsValidSlot(Client.MyPlayerNumber, Client.NumPlayers, i);

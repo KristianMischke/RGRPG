@@ -1,5 +1,21 @@
 _______________________RGRPG TODO LIST_______________________________
 
+-Position lerping/predicting to remove jitters
+
+-Combat Multiplayer state management
+--ensure all players enter combat with correct enemies
+--keep track of player combat action input
+--execute combat phases appropraitely
+--wait for animations to finish on clients before next phase
+--correctly transition from combat to overworld
+
+
+-Multiplayer room select/create menu page (show concept)
+
+-New character select screen (show concept)
+
+
+
 -Indicate enemy spawn positions in a scene
 
 -Use icons for actions instead of just text
@@ -16,7 +32,7 @@ ___________LATER____________
 
 
 
-_________WAAAAAY LATER_____________
+_________WAAAAAY LATER_________
 
 -Polish credits page
 --Maybe have character head art for each of the team members

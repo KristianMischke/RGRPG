@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4454155085165028}
   - component: {fileID: 114824561461526178}
+  - component: {fileID: 114029972768418654}
   m_Layer: 0
   m_Name: PhotonNetworkManager
   m_TagString: Untagged
@@ -40,6 +41,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114029972768418654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1289315244655006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1285145ea233f0940a46b99fb041662e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114824561461526178
 MonoBehaviour:
   m_ObjectHideFlags: 1

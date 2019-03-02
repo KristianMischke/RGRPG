@@ -8,15 +8,11 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     // Scene Objects
-    public GameObject StartButtonObject;
-    public GameObject OptionsButtonObject;
-    public GameObject CreditsButtonObject;
-    public GameObject QuitButtonObject;
-
-    private Button StartButton;
-    private Button OptionsButton;
-    private Button CreditsButton;
-    private Button QuitButton;
+    public Button StartButton;
+    public Button MultiplayerButton;
+    public Button OptionsButton;
+    public Button CreditsButton;
+    public Button QuitButton;
 
     // Prefabs
     public GameObject DiscordControllerObject;
@@ -32,16 +28,17 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
-
-        StartButton = StartButtonObject.GetComponent<Button>();
-        OptionsButton = OptionsButtonObject.GetComponent<Button>();
-        CreditsButton = CreditsButtonObject.GetComponent<Button>();
-        QuitButton = QuitButtonObject.GetComponent<Button>();
         DiscordController.Instance.InMainMenu();
 
         StartButton.onClick.AddListener(() =>
         {
+            NetworkManagerSpawner.instance.SpawnNetowrkManager(NetworkManagerSpawner.NetworkManagerType.NONE);
             SceneManager.LoadScene("CharacterScene");
+        });
+
+        MultiplayerButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("NetworkLobbyScene");
         });
 
         OptionsButton.onClick.AddListener(() =>
