@@ -495,6 +495,11 @@ namespace RGRPG.Controllers
             EventSystem.current.SetSelectedGameObject(null);
             string extensions = "xml";
 
+            string root = "";
+#if UNITY_EDITOR
+            root = Application.dataPath + "/Resources/Data/Scenes/";
+#endif
+
             string path = FileBrowser.OpenSingleFile("Open Map file", "", extensions);
 
             if (!string.IsNullOrEmpty(path))
