@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Root>
-  <Entry>
-    <zType>TARGET_NONE</zType>
-    <Description>None</Description>
-  </Entry>
-  <Entry>
-    <zType>TARGET_SELF</zType>
-    <Description>Self</Description>
-  </Entry>
-  <Entry>
-    <zType>TARGET_TEAM</zType>
-    <Description>Team</Description>
-  </Entry>
-  <Entry>
-    <zType>TARGET_OTHER_TEAM</zType>
-    <Description>Other Team</Description>
-  </Entry>
-  <Entry>
-    <zType>TARGET_AMOUNT</zType>
-    <Description>Any Character</Description>
-  </Entry>
-  <Entry>
-    <zType>TARGET_FRIEND</zType>
-    <Description>Friend</Description>
-  </Entry>
-  <Entry>
-    <zType>TARGET_ENEMY</zType>
-    <Description>Enemy</Description>
-  </Entry>
+    <Entry>
+        <zType>TARGET_NONE</zType>
+        <Description>None</Description>
+    </Entry>
+    <Entry>
+        <zType>TARGET_SELF</zType>
+        <Description>Self</Description>
+    </Entry>
+    <Entry>
+        <zType>TARGET_TEAM</zType>
+        <Description>Team</Description>
+    </Entry>
+    <Entry>
+        <zType>TARGET_OTHER_TEAM</zType>
+        <Description>Other Team</Description>
+    </Entry>
+    <Entry>
+        <zType>TARGET_AMOUNT</zType>
+        <Description>Any Character</Description>
+    </Entry>
+    <Entry>
+        <zType>TARGET_FRIEND</zType>
+        <Description>Friend</Description>
+    </Entry>
+    <Entry>
+        <zType>TARGET_ENEMY</zType>
+        <Description>Enemy</Description>
+    </Entry>
 </Root>

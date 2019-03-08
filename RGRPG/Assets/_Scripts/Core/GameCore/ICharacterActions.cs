@@ -321,4 +321,118 @@ namespace RGRPG.Core
         public string GetHelpText() { return "Restores " + amount + " health to the targets"; }
 
     }
+
+
+
+    public class NecromancerAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int amount;
+        private int manaCost;
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public NecromancerAction() { }
+
+        public void Init(InfoAction myInfo, int manaCost)
+        {
+            this.myInfo = myInfo;
+            this.manaCost = manaCost;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            //source.Heal(amount);
+            foreach (Character c in targets)
+            {
+                amount = c.MyInfo.Health / 2;
+                if (!c.IsAlive())
+                {
+                    c.Heal(amount);
+                }
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "HEAL"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
+
+        public string GetHelpText() { return "Restores " + amount + " health to the targets"; }
+
+    }
+
+    public class CounterAttackAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int amount;
+        private int manaCost;
+        private float counterPercent;
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public CounterAttackAction() { }
+
+        public void Init(InfoAction myInfo, float counterPercent, int manaCost)
+        {
+            this.myInfo = myInfo;
+            this.manaCost = manaCost;
+            this.counterPercent = counterPercent;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            source.Heal(amount);
+            foreach (Character c in targets)
+            {
+                if (!c.IsAlive())
+                {
+                    float damage = amount * 0.25f;
+
+                    c.Damage((int)Mathf.Round(damage));
+                }
+
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "HEAL"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
+
+        public string GetHelpText() { return "Restores " + amount + " health to the targets"; }
+
+    }
 }

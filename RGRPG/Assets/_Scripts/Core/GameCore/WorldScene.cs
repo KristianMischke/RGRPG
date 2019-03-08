@@ -71,6 +71,7 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(docElem, "bIsIndoors", out isIndoors);
             GameXMLLoader.ReadXMLValue(docElem, "BackgroundImage", out backgroundImage);
 
+            spawns.Clear();
             terrainTiles = new TerrainTile[width, height];
             int i = 0;
             foreach (XmlNode terrainRowNode in GameXMLLoader.TryGetChild(docElem, "Terrain").ChildNodes)
@@ -78,10 +79,13 @@ namespace RGRPG.Core
                 int j = 0;
                 foreach (XmlNode tileNode in terrainRowNode.ChildNodes)
                 {
-                    terrainTiles[i, j] = new TerrainTile(tileNode, i, j);
-                    if (!string.IsNullOrEmpty(terrainTiles[i, j].SpawnID))
+                    TerrainTile t = terrainTiles[i, j] = new TerrainTile(tileNode, i, j);
+                    if (!string.IsNullOrEmpty(t.SpawnID))
                     {
-                        spawns.Add(terrainTiles[i, j].SpawnID, new Vector2Int(i, j));
+                        if (spawns.ContainsKey(t.SpawnID))
+                            Debug.LogError("Tile with SpawnID: " + t.SpawnID + " already exists in this scene at " + spawns[t.SpawnID].ToString());
+                        else
+                            spawns.Add(t.SpawnID, new Vector2Int(i, j));
                     }
                     j++;
                 }
