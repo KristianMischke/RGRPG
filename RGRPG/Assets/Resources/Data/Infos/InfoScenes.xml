@@ -10,7 +10,7 @@
   <Entry>
     <zType>SCENE_START</zType>
     <Name>This is the beginning scene</Name>
-    <File>Data/Scenes/worldTest</File>
+    <File>Data/Scenes/mainMap</File>
     <bFirst>1</bFirst>
     <firstSpawn>BEGIN_GAME</firstSpawn>
   </Entry>
