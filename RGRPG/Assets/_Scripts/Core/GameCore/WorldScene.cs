@@ -149,7 +149,7 @@ namespace RGRPG.Core
                 {
                     string entityType = terrainTiles[x, y].EntityType;
 
-                    if (!string.IsNullOrEmpty(entityType))
+                    if (!string.IsNullOrEmpty(entityType) && entityType != "NONE")
                     {
                         Character baseCharacter = game.Infos.Get<InfoCharacter>(entityType).GenerateCharacter(game, game.Infos);
                         entities.Add(new Enemy(baseCharacter, new Vector2(x, y)));

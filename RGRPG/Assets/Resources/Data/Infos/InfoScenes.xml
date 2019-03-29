@@ -15,9 +15,9 @@
     <firstSpawn>BEGIN_GAME</firstSpawn>
   </Entry>
   <Entry>
-    <zType>SCENE_OTHER</zType>
+    <zType>SCENE_ADMIN1</zType>
     <Name>This is another scene</Name>
-    <File>Data/Scenes/MyMap</File>
+    <File>Data/Scenes/admin1</File>
     <bFirst/>
     <firstSpawn/>
   </Entry>
