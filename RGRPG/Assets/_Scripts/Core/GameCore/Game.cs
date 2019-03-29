@@ -78,6 +78,7 @@ namespace RGRPG.Core
         protected List<Character> players;
         protected Dictionary<string, List<Enemy>> enemies; // scene ID, enemies
         protected Character selectedCharacter;
+        protected List<Character> deletedCharacters;
 
         // for combat
         protected CombatState previousCombatState = CombatState.NONE;
@@ -102,6 +103,7 @@ namespace RGRPG.Core
         public List<Character> Players { get { return players; } }
         public List<Enemy> Enemies { get { return enemies[currentScene.ZType]; } }
         public Character SelectedCharacter { get { return selectedCharacter; } }
+        public List<Character> DeletedCharacters { get { return deletedCharacters; } }
 
         public bool IsInCombat { get { return currentGameState == GameState.Combat; } }
         public List<Character> CombatEnemies { get { return combatEnemies; } }
@@ -317,6 +319,46 @@ namespace RGRPG.Core
             }
         }
 
+        public void BeginCombat(int[] enemyIds)
+        {
+            LogMessage("FIGHT");
+            combatEnemies.Clear();
+            foreach (int id in enemyIds)
+            {
+                Enemy e = allCharacters[id] as Enemy;
+                combatEnemies.Add(e); //TODO: right now just single enemies per world enemy, in future: one sprite may contain a band of enemies
+            }
+            StartCombat();
+        }
+
+        public void OverrideCombatState(GameState gameState, CombatState combatState)
+        {
+            this.currentGameState = gameState;
+            this.currentCombatState = combatState;
+        }
+
+        public void UpdateCombatData()
+        {
+
+        }
+
+        public void DeleteCharacter(int id)
+        {
+            Character c = allCharacters[id];
+
+            if (c is Enemy)
+            {
+                Enemy e = c as Enemy;
+                foreach (KeyValuePair<string, List<Enemy>> kvp in enemies)
+                {
+                    enemies[kvp.Key].Remove(e);
+                }
+            }
+
+            deletedCharacters.Add(c);
+            allCharacters.Remove(id);
+        }
+
         /// <summary>
         ///     Tells all the enemies to execute their AI
         /// </summary>
@@ -336,7 +378,7 @@ namespace RGRPG.Core
         {
             switch (currentCombatState)
             {
-                // right now begining combat just resets mana. TODO: determine correct behavior
+                // right now beginning combat just resets mana. TODO: determine correct behavior
                 case CombatState.BeginCombat:
                     turnCounter = 0;
 
@@ -408,10 +450,7 @@ namespace RGRPG.Core
                         if (!e.IsAlive())
                         {
                             //TODO: spill loot
-                            enemies[currentScene.ZType].RemoveAt(i);
-
-                            int id = allCharacters.Single(x => x.Value == e).Key;
-                            allCharacters.Remove(id);
+                            DeleteCharacter(e.ID);
                         }
                     }
 

@@ -219,7 +219,8 @@ namespace RGRPG.Core
                     else
                     {
                         // we are transitioning to a new combat state
-                        serverManager.BroadcastCombatState((int)game.CurrentCombatState);
+                        if(game.CurrentCombatState == CombatState.PlayersChooseActions || game.CurrentCombatState == CombatState.ExecuteTurns)
+                            serverManager.BroadcastCombatState((int)game.CurrentCombatState);
                     }
                 }
 

@@ -254,8 +254,6 @@ namespace RGRPG.Controllers
             if (!overworldInitialized)
                 return;
 
-            Client.Game.GameLoop(Time.deltaTime);
-
             if (Client.Game.CurrentGameState == GameState.Win)
             {
                 winScreen.SetActive(true);
@@ -345,7 +343,6 @@ namespace RGRPG.Controllers
 
                         AnimationHUDController actionHUDController = animationController.GetComponent<AnimationHUDController>();
                         actionHUDController.executeAction(characterAction.first, characterAction.second);
-                        //TODO: //characterAction.second.GetType() == typeof(HealAction) <--- put this in the ActionAnimationHUDController to determine wich image to show
                     }
                 }
                 else
@@ -369,7 +366,7 @@ namespace RGRPG.Controllers
         }
 
         /// <summary>
-        ///     Allows the user to move the selected character with the arrow keys or WASD
+        ///     Asks the client to move the characters based on the user input from Arrow Keys or WASD
         /// </summary>
         void MoveSelectedCharacter()
         {

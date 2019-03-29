@@ -17,7 +17,9 @@ namespace RGRPG.Core.NetworkCore
             MOVE_CHARACTER,
             CHARACTER_UPDATE,
             ENEMY_UPDATE,
-            SCENE_UPDATE
+            SCENE_UPDATE,
+            BEGIN_COMBAT,
+            UPDATE_COMBAT_STATE
         }
 
         GameServer server;
@@ -148,6 +150,18 @@ namespace RGRPG.Core.NetworkCore
                         client.SceneUpdate(sceneZType);
                     }
                     break;
+                case (byte)NetworkEvent.BEGIN_COMBAT:
+                    {
+                        int[] enemyIds = (int[])content;
+                        client.BeginCombat(enemyIds);
+                    }
+                    break;
+                case (byte)NetworkEvent.UPDATE_COMBAT_STATE:
+                    {
+                        int combatState = (int)content;
+                        client.UpdateCombatState(combatState);
+                    }
+                    break;
             }
         }
 
@@ -238,11 +252,15 @@ namespace RGRPG.Core.NetworkCore
         // combat messages
         public void BroadcastBeginCombat(int[] enemyIDs)
         {
-
+            bool reliable = true;
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent((byte)NetworkEvent.BEGIN_COMBAT, enemyIDs, reliable, raiseEventOptions);
         }
         public void BroadcastCombatState(int combatState)
         {
-
+            bool reliable = true;
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent((byte)NetworkEvent.UPDATE_COMBAT_STATE, combatState, reliable, raiseEventOptions);
         }
     }
 }

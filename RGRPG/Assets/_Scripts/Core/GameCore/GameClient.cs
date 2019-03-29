@@ -14,15 +14,18 @@ namespace RGRPG.Core
 
         // Data
         private Dictionary<int, ClientInfo> otherClients = new Dictionary<int, ClientInfo>();
-
         private ClientInfo myClientInfo;
 
         private bool inGame = false;
         private static bool firstGameUpdate = true;
         private Game game;
 
+        private GameState overrideGameState = GameState.Starting;
+        private CombatState overrideCombatState = CombatState.NONE;
+
         private Dictionary<Character, Pair<ICharacterAction, List<Character>>> currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
         private Character currentSourceAction; //TODO: when implementing multiplayer, this will only be on the client
+
 
         public int ClientID { get { return myClientInfo.ID; } set { myClientInfo.ID = value; } }
         public int MyPlayerNumber { get { return myClientInfo.PlayerNumber; } set { myClientInfo.PlayerNumber = value; } }
@@ -79,7 +82,9 @@ namespace RGRPG.Core
 
         public void BeginGame(string[] characters)
         {
+            overrideGameState = GameState.WorldMovement;
             game.SelectCharacters(characters);
+            inGame = true;
         }
 
         public void CharacterUpdate(object[] data)
@@ -102,6 +107,24 @@ namespace RGRPG.Core
             clientManager.MoveCharacter(xDirection, yDirection);
         }
 
+        public void BeginCombat(int[] enemyIds)
+        {
+            game.BeginCombat(enemyIds);
+            overrideGameState = GameState.Combat;
+            overrideCombatState = CombatState.BeginCombat;
+        }
+
+        public void UpdateCombatState(int combatState)
+        {
+            overrideCombatState = (CombatState)combatState;
+        }
+
+        public void EndCombat()
+        {
+            overrideGameState = GameState.WorldMovement;
+            overrideCombatState = CombatState.NONE;
+        }
+
         private bool firstUpdate = true;
         public void Update(float deltaTime)
         {
@@ -120,7 +143,9 @@ namespace RGRPG.Core
                 return;
             }
 
-            game.GameLoop(deltaTime);//???????????
+            if (overrideCombatState < CombatState.COUNT && overrideGameState < GameState.COUNT)
+                game.OverrideCombatState(overrideGameState, overrideCombatState);
+            game.GameLoop(deltaTime);
             
             
             if (game.IsInCombat)
