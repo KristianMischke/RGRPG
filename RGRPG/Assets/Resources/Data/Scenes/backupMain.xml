@@ -1459,7 +1459,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_BEE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -3337,7 +3337,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -3353,7 +3353,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_BEE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -3883,7 +3883,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_BEE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -3899,7 +3899,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_BEE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -4781,7 +4781,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -4797,7 +4797,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -5199,7 +5199,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -5263,7 +5263,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -5279,7 +5279,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -5465,9 +5465,9 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>8</SubType>
+				<Traversable></Traversable>
+				<Type>TERRAIN_BRICK</Type>
+				<SubType>1</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
@@ -5841,7 +5841,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -6739,7 +6739,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -7205,7 +7205,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -7285,7 +7285,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -7301,7 +7301,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -7541,7 +7541,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -7557,648 +7557,6 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-		</TerrainRow>
-		<TerrainRow>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>0</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>0</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>1</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>8</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>6</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>2</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>7</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>8</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>2</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>7</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>5</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>2</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>1</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>7</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>1</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>5</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>4</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_BRICK</Type>
-				<SubType>1</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_BRICK</Type>
-				<SubType>1</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ROOF_TOP</Type>
-				<SubType>7</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -8357,102 +7715,6 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>6</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>6</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>3</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>6</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>5</SubType>
-				<OverlayType></OverlayType>
-				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType></EntityInitType>
-				<SpawnID></SpawnID>
-				<Transition>
-					<Scene></Scene>
-					<SpawnID></SpawnID>
-				</Transition>
-			</Tile>
-			<Tile>
-				<Elevation>0</Elevation>
-				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_SIDEWALK</Type>
 				<SubType>8</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
@@ -8473,7 +7735,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -8489,7 +7751,23 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -8504,8 +7782,8 @@
 				<SubType>8</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -8517,7 +7795,7 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>4</SubType>
+				<SubType>3</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -8533,6 +7811,118 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
 				<SubType>7</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
@@ -8549,7 +7939,7 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>0</SubType>
+				<SubType>8</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -8581,7 +7971,87 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>0</SubType>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>7</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>5</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>1</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>7</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -8629,7 +8099,265 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>6</SubType>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_BRICK</Type>
+				<SubType>1</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_BRICK</Type>
+				<SubType>1</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>7</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ROOF_TOP</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+		</TerrainRow>
+		<TerrainRow>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable></Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -8661,6 +8389,278 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable>1</Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>3</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>5</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>8</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>0</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>1</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>8</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>4</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>7</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>0</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>2</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>0</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>1</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>5</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
+				<SubType>6</SubType>
+				<OverlayType></OverlayType>
+				<OverlaySubType>0</OverlaySubType>
+				<PropType></PropType>
+				<EntityInitType></EntityInitType>
+				<SpawnID></SpawnID>
+				<Transition>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
+				</Transition>
+			</Tile>
+			<Tile>
+				<Elevation>0</Elevation>
+				<ElevationRamp></ElevationRamp>
+				<Traversable>1</Traversable>
+				<Type>TERRAIN_SIDEWALK</Type>
 				<SubType>6</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
@@ -8999,11 +8999,11 @@
 				<ElevationRamp></ElevationRamp>
 				<Traversable></Traversable>
 				<Type>TERRAIN_SIDEWALK</Type>
-				<SubType>8</SubType>
+				<SubType>3</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -9131,7 +9131,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -9757,7 +9757,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -9933,7 +9933,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -10543,7 +10543,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -12003,7 +12003,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -12645,7 +12645,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -12661,7 +12661,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -13031,7 +13031,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_CRAB_KNIGHT</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -14829,7 +14829,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_THE_SWARM</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -15536,7 +15536,7 @@
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
 				<EntityInitType></EntityInitType>
-				<SpawnID>ADMIN_EXIT_R</SpawnID>
+				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
 					<SpawnID></SpawnID>
@@ -15568,7 +15568,7 @@
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
 				<EntityInitType></EntityInitType>
-				<SpawnID>ADMIN_EXIT_L</SpawnID>
+				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
 					<SpawnID></SpawnID>
@@ -16075,7 +16075,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>8</SubType>
 				<OverlayType></OverlayType>
@@ -16091,7 +16091,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>11</SubType>
 				<OverlayType></OverlayType>
@@ -16107,7 +16107,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>1</SubType>
 				<OverlayType></OverlayType>
@@ -16123,7 +16123,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>8</SubType>
 				<OverlayType></OverlayType>
@@ -16139,7 +16139,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>5</SubType>
 				<OverlayType></OverlayType>
@@ -16155,7 +16155,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -16176,18 +16176,18 @@
 				<SubType>14</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_DOOR</PropType>
+				<PropType></PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
-					<Scene>SCENE_ADMIN1</Scene>
-					<SpawnID>ADMIN_ENTRANCE_R</SpawnID>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
 				</Transition>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>9</SubType>
 				<OverlayType></OverlayType>
@@ -16208,18 +16208,18 @@
 				<SubType>8</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType>TERRAIN_PROP_DOOR</PropType>
+				<PropType></PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
-					<Scene>SCENE_ADMIN1</Scene>
-					<SpawnID>ADMIN_ENTRANCE_L</SpawnID>
+					<Scene></Scene>
+					<SpawnID></SpawnID>
 				</Transition>
 			</Tile>
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>3</SubType>
 				<OverlayType></OverlayType>
@@ -16235,7 +16235,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>14</SubType>
 				<OverlayType></OverlayType>
@@ -16251,7 +16251,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>14</SubType>
 				<OverlayType></OverlayType>
@@ -16267,7 +16267,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>4</SubType>
 				<OverlayType></OverlayType>
@@ -16283,7 +16283,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>2</SubType>
 				<OverlayType></OverlayType>
@@ -16797,7 +16797,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -16813,7 +16813,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>7</SubType>
 				<OverlayType></OverlayType>
@@ -16829,7 +16829,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>4</SubType>
 				<OverlayType></OverlayType>
@@ -16845,7 +16845,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>13</SubType>
 				<OverlayType></OverlayType>
@@ -16861,7 +16861,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>13</SubType>
 				<OverlayType></OverlayType>
@@ -16925,7 +16925,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>2</SubType>
 				<OverlayType></OverlayType>
@@ -17567,7 +17567,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>11</SubType>
 				<OverlayType></OverlayType>
@@ -18209,7 +18209,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>1</SubType>
 				<OverlayType></OverlayType>
@@ -18273,13 +18273,13 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_BRICK</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_UMBRELLA_0</PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_BEE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -18851,7 +18851,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -19493,7 +19493,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>4</SubType>
 				<OverlayType></OverlayType>
@@ -20135,7 +20135,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>6</SubType>
 				<OverlayType></OverlayType>
@@ -20777,7 +20777,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>6</SubType>
 				<OverlayType></OverlayType>
@@ -21419,7 +21419,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>9</SubType>
 				<OverlayType></OverlayType>
@@ -22061,7 +22061,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>7</SubType>
 				<OverlayType></OverlayType>
@@ -22703,7 +22703,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>14</SubType>
 				<OverlayType></OverlayType>
@@ -22869,7 +22869,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_GOOSE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -23345,7 +23345,7 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
 				<SubType>13</SubType>
 				<OverlayType></OverlayType>
@@ -23639,7 +23639,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_SQUIRREL</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -23655,7 +23655,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -23987,9 +23987,9 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>7</SubType>
+				<SubType>9</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -24281,7 +24281,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -24629,9 +24629,9 @@
 			<Tile>
 				<Elevation>0</Elevation>
 				<ElevationRamp></ElevationRamp>
-				<Traversable></Traversable>
+				<Traversable>1</Traversable>
 				<Type>TERRAIN_DIRT</Type>
-				<SubType>7</SubType>
+				<SubType>2</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
@@ -25325,7 +25325,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType>CHARACTER_NONE</EntityInitType>
+				<EntityInitType>CHARACTER_BEE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>

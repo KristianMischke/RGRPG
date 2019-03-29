@@ -10,14 +10,14 @@
   <Entry>
     <zType>SCENE_START</zType>
     <Name>This is the beginning scene</Name>
-    <File>Data/Scenes/worldTest</File>
+    <File>Data/Scenes/mainMap</File>
     <bFirst>1</bFirst>
     <firstSpawn>BEGIN_GAME</firstSpawn>
   </Entry>
   <Entry>
-    <zType>SCENE_OTHER</zType>
+    <zType>SCENE_ADMIN1</zType>
     <Name>This is another scene</Name>
-    <File>Data/Scenes/MyMap</File>
+    <File>Data/Scenes/admin1</File>
     <bFirst/>
     <firstSpawn/>
   </Entry>
