@@ -5,6 +5,7 @@ namespace RGRPG.Controllers
 {
     public class TerrainTileControllerMapEditor : TerrainTileController
     {
+        public override int GetWallHeight { get { return 3; } }
 
         public SpriteRenderer borderRenderer; //traversibley/n
         public SpriteRenderer spawnRenderer; //spawn square
@@ -84,7 +85,7 @@ namespace RGRPG.Controllers
 
                 if (GUILayout.Button("SAVE", bigFontButton))
                 {
-                    sceneReference.SetTile(tilePosition, new TerrainTile(t.Type, t.Traversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, editSpawnID, editTransitionScene, editTransitionSpawnID));
+                    sceneReference.SetTile(tilePosition, new TerrainTile(t.Type, t.Traversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.IsWall, editSpawnID, editTransitionScene, editTransitionSpawnID));
                     MapEditorController.DoneTileOverlay();
                 }
                 if (GUILayout.Button("CANCEL", bigFontButton))

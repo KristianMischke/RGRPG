@@ -379,13 +379,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 212976781782441194}
+  overlayRenderer: {fileID: 212118353518490714}
+  propRenderer: {fileID: 212213077913299224}
+  tilePosition: {x: 0, y: 0}
   borderRenderer: {fileID: 212441953195898150}
   spawnRenderer: {fileID: 212515743743241324}
   transitionRenderer: {fileID: 212779444358706164}
-  overlayRenderer: {fileID: 212118353518490714}
-  propRenderer: {fileID: 212213077913299224}
   entityRenderer: {fileID: 212498115437869490}
-  tilePosition: {x: 0, y: 0}
 --- !u!114 &114811414606431336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,7 +508,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300168, guid: 48b519f63debb4972b4f01533f9c0cfb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -552,9 +552,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1404119557
-  m_SortingLayer: -1
-  m_SortingOrder: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c144e1545816ff2469ae632d59ec02d2, type: 3}
   m_Color: {r: 0.5, g: 0, b: 0, a: 1}
   m_FlipX: 0

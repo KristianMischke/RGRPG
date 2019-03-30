@@ -65,6 +65,7 @@ namespace RGRPG.Controllers
 
         public Toggle indoorsToggle;
         public Toggle traversableToggle;
+        public Toggle wallToggle;
         public Toggle overlayToggle;
         public Toggle spawnToggle;
         public Toggle transitionToggle;
@@ -92,6 +93,7 @@ namespace RGRPG.Controllers
         static int paintSubType = 0;
         static bool isPaintingOverlay = false;
         static bool paintTraversable = true;
+        static bool paintWall = false;
         static bool paintSpawn = false;
         static bool paintTransition = false;
         static bool randomPaint = false;
@@ -242,6 +244,7 @@ namespace RGRPG.Controllers
             radius = (int)radiusSlider.value;
             sliderText.text = ""+radius;
             paintTraversable = traversableToggle.isOn;
+            paintWall = wallToggle.isOn;
             isPaintingOverlay = overlayToggle.isOn;
             currentScene.SetIndoors(indoorsToggle.isOn);
             paintFill = bucketToggle.isOn;
@@ -382,22 +385,22 @@ namespace RGRPG.Controllers
                     case 0: // TERRAIN
                         if (paintType.Contains("NONE"))
                         {
-                            // if the paint type is NONE, then just paint features not related to type (i.e. traversable, elevetion [TODO] etc)
-                            currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
+                            // if the paint type is NONE, then just paint features not related to type (i.e. traversable, isWall etc)
+                            currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, paintWall, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         }
                         else
                         {
-                            currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
+                            currentScene.SetTile(tilePosition, new TerrainTile(paintType, paintTraversable, t.Position, paintSubType, t.OverlayType, t.OverlaySubType, t.PropType, t.EntityType, paintWall, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         }
                         break;
                     case 1: // OVERLAYs
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, paintType, paintSubType, t.PropType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, paintType, paintSubType, t.PropType, t.EntityType, t.IsWall, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         break;
                     case 2: // PROPS
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, paintType, t.EntityType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, paintTraversable, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, paintType, t.EntityType, t.IsWall, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         break;
                     case 3: // ENTITIES
-                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, true, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, paintType, t.Elevation, t.ElevationRamp, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
+                        currentScene.SetTile(tilePosition, new TerrainTile(t.Type, true, t.Position, t.SubType, t.OverlayType, t.OverlaySubType, t.PropType, paintType, t.IsWall, t.SpawnID, t.TransitionScene, t.TransitionSpawnID));
                         break;
                 }
             }

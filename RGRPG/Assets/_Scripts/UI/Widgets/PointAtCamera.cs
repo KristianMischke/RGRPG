@@ -6,10 +6,14 @@ using UnityEngine;
 ///     Super simple script to make objects point to face the camera
 /// </summary>
 public class PointAtCamera : MonoBehaviour {
-        
+
+    private bool shouldPointAtCamera = true;
+    public bool ShouldPointAtCamera { get { return shouldPointAtCamera; } set { shouldPointAtCamera = value; } }
+
 	void LateUpdate () {
-
-        transform.rotation = Camera.main.transform.rotation;
-
+        if (shouldPointAtCamera)
+        {
+            transform.rotation = Camera.main.transform.rotation;
+        }
 	}
 }
