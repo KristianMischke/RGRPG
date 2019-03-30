@@ -79,11 +79,11 @@ namespace RGRPG.Core.NetworkCore
         // combat messages
         public void BroadcastBeginCombat(int[] enemyIDs)
         {
-
+            client.BeginCombat(enemyIDs);
         }
         public void BroadcastCombatState(int combatState)
         {
-
+            client.UpdateCombatState(combatState);
         }
 
     }
