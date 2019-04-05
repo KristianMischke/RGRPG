@@ -54,4 +54,18 @@
     <SpriteName>black</SpriteName>
 		<bHasMultiple/>
 	</Entry>
+  
+  <!--INDOOR TILES AKA ADMIN BUILDING-->
+  <Entry>
+    <zType>TERRAIN_ADMIN_WALLS</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>admin_wall_@</SpriteName>
+    <bHasMultiple>1</bHasMultiple>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_ADMIN_FLOOR</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>admin_floor</SpriteName>
+    <bHasMultiple/>
+  </Entry>
 </Root>

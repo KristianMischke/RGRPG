@@ -79,9 +79,96 @@
     <bHasMultiple/>
   </Entry>
   <Entry>
+    <zType>TERRAIN_PROP_CHEST_OPEN</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>open_chest</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_PLANTS</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>potted_plants</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
     <zType>TERRAIN_PROP_DOOR</zType>
     <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
     <SpriteName>door_0</SpriteName>
     <bHasMultiple/>
   </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_CONE</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>construction_cone</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_WET_FLOOR_SIGN</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>wet_floor_sign</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_POLICE_CAR</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>police_car</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  
+  <!--INDOOR_TILES AKA ADMIN BUILDING-->
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_DOUBLE_DOOR_SIGN_LEFT</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>double_door_sign_left</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_DOUBLE_DOOR_SIGN_RIGHT</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>double_door_sign_right</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_AWARD_DISPLAY</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>umbc_awards_display</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_STAIRCASE_SIGN</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>staircase_sign</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_BLINDS</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>admin_blinds</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_TRASH_RECYCLE_BINS</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>trash_recycle_bins</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_VENDING_MACHINE_0</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>vending_machine_0</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_VENDING_MACHINE_1</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>vending_machine_1</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_ELEVATOR_DOORS</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>elevator_doors</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+
 </Root>

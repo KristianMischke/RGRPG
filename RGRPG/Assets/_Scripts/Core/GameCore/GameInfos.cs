@@ -73,21 +73,24 @@ namespace RGRPG.Core
         {
             foreach (XmlNode entry in document.DocumentElement.ChildNodes)
             {
-                T obj = new T();
-                obj.LoadInfo(this, entry);
-
-                if (infoObjects.ContainsKey(obj.ZType))
-                    Debug.LogError("Info type " + obj.ZType + " already exists!");
-                else
+                if (entry.NodeType == XmlNodeType.Element)
                 {
-                    infoObjects[obj.ZType] = obj;
+                    T obj = new T();
+                    obj.LoadInfo(this, entry);
 
-                    if (!infoObjectsList.ContainsKey(typeof(T)))
+                    if (infoObjects.ContainsKey(obj.ZType))
+                        Debug.LogError("Info type " + obj.ZType + " already exists!");
+                    else
                     {
-                        infoObjectsList[typeof(T)] = new List<InfoBase>();
-                    }
+                        infoObjects[obj.ZType] = obj;
 
-                    infoObjectsList[typeof(T)].Add(obj);
+                        if (!infoObjectsList.ContainsKey(typeof(T)))
+                        {
+                            infoObjectsList[typeof(T)] = new List<InfoBase>();
+                        }
+
+                        infoObjectsList[typeof(T)].Add(obj);
+                    }
                 }
             }
         }

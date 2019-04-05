@@ -12,4 +12,22 @@
     <SpriteName>dirt_top_@</SpriteName>
     <bHasMultiple>1</bHasMultiple>
   </Entry>
+  <Entry>
+    <zType>TERRAIN_OVERLAY_ROAD_DOTTED</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>road_line_dash</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_OVERLAY_ROAD_DOUBLE_YELLOW</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>road_line_double</SpriteName>
+    <bHasMultiple/>
+  </Entry>
+  <Entry>
+    <zType>TERRAIN_OVERLAY_ROAD_SOLID_LINE</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_1_0</SpriteSheet>
+    <SpriteName>road_line_solid</SpriteName>
+    <bHasMultiple/>
+  </Entry>
 </Root>

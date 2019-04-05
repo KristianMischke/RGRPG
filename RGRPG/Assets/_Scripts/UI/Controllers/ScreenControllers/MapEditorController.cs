@@ -142,7 +142,7 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
-            LoadScene(Application.dataPath + @"\Resources\Data\Scenes\worldTest.xml"); //default scene for now
+            LoadScene(Application.dataPath + @"\Resources\Data\Scenes\mainMap.xml"); //default scene for now
 
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);
@@ -211,7 +211,7 @@ namespace RGRPG.Controllers
                     numButtonsAdded++;
                 }
 
-                if (typeof(T) == typeof(InfoTerrain) || typeof(T) == typeof(InfoTerrain))
+                if (typeof(T) == typeof(InfoTerrain) || typeof(T) == typeof(InfoTerrainOverlay))
                 {
                     if (numButtonsAdded % 3 != 0)
                     {

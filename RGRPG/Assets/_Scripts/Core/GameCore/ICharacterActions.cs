@@ -411,7 +411,7 @@ namespace RGRPG.Core
         public void DoAction(Character source)
         {
 
-            amount = 10
+            amount = 10;
             foreach (Character c in targets)
             {
                 if (!c.IsAlive())
