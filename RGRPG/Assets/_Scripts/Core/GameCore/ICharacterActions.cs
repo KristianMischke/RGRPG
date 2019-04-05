@@ -410,7 +410,8 @@ namespace RGRPG.Core
 
         public void DoAction(Character source)
         {
-            source.Heal(amount);
+
+            amount = 10
             foreach (Character c in targets)
             {
                 if (!c.IsAlive())
@@ -433,6 +434,61 @@ namespace RGRPG.Core
         public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
 
         public string GetHelpText() { return "Restores " + amount + " health to the targets"; }
+
+    }
+
+    public class ShiningBladeAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int damageAmount;
+        private int manaCost;
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public ShiningBladeAction() { }
+
+        public void Init(InfoAction myInfo, int manaCost, int damageAmount)
+        {
+            this.myInfo = myInfo;
+            this.manaCost = manaCost;
+            this.damageAmount = damageAmount;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            foreach (Character c in targets)
+            {
+                int critDamage = damageAmount * 2;
+                //This should work? I'm not entirely sure how Random.Range works
+                int critChance = (int)Random.Range(1f, 8f);
+                if (critChance == 4)
+                    c.Damage(critDamage);
+
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "SHINING BLADE"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper(); }
+
+        public string GetHelpText() { return "Adds a 1/8 chance to deal a critical hit to a target"; }
 
     }
 }

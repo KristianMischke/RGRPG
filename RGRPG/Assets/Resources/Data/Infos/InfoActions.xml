@@ -108,9 +108,11 @@
         <Name>Shining Blade</Name>
         <Description>1/8 chance to perform a critical hit</Description>
         <SharpClass>
-            <Type>INSERT TYPE HERE</Type>
+            <Type>RGRPG.Core.ShiningBladeAction</Type>
             <InitParams>
                 <thisInfo />
+                <manaCost>10</manaCost>
+                <damageAmount>10</damageAmount>
             </InitParams>
         </SharpClass>
         <TargetType>TARGET_ENEMY</TargetType>
