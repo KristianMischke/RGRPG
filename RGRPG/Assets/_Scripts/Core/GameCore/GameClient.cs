@@ -18,6 +18,7 @@ namespace RGRPG.Core
 
         private bool inGame = false;
         private static bool firstGameUpdate = true;
+        private static bool waitingForRound = false;
         private Game game;
 
         private GameState overrideGameState = GameState.Starting;
@@ -119,12 +120,22 @@ namespace RGRPG.Core
             overrideCombatState = (CombatState)combatState;
         }
 
+        public void UpdateCombatData(object[] data)
+        {
+            game.UpdateCombatData(data);
+        }
+
         public void EndCombat()
         {
             overrideGameState = GameState.WorldMovement;
             overrideCombatState = CombatState.NONE;
         }
 
+        public void FinishPlayerTurnInput()
+        {
+            clientManager.CombatFinishPlayerTurnInput();
+        }
+    
         private bool firstUpdate = true;
         public void Update(float deltaTime)
         {
@@ -145,27 +156,11 @@ namespace RGRPG.Core
 
             if (overrideCombatState < CombatState.COUNT && overrideGameState < GameState.COUNT)
                 game.OverrideCombatState(overrideGameState, overrideCombatState);
-            game.GameLoop(deltaTime);
-            
             
             if (game.IsInCombat)
             {
                 DiscordController.Instance.InBattle();
-                
-                if (game.CurrentCombatState == CombatState.BeginCombat)
-                {
-                    
-                }
 
-                if (game.CurrentCombatState == CombatState.NextRound)
-                {
-                    
-                }
-
-                if (game.CurrentCombatState == CombatState.EndCombat)
-                {
-                    
-                }
             }
             else
             {
@@ -173,6 +168,25 @@ namespace RGRPG.Core
 
                 //MoveSelectedCharacter(); // (CLIENT REQUEST)
             }
+
+            if (overrideCombatState == CombatState.ExecuteTurns)
+            { }
+
+            game.GameLoop(deltaTime);
+
+            if (game.IsInCombat)
+            {
+                if (!waitingForRound && game.CurrentCombatState == CombatState.WaitForNextRound && game.gameCombatActionQueue.Count == 0)
+                {
+                    clientManager.CombatWaitingForNextRound();
+                    waitingForRound = true;
+                }
+                else if (game.CurrentCombatState != CombatState.WaitForNextRound)
+                {
+                    waitingForRound = false;
+                }
+            }
+
 
             if (game.gameMessages.Count > 0)
             {
@@ -184,7 +198,7 @@ namespace RGRPG.Core
             {
                 if (game.gameCombatActionQueue.Count > 0)
                 {
-                    PairStruct<Character, ICharacterAction> characterAction = game.gameCombatActionQueue.Dequeue();
+                    //PairStruct<Character, ICharacterAction> characterAction = game.gameCombatActionQueue.Dequeue();
 
                 }
                 else

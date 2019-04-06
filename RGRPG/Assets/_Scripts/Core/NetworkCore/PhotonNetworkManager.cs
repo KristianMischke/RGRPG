@@ -19,7 +19,10 @@ namespace RGRPG.Core.NetworkCore
             ENEMY_UPDATE,
             SCENE_UPDATE,
             BEGIN_COMBAT,
-            UPDATE_COMBAT_STATE
+            UPDATE_COMBAT_STATE,
+            UPDATE_COMBAT_DATA,
+            COMBAT_FINISH_PLAYER_INPUT,
+            COMBAT_PLAYER_READY_FOR_NEXT_ROUND
         }
 
         GameServer server;
@@ -102,12 +105,11 @@ namespace RGRPG.Core.NetworkCore
                 case (byte)NetworkEvent.CHOOSE_CHARACTER_TO_PLAY:
                     {
                         object[] data = (object[])content;
-                        int clientID = (int)data[0];
                         string zType = (string)data[1];
                         int slot = (int)data[2];
 
                         if (PhotonNetwork.isMasterClient)
-                            server.ChooseCharacter(clientID, zType, slot);
+                            server.ChooseCharacter(senderId, zType, slot);
                     }
                     break;
                 case (byte)NetworkEvent.SUBMIT_CHARACTER_SELECTION:
@@ -162,6 +164,23 @@ namespace RGRPG.Core.NetworkCore
                         client.UpdateCombatState(combatState);
                     }
                     break;
+                case (byte)NetworkEvent.COMBAT_FINISH_PLAYER_INPUT:
+                    {
+                        if (PhotonNetwork.isMasterClient)
+                            server.FinishPlayerTurnInput(senderId);
+                    }
+                    break;
+                case (byte)NetworkEvent.UPDATE_COMBAT_DATA:
+                    {
+                        object[] data = (object[])content;
+                        client.UpdateCombatData(data);
+                    }
+                    break;
+                case (byte)NetworkEvent.COMBAT_PLAYER_READY_FOR_NEXT_ROUND:
+                    {
+                        server.ClientReadyForNextRound(senderId);
+                    }
+                    break;
             }
         }
 
@@ -180,7 +199,7 @@ namespace RGRPG.Core.NetworkCore
 
         public void ChooseCharacterToPlay(string zType, int slot)
         {
-            object[] content = new object[] { client.ClientID, zType, slot };
+            object[] content = new object[] { zType, slot };
             bool reliable = true;
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient };
             PhotonNetwork.RaiseEvent((byte)NetworkEvent.CHOOSE_CHARACTER_TO_PLAY, content, reliable, raiseEventOptions);
@@ -201,7 +220,19 @@ namespace RGRPG.Core.NetworkCore
             PhotonNetwork.RaiseEvent((byte)NetworkEvent.MOVE_CHARACTER, content, reliable, raiseEventOptions);
         }
 
+        public void CombatFinishPlayerTurnInput()
+        {
+            bool reliable = true;
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient };
+            PhotonNetwork.RaiseEvent((byte)NetworkEvent.COMBAT_FINISH_PLAYER_INPUT, null, reliable, raiseEventOptions);
+        }
 
+        public void CombatWaitingForNextRound()
+        {
+            bool reliable = true;
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient };
+            PhotonNetwork.RaiseEvent((byte)NetworkEvent.COMBAT_PLAYER_READY_FOR_NEXT_ROUND, null, reliable, raiseEventOptions);
+        }
 
         //---------------------------From Server---------------------------
         public void BroadcastClientConnect(int id, int playerNumber, bool isObserver)
@@ -262,5 +293,12 @@ namespace RGRPG.Core.NetworkCore
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent((byte)NetworkEvent.UPDATE_COMBAT_STATE, combatState, reliable, raiseEventOptions);
         }
+        public void BroadcastCombatData(object[] data)
+        {
+            bool reliable = true;
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent((byte)NetworkEvent.UPDATE_COMBAT_DATA, data, reliable, raiseEventOptions);
+        }
+
     }
 }

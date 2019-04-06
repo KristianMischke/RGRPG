@@ -27,7 +27,9 @@ namespace RGRPG.Core.NetworkCore
             client.Update(Time.deltaTime);
         }
 
-        //---From Client---
+        //
+        // --- FROM CLIENT ---
+        //
         public void RequestClientID(bool isObserver)
         {
             client.ClientID = SINGLE_PLAYER_CLIENT_ID;
@@ -48,7 +50,24 @@ namespace RGRPG.Core.NetworkCore
             server.MoveCharacter(xDirection, yDirection);
         }
 
-        //---From Server---
+        // combat messages
+        public void CombatFinishPlayerTurnInput()
+        {
+            server.FinishPlayerTurnInput(client.ClientID);
+        }
+
+        public void CombatWaitingForNextRound()
+        {
+            server.ClientReadyForNextRound(client.ClientID);
+        }
+
+        //
+        // ------
+        //
+
+        //
+        // --- FROM SERVER ---
+        //
         public void BroadcastClientConnect(int id, int playerNumber, bool isObserver)
         {
             client.MyPlayerNumber = playerNumber;
@@ -85,6 +104,14 @@ namespace RGRPG.Core.NetworkCore
         {
             client.UpdateCombatState(combatState);
         }
+        public void BroadcastCombatData(object[] data)
+        {
+            client.UpdateCombatData(data);
+        }
 
+
+        //
+        // ------
+        //
     }
 }

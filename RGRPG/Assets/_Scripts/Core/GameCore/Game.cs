@@ -31,11 +31,13 @@ namespace RGRPG.Core
         NONE,
 
         BeginCombat,
+        RoundBegin,
         PickTurnOrder,
         ChooseEnemyActions,
         PlayersChooseActions,
         ExecuteTurns,
         NextRound,
+        WaitForNextRound,
         EndCombat,
 
         COUNT
@@ -89,7 +91,6 @@ namespace RGRPG.Core
         protected List<Character> combatEnemies = new List<Character>(); //TODO: do we want to be able to fight multiple enemies at a time?
         protected Dictionary<Character, Queue<ICharacterAction>> characterTurns;
         protected List<Character> turnOrder;
-        protected bool doNextCombatStep = false;
 
         // allows for public access, but not public assignment
         public GameInfos Infos { get { return infos; } }
@@ -337,9 +338,44 @@ namespace RGRPG.Core
             this.currentCombatState = combatState;
         }
 
-        public void UpdateCombatData()
+        public object[] GetCombatData()
         {
+            if (IsInCombat)
+            {
+                int combatCharacterCount = (turnOrder == null ? 0 : turnOrder.Count);
+                object[] data = new object[1 + combatCharacterCount + 1];
 
+                data[0] = combatCharacterCount;
+                int i = 0;
+                for (i = 0; i < combatCharacterCount; i++)
+                    data[1 + i] = turnOrder[i].ID;
+
+                data[i + 1] = roundCounter;
+
+                // TODO: character actions
+
+                return data;
+            }
+
+            return null;
+        }
+
+        public void UpdateCombatData(object [] data)
+        {
+            int combatCharacterCount = (int)data[0];
+            turnOrder = new List<Character>();
+            int i = 0;
+            for (i = 0; i < combatCharacterCount; i++)
+            {
+                Character c;
+                allCharacters.TryGetValue((int)data[1 + i], out c);
+
+                turnOrder.Add(c);
+            }
+
+            roundCounter = (int)data[i + 1];
+
+            // TODO: character actions
         }
 
         public void DeleteCharacter(int id)
@@ -380,14 +416,18 @@ namespace RGRPG.Core
             {
                 // right now beginning combat just resets mana. TODO: determine correct behavior
                 case CombatState.BeginCombat:
-                    turnCounter = 0;
-
                     //TODO: change mana behavior
                     foreach (Character p in players)
                         p.SetMana(50);
                     foreach (Enemy e in combatEnemies)
                         e.SetMana(50);
 
+                    currentCombatState = CombatState.RoundBegin;
+                    break;
+
+                case CombatState.RoundBegin:
+                    turnCounter = 0;
+                    prevTurnCounter = -1;
                     currentCombatState = CombatState.PickTurnOrder;
                     break;
 
@@ -424,22 +464,21 @@ namespace RGRPG.Core
                 case CombatState.ExecuteTurns:
                     if (turnCounter >= turnOrder.Count)
                     {
-                        currentCombatState = CombatState.NextRound;
+                        currentCombatState = CombatState.WaitForNextRound;
                     }
                     else
                     {
-                        if (doNextCombatStep)
-                        {
-                            ProcessNextCombatAction();
-                        }
+                        ProcessNextCombatAction();
                     }
+                    break;
+                
+                // ensures all players have finished animations before processing next round 
+                case CombatState.WaitForNextRound:
                     break;
 
                 // go to the next round of combat (currently just recharges some mana)
                 case CombatState.NextRound:
                     roundCounter++;
-                    turnCounter = 0;
-                    prevTurnCounter = -1;
                     LogMessage("ROUND #" + roundCounter + " DONE");
                     foreach (Character c in players)
                         c.Reset();
@@ -460,7 +499,7 @@ namespace RGRPG.Core
                         c.ChangeMana(i * 10 + 10); // MANA RECHARGE TODO: change behaviour
                     }
 
-                    currentCombatState = CombatState.PickTurnOrder;
+                    currentCombatState = CombatState.RoundBegin;
                     CheckExitConditions();
                     break;
 
@@ -587,8 +626,6 @@ namespace RGRPG.Core
                 prevTurnCounter = turnCounter;
                 turnCounter++;
             }
-
-            doNextCombatStep = false;
         }
 
         /// <summary>
@@ -600,9 +637,10 @@ namespace RGRPG.Core
                 currentCombatState = CombatState.ExecuteTurns;
         }
 
-        public void ProcessNextCombatStep()
+        public void DoneWaitingForNextRound()
         {
-            doNextCombatStep = true;
+            if (currentGameState == GameState.Combat && currentCombatState == CombatState.WaitForNextRound)
+                currentCombatState = CombatState.NextRound;
         }
 
         /// <summary>

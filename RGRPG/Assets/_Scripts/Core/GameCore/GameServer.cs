@@ -17,12 +17,16 @@ namespace RGRPG.Core
         private bool isObserver;
         private string[] controllingCharacters = new string[4];
         private bool isReadyToEnterGame = false;
+        private bool finishedTurnInput = false;
+        private bool readyForNextRound = false;
 
         public int ID { get { return id; } set { id = value; } }
         public int PlayerNumber { get { return playerNumber; } set { playerNumber = value; } }
         public bool IsObserver { get { return isObserver; } }
         public string[] ControllingCharacters { get { return controllingCharacters; } }
         public bool IsReadyToEnterGame { get { return isReadyToEnterGame; } set { isReadyToEnterGame = value; } }
+        public bool FinishedTurnInput { get { return finishedTurnInput; } set { finishedTurnInput = value; } }
+        public bool ReadyForNextRound { get { return readyForNextRound; } set { readyForNextRound = value; } }
 
         public ClientInfo(int ID, int playerNumber, bool isObserver)
         {
@@ -48,11 +52,15 @@ namespace RGRPG.Core
             bool isObserver = (bool)data[2];
             string[] controllingCharacters = new string[] { (string)data[3], (string)data[4], (string)data[5], (string)data[6] };
             bool isReadyToEnterGame = (bool)data[7];
+            bool finishedTurnInput = (bool)data[8];
+            bool readyForNextRound = (bool)data[9];
 
             this.id = id;
             this.playerNumber = playerNumber;
             this.isObserver = isObserver;
             this.isReadyToEnterGame = isReadyToEnterGame;
+            this.finishedTurnInput = finishedTurnInput;
+            this.readyForNextRound = readyForNextRound;
 
             for (int i = 0; i < controllingCharacters.Length; i++)
             {
@@ -62,7 +70,7 @@ namespace RGRPG.Core
 
         public object[] GetClientData()
         {
-            return new object[] { id, playerNumber, isObserver, controllingCharacters[0], controllingCharacters[1], controllingCharacters[2], controllingCharacters[3], IsReadyToEnterGame };
+            return new object[] { id, playerNumber, isObserver, controllingCharacters[0], controllingCharacters[1], controllingCharacters[2], controllingCharacters[3], isReadyToEnterGame, finishedTurnInput, readyForNextRound };
         }
     }
 
@@ -100,6 +108,10 @@ namespace RGRPG.Core
 
             instance = this;
         }
+
+        //
+        // --- CLIENT SYNC AND CHARACTER SELECT ---
+        //
 
         public void RegisterClient(int id, bool isObserver)
         {
@@ -162,6 +174,65 @@ namespace RGRPG.Core
 
             return chosenChars;
         }
+        //
+        // ------
+        //
+
+        //
+        // --- COMBAT STATE MANAGEMENT ---
+        //
+
+        public void FinishPlayerTurnInput(int clientID)
+        {
+            ClientInfo clientInfo;
+            connectedClients.TryGetValue(clientID, out clientInfo);
+
+            if (clientInfo != null)
+            {
+                clientInfo.FinishedTurnInput = true;
+                BroadcastSyncClient(clientID);
+            }
+        }
+
+        public void ClearPlayerTurnInput()
+        {
+            foreach (ClientInfo c in connectedClients.Values)
+            {
+                if (c.FinishedTurnInput)
+                {
+                    c.FinishedTurnInput = false;
+                    BroadcastSyncClient(c.ID);
+                }
+            }
+        }
+
+        public void ClientReadyForNextRound(int clientID)
+        {
+            ClientInfo clientInfo;
+            connectedClients.TryGetValue(clientID, out clientInfo);
+
+            if (clientInfo != null)
+            {
+                clientInfo.ReadyForNextRound = true;
+                BroadcastSyncClient(clientID);
+            }
+        }
+
+        public void ClearPlayerReady()
+        {
+            foreach (ClientInfo c in connectedClients.Values)
+            {
+                if (c.FinishedTurnInput)
+                {
+                    c.ReadyForNextRound = false;
+                    BroadcastSyncClient(c.ID);
+                }
+            }
+        }
+
+        //
+        // ------
+        //
 
         public void Update(float deltaTime)
         {
@@ -191,7 +262,7 @@ namespace RGRPG.Core
                 firstGameUpdate = false;
                 return;
             }
-            
+
             game.GameLoop(deltaTime); // GAME UPDATES
 
             if (game.SceneTransitioned)
@@ -199,6 +270,43 @@ namespace RGRPG.Core
 
             if (game.IsInCombat)
             {
+                if (game.CurrentCombatState == CombatState.PlayersChooseActions)
+                {
+                    int numPlaying = 0;
+                    int numFinishedTurn = 0;
+                    foreach (ClientInfo c in connectedClients.Values)
+                    {
+                        if (!c.IsObserver)
+                        {
+                            numPlaying++;
+                            if (c.FinishedTurnInput)
+                                numFinishedTurn++;
+                        }
+                    }
+
+                    if (numPlaying == numFinishedTurn)
+                        game.FinishPlayerTurnInput();
+                }
+
+                if (game.CurrentCombatState == CombatState.WaitForNextRound)
+                {
+                    int numPlaying = 0;
+                    int numReady = 0;
+                    foreach (ClientInfo c in connectedClients.Values)
+                    {
+                        if (!c.IsObserver)
+                        {
+                            numPlaying++;
+                            if (c.ReadyForNextRound)
+                                numReady++;
+                        }
+                    }
+
+                    if (numPlaying == numReady)
+                        game.DoneWaitingForNextRound();
+                }
+
+
                 if (game.PreviousCombatState != game.CurrentCombatState)
                 {
                     // The combat state has changed this frame
@@ -208,7 +316,7 @@ namespace RGRPG.Core
                         // we are beginning combat, so broadcast the new state with enemy info
                         int[] enemyIds = new int[game.CombatEnemies.Count];
 
-                        for(int i = 0; i < game.CombatEnemies.Count; i++)
+                        for (int i = 0; i < game.CombatEnemies.Count; i++)
                         {
                             Character c = game.CombatEnemies[i];
                             enemyIds[i] = c.ID;
@@ -216,11 +324,21 @@ namespace RGRPG.Core
 
                         serverManager.BroadcastBeginCombat(enemyIds);
                     }
+                    else if (game.CurrentCombatState == CombatState.PickTurnOrder)
+                    {
+                        ClearPlayerTurnInput();
+                        ClearPlayerReady();
+                        serverManager.BroadcastEnemyUpdate(game.SerializeEnemies());
+                        serverManager.BroadcastPlayerUpdate(game.SerializePlayers());
+                    }
                     else
                     {
                         // we are transitioning to a new combat state
-                        if(game.CurrentCombatState == CombatState.PlayersChooseActions || game.CurrentCombatState == CombatState.ExecuteTurns)
+                        if (game.CurrentCombatState == CombatState.PlayersChooseActions || game.CurrentCombatState == CombatState.ExecuteTurns || game.CurrentCombatState == CombatState.RoundBegin)
+                        {
+                            serverManager.BroadcastCombatData(game.GetCombatData());
                             serverManager.BroadcastCombatState((int)game.CurrentCombatState);
+                        }
                     }
                 }
 

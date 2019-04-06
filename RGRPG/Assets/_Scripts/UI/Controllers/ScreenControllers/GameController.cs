@@ -67,6 +67,7 @@ namespace RGRPG.Controllers
         // Data
         bool overworldInitialized = false;
         static bool firstGameUpdate = true;
+        static bool wasInCombat = false;
         Dictionary<Character, Pair<ICharacterAction, List<Character>>> currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
 
         Character currentSourceAction; //TODO: when implementing multiplayer, this will only be on the client, the server (i.e. host) will handle the dictionary above
@@ -276,33 +277,36 @@ namespace RGRPG.Controllers
             opponentHUDList.SetActive(Client.Game.IsInCombat);
 
             doneTurnButton.gameObject.SetActive(Client.Game.IsInCombat);
-            if (Client.Game.IsInCombat)
+
+            if (Client.Game.IsInCombat && !wasInCombat)
             {
+                // just entered combat, so initialize enemy portraits
                 DiscordController.Instance.InBattle();
 
-                doneTurnButton.GetComponentInChildren<Text>().text = currentSourceAction == null ? "SUBMIT TO BLACKBOARD" : "SUBMIT ACTION TARGETS";
-
-                if (Client.Game.CurrentCombatState == CombatState.BeginCombat)
+                foreach (Character c in Client.Game.CombatEnemies)
                 {
-                    foreach (Character c in Client.Game.CombatEnemies)
-                    {
-                        OpponentHUDController opponent = enemyHUDPool.Get();
-                        opponent.Init(c); //TODO selectAction for choosing enemy target (SERVER)
-                    }
+                    OpponentHUDController opponent = enemyHUDPool.Get();
+                    opponent.Init(c);
                 }
+            }
+
+            if (!Client.Game.IsInCombat && wasInCombat)
+            {
+                // just exited combat, so remove enemy portraits
+                for (int i = combatEnemyHUDs.Count - 1; i >= 0; i--)
+                {
+                    OpponentHUDController x = combatEnemyHUDs[i] as OpponentHUDController;
+                    enemyHUDPool.Deactivate(x);
+                }
+            }
+
+            if (Client.Game.IsInCombat)
+            {
+                doneTurnButton.GetComponentInChildren<Text>().text = currentSourceAction == null ? "SUBMIT TO BLACKBOARD" : "SUBMIT ACTION TARGETS";
 
                 if (Client.Game.CurrentCombatState == CombatState.NextRound)
                 {
                     currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>(); //(SERVER)
-                }
-
-                if (Client.Game.CurrentCombatState == CombatState.EndCombat)
-                {
-                    for (int i = combatEnemyHUDs.Count-1; i >= 0; i--)
-                    {
-                        OpponentHUDController x = combatEnemyHUDs[i] as OpponentHUDController;
-                        enemyHUDPool.Deactivate(x);
-                    }
                 }
             }
             else
@@ -319,7 +323,7 @@ namespace RGRPG.Controllers
                     }
                 }
 
-                MoveSelectedCharacter(); // (CLIENT REQUEST)
+                MoveSelectedCharacter();
             }
 
             if (Client.Game.gameMessages.Count > 0)
@@ -345,10 +349,6 @@ namespace RGRPG.Controllers
                         actionHUDController.executeAction(characterAction.first, characterAction.second);
                     }
                 }
-                else
-                {
-                    Client.Game.ProcessNextCombatStep(); // (SERVER)
-                }
             }
 
             if (!IsInCombat && Marquee.instance.IsFinished())
@@ -363,6 +363,8 @@ namespace RGRPG.Controllers
 
             if (Input.GetKey(KeyCode.Escape))
                 SceneManager.LoadScene("PauseMenuScene");
+
+            wasInCombat = Client.Game.IsInCombat;
         }
 
         /// <summary>
@@ -571,7 +573,7 @@ namespace RGRPG.Controllers
         {
             ClearTargets();
             if (currentSourceAction == null)
-                Client.Game.FinishPlayerTurnInput();
+                Client.FinishPlayerTurnInput();
             else
                 FinishRecordingAction(currentSourceAction);
         }
