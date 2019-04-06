@@ -74,6 +74,24 @@ namespace RGRPG.Core
             position = (Vector2)data[3];
         }
 
+        public ICharacterAction GetActionAtIndex(int index)
+        {
+            if (index >= 0 && index < actions.Count)
+            {
+                return actions[index];
+            }
+            return null;
+        }
+
+        public int GetActionIndex(ICharacterAction action)
+        {
+            for (int i = 0; i < actions.Count; i++)
+                if (actions[i] == action)
+                    return i;
+
+            return -1;
+        }
+
         public void Damage(int amount)
         {
             /*if (defense >= amount)
@@ -142,6 +160,26 @@ namespace RGRPG.Core
         public bool IsAlive()
         {
             return health > 0;
+        }
+
+
+        public static bool ListContainsID(List<Character> characterList, int characterID)
+        {
+            foreach (Character c in characterList)
+                if (c.ID == characterID)
+                    return true;
+
+            return false;
+        }
+
+        public static List<int> GetIDFromList(List<Character> characterList)
+        {
+            List<int> idList = new List<int>();
+
+            foreach (Character c in characterList)
+                idList.Add(c.ID);
+
+            return idList;
         }
 
     }

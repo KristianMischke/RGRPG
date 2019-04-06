@@ -14,32 +14,28 @@ namespace RGRPG.Controllers
     public class CharacterActionController : MonoBehaviour
     {
         // Scene Object References
-        public GameObject actionButtonObject;
-        public GameObject actionTextObject;
-
+        public Text actionText;
         public Button actionButton;
 
         // Data
-        private Character character;
-        private ICharacterAction action;
+        private int characterID = -1;
+        private int actionIndex = -1;
 
         // Use this for initialization
         void Start()
         {
-            actionButton = actionButtonObject.GetComponent<Button>();
             actionButton.onClick.AddListener(ChooseAction);
 
-            Text actionText = actionTextObject.GetComponent<Text>();
-            actionText.text = action.GetDisplayText(); //TODO: we may want to split the attack amount from the button
+            actionText.text = GameClient.instance.GetCharacterAction(characterID, actionIndex).GetDisplayText();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (action == null)
-                return;
-
-            actionButton.interactable = character.IsAlive() && GameClient.instance.IsInCombat;
+            if(actionText != null)
+                actionText.color = GameClient.instance.IsActionCurrentSelection(characterID, actionIndex) ? Color.yellow : Color.white;
+            if(actionButton != null)
+                actionButton.interactable = GameClient.instance.GetCharacter(characterID).IsAlive() && GameClient.instance.IsInCombat;
         }
 
         /// <summary>
@@ -47,10 +43,10 @@ namespace RGRPG.Controllers
         /// </summary>
         /// <param name="action"></param>
         /// <param name="character"></param>
-        public void Init(ICharacterAction action, Character character)
+        public void Init(int actionID, int characterID)
         {
-            this.action = action;
-            this.character = character;
+            this.actionIndex = actionID;
+            this.characterID = characterID;
         }
 
         /// <summary>
@@ -58,7 +54,7 @@ namespace RGRPG.Controllers
         /// </summary>
         public void ChooseAction()
         {
-            GameController.instance.BeginRecordingAction(action, character);
+            GameClient.instance.BeginRecordingAction(actionIndex, characterID);
 
             EventSystem.current.SetSelectedGameObject(null);
         }

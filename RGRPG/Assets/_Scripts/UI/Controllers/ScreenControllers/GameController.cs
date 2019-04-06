@@ -68,11 +68,6 @@ namespace RGRPG.Controllers
         bool overworldInitialized = false;
         static bool firstGameUpdate = true;
         static bool wasInCombat = false;
-        Dictionary<Character, Pair<ICharacterAction, List<Character>>> currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
-
-        Character currentSourceAction; //TODO: when implementing multiplayer, this will only be on the client, the server (i.e. host) will handle the dictionary above
-        public Character CurrentSourceAction { get { return currentSourceAction; } }
-
 
         SceneController worldSceneController;
 
@@ -135,7 +130,7 @@ namespace RGRPG.Controllers
             {
                 doneTurnButton = GameObject.Find("DoneTurnButton").GetComponent<Button>();
             }
-            doneTurnButton.onClick.AddListener(() => FinishPlayerTurnInput());
+            doneTurnButton.onClick.AddListener(() => BlackboardActionButton());
 
             if (animationController == null)
             {
@@ -298,16 +293,25 @@ namespace RGRPG.Controllers
                     OpponentHUDController x = combatEnemyHUDs[i] as OpponentHUDController;
                     enemyHUDPool.Deactivate(x);
                 }
+
+                UpdateEnemyControllers();
+            }
+
+            if (Client.IsInCombat && Client.AreActionsDirty)
+            {
+                List<ICharacterHUDController> allCharacterControllers = new List<ICharacterHUDController>();
+                allCharacterControllers.AddRange(playerHUDControllers);
+                allCharacterControllers.AddRange(combatEnemyHUDs);
+
+                foreach (ICharacterHUDController controller in allCharacterControllers)
+                {
+                    controller.SetTarget(Client.IsCharacterCurrentTarget(controller.Character.ID));
+                }
             }
 
             if (Client.Game.IsInCombat)
             {
-                doneTurnButton.GetComponentInChildren<Text>().text = currentSourceAction == null ? "SUBMIT TO BLACKBOARD" : "SUBMIT ACTION TARGETS";
-
-                if (Client.Game.CurrentCombatState == CombatState.NextRound)
-                {
-                    currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>(); //(SERVER)
-                }
+                doneTurnButton.GetComponentInChildren<Text>().text = Client.IsMakingAction ? "SUBMIT ACTION TARGETS" : "SUBMIT TO BLACKBOARD";
             }
             else
             {
@@ -348,6 +352,10 @@ namespace RGRPG.Controllers
                         AnimationHUDController actionHUDController = animationController.GetComponent<AnimationHUDController>();
                         actionHUDController.executeAction(characterAction.first, characterAction.second);
                     }
+                }
+                else
+                {
+                    Client.ProcessNextCombatStep();
                 }
             }
 
@@ -397,164 +405,7 @@ namespace RGRPG.Controllers
                 Client.MoveCharacter(xInput, yInput);
         }
 
-        /// <summary>
-        ///     Tell the game to select a character
-        /// </summary>
-        /// <param name="c"></param>
-        public void SelectCharacter(Character c)
-        {
-            if (currentSourceAction == null)
-            {
-                Client.Game.SelectCharacter(c);
-            }
-            else
-            {
-                ToggleActionTarget(currentSourceAction, c);
-            }
-
-            // update camera follow object
-            //Camera.main.transform.parent.GetComponent<CameraController>().followObject = playerControllers.Find(x => x.character == Client.Game.SelectedCharacter).gameObject;
-            //EventSystem.current.SetSelectedGameObject(null);
-        }
-
-        public void BeginRecordingAction(ICharacterAction action, Character source)
-        {
-            if (currentSourceAction != null && currentSourceAction != source) // Cannot choose another player's action while choosing this players action (but choosing a different action on this player will override an unfinished action on this player) TODO: adjust for client and server
-            {
-                Debug.Log("Finish picking targets before choosing another action");
-                return;
-            }
-            if (currentCharacterActions.ContainsKey(source))
-                currentCharacterActions.Remove(source);
-            currentSourceAction = source;
-            currentCharacterActions.Add(source, new Pair<ICharacterAction, List<Character>>(action, new List<Character>()));
-
-            InfoAction actionInfo = action.MyInfo;
-            switch (actionInfo.TargetType)
-            {
-                case "TARGET_NONE":
-                    break;
-                case "TARGET_SELF":
-                    currentCharacterActions[source].second.Add(source);
-                    break;
-                case "TARGET_TEAM":
-                    if (Client.Game.Players.Contains(source))
-                    {
-                        currentCharacterActions[source].second.AddRange(Client.Game.Players);
-                    }
-                    else if (Client.Game.CombatEnemies.Exists(x => x == source))
-                    {
-                        currentCharacterActions[source].second.AddRange(Client.Game.CombatEnemies);
-                    }
-                    break;
-                case "TARGET_OTHER_TEAM":
-                    if (Client.Game.Players.Contains(source))
-                    {
-                        currentCharacterActions[source].second.AddRange(Client.Game.CombatEnemies);
-                    }
-                    else if (Client.Game.CombatEnemies.Exists(x => x == source))
-                    {
-                        currentCharacterActions[source].second.AddRange(Client.Game.Players);
-                    }
-                    break;
-                case "TARGET_FRIEND":
-
-                    break;
-                case "TARGET_ENEMY":
-                    if(actionInfo.TargetData == Client.Game.CombatEnemies.Count)
-                        currentCharacterActions[source].second.AddRange(Client.Game.CombatEnemies);
-                    break;
-            }
-
-            List<ICharacterHUDController> allCharacterControllers = new List<ICharacterHUDController>();
-            allCharacterControllers.AddRange(playerHUDControllers);
-            allCharacterControllers.AddRange(combatEnemyHUDs);
-
-            foreach (ICharacterHUDController characterHUD in allCharacterControllers)
-            {
-                if (currentCharacterActions[source].second.Contains(characterHUD.Character))
-                    characterHUD.SetTarget(true);
-                else
-                    characterHUD.SetTarget(false);
-            }
-        }
-
-        public void ToggleActionTarget(Character source, Character target)
-        {
-            if (currentCharacterActions.ContainsKey(source))
-            {
-
-                InfoAction actionInfo = currentCharacterActions[source].first.MyInfo;
-                switch (actionInfo.TargetType)
-                {
-                    case "TARGET_NONE":
-                    case "TARGET_SELF":
-                    case "TARGET_TEAM":
-                    case "TARGET_OTHER_TEAM":
-                        return;
-
-                    case "TARGET_AMOUNT":
-                        if (currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target))
-                            return;
-                        break;
-                    case "TARGET_FRIEND":
-                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !Client.Game.Players.Contains(target) || target == source)
-                            return;
-                        break;
-                    case "TARGET_ENEMY":
-                        if ((currentCharacterActions[source].second.Count >= actionInfo.TargetData && !currentCharacterActions[source].second.Contains(target)) || !Client.Game.CombatEnemies.Exists(x => x == target) || target == source)
-                            return;
-                        break;
-                }
-
-                List<ICharacterHUDController> allCharacterControllers = new List<ICharacterHUDController>();
-                allCharacterControllers.AddRange(playerHUDControllers);
-                allCharacterControllers.AddRange(combatEnemyHUDs);
-
-                if (currentCharacterActions[source].second.Contains(target))
-                {
-                    currentCharacterActions[source].second.Remove(target);
-                    allCharacterControllers.Find(x => x.Character == target).SetTarget(false);
-                }
-                else
-                {
-                    currentCharacterActions[source].second.Add(target);
-                    allCharacterControllers.Find(x => x.Character == target).SetTarget(true);
-                }
-            }
-            else
-            {
-                Debug.Log("Character " + source.Name + " did not begin recording an action, and thus cannot toggle the action targets");
-            }
-        }
-
-        public void FinishRecordingAction(Character source)
-        {
-            if (!currentCharacterActions.ContainsKey(source))
-                return;
-
-            InfoAction actionInfo = currentCharacterActions[source].first.MyInfo;
-            switch (actionInfo.TargetType)
-            {
-                case "TARGET_NONE":
-                case "TARGET_SELF":
-                case "TARGET_TEAM":
-                case "TARGET_OTHER_TEAM":
-                    break;
-
-                case "TARGET_AMOUNT":
-                case "TARGET_FRIEND":
-                case "TARGET_ENEMY":
-                    if (currentCharacterActions[source].second.Count > actionInfo.TargetData || currentCharacterActions[source].second.Count == 0)
-                        return;
-                    break;
-            }
-
-            Client.Game.RecordAction(currentCharacterActions[source].first, source, currentCharacterActions[source].second);
-            currentCharacterActions.Remove(source);
-            currentSourceAction = null;
-        }
-
+        
         public void ClearTargets()
         {
             List<ICharacterHUDController> allCharacterControllers = new List<ICharacterHUDController>();
@@ -569,13 +420,11 @@ namespace RGRPG.Controllers
         /// <summary>
         ///     Tells the game that the user is done inputting his combat actions
         /// </summary>
-        public void FinishPlayerTurnInput()
+        public void BlackboardActionButton()
         {
+            EventSystem.current.SetSelectedGameObject(null);
             ClearTargets();
-            if (currentSourceAction == null)
-                Client.FinishPlayerTurnInput();
-            else
-                FinishRecordingAction(currentSourceAction);
+            Client.FinishPlayerTurnInput();
         }
 
         /// <summary>

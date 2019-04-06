@@ -51,14 +51,14 @@ namespace RGRPG.Core.NetworkCore
         }
 
         // combat messages
-        public void CombatFinishPlayerTurnInput()
-        {
-            server.FinishPlayerTurnInput(client.ClientID);
-        }
-
         public void CombatWaitingForNextRound()
         {
             server.ClientReadyForNextRound(client.ClientID);
+        }
+
+        public void CombatSendActions(object[] data)
+        {
+            server.ReceivePlayerActions(client.ClientID, data);
         }
 
         //
@@ -94,6 +94,10 @@ namespace RGRPG.Core.NetworkCore
         {
             client.SceneUpdate(sceneID);
         }
+        public void BroadcastDeleteCharacter(int characterID)
+        {
+            client.DeleteCharacter(characterID);
+        }
 
         // combat messages
         public void BroadcastBeginCombat(int[] enemyIDs)
@@ -108,8 +112,10 @@ namespace RGRPG.Core.NetworkCore
         {
             client.UpdateCombatData(data);
         }
-
-
+        public void BroadcastEndCombat()
+        {
+            client.EndCombat();
+        }
         //
         // ------
         //

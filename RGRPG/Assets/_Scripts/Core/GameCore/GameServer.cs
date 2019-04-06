@@ -86,7 +86,6 @@ namespace RGRPG.Core
         private bool inGame = false;
         private static bool firstGameUpdate = true;
         private Game game;
-        private Dictionary<Character, Pair<ICharacterAction, List<Character>>> currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
 
         public int NumClientsConnected { get { return connectedClients == null ? 0 : connectedClients.Count; } }
         public int NumPlayingClients
@@ -182,18 +181,6 @@ namespace RGRPG.Core
         // --- COMBAT STATE MANAGEMENT ---
         //
 
-        public void FinishPlayerTurnInput(int clientID)
-        {
-            ClientInfo clientInfo;
-            connectedClients.TryGetValue(clientID, out clientInfo);
-
-            if (clientInfo != null)
-            {
-                clientInfo.FinishedTurnInput = true;
-                BroadcastSyncClient(clientID);
-            }
-        }
-
         public void ClearPlayerTurnInput()
         {
             foreach (ClientInfo c in connectedClients.Values)
@@ -226,6 +213,44 @@ namespace RGRPG.Core
                 {
                     c.ReadyForNextRound = false;
                     BroadcastSyncClient(c.ID);
+                }
+            }
+        }
+
+        public void ReceivePlayerActions(int clientID, object[] data)
+        {
+            ClientInfo clientInfo;
+            connectedClients.TryGetValue(clientID, out clientInfo);
+
+            if (clientInfo != null && !clientInfo.FinishedTurnInput)
+            {
+                int index = 0;
+                int numActions = (int)data[index];
+                index++;
+
+                for (int i = 0; i < numActions; i++)
+                {
+                    int sourceID = (int)data[index];
+                    index++;
+                    int actionIndex = (int)data[index];
+                    index++;
+                    int numTargets = (int)data[index];
+                    index++;
+
+                    List<int> targetIDs = new List<int>();
+                    for (int j = 0; j < numTargets; j++)
+                    {
+                        targetIDs.Add((int)data[index]);
+                        index++;
+                    }
+
+                    game.RecordAction(actionIndex, sourceID, targetIDs);
+                }
+
+                if (numActions > 0)
+                {
+                    clientInfo.FinishedTurnInput = true;
+                    BroadcastSyncClient(clientID);
                 }
             }
         }
@@ -331,7 +356,7 @@ namespace RGRPG.Core
                         serverManager.BroadcastEnemyUpdate(game.SerializeEnemies());
                         serverManager.BroadcastPlayerUpdate(game.SerializePlayers());
                     }
-                    else
+                    else if (game.CurrentCombatState == CombatState.ExecuteTurns)
                     {
                         // we are transitioning to a new combat state
                         if (game.CurrentCombatState == CombatState.PlayersChooseActions || game.CurrentCombatState == CombatState.ExecuteTurns || game.CurrentCombatState == CombatState.RoundBegin)
@@ -351,14 +376,14 @@ namespace RGRPG.Core
                     }
                 }
 
-                if (game.CurrentCombatState == CombatState.NextRound)
+                if (game.CurrentCombatState == CombatState.ExecuteTurns)
                 {
-                    currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>(); //(SERVER)
+                    game.ProcessNextCombatStep();
                 }
 
                 if (game.CurrentCombatState == CombatState.EndCombat)
                 {
-                    
+                    serverManager.BroadcastEndCombat();
                 }
             }
             else
@@ -366,6 +391,12 @@ namespace RGRPG.Core
                 // Not in Combat
 
                 serverManager.BroadcastEnemyUpdate(game.SerializeEnemies());
+            }
+
+            if (game.DeletedCharacters.Count > 0)
+            {
+                serverManager.BroadcastDeleteCharacter(game.DeletedCharacters[0].ID);
+                game.DeletedCharacters.RemoveAt(0);
             }
 
             if (game.gameMessages.Count > 0)

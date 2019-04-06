@@ -96,7 +96,7 @@ namespace RGRPG.Controllers
             }
             else
             {
-                GameController.instance.SelectCharacter(character);
+                GameClient.instance.SelectCharacter(character.ID);
             }
 
             EventSystem.current.SetSelectedGameObject(null);
@@ -111,13 +111,16 @@ namespace RGRPG.Controllers
             this.character = character;
             this.overrideAction = selectAction;
 
+            int i = 0;
             foreach (ICharacterAction action in character.Actions)
             {
                 GameObject actionObject = Instantiate(actionView);
                 actionObject.transform.SetParent(actionList.transform);
 
                 CharacterActionController actionController = actionObject.GetComponent<CharacterActionController>();
-                actionController.Init(action, character);
+                actionController.Init(i, character.ID);
+
+                i++;
             }
         }
 

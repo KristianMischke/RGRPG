@@ -79,7 +79,7 @@ namespace RGRPG.Controllers
             }
             else
             {
-                GameController.instance.SelectCharacter(character);
+                GameClient.instance.SelectCharacter(character.ID);
             }
 
             EventSystem.current.SetSelectedGameObject(null);

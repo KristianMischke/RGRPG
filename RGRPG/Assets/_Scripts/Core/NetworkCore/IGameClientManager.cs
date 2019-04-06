@@ -16,7 +16,7 @@ namespace RGRPG.Core.NetworkCore
         void MoveCharacter(int xDirection, int yDirection);
 
         // Combat States
-        void CombatFinishPlayerTurnInput();
         void CombatWaitingForNextRound();
+        void CombatSendActions(object[] data);
     }
 }

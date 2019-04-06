@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RGRPG.Core.Generics;
 using RGRPG.Core.NetworkCore;
+using Debug = UnityEngine.Debug;
 
 namespace RGRPG.Core
 {
@@ -24,8 +25,12 @@ namespace RGRPG.Core
         private GameState overrideGameState = GameState.Starting;
         private CombatState overrideCombatState = CombatState.NONE;
 
-        private Dictionary<Character, Pair<ICharacterAction, List<Character>>> currentCharacterActions = new Dictionary<Character, Pair<ICharacterAction, List<Character>>>();
-        private Character currentSourceAction; //TODO: when implementing multiplayer, this will only be on the client
+        /// <summary>
+        ///     sourceCharacter -> Pair(characterActionIndex, List(actionTargets))
+        /// </summary>
+        private Dictionary<int, Pair<int, List<int>>> currentCharacterActions = new Dictionary<int, Pair<int, List<int>>>();
+        private bool actionsDirty = false;
+        private int currentActionSource = -1;
 
 
         public int ClientID { get { return myClientInfo.ID; } set { myClientInfo.ID = value; } }
@@ -38,6 +43,9 @@ namespace RGRPG.Core
         public bool IsInCombat { get { return game.IsInCombat; } }
         public bool IsIndoors { get { return game.CurrentScene.IsIndoors; } }
         public string CurrentSceneType { get { return game.CurrentScene.ZType; } }
+
+        public bool AreActionsDirty { get { bool temp = actionsDirty; actionsDirty = false; return temp; } }
+        public bool IsMakingAction { get { return currentActionSource > 0; } }
 
         public ClientInfo MyClientInfo { get { return myClientInfo; } }
         public List<ClientInfo> OtherClients { get { return otherClients.Values.ToList(); } }
@@ -103,10 +111,29 @@ namespace RGRPG.Core
             game.TransitionToScene(zType);
         }
 
+        public void DeleteCharacter(int characterID)
+        {
+            game.DeleteCharacter(characterID);
+        }
+
         public void MoveCharacter(int xDirection, int yDirection)
         {
             clientManager.MoveCharacter(xDirection, yDirection);
         }
+
+        public Character GetCharacter(int characterID)
+        {
+            return game.GetCharacter(characterID);
+        }
+
+        public ICharacterAction GetCharacterAction(int characterID, int actionIndex)
+        {
+            return game.GetCharacterAction(characterID, actionIndex);
+        }
+
+        //
+        // --- COMBAT SYNC ---
+        //
 
         public void BeginCombat(int[] enemyIds)
         {
@@ -133,9 +160,220 @@ namespace RGRPG.Core
 
         public void FinishPlayerTurnInput()
         {
-            clientManager.CombatFinishPlayerTurnInput();
+            if (currentActionSource == -1)
+                SendActionsToServer();
+            else
+                FinishRecordingAction(currentActionSource);
         }
-    
+
+        public void SelectCharacter(int characterID)
+        {
+            if (currentActionSource == -1)
+            {
+                game.SelectCharacter(characterID);
+            }
+            else
+            {
+                ToggleActionTarget(currentActionSource, characterID);
+            }
+        }
+
+        public bool IsCharacterCurrentTarget(int characterID)
+        {
+            if (currentActionSource == -1)
+                return false;
+
+            if (!currentCharacterActions.ContainsKey(currentActionSource))
+                return false;
+
+            return currentCharacterActions[currentActionSource].second.FindIndex(id => id == characterID) != -1;
+        }
+
+        public bool IsActionCurrentSelection(int characterID, int actionIndex)
+        {
+            if (currentActionSource == -1 || currentActionSource != characterID)
+                return false;
+
+            if (currentCharacterActions.ContainsKey(characterID) && currentCharacterActions[characterID].first == actionIndex)
+                return true;
+
+            return false;
+        }
+
+        public void BeginRecordingAction(int actionIndex, int sourceID)
+        {
+            if (currentCharacterActions.ContainsKey(sourceID))
+                currentCharacterActions.Remove(sourceID);
+            currentActionSource = sourceID;
+            currentCharacterActions.Add(sourceID, new Pair<int, List<int>>(actionIndex, new List<int>()));
+
+            InfoAction actionInfo = game.GetCharacterAction(sourceID, actionIndex).MyInfo;
+            if (actionInfo == null)
+                return;
+
+            switch (actionInfo.TargetType)
+            {
+                case "TARGET_NONE":
+                    break;
+                case "TARGET_SELF":
+                    currentCharacterActions[sourceID].second.Add(sourceID);
+                    break;
+                case "TARGET_TEAM":
+                    if (Character.ListContainsID(game.Players, sourceID))
+                    {
+                        currentCharacterActions[sourceID].second.AddRange(Character.GetIDFromList(game.Players));
+                    }
+                    else if (Character.ListContainsID(game.CombatEnemies, sourceID))
+                    {
+                        currentCharacterActions[sourceID].second.AddRange(Character.GetIDFromList(game.CombatEnemies));
+                    }
+                    break;
+                case "TARGET_OTHER_TEAM":
+                    if (Character.ListContainsID(game.Players, sourceID))
+                    {
+                        currentCharacterActions[sourceID].second.AddRange(Character.GetIDFromList(game.CombatEnemies));
+                    }
+                    else if (Character.ListContainsID(game.CombatEnemies, sourceID))
+                    {
+                        currentCharacterActions[sourceID].second.AddRange(Character.GetIDFromList(game.Players));
+                    }
+                    break;
+                case "TARGET_FRIEND":
+
+                    break;
+                case "TARGET_ENEMY":
+                    if (actionInfo.TargetData == game.CombatEnemies.Count)
+                        currentCharacterActions[sourceID].second.AddRange(Character.GetIDFromList(game.CombatEnemies));
+                    break;
+            }
+
+            actionsDirty = true;
+        }
+
+        public void ToggleActionTarget(int sourceID, int targetID)
+        {
+            if (currentCharacterActions.ContainsKey(sourceID))
+            {
+
+                InfoAction actionInfo = game.GetCharacterAction(sourceID, currentCharacterActions[sourceID].first).MyInfo;
+                switch (actionInfo.TargetType)
+                {
+                    case "TARGET_NONE":
+                    case "TARGET_SELF":
+                    case "TARGET_TEAM":
+                    case "TARGET_OTHER_TEAM":
+                        return;
+
+                    case "TARGET_AMOUNT":
+                        if (currentCharacterActions[sourceID].second.Count >= actionInfo.TargetData && !currentCharacterActions[sourceID].second.Contains(targetID))
+                            return;
+                        break;
+                    case "TARGET_FRIEND":
+                        if ((currentCharacterActions[sourceID].second.Count >= actionInfo.TargetData && !currentCharacterActions[sourceID].second.Contains(targetID)) || !Character.ListContainsID(game.Players, targetID) || targetID == sourceID)
+                            return;
+                        break;
+                    case "TARGET_ENEMY":
+                        if ((currentCharacterActions[sourceID].second.Count >= actionInfo.TargetData && !currentCharacterActions[sourceID].second.Contains(targetID)) || !Character.ListContainsID(game.CombatEnemies, targetID) || targetID == sourceID)
+                            return;
+                        break;
+                }
+
+                if (currentCharacterActions[sourceID].second.Contains(targetID))
+                {
+                    currentCharacterActions[sourceID].second.Remove(targetID);
+                }
+                else
+                {
+                    currentCharacterActions[sourceID].second.Add(targetID);
+                }
+            }
+            else
+            {
+                Debug.Log("Character #" + sourceID + " did not begin recording an action, and thus cannot toggle the action targets");
+            }
+
+            actionsDirty = true;
+        }
+
+        public void FinishRecordingAction(int sourceID)
+        {
+            if (!currentCharacterActions.ContainsKey(sourceID))
+                return;
+
+            InfoAction actionInfo = game.GetCharacterAction(sourceID, currentCharacterActions[sourceID].first).MyInfo;
+            switch (actionInfo.TargetType)
+            {
+                case "TARGET_NONE":
+                case "TARGET_SELF":
+                case "TARGET_TEAM":
+                case "TARGET_OTHER_TEAM":
+                    break;
+
+                case "TARGET_AMOUNT":
+                case "TARGET_FRIEND":
+                case "TARGET_ENEMY":
+                    if (currentCharacterActions[sourceID].second.Count > actionInfo.TargetData || currentCharacterActions[sourceID].second.Count == 0)
+                        return;
+                    break;
+            }
+
+            currentActionSource = -1;
+
+            actionsDirty = true;
+        }
+
+        public void SendActionsToServer()
+        {
+            currentActionSource = -1;
+
+            int numTargets = 0;
+            List<int> sources = new List<int>();
+            List<Pair<int, List<int>>> validActions = new List<Pair<int, List<int>>>();
+            foreach (KeyValuePair<int, Pair<int, List<int>>> kvp in currentCharacterActions)
+            {
+                if (kvp.Value.second.Count > 0)
+                {
+                    sources.Add(kvp.Key);
+                    validActions.Add(kvp.Value);
+                    numTargets += kvp.Value.second.Count;
+                }
+            }
+
+            //               actionCount + (source + actionIndex + targetCount) + targets
+            object[] data = new object[1 + validActions.Count * 3 + numTargets];
+
+            int index = 0;
+            data[index] = validActions.Count;
+            index++;
+
+            for (int i = 0; i < validActions.Count; i++)
+            {
+                data[index] = sources[i];
+                index++;
+                data[index] = validActions[i].first;
+                index++;
+                data[index] = validActions[i].second.Count;
+                index++;
+
+                for(int j = 0; j < validActions[i].second.Count; j++)
+                {
+                    data[index] = validActions[i].second[j];
+                    index++;
+                }
+            }
+
+            clientManager.CombatSendActions(data);
+        }
+
+        public void ProcessNextCombatStep()
+        {
+            game.ProcessNextCombatStep();
+        }
+
+        //
+        // ------
+        //
+
         private bool firstUpdate = true;
         public void Update(float deltaTime)
         {
@@ -165,12 +403,7 @@ namespace RGRPG.Core
             else
             {
                 DiscordController.Instance.InOverworld();
-
-                //MoveSelectedCharacter(); // (CLIENT REQUEST)
             }
-
-            if (overrideCombatState == CombatState.ExecuteTurns)
-            { }
 
             game.GameLoop(deltaTime);
 
@@ -178,6 +411,7 @@ namespace RGRPG.Core
             {
                 if (!waitingForRound && game.CurrentCombatState == CombatState.WaitForNextRound && game.gameCombatActionQueue.Count == 0)
                 {
+                    currentCharacterActions.Clear();
                     clientManager.CombatWaitingForNextRound();
                     waitingForRound = true;
                 }
@@ -192,18 +426,6 @@ namespace RGRPG.Core
             {
                 //TODO: figure out best way to handle messages
                 //EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
-            }
-
-            if (game.IsInCombat)
-            {
-                if (game.gameCombatActionQueue.Count > 0)
-                {
-                    //PairStruct<Character, ICharacterAction> characterAction = game.gameCombatActionQueue.Dequeue();
-
-                }
-                else
-                {
-                }
             }
         }
     }

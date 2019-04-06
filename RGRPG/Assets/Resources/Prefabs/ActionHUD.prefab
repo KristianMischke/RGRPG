@@ -116,9 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28925cb46f63e5649b52f5144c216549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionButtonObject: {fileID: 1956786249686356}
-  actionTextObject: {fileID: 1005105978354436}
-  actionButton: {fileID: 0}
+  actionText: {fileID: 114771171132639320}
+  actionButton: {fileID: 114343011241226674}
 --- !u!114 &114771171132639320
 MonoBehaviour:
   m_ObjectHideFlags: 1

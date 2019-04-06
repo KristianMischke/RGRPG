@@ -80,7 +80,7 @@ namespace RGRPG.Core
         protected List<Character> players;
         protected Dictionary<string, List<Enemy>> enemies; // scene ID, enemies
         protected Character selectedCharacter;
-        protected List<Character> deletedCharacters;
+        protected List<Character> deletedCharacters = new List<Character>();
 
         // for combat
         protected CombatState previousCombatState = CombatState.NONE;
@@ -91,6 +91,7 @@ namespace RGRPG.Core
         protected List<Character> combatEnemies = new List<Character>(); //TODO: do we want to be able to fight multiple enemies at a time?
         protected Dictionary<Character, Queue<ICharacterAction>> characterTurns;
         protected List<Character> turnOrder;
+        protected bool doNextCombatStep = false;
 
         // allows for public access, but not public assignment
         public GameInfos Infos { get { return infos; } }
@@ -342,17 +343,61 @@ namespace RGRPG.Core
         {
             if (IsInCombat)
             {
+
+                // for serializing action queues
+                int numTargets = 0;
+                List<Character> sources = new List<Character>();
+                List<Queue<ICharacterAction>> actions = new List<Queue<ICharacterAction>>();
+                foreach (KeyValuePair<Character, Queue<ICharacterAction>> kvp in characterTurns)
+                {
+                    if (kvp.Value.Count > 0)
+                    {
+                        sources.Add(kvp.Key);
+                        actions.Add(new Queue<ICharacterAction>(kvp.Value));
+
+                        foreach(ICharacterAction x in kvp.Value.ToList())
+                            numTargets += x.GetTargets().Count;
+                    }
+                }
+                //               actionCount + (source + actionIndex + targetCount) + targets
+                int allActionsDataCount = 1 + actions.Count * 3 + numTargets;
+
                 int combatCharacterCount = (turnOrder == null ? 0 : turnOrder.Count);
-                object[] data = new object[1 + combatCharacterCount + 1];
+                object[] data = new object[1 + combatCharacterCount + 1 + allActionsDataCount];
 
-                data[0] = combatCharacterCount;
-                int i = 0;
-                for (i = 0; i < combatCharacterCount; i++)
-                    data[1 + i] = turnOrder[i].ID;
+                int index = 0;
+                data[index] = combatCharacterCount;
+                index++;
 
-                data[i + 1] = roundCounter;
+                for (int i = 0; i < combatCharacterCount; i++)
+                {
+                    data[index] = turnOrder[i].ID;
+                    index++;
+                }
 
-                // TODO: character actions
+                data[index] = roundCounter;
+
+                // handle serializing the action queue
+                data[index] = actions.Count;
+                index++;
+
+                for (int i = 0; i < actions.Count; i++)
+                {
+                    data[index] = sources[i].ID;
+                    index++;
+                    ICharacterAction action = actions[i].Dequeue();
+                    data[index] = sources[i].GetActionIndex(action);
+                    index++;
+                    List<Character> targets = action.GetTargets();
+                    data[index] = targets.Count;
+                    index++;
+
+                    for (int j = 0; j < targets.Count; j++)
+                    {
+                        data[index] = targets[j].ID;
+                        index++;
+                    }
+                }
 
                 return data;
             }
@@ -362,20 +407,57 @@ namespace RGRPG.Core
 
         public void UpdateCombatData(object [] data)
         {
-            int combatCharacterCount = (int)data[0];
+            int index = 0;
+            int combatCharacterCount = (int)data[index];
+            index++;
+
             turnOrder = new List<Character>();
-            int i = 0;
-            for (i = 0; i < combatCharacterCount; i++)
+            for (int i = 0; i < combatCharacterCount; i++)
             {
                 Character c;
-                allCharacters.TryGetValue((int)data[1 + i], out c);
+                allCharacters.TryGetValue((int)data[index], out c);
+                index++;
 
                 turnOrder.Add(c);
             }
 
-            roundCounter = (int)data[i + 1];
+            roundCounter = (int)data[index];
 
-            // TODO: character actions
+            // handle de-serializing the action queue
+            characterTurns = new Dictionary<Character, Queue<ICharacterAction>>();
+
+            int numActions = (int)data[index];
+            index++;
+
+            for (int i = 0; i < numActions; i++)
+            {
+                Character c;
+                allCharacters.TryGetValue((int)data[index], out c);
+                index++;
+
+                ICharacterAction action = c.GetActionAtIndex((int)data[index]);
+                index++;
+
+                int numTargets = (int)data[index];
+                index++;
+                List<Character> targets = new List<Character>();
+
+                for (int j = 0; j < numTargets; j++)
+                {
+                    Character target;
+                    allCharacters.TryGetValue((int)data[index], out target);
+                    index++;
+
+                    targets.Add(target);
+                }
+
+                action.SetTargets(targets);
+
+                if (!characterTurns.ContainsKey(c))
+                    characterTurns[c] = new Queue<ICharacterAction>();
+
+                characterTurns[c].Enqueue(action);
+            }
         }
 
         public void DeleteCharacter(int id)
@@ -468,7 +550,10 @@ namespace RGRPG.Core
                     }
                     else
                     {
-                        ProcessNextCombatAction();
+                        if (doNextCombatStep)
+                        {
+                            ProcessNextCombatAction();
+                        }
                     }
                     break;
                 
@@ -626,6 +711,13 @@ namespace RGRPG.Core
                 prevTurnCounter = turnCounter;
                 turnCounter++;
             }
+
+            doNextCombatStep = false;
+        }
+
+        public void ProcessNextCombatStep()
+        {
+            doNextCombatStep = true;
         }
 
         /// <summary>
@@ -647,10 +739,28 @@ namespace RGRPG.Core
         ///     Allows the user to select a player to control TODO: this behavior will change with leaders
         /// </summary>
         /// <param name="target">The character to control</param>
-        public void SelectCharacter(Character target)
+        public void SelectCharacter(int characterId)
         {
             //TODO: put parameters on when/which characters can be selected
-            selectedCharacter = target;
+            selectedCharacter = allCharacters[characterId];
+        }
+
+        public Character GetCharacter(int characterID)
+        {
+            Character c;
+            allCharacters.TryGetValue(characterID, out c);
+            return c;
+        }
+
+        public ICharacterAction GetCharacterAction(int characterID, int actionIndex)
+        {
+            Character c;
+            allCharacters.TryGetValue(characterID, out c);
+
+            if (c != null)
+                return c.GetActionAtIndex(actionIndex);
+
+            return null;
         }
 
         /// <summary>
@@ -754,6 +864,18 @@ namespace RGRPG.Core
             currentCombatState = CombatState.BeginCombat;
 
             characterTurns = new Dictionary<Character, Queue<ICharacterAction>>();
+        }
+
+        public void RecordAction(int actionIndex, int sourceID, List<int> targetIDs)
+        {
+            Character source = GetCharacter(sourceID);
+            ICharacterAction action = source.GetActionAtIndex(actionIndex);
+            List<Character> targets = new List<Character>();
+
+            foreach (int x in targetIDs)
+                targets.Add(GetCharacter(x));
+
+            RecordAction(action, source, targets);
         }
 
         /// <summary>
