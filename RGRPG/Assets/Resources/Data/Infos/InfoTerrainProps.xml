@@ -170,5 +170,10 @@
     <SpriteName>elevator_doors</SpriteName>
     <bHasMultiple/>
   </Entry>
-
+  <Entry>
+    <zType>TERRAIN_PROP_ADMIN_DOOR</zType>
+    <SpriteSheet>Sprites/Pixel/umbc_tile_indoor</SpriteSheet>
+    <SpriteName>admin_door</SpriteName>
+    <bHasMultiple/>
+  </Entry>
 </Root>
