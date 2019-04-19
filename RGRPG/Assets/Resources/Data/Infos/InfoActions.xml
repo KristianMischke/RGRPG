@@ -215,10 +215,11 @@
         <Name>Stay on your toes!</Name>
         <Description>Increase defense of entire party</Description>
         <SharpClass>
-            <Type>INSERT TYPE HERE</Type>
+            <Type>RGRPG.Core.OnYourToesAction</Type>
             <InitParams>
                 <thisInfo />
-                
+                <manaCost>10</manaCost>
+                <amount>5</amount>
             </InitParams>
         </SharpClass>
         <TargetType>TARGET_TEAM</TargetType>
@@ -235,12 +236,13 @@
         <Name>Pick up the pace!</Name>
         <Description>Allows the next battle entity (includes enemies) in the turn order to have a x2 effect to their action</Description>
         <SharpClass>
-            <Type>INSERT TYPE HERE</Type>
+            <Type>RGRPG.Core.UpThePaceAction</Type>
             <InitParams>
                 <thisInfo />
+                <manaCost>10</manaCost>
             </InitParams>
         </SharpClass>
-        <TargetType>TARGET_NONE</TargetType>
+        <TargetType>TARGET_ALL</TargetType>
         <TargetData />
         <SourceParticleEffect />
         <TargetsParticleEffect />

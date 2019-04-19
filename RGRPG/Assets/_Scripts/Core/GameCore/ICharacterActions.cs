@@ -641,11 +641,61 @@ namespace RGRPG.Core
             return manaCost;
         }
 
-        public string GetName() { return "GIVE IT ALL YOU GOT"; }
+        public string GetName() { return "STAY ON YOUR TOES"; }
 
         public string GetDisplayText() { return myInfo.Name.ToUpper(); }
 
-        public string GetHelpText() { return "Increase attack of one party member"; }
+        public string GetHelpText() { return "Increase defense of entire party"; }
+
+    }
+
+    public class UpThePaceAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int manaCost;
+
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public UpThePaceAction() { }
+
+        public void Init(InfoAction myInfo, int manaCost)
+        {
+            this.myInfo = myInfo;
+            this.manaCost = manaCost;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            foreach (Character c in targets)
+            {
+                //What should I implement here?
+
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "PICK UP THE PACE"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper(); }
+
+        public string GetHelpText() { return "Allows the next battle entity (includes enemies) in the turn order to have a x2 effect to their action"; }
 
     }
 }
