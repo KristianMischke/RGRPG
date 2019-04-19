@@ -21,4 +21,18 @@
     <bFirst/>
     <firstSpawn/>
   </Entry>
+  <Entry>
+    <zType>FINAL_BOSS</zType>
+    <Name>This is the final boss room.</Name>
+    <File>Data/Scenes/FINAL_BOSS</File>
+    <bFirst/>
+    <firstSpawn/>
+  </Entry>
+  <Entry>
+    <zType>LECTURE_HALL</zType>
+    <Name>This is a lecture hall.</Name>
+    <File>Data/Scenes/LECTURE_HALL</File>
+    <bFirst/>
+    <firstSpawn/>
+  </Entry>
 </Root>
