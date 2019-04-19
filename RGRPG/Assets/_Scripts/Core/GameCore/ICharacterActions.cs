@@ -147,7 +147,8 @@ namespace RGRPG.Core
         {
             foreach (Character c in targets)
             {
-                c.Damage(amount);
+                c.Damage((int)(amount * source.GetAttackMultiplier()));
+                source.ChangeAttackMultiplier(1f);
             }
         }
 
@@ -489,6 +490,162 @@ namespace RGRPG.Core
         public string GetDisplayText() { return myInfo.Name.ToUpper(); }
 
         public string GetHelpText() { return "Adds a 1/8 chance to deal a critical hit to a target"; }
+
+    }
+
+    public class ChargeAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int manaCost;
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public ChargeAction() { }
+
+        public void Init(InfoAction myInfo, int manaCost)
+        {
+            this.myInfo = myInfo;
+            this.manaCost = manaCost;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            foreach (Character c in targets)
+            {
+                c.ChangeMultiplier(1.5f);
+
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "CHARGE"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper(); }
+
+        public string GetHelpText() { return "Adds 1.5x multiplier to next attack"; }
+
+    }
+
+    public class AllYouGotAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int manaCost;
+
+        private float amount;
+
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public AllYouGotAction() { }
+
+        public void Init(InfoAction myInfo, int manaCost, float amount)
+        {
+            this.myInfo = myInfo;
+            this.manaCost = manaCost;
+            this.amount = amount;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            foreach (Character c in targets)
+            {
+                //c.ChangeMultiplier(1.5f);
+                c.ChangeAttackMultiplier(amount);
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "GIVE IT ALL YOU GOT"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper(); }
+
+        public string GetHelpText() { return "Increase attack of one party member"; }
+
+    }
+
+    public class OnYourToesAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int manaCost;
+
+        private int amount;
+
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public OnYourToesAction() { }
+
+        public void Init(InfoAction myInfo, int manaCost, int amount)
+        {
+            this.myInfo = myInfo;
+            this.manaCost = manaCost;
+            this.amount = amount;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            foreach (Character c in targets)
+            {
+                //c.ChangeMultiplier(1.5f);
+                int increase = c.Defense + amount;
+                c.SetShield(increase);
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "GIVE IT ALL YOU GOT"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper(); }
+
+        public string GetHelpText() { return "Increase attack of one party member"; }
 
     }
 }

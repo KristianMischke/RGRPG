@@ -31,10 +31,15 @@ namespace RGRPG.Core
         protected int defense;
         protected int mana;
 
+
+
         protected Vector2 position;
         protected float radius = 0.5f;
 
         protected List<ICharacterAction> actions;
+
+        protected float multiplier;
+        protected float attackMultiplier;
 
         public Game MyGame { get { return myGame; } }
         public InfoCharacter MyInfo { get { return myInfo; } }
@@ -49,7 +54,7 @@ namespace RGRPG.Core
         public Vector2 Position { get { return position; } }
         public float Radius { get { return radius; } }
 
-        public Character(Game myGame, InfoCharacter myInfo, List<ICharacterAction> actions, int id)
+        public Character(Game myGame, InfoCharacter myInfo, List<ICharacterAction> actions, int id, float multiplier = 1f, float attackMultiplier = 1f)
         {
             this.myGame = myGame;
             this.myInfo = myInfo;
@@ -59,6 +64,8 @@ namespace RGRPG.Core
             this.defense = myInfo.Defense;
             this.actions = actions;
             this.id = id;
+            this.multiplier = multiplier;
+            this.attackMultiplier = attackMultiplier;
         }
 
         public const int NUM_SERIALIZED_FIELDS = 4;
@@ -97,10 +104,15 @@ namespace RGRPG.Core
             /*if (defense >= amount)
                 Debug.Log("Deflected damage!");
             else*/
-            health -= amount;// - defense;
+
+            float damage = multiplier * amount;
+
+            health -= (int)damage;// - defense;
 
             if (health <= 0)
                 health = 0;
+
+            ChangeMultiplier(1.0f);
         }
 
         public void SetShield(int amt)
@@ -137,6 +149,15 @@ namespace RGRPG.Core
                 mana = myInfo.Magic;
         }
 
+        public void ChangeMultiplier(float amount) {
+            multiplier = amount;
+        }
+
+        public void ChangeAttackMultiplier(float amount)
+        {
+            attackMultiplier = amount;
+        }
+
         public void Move(WorldScene scene, float dx, float dy)
         {
             scene.AdjustPlayerMovementToCollisions(this, ref dx, ref dy);
@@ -162,6 +183,14 @@ namespace RGRPG.Core
             return health > 0;
         }
 
+        public float GetAttackMultiplier() {
+            return attackMultiplier;
+        }
+
+        public int GetDefense() {
+            return Defense;
+        }
+
 
         public static bool ListContainsID(List<Character> characterList, int characterID)
         {
@@ -171,6 +200,8 @@ namespace RGRPG.Core
 
             return false;
         }
+
+
 
         public static List<int> GetIDFromList(List<Character> characterList)
         {

@@ -142,7 +142,7 @@ namespace RGRPG.Controllers
                 canvasObject = FindObjectOfType<Canvas>().gameObject;
             }
 
-            LoadScene(Application.dataPath + @"\Resources\Data\Scenes\mainMap.xml"); //default scene for now
+            LoadScene(Application.dataPath + @"/Resources/Data/Scenes/mainMap.xml"); //default scene for now
 
             // set up the scene controller
             GameObject worldSceneObject = Instantiate(worldSceneView);

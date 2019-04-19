@@ -89,12 +89,13 @@
         <Name>Charge</Name>
         <Description>Adds 1.5x multiplier to next attack</Description>
         <SharpClass>
-            <Type>INSERT TYPE HERE</Type>
+            <Type>RGRPG.Core.ChargeAction</Type>
             <InitParams>
                 <thisInfo />
+                <manaCost>10</manaCost>
             </InitParams>
         </SharpClass>
-        <TargetType>TARGET_NONE</TargetType>
+        <TargetType>TARGET_ENEMY</TargetType>
         <TargetData />
         <SourceParticleEffect />
         <TargetsParticleEffect />
@@ -193,9 +194,11 @@
         <Name>Give it all you got!</Name>
         <Description>Increase attack of one party member</Description>
         <SharpClass>
-            <Type>INSERT TYPE HERE</Type>
+            <Type>RGRPG.Core.AllYouGotAction</Type>
             <InitParams>
                 <thisInfo />
+                <manaCost>10</manaCost>
+                <amount>2.0</amount>
             </InitParams>
         </SharpClass>
         <TargetType>TARGET_FRIEND</TargetType>
@@ -215,6 +218,7 @@
             <Type>INSERT TYPE HERE</Type>
             <InitParams>
                 <thisInfo />
+                
             </InitParams>
         </SharpClass>
         <TargetType>TARGET_TEAM</TargetType>
