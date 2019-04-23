@@ -26,7 +26,7 @@
         <Name>Austin</Name>
         <zOverworldSheet>Sprites/Pixel/austin</zOverworldSheet>
         <zCombatSprite>Sprites/Pixel/austin</zCombatSprite>
-        <zPortraitSprite>Sprites/Not Pixel/Austin_Portrait</zPortraitSprite>
+        <zPortraitSprite>Sprites/Not Pixel/Austin_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
         <iHealth>55</iHealth>
@@ -37,7 +37,7 @@
             <Item>ACTION_AUSTIN_ALLY_HEAL</Item>
             <Item>ACTION_AUSTIN_GROUP_HEAL</Item>
         </ActionList>
-        <portraitOffsetX>50</portraitOffsetX>
+        <portraitOffsetX>200</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
     </Entry>
     <Entry>
@@ -46,7 +46,7 @@
         <Name>Seth</Name>
         <zOverworldSheet>Sprites/Pixel/seth</zOverworldSheet>
         <zCombatSprite>Sprites/Pixel/seth</zCombatSprite>
-        <zPortraitSprite>Sprites/Not Pixel/Seth_Portrait</zPortraitSprite>
+        <zPortraitSprite>Sprites/Not Pixel/Seth_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
         <iHealth>65</iHealth>
@@ -57,7 +57,7 @@
             <Item>ACTION_SETH_CHARGE</Item>
             <Item>ACTION_SETH_SHINING_BLADE</Item>
         </ActionList>
-        <portraitOffsetX>120</portraitOffsetX>
+        <portraitOffsetX>200</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
     </Entry>
     <Entry>
@@ -66,7 +66,7 @@
         <Name>Rika</Name>
         <zOverworldSheet>Sprites/Pixel/rika</zOverworldSheet>
         <zCombatSprite>Sprites/Pixel/rika</zCombatSprite>
-        <zPortraitSprite>Sprites/Not Pixel/Rika_Portrait</zPortraitSprite>
+        <zPortraitSprite>Sprites/Not Pixel/Rika_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
         <iHealth>40</iHealth>
@@ -77,7 +77,7 @@
             <Item>ACTION_RIKA_EMBER</Item>
             <Item>ACTION_RIKA_NECROMANCER</Item>
         </ActionList>
-        <portraitOffsetX>250</portraitOffsetX>
+        <portraitOffsetX>200</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
     </Entry>
     <Entry>
@@ -86,7 +86,7 @@
         <Name>Meredith</Name>
         <zOverworldSheet>Sprites/Pixel/meredith</zOverworldSheet>
         <zCombatSprite>Sprites/Pixel/meredith</zCombatSprite>
-        <zPortraitSprite>Sprites/Not Pixel/Meredith_Portrait</zPortraitSprite>
+        <zPortraitSprite>Sprites/Not Pixel/Meredith_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
         <iHealth>75</iHealth>
@@ -97,7 +97,7 @@
             <Item>ACTION_MEREDITH_ON_YOUR_TOES</Item>
             <Item>ACTION_MEREDITH_UP_THE_PACE</Item>
         </ActionList>
-        <portraitOffsetX>120</portraitOffsetX>
+        <portraitOffsetX>200</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
     </Entry>
     <Entry>
@@ -226,6 +226,57 @@
         <zOverworldSheet>Sprites/Pixel/moth</zOverworldSheet>
         <zCombatSprite>Sprites/Not Pixel/The swarm colored</zCombatSprite>
         <zPortraitSprite>Sprites/Not Pixel/The swarm colored</zPortraitSprite>
+        <bOverworldHasDirection />
+        <bEnemy>1</bEnemy>
+        <iHealth>60</iHealth>
+        <iMagic>40</iMagic>
+        <iDefense>50</iDefense>
+        <ActionList>
+        </ActionList>
+        <portraitOffsetX>0</portraitOffsetX>
+        <portraitOffsetY>0</portraitOffsetY>
+    </Entry>
+    <Entry>
+        <zType>CHARACTER_COMMUTER_BEAST</zType>
+        <Class>NONE</Class>
+        <Name>Commuter Beast</Name>
+        <zOverworldSheet>Sprites/Pixel/car</zOverworldSheet>
+        <zCombatSprite>Sprites/Not Pixel/Commuter Beast Colored</zCombatSprite>
+        <zPortraitSprite>Sprites/Not Pixel/Commuter Beast Colored</zPortraitSprite>
+        <bOverworldHasDirection />
+        <bEnemy>1</bEnemy>
+        <iHealth>60</iHealth>
+        <iMagic>40</iMagic>
+        <iDefense>50</iDefense>
+        <ActionList>
+        </ActionList>
+        <portraitOffsetX>0</portraitOffsetX>
+        <portraitOffsetY>0</portraitOffsetY>
+    </Entry>
+        <Entry>
+        <zType>CHARACTER_ICE_NINJA</zType>
+        <Class>NONE</Class>
+        <Name>Ice Ninja</Name>
+        <zOverworldSheet>Sprites/Pixel/ninja</zOverworldSheet>
+        <zCombatSprite>Sprites/Not Pixel/Ice Ninja Colored</zCombatSprite>
+        <zPortraitSprite>Sprites/Not Pixel/Ice Ninja Colored</zPortraitSprite>
+        <bOverworldHasDirection />
+        <bEnemy>1</bEnemy>
+        <iHealth>60</iHealth>
+        <iMagic>40</iMagic>
+        <iDefense>50</iDefense>
+        <ActionList>
+        </ActionList>
+        <portraitOffsetX>0</portraitOffsetX>
+        <portraitOffsetY>0</portraitOffsetY>
+    </Entry>
+       <Entry>
+        <zType>CHARACTER_NECROMANCER_PROFESSOR</zType>
+        <Class>NONE</Class>
+        <Name>Necromancer Professor</Name>
+        <zOverworldSheet>Sprites/Pixel/mancer</zOverworldSheet>
+        <zCombatSprite>Sprites/Not Pixel/Necromancer Professor Colored</zCombatSprite>
+        <zPortraitSprite>Sprites/Not Pixel/Necromancer Professor Colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
         <iHealth>60</iHealth>

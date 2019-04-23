@@ -2,7 +2,7 @@
 <WorldScene>
 	<Width>30</Width>
 	<Height>30</Height>
-	<bIsIndoors></bIsIndoors>
+	<bIsIndoors>1</bIsIndoors>
 	<BackgroundImage></BackgroundImage>
 	<Terrain>
 		<TerrainRow>
@@ -2544,7 +2544,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NECROMANCER_PROFESSOR</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -3735,7 +3735,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NECROMANCER_PROFESSOR</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -3969,7 +3969,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -4406,7 +4406,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -4421,7 +4421,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -4633,7 +4633,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -4648,7 +4648,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -4708,12 +4708,12 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_CONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -4723,12 +4723,12 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_CONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -4798,12 +4798,12 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_CONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -4828,12 +4828,12 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_CONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -4843,12 +4843,12 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_CONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -5130,7 +5130,7 @@
 			</Tile>
 			<Tile>
 				<IsWall>1</IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -5145,7 +5145,7 @@
 			</Tile>
 			<Tile>
 				<IsWall>1</IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -5160,7 +5160,7 @@
 			</Tile>
 			<Tile>
 				<IsWall>1</IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -5175,7 +5175,7 @@
 			</Tile>
 			<Tile>
 				<IsWall>1</IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -5250,7 +5250,7 @@
 			</Tile>
 			<Tile>
 				<IsWall>1</IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -5279,7 +5279,7 @@
 				</Transition>
 			</Tile>
 			<Tile>
-				<IsWall>1</IsWall>
+				<IsWall></IsWall>
 				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
@@ -5295,7 +5295,7 @@
 			</Tile>
 			<Tile>
 				<IsWall>1</IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -5324,13 +5324,13 @@
 				</Transition>
 			</Tile>
 			<Tile>
-				<IsWall></IsWall>
-				<Traversable>1</Traversable>
-				<Type>TERRAIN_ADMIN_FLOOR</Type>
+				<IsWall>1</IsWall>
+				<Traversable></Traversable>
+				<Type>TERRAIN_ADMIN_WALLS</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -5752,7 +5752,7 @@
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -5767,7 +5767,7 @@
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
-				<PropType></PropType>
+				<PropType>TERRAIN_PROP_NONE</PropType>
 				<EntityInitType></EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
@@ -7636,7 +7636,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NECROMANCER_PROFESSOR</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -12679,7 +12679,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -12694,7 +12694,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -12739,7 +12739,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>
@@ -12754,7 +12754,7 @@
 			</Tile>
 			<Tile>
 				<IsWall></IsWall>
-				<Traversable>1</Traversable>
+				<Traversable></Traversable>
 				<Type>TERRAIN_ADMIN_FLOOR</Type>
 				<SubType>0</SubType>
 				<OverlayType></OverlayType>

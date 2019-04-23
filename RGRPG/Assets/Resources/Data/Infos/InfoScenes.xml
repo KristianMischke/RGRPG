@@ -17,14 +17,14 @@
   <Entry>
     <zType>SCENE_ADMIN1</zType>
     <Name>This is another scene</Name>
-    <File>Data/Scenes/admin1</File>
+    <File>Data/Scenes/testAdmin</File>
     <bFirst/>
     <firstSpawn/>
   </Entry>
   <Entry>
     <zType>FINAL_BOSS</zType>
     <Name>This is the final boss room.</Name>
-    <File>Data/Scenes/FINAL_BOSS</File>
+    <File>Data/Scenes/FINAL_BOSS_FIX</File>
     <bFirst/>
     <firstSpawn/>
   </Entry>
