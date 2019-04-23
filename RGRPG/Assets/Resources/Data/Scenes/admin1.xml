@@ -2,8 +2,8 @@
 <WorldScene>
 	<Width>30</Width>
 	<Height>30</Height>
-	<bIsIndoors></bIsIndoors>
-	<BackgroundImage></BackgroundImage>
+	<bIsIndoors>1</bIsIndoors>
+	<BackgroundImage>Sprites/Backgrounds/admin1</BackgroundImage>
 	<Terrain>
 		<TerrainRow>
 			<Tile>
@@ -2002,7 +2002,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NECROMANCER_PROFESSOR</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -3493,7 +3493,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NECROMANCER_PROFESSOR</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -4564,7 +4564,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NECROMANCER_PROFESSOR</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -8510,7 +8510,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_ICE_NINJA</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -9129,7 +9129,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType></PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_ICE_NINJA</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>

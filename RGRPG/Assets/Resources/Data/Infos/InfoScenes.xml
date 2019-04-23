@@ -17,7 +17,7 @@
   <Entry>
     <zType>SCENE_ADMIN1</zType>
     <Name>This is another scene</Name>
-    <File>Data/Scenes/testAdmin</File>
+    <File>Data/Scenes/admin1</File>
     <bFirst/>
     <firstSpawn/>
   </Entry>

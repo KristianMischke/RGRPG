@@ -3,7 +3,7 @@
 	<Width>10</Width>
 	<Height>10</Height>
 	<bIsIndoors>1</bIsIndoors>
-	<BackgroundImage></BackgroundImage>
+	<BackgroundImage>Sprites/Backgrounds/finalboss</BackgroundImage>
 	<Terrain>
 		<TerrainRow>
 			<Tile>

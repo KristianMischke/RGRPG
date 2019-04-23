@@ -2,8 +2,8 @@
 <WorldScene>
 	<Width>20</Width>
 	<Height>20</Height>
-	<bIsIndoors></bIsIndoors>
-	<BackgroundImage></BackgroundImage>
+	<bIsIndoors>1</bIsIndoors>
+	<BackgroundImage>Sprites/Backgrounds/lechall</BackgroundImage>
 	<Terrain>
 		<TerrainRow>
 			<Tile>
