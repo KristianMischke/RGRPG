@@ -287,4 +287,21 @@
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
     </Entry>
+    <Entry>
+        <zType>CHARACTER_FINAL_BOSS</zType>
+        <Class>NONE</Class>
+        <Name>Ghosts of Development Past</Name>
+        <zOverworldSheet>Sprites/Pixel/finalboss</zOverworldSheet>
+        <zCombatSprite>Sprites/Not Pixel/finalboss</zCombatSprite>
+        <zPortraitSprite>Sprites/Not Pixel/finalboss</zPortraitSprite>
+        <bOverworldHasDirection />
+        <bEnemy>1</bEnemy>
+        <iHealth>120</iHealth>
+        <iMagic>60</iMagic>
+        <iDefense>60</iDefense>
+        <ActionList>
+        </ActionList>
+        <portraitOffsetX>0</portraitOffsetX>
+        <portraitOffsetY>0</portraitOffsetY>
+    </Entry>
 </Root>
