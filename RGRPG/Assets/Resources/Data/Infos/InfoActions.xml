@@ -17,8 +17,8 @@
         <SourceParticleEffect>Prefabs/Action Animations/HealAnimation</SourceParticleEffect>
         <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
         <Quips>
-            <Item>
-            </Item>
+            <Item>%SOURCE% drains %TARGET%'s life</Item>
+            <Item>%SOURCE% sucks the life out of %TARGET%</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -38,8 +38,8 @@
         <SourceParticleEffect />
         <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
         <Quips>
-            <Item>
-            </Item>
+            <Item>%TARGET% is scorched by %SOURCE%'s embers</Item>
+            <Item>%SOURCE% lights %TARGET% on fire</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -59,8 +59,8 @@
         <SourceParticleEffect />
         <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
         <Quips>
-            <Item>
-            </Item>
+            <Item>%TARGET% has been revived</Item>
+            <Item>Welcome %TARGET% back from the grave!</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -80,8 +80,7 @@
         <SourceParticleEffect />
         <TargetsParticleEffect />
         <Quips>
-            <Item>
-            </Item>
+            <Item></Item>
         </Quips>
     </Entry>
     <Entry>
@@ -95,13 +94,12 @@
                 <manaCost>10</manaCost>
             </InitParams>
         </SharpClass>
-        <TargetType>TARGET_ENEMY</TargetType>
+        <TargetType>TARGET_NONE</TargetType>
         <TargetData />
         <SourceParticleEffect />
         <TargetsParticleEffect />
         <Quips>
-            <Item>
-            </Item>
+            <Item>Next Action: 1.5x</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -143,8 +141,8 @@
         <SourceParticleEffect />
         <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
         <Quips>
-            <Item>
-            </Item>
+            <Item>%SOURCE% performs some healing magic</Item>
+            <Item>Potion madness!</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -164,8 +162,8 @@
         <SourceParticleEffect />
         <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
         <Quips>
-            <Item>
-            </Item>
+            <Item>POTION SELLER!</Item>
+            <Item>%TARGET% ate %SOURCE%'s energy bar</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -185,8 +183,7 @@
         <SourceParticleEffect />
         <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
         <Quips>
-            <Item>
-            </Item>
+            <Item>%SOURCE% healed the team!</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -206,8 +203,8 @@
         <SourceParticleEffect />
         <TargetsParticleEffect />
         <Quips>
-            <Item>
-            </Item>
+            <Item>%TARGET% was buffed!</Item>
+            <Item>%TARGET% got swole! Thanks %SOURCE%!</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -227,8 +224,7 @@
         <SourceParticleEffect />
         <TargetsParticleEffect />
         <Quips>
-            <Item>
-            </Item>
+            <Item>%TARGET%'s defences are up</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -247,8 +243,7 @@
         <SourceParticleEffect />
         <TargetsParticleEffect />
         <Quips>
-            <Item>
-            </Item>
+            <Item>Next Action: 2x</Item>
         </Quips>
     </Entry>
 </Root>

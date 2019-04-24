@@ -345,8 +345,18 @@ namespace RGRPG.Controllers
 
                     if (!(characterAction.second is BeginTurnAction))
                     {
+                        List<Character> targets = characterAction.second.GetTargets();
+
                         Marquee.instance.ResetTimer();
-                        Marquee.instance.AddToMultiMessage(characterAction.first.Name + " does: " + characterAction.second.GetName());
+                        if (characterAction.second.MyInfo == null)
+                        {
+                            if(characterAction.second is PassTurnAction)
+                                Marquee.instance.AddToMultiMessage(characterAction.first.Name + " passes");
+                        }
+                        else
+                        {
+                            Marquee.instance.AddToMultiMessage(characterAction.second.MyInfo.GetActionQuip(characterAction.first, (targets == null || targets.Count > 1) ? null : targets[0]));
+                        }
                         Marquee.instance.StartTimer();
 
                         AnimationHUDController actionHUDController = animationController.GetComponent<AnimationHUDController>();

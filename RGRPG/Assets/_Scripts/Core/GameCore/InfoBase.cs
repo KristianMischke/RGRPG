@@ -223,6 +223,19 @@ namespace RGRPG.Core
 
             return action;
         }
+
+        public string GetActionQuip(Character source, Character target)
+        {
+            Random rnd = new Random();
+            string randomQuip = quipList[rnd.Next(0, quipList.Count)];
+
+            randomQuip = randomQuip.Replace("%SOURCE%", source.Name);
+
+            if (target != null)
+                randomQuip = randomQuip.Replace("%TARGET%", target.Name);
+
+            return randomQuip;
+        }
     }
 
     public class InfoTargetType : InfoBase
