@@ -530,7 +530,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NONE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -682,7 +682,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType>CHARACTER_NECROMANCER_PROFESSOR</EntityInitType>
+				<EntityInitType>CHARACTER_NONE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -834,7 +834,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_NONE</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
@@ -849,7 +849,7 @@
 				<OverlayType></OverlayType>
 				<OverlaySubType>0</OverlaySubType>
 				<PropType>TERRAIN_PROP_NONE</PropType>
-				<EntityInitType></EntityInitType>
+				<EntityInitType>CHARACTER_FINAL_BOSS</EntityInitType>
 				<SpawnID></SpawnID>
 				<Transition>
 					<Scene></Scene>
