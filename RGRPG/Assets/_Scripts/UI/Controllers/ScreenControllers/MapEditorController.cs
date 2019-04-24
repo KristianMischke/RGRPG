@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -59,6 +60,8 @@ namespace RGRPG.Controllers
         public TMP_Text filePathLabel;
         public Button saveButton;
         public Button loadButton;
+
+        public Button mainMenuButton;
 
         public Slider radiusSlider;
         public TMP_Text sliderText;
@@ -174,6 +177,9 @@ namespace RGRPG.Controllers
 
             saveButton.onClick.AddListener(Save);
             loadButton.onClick.AddListener(Load);
+            mainMenuButton.onClick.AddListener(() => {
+                SceneManager.LoadScene("MainMenuScene");
+            });
         }
 
 
@@ -522,7 +528,9 @@ namespace RGRPG.Controllers
             {
                 currentScene = new WorldScene(infos.Get<InfoScene>("SCENE_NONE"));
             }
-            currentScene.Load(filepath);
+
+            if(File.Exists(filepath))
+                currentScene.Load(filepath);
 
             if(worldSceneController != null)
                 worldSceneController.ResetScene();
