@@ -215,8 +215,12 @@ namespace RGRPG.Core
 
     }
 
-    //TODO: Think about whether or not Enemies should be stored basically the same way Characters are
-    public class Enemy : Character
+    public interface EnemyActionLogic
+    {
+        ICharacterAction PickAction(List<Character> team, List<Character> enemies, ref List<Character> chosenTargets);
+    }
+
+    public class Enemy : Character, EnemyActionLogic
     {
         protected Vector2 fixedPosition;
         protected Vector2 targetPosition;
@@ -294,6 +298,71 @@ namespace RGRPG.Core
 
             }
             
+        }
+
+        public ICharacterAction PickAction(List<Character> team, List<Character> enemies, ref List<Character> chosenTargets)
+        {
+            if (actions == null || actions.Count == 0)
+                return null;
+
+            // first pick random action
+            ICharacterAction randAction = actions[Random.Range(0, actions.Count)];
+
+
+            switch (randAction.MyInfo.TargetType)
+            {
+                case "TARGET_NONE":
+                    break;
+                case "TARGET_SELF":
+                    chosenTargets.Add(this);
+                    break;
+                case "TARGET_TEAM":
+                    chosenTargets.AddRange(team);
+                    break;
+                case "TARGET_OTHER_TEAM":
+                    chosenTargets.AddRange(enemies);
+                    break;
+                case "TARGET_FRIEND":
+                    {
+                        int leftToChoose = Mathf.Max(randAction.MyInfo.TargetData, 1);
+                        int i = 0;
+                        while (i < team.Count && leftToChoose > 0)
+                        {
+                            Character c = team[Random.Range(0, team.Count)];
+                            if (!chosenTargets.Contains(c) && c.IsAlive())
+                            {
+                                chosenTargets.Add(c);
+                                leftToChoose--;
+                            }
+                            i++;
+                        }
+
+                        if (leftToChoose > 0)
+                            return null;
+                    }
+                    break;
+                case "TARGET_ENEMY":
+                    {
+                        int leftToChoose = Mathf.Max(randAction.MyInfo.TargetData, 1);
+                        int i = 0;
+                        while (i < enemies.Count && leftToChoose > 0)
+                        {
+                            Character c = enemies[Random.Range(0, enemies.Count)];
+                            if (!chosenTargets.Contains(c) && c.IsAlive())
+                            {
+                                chosenTargets.Add(c);
+                                leftToChoose--;
+                            }
+                            i++;
+                        }
+
+                        if (leftToChoose > 0)
+                            return null;
+                    }
+                    break;
+            }
+
+            return randAction;
         }
     }
 }

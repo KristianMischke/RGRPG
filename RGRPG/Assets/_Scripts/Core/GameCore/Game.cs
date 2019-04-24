@@ -524,17 +524,11 @@ namespace RGRPG.Core
                 case CombatState.ChooseEnemyActions:
                     foreach (Enemy e in combatEnemies)
                     {
-                        Character target = null;
-                        int count = Players.Count;
-                        while (target == null && count > 0)
-                        {
-                            int randIndex = Random.Range(0, players.Count);
-                            if(players[randIndex].IsAlive())
-                                target = players[randIndex];
-                            count--;
-                        }
-                        if(count != 0 && e.Actions.Count > 0)
-                            RecordAction(e.Actions[0], e, new List<Character> { target });
+                        List<Character> chosenTargets = new List<Character>();
+                        ICharacterAction chosenAction = e.PickAction(CombatEnemies, Players, ref chosenTargets);
+
+                        if(chosenAction != null)
+                            RecordAction(chosenAction, e, chosenTargets);
                     }
                     currentCombatState = CombatState.PlayersChooseActions;
                     break;
