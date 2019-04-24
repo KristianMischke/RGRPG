@@ -690,6 +690,20 @@ namespace RGRPG.Core
                             currentAction.DoAction(currentTurn);
 
                             gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(currentTurn, currentAction));
+
+                            // If targets died, add a death message to the queue
+                            if (currentAction.GetTargets() != null)
+                            {
+                                foreach (Character c in currentAction.GetTargets())
+                                {
+                                    if (!c.IsAlive())
+                                    {
+                                        InfoAction deathInfo = infos.Get<InfoAction>("ACTION_DEATH");
+                                        ICharacterAction deathAction = deathInfo.GenerateAction();
+                                        gameCombatActionQueue.Enqueue(new PairStruct<Character, ICharacterAction>(c, deathAction));
+                                    }
+                                }
+                            }
                         }
                     }
                 }

@@ -111,8 +111,9 @@
         <bEnemy>1</bEnemy>
         <iHealth>50</iHealth>
         <iMagic>30</iMagic>
-        <iDefense>100</iDefense>
+        <iDefense>0</iDefense>
         <ActionList>
+            <Item>ACTION_SQUIRREL_NO_OP</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -130,6 +131,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_GOOSE_SCREECH</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -147,6 +149,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_BEE_STING</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -164,6 +167,8 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_ZOMBIE_CAFFEINE_BOOST</Item>
+            <!--<Item>ACTION_ZOMBIE_BITE</Item>-->
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -181,6 +186,8 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_CRAB_PINCH</Item>
+            <!--<Item>ACTION_CRAB_SHIELD_UP</Item>-->
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -198,6 +205,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_GHOST_HAUNT</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -215,6 +223,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_PAPERWEIGHT_BOOK_EXPENSES</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -232,6 +241,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_BASIC_ATTACK</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -249,6 +259,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_BASIC_ATTACK</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -266,6 +277,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_BASIC_ATTACK</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>
@@ -283,6 +295,7 @@
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
         <ActionList>
+            <Item>ACTION_BASIC_ATTACK</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>

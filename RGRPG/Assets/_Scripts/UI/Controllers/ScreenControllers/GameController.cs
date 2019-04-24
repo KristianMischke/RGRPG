@@ -355,7 +355,7 @@ namespace RGRPG.Controllers
                         }
                         else
                         {
-                            Marquee.instance.AddToMultiMessage(characterAction.second.MyInfo.GetActionQuip(characterAction.first, (targets == null || targets.Count > 1) ? null : targets[0]));
+                            Marquee.instance.AddToMultiMessage(characterAction.second.MyInfo.GetActionQuip(characterAction.first, (targets == null || targets.Count != 1) ? null : targets[0]));
                         }
                         Marquee.instance.StartTimer();
 

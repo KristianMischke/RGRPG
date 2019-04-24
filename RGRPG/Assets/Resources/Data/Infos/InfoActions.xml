@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Root>
     <Entry>
+        <zType>ACTION_DEATH</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.DeathAction</Type>
+            <InitParams>
+                <thisInfo />
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_NONE</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%SOURCE% has died</Item>
+            <Item>%SOURCE% has passed away</Item>
+            <Item>%SOURCE% ...never forget</Item>
+            <Item>%SOURCE% dropped out of school</Item>
+            <Item>%SOURCE% got a big fat F</Item>
+            <Item>RIP %SOURCE%</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_BASIC_ATTACK</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.AttackAction</Type>
+            <InitParams>
+                <thisInfo />
+                <damage>10</damage>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_ENEMY</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%SOURCE% attacks %TARGET%</Item>
+        </Quips>
+    </Entry>
+    <Entry>
         <zType>ACTION_RIKA_LIFE_DRAIN</zType>
         <Name>Life Drain</Name>
         <Description>Takes 20 HP from enemy and heals 20 HP</Description>
@@ -244,6 +287,151 @@
         <TargetsParticleEffect />
         <Quips>
             <Item>Next Action: 2x</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_SQUIRREL_NO_OP</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.NoOpAction</Type>
+            <InitParams>
+                <thisInfo />
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_NONE</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%SOURCE% rolls around in a circle</Item>
+            <Item>%SOURCE% suspiciously eats from the ground</Item>
+            <Item>%SOURCE% rummages in the trash</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_GOOSE_SCREECH</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.AttackAction</Type>
+            <InitParams>
+                <thisInfo />
+                <damage>5</damage>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_OTHER_TEAM</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%SOURCE% screams at you</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_BEE_STING</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.AttackAction</Type>
+            <InitParams>
+                <thisInfo />
+                <damage>25</damage>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_ENEMY</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%SOURCE% leaves a big red spot on %TARGET%</Item>
+            <Item>%SOURCE% sBings %TARGET%</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_ZOMBIE_CAFFEINE_BOOST</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.HealAction</Type>
+            <InitParams>
+                <thisInfo />
+                <healAmount>25</healAmount>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_SELF</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%SOURCE% chugs a frappe mocha</Item>
+            <Item>%SOURCE% slurps down some S-Bucks</Item>
+            <Item>%SOURCE% enjoys the Au-Bon prices!</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_CRAB_PINCH</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.AttackAction</Type>
+            <InitParams>
+                <thisInfo />
+                <damage>30</damage>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_ENEMY</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%TARGET% suffers a mighty pinch by %SOURCE%</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_GHOST_HAUNT</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.AttackAction</Type>
+            <InitParams>
+                <thisInfo />
+                <damage>10</damage>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_ENEMY</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>%TARGET% is frightened by the thought of %SOURCE%</Item>
+            <Item>%TARGET% coweres as he remembers his past grades</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_PAPERWEIGHT_BOOK_EXPENSES</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.ManaDrain</Type>
+            <InitParams>
+                <thisInfo />
+                <drain>30</drain>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_ENEMY</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect />
+        <Quips>
+            <Item>Book expenses hit %TARGET% hard, too bad they'll never be opened!</Item>
+            <Item>Annnnd, that's another loan for %TARGET%</Item>
         </Quips>
     </Entry>
 </Root>

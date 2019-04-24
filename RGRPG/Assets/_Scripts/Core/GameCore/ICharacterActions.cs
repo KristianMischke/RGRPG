@@ -110,6 +110,73 @@ namespace RGRPG.Core
         public string GetHelpText() { return ""; }
     }
 
+    /// <summary>
+    ///     Basic, no-op action
+    /// </summary>
+    public class NoOpAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+        InfoAction myInfo;
+        public InfoAction MyInfo { get { return myInfo; } }
+        public NoOpAction() { }
+        public List<Character> GetTargets() { return targets; }
+        public void SetTargets(List<Character> targets) { this.targets = targets; }
+        public void DoAction(Character source) { }
+
+        public void Init(InfoAction myInfo)
+        {
+            this.myInfo = myInfo;
+        }
+
+        public int ManaCost() { return 0; }
+
+        public string GetName() { return "NO-OP"; }
+        public string GetDisplayText() { return myInfo.Name; }
+        public string GetHelpText() { return myInfo.Description; }
+    }
+
+    public class DeathAction : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public DeathAction() { }
+
+        public void Init(InfoAction myInfo)
+        {
+            this.myInfo = myInfo;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+        }
+
+        public int ManaCost()
+        {
+            return 0;
+        }
+
+        public string GetName() { return "DEATH"; }
+
+        public string GetDisplayText() { return "DEATH"; }
+
+        public string GetHelpText() { return "DEATH ACTION"; }
+
+    }
+
 
     /// <summary>
     ///     The basic attack action which can vary in damage and mana cost
@@ -253,7 +320,8 @@ namespace RGRPG.Core
         {
             foreach (Character c in targets)
             {
-                c.Heal(amount);
+                if(c.IsAlive())
+                    c.Heal(amount);
             }
         }
 
@@ -267,6 +335,59 @@ namespace RGRPG.Core
         public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
 
         public string GetHelpText() { return "Restores " + amount + " health to the targets"; }
+
+    }
+
+    /// <summary>
+    ///     Basic action that drains X amount of target's mana
+    /// </summary>
+    public class ManaDrain : ICharacterAction
+    {
+        private List<Character> targets = new List<Character>();
+
+        private int amount;
+        private int manaCost;
+        private InfoAction myInfo;
+
+        public InfoAction MyInfo { get { return myInfo; } }
+
+        public ManaDrain() { }
+
+        public void Init(InfoAction myInfo, int drainAmount, int manaCost)
+        {
+            this.myInfo = myInfo;
+            this.amount = drainAmount;
+            this.manaCost = manaCost;
+        }
+
+        public List<Character> GetTargets()
+        {
+            return targets;
+        }
+
+        public void SetTargets(List<Character> targets)
+        {
+            this.targets = targets;
+        }
+
+        public void DoAction(Character source)
+        {
+            foreach (Character c in targets)
+            {
+                c.ChangeMana(-amount);
+            }
+        }
+
+        public int ManaCost()
+        {
+            return manaCost;
+        }
+
+        public string GetName() { return "DRAIN"; }
+
+        public string GetDisplayText() { return myInfo.Name.ToUpper() + " " + amount; }
+
+        public string GetHelpText() { return "Drains " + amount + " mana from the targets"; }
 
     }
 
