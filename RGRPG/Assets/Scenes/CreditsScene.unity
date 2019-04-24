@@ -140,7 +140,7 @@ RectTransform:
   m_Children:
   - {fileID: 1584672986}
   m_Father: {fileID: 1176093827}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -175,7 +175,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1176093827}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.55362964}
   m_AnchorMax: {x: 0.28020832, y: 1}
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 621001213}
   m_TextComponent: {fileID: 1014437625}
   m_materialReferenceIndex: 1
@@ -348,6 +348,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &703073397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 703073398}
+  - component: {fileID: 703073400}
+  - component: {fileID: 703073399}
+  m_Layer: 5
+  m_Name: Logo (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &703073398
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703073397}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1176093827}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.55362964}
+  m_AnchorMax: {x: 0.28020832, y: 1}
+  m_AnchoredPosition: {x: 23, y: 101}
+  m_SizeDelta: {x: -0.70007324, y: -5.6000366}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &703073399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703073397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: ae360f22a38818e42b5b04322e86146e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &703073400
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703073397}
+  m_CullTransparentMesh: 0
 --- !u!1 &885331770
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +448,7 @@ RectTransform:
   - {fileID: 1014437624}
   - {fileID: 1511891759}
   m_Father: {fileID: 1176093827}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13977084, y: 0}
   m_AnchorMax: {x: 0.8603751, y: 1}
@@ -574,49 +643,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '<size=40>Project Lead & Art Lead</size>
-
-    Mark Medija
-
-
-    <size=40>Lead Programmer</size>
-
-    Kristian Mischke
-
-
-    <size=40>Artists</size>
-
-    Kaela Chen <i>- pixel art</i>
-
-    Faith Gault <i>- enemy art</i>
-
-
-    <size=40>Programmers</size>
-
-    Craig Stone
-
-    Justin Pham
-
-    Ryan Appleby <i>- user interface</i>
-
-    Dylan Haire
-
-
-    <size=40>Music</size>
-
-    Desmond Oliver
-
-
-
-    <size=40>Designers</size>
-
-    All of the above
-
-
-
-    <size=40>Additional Resources</size>
-
-    TODO: add filebrowser and stuffs'
+  m_text: "<b><u><size=50>Credits:</size></u></b>\n\n<b><u><size=35>Project Lead /
+    Art Lead</size></u></b>\nMark Medija\n\n<b><u><size=35>Lead Programmer, Network
+    Programmer</size></u></b>\nKristian Mischke\n\n<b><u><size=35>Assistant Programmer,
+    Discord Implementation,\nMacOS Support</size></u></b>\nCraig Stone \n\n<b><u><size=35>Assistant
+    Programmer, Map Designer</size></u></b>\nRyan Appleby  \n\n<b><u><size=35>Pixel
+    Artist</size></u></b>\nKaela Chen\n\n<b><u><size=35>Enemy Designer</size></u></b>\nFaith
+    Madeoy Gault\n\n<b><u><size=35>Character Redraw / Designer</size></u></b> \nFelice
+    Henriquez\n\n<b><u><size=35>Other Contributors:</size></u></b> \nJustin Pham,
+    Dylan Haire, Desmond Oliver"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61642b6cd7816c54ebe3f93d85eeb39d, type: 2}
   m_sharedMaterial: {fileID: 21128666269213942, guid: 61642b6cd7816c54ebe3f93d85eeb39d,
@@ -644,14 +679,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 28
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 544
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -662,7 +697,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 333
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -685,10 +720,10 @@ MonoBehaviour:
   m_margin: {x: 0.38275146, y: 0, z: 0.13964844, w: 0}
   m_textInfo:
     textComponent: {fileID: 1014437625}
-    characterCount: 311
+    characterCount: 394
     spriteCount: 0
-    spaceCount: 56
-    wordCount: 48
+    spaceCount: 63
+    wordCount: 49
     linkCount: 0
     lineCount: 26
     pageCount: 1
@@ -804,9 +839,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 426504900}
   - {fileID: 197581072}
   - {fileID: 885331771}
-  - {fileID: 426504900}
+  - {fileID: 703073398}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
