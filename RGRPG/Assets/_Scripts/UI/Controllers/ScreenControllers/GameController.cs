@@ -208,14 +208,13 @@ namespace RGRPG.Controllers
 
         private void RunSceneTransition()
         {
+            worldSceneController.ResetScene(Client.CurrentScene);
 
             UpdateEnemyControllers();
         }
 
         private void UpdateEnemyControllers()
         {
-            worldSceneController.ResetScene(Client.CurrentScene);
-
             // take down old enemy controllers
             for (int i = enemyControllers.Count-1; i >= 0; i--)
             {

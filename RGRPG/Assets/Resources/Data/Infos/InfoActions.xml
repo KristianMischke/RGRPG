@@ -38,7 +38,7 @@
         <TargetType>TARGET_ENEMY</TargetType>
         <TargetData />
         <SourceParticleEffect />
-        <TargetsParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
         <Quips>
             <Item>%SOURCE% attacks %TARGET%</Item>
         </Quips>
@@ -344,7 +344,7 @@
         <TargetType>TARGET_ENEMY</TargetType>
         <TargetData />
         <SourceParticleEffect />
-        <TargetsParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
         <Quips>
             <Item>%SOURCE% leaves a big red spot on %TARGET%</Item>
             <Item>%SOURCE% sBings %TARGET%</Item>
@@ -365,7 +365,7 @@
         <TargetType>TARGET_SELF</TargetType>
         <TargetData />
         <SourceParticleEffect />
-        <TargetsParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
         <Quips>
             <Item>%SOURCE% chugs a frappe mocha</Item>
             <Item>%SOURCE% slurps down some S-Bucks</Item>
@@ -387,7 +387,7 @@
         <TargetType>TARGET_ENEMY</TargetType>
         <TargetData />
         <SourceParticleEffect />
-        <TargetsParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
         <Quips>
             <Item>%TARGET% suffers a mighty pinch by %SOURCE%</Item>
         </Quips>
@@ -407,7 +407,7 @@
         <TargetType>TARGET_ENEMY</TargetType>
         <TargetData />
         <SourceParticleEffect />
-        <TargetsParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
         <Quips>
             <Item>%TARGET% is frightened by the thought of %SOURCE%</Item>
             <Item>%TARGET% coweres as he remembers his past grades</Item>
@@ -428,10 +428,71 @@
         <TargetType>TARGET_ENEMY</TargetType>
         <TargetData />
         <SourceParticleEffect />
-        <TargetsParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/ManaDrainAnimation</TargetsParticleEffect>
         <Quips>
             <Item>Book expenses hit %TARGET% hard, too bad they'll never be opened!</Item>
             <Item>Annnnd, that's another loan for %TARGET%</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_FINAL_BOSS_SOUL_DRAIN</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.ManaDrain</Type>
+            <InitParams>
+                <thisInfo />
+                <drain>20</drain>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_OTHER_TEAM</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/ManaDrainAnimation</TargetsParticleEffect>
+        <Quips>
+            <Item>%SOURCE%: "YoUr eNrgY iS OUrS!"</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_FINAL_BOSS_SELFIE_BRAG</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.AttackAction</Type>
+            <InitParams>
+                <thisInfo />
+                <damage>35</damage>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_ENEMY</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/DamageAnimation</TargetsParticleEffect>
+        <Quips>
+            <Item>%SOURCE% brags about selfies with Hrabowski</Item>
+            <Item>%TARGET% shudders at %SOURCE%'s clout</Item>
+        </Quips>
+    </Entry>
+    <Entry>
+        <zType>ACTION_FINAL_BOSS_HEAL</zType>
+        <Name></Name>
+        <Description></Description>
+        <SharpClass>
+            <Type>RGRPG.Core.HealAction</Type>
+            <InitParams>
+                <thisInfo />
+                <damage>35</damage>
+                <manaCost>30</manaCost>
+            </InitParams>
+        </SharpClass>
+        <TargetType>TARGET_SELF</TargetType>
+        <TargetData />
+        <SourceParticleEffect />
+        <TargetsParticleEffect>Prefabs/Action Animations/HealAnimation</TargetsParticleEffect>
+        <Quips>
+            <Item>%SOURCE% boasts about superiority</Item>
         </Quips>
     </Entry>
 </Root>

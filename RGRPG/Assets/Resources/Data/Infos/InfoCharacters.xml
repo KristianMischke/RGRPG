@@ -9,6 +9,7 @@
         <zPortraitSprite>Sprites/troll</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy />
+        <bBoss/>
         <iHealth>
         </iHealth>
         <iMagic>
@@ -29,6 +30,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Austin_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
+        <bBoss/>
         <iHealth>55</iHealth>
         <iMagic>80</iMagic>
         <iDefense>25</iDefense>
@@ -49,6 +51,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Seth_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
+        <bBoss/>
         <iHealth>65</iHealth>
         <iMagic>25</iMagic>
         <iDefense>40</iDefense>
@@ -69,6 +72,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Rika_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
+        <bBoss/>
         <iHealth>40</iHealth>
         <iMagic>60</iMagic>
         <iDefense>20</iDefense>
@@ -89,6 +93,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Meredith_Portrait_R</zPortraitSprite>
         <bOverworldHasDirection>1</bOverworldHasDirection>
         <bEnemy />
+        <bBoss/>
         <iHealth>75</iHealth>
         <iMagic>50</iMagic>
         <iDefense>60</iDefense>
@@ -109,6 +114,7 @@
         <zPortraitSprite>Sprites/Not Pixel/squirrel colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>50</iHealth>
         <iMagic>30</iMagic>
         <iDefense>0</iDefense>
@@ -127,6 +133,7 @@
         <zPortraitSprite>Sprites/Not Pixel/goose colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -145,6 +152,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Bee_colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -163,6 +171,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Sleep-Deprived Student colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -182,6 +191,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Crab Knight colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -201,6 +211,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Ghost of Assignments Past colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -219,6 +230,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Paperweight colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -237,6 +249,7 @@
         <zPortraitSprite>Sprites/Not Pixel/The swarm colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -255,6 +268,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Commuter Beast Colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -273,6 +287,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Ice Ninja Colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -291,6 +306,7 @@
         <zPortraitSprite>Sprites/Not Pixel/Necromancer Professor Colored</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss/>
         <iHealth>60</iHealth>
         <iMagic>40</iMagic>
         <iDefense>50</iDefense>
@@ -309,10 +325,14 @@
         <zPortraitSprite>Sprites/Not Pixel/finalboss</zPortraitSprite>
         <bOverworldHasDirection />
         <bEnemy>1</bEnemy>
+        <bBoss>1</bBoss>
         <iHealth>120</iHealth>
         <iMagic>60</iMagic>
         <iDefense>60</iDefense>
         <ActionList>
+            <Item>ACTION_FINAL_BOSS_SOUL_DRAIN</Item>
+            <Item>ACTION_FINAL_BOSS_SELFIE_BRAG</Item>
+            <Item>ACTION_FINAL_BOSS_HEAL</Item>
         </ActionList>
         <portraitOffsetX>0</portraitOffsetX>
         <portraitOffsetY>0</portraitOffsetY>

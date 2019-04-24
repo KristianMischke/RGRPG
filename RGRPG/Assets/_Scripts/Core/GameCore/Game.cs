@@ -625,10 +625,11 @@ namespace RGRPG.Core
                 allPlayersDead &= !p.IsAlive();
             }
 
-            bool allEnemiesDead = true;
+            bool allBossesDead = true;
             foreach (List<Enemy> sceneEnenies in enemies.Values)
                 foreach (Enemy e in sceneEnenies)
-                    allEnemiesDead &= !e.IsAlive();
+                    if(e.MyInfo.IsBoss)
+                        allBossesDead &= !e.IsAlive();
 
             if (allPlayersDead)
             {
@@ -641,10 +642,10 @@ namespace RGRPG.Core
                 LogMessage("YOU Won this battle!"); //TODO: see ^
             }
 
-            if (allEnemiesDead)
+            if (allBossesDead)
             {
                 currentGameState = GameState.Win;
-                LogMessage("YOU WON THE GAME"); //TODO: beating all the enemies should not be the ultimate win condition (defeating the bosses should be)
+                LogMessage("YOU WON THE GAME");
             }
 
             if (allCombatEnemiesDead || allPlayersDead)
@@ -806,7 +807,7 @@ namespace RGRPG.Core
             foreach (Character player in players)
             {
                 TerrainTile standingTile = currentScene.GetTileAt(player.Position);
-                if (standingTile.IsTransitionTile)
+                if (standingTile != null && standingTile.IsTransitionTile)
                 {
                     TransitionToScene(standingTile.TransitionScene, standingTile.TransitionSpawnID);
                     return;

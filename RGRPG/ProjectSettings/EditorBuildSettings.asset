@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DiscordScene.unity
     guid: 994767184e0c24c49a5c077ea1b2e3dc
+  - enabled: 1
+    path: Assets/Scenes/MapEditor.unity
+    guid: 76dafa1b7eefa5247a8d2d26cc6b6788
   m_configObjects: {}

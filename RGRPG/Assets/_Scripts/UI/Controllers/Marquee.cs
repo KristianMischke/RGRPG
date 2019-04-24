@@ -98,7 +98,7 @@ namespace RGRPG.Controllers
             }
             if (multiMessage != null && multiMessage.Count > 0 && multiMessage.Peek() != null)
             {
-                textObject.SetText(multiMessage.Peek().Substring(0, charsDisplayed));
+                textObject.SetText(multiMessage.Peek().Substring(0, Mathf.Min(charsDisplayed, multiMessage.Peek().Length)));
             }
 
             if (finishedSingle && multiMessage.Count > 0 && timer > TIME_AFTER_MESSAGE)

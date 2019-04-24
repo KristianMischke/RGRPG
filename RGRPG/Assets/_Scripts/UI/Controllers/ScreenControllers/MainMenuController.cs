@@ -43,7 +43,7 @@ public class MainMenuController : MonoBehaviour
 
         OptionsButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("OptionsScene");
+            SceneManager.LoadScene("MapEditor");
         });
 
         CreditsButton.onClick.AddListener(() =>

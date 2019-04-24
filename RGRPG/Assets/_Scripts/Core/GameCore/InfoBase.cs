@@ -32,6 +32,7 @@ namespace RGRPG.Core
         string zPortraitSprite;
         bool bOverworldHasDirection;
         bool bEnemy;
+        bool bBoss;
         int iHealth;
         int iMagic;
         int iDefense;
@@ -42,9 +43,10 @@ namespace RGRPG.Core
         public string Class { get { return zClass; } }
         public string Name  { get { return zName; } }
         public bool IsEnemy { get { return bEnemy; } }
+        public bool IsBoss  { get { return bBoss; } }
         public int Health   { get { return iHealth; } }
         public int Magic    { get { return iMagic; } }
-        public int Defense { get { return iDefense; } }
+        public int Defense  { get { return iDefense; } }
         public List<InfoAction> ActionList { get { return actionList; } }
 
         public float PortraitOffsetX { get { return portraitOffsetX; } }
@@ -59,6 +61,7 @@ namespace RGRPG.Core
             GameXMLLoader.ReadXMLValue(node, "zPortraitSprite", out zPortraitSprite);
             GameXMLLoader.ReadXMLValue(node, "bOverworldHasDirection", out bOverworldHasDirection);
             GameXMLLoader.ReadXMLValue(node, "bEnemy",          out bEnemy);
+            GameXMLLoader.ReadXMLValue(node, "bBoss",           out bBoss);
             GameXMLLoader.ReadXMLValue(node, "iHealth",         out iHealth);
             GameXMLLoader.ReadXMLValue(node, "iMagic",          out iMagic);
             GameXMLLoader.ReadXMLValue(node, "iDefense",        out iDefense);
