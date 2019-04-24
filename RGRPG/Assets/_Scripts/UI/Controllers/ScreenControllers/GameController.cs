@@ -260,15 +260,14 @@ namespace RGRPG.Controllers
                 return;
             }
 
+            worldObjectContainer.SetActive(!IsInCombat);
+            opponentHUDList.SetActive(IsInCombat);
 
             // transitioned to a new scene
             if (Client.SceneTransitioned)
             {
                 RunSceneTransition();
             }
-
-            worldObjectContainer.SetActive(!IsInCombat);
-            opponentHUDList.SetActive(IsInCombat);
 
             doneTurnButton.gameObject.SetActive(IsInCombat);
 
