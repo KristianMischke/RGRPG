@@ -37,12 +37,25 @@ namespace RGRPG.Core
         public int MyPlayerNumber { get { return myClientInfo.PlayerNumber; } set { myClientInfo.PlayerNumber = value; } }
         public int NumPlayers { get { return otherClients.Count + 1; } }
 
-        public Game Game { get { return game; } }
+        // would be cool if the below reference types could be non-mutated
+        public bool IsGameNull { get { return game == null; } }
         public GameInfos Infos { get { return game.Infos; } }
+        public Character SelectedCharacter { get { return game.SelectedCharacter; } }
+        public List<Character> Players { get { return game.Players; } }
+        public List<Enemy> Enemies { get { return game.Enemies; } }
         public List<Character> CombatEnemies { get { return game.CombatEnemies; } }
+        public List<Character> TurnOrder { get { return game.TurnOrder; } }
         public bool IsInCombat { get { return game.IsInCombat; } }
         public bool IsIndoors { get { return game.CurrentScene.IsIndoors; } }
+        public WorldScene CurrentScene { get { return game.CurrentScene; } }
         public string CurrentSceneType { get { return game.CurrentScene.ZType; } }
+        public GameState CurrentGameState { get { return game.CurrentGameState; } }
+        public CombatState CurrentCombatState { get { return game.CurrentCombatState; } }
+        public bool SceneTransitioned { get { return game.SceneTransitioned; } }
+        public Queue<string> GameMessages { get { return game.gameMessages; } }
+
+        public bool MoreCombatActions { get { return game.gameCombatActionQueue.Count > 0; } }
+        public PairStruct<Character, ICharacterAction> GetNextCombatAction { get { return game.gameCombatActionQueue.Dequeue(); } }
 
         public bool AreActionsDirty { get { bool temp = actionsDirty; actionsDirty = false; return temp; } }
         public bool IsMakingAction { get { return currentActionSource > 0; } }

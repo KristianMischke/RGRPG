@@ -202,6 +202,8 @@ namespace RGRPG.Core
             {
                 clientInfo.ReadyForNextRound = true;
                 BroadcastSyncClient(clientID);
+
+                serverManager.BroadcastCombatState((int)CombatState.WaitForNextRound);
             }
         }
 
@@ -209,7 +211,7 @@ namespace RGRPG.Core
         {
             foreach (ClientInfo c in connectedClients.Values)
             {
-                if (c.FinishedTurnInput)
+                if (c.ReadyForNextRound)
                 {
                     c.ReadyForNextRound = false;
                     BroadcastSyncClient(c.ID);
@@ -356,7 +358,7 @@ namespace RGRPG.Core
                         serverManager.BroadcastEnemyUpdate(game.SerializeEnemies());
                         serverManager.BroadcastPlayerUpdate(game.SerializePlayers());
                     }
-                    else if (game.CurrentCombatState == CombatState.ExecuteTurns)
+                    else
                     {
                         // we are transitioning to a new combat state
                         if (game.CurrentCombatState == CombatState.PlayersChooseActions || game.CurrentCombatState == CombatState.ExecuteTurns || game.CurrentCombatState == CombatState.RoundBegin)
@@ -403,12 +405,6 @@ namespace RGRPG.Core
             {
                 //TODO: send gameMessages?
                 //EventQueueManager.instance.AddEventMessage(game.gameMessages.Dequeue());
-            }
-
-            if (game.IsInCombat)
-            {
-                //TODO: process next combat step once all clients have finished animtaions
-                //game.ProcessNextCombatStep(); // (SERVER)
             }
         }
 

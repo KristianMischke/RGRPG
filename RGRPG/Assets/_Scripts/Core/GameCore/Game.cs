@@ -510,6 +510,7 @@ namespace RGRPG.Core
                 case CombatState.RoundBegin:
                     turnCounter = 0;
                     prevTurnCounter = -1;
+                    doNextCombatStep = false;
                     currentCombatState = CombatState.PickTurnOrder;
                     break;
 
