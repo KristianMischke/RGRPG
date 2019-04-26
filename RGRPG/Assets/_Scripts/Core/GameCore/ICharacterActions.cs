@@ -592,11 +592,15 @@ namespace RGRPG.Core
         {
             foreach (Character c in targets)
             {
+                Debug.Log("Shining Blade!!");
                 int critDamage = damageAmount * 2;
                 //This should work? I'm not entirely sure how Random.Range works
                 int critChance = (int)Random.Range(1f, 8f);
                 if (critChance == 4)
+                {
                     c.Damage(critDamage);
+                    Debug.Log("Did damage!");
+                }
 
             }
         }

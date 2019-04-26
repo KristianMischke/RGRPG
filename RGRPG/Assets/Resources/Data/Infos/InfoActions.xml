@@ -123,7 +123,7 @@
         <SourceParticleEffect />
         <TargetsParticleEffect />
         <Quips>
-            <Item></Item>
+            <Item>%SOURCE% COUNTERS</Item>
         </Quips>
     </Entry>
     <Entry>
@@ -163,8 +163,7 @@
         <SourceParticleEffect />
         <TargetsParticleEffect />
         <Quips>
-            <Item>
-            </Item>
+            <Item>%SOURCE% DOES SHINING BLADE WOO</Item>
         </Quips>
     </Entry>
     <Entry>
