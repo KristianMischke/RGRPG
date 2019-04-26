@@ -22,31 +22,35 @@ namespace RGRPG.Controllers
         List<List<TerrainTileController>> activeTerrainTiles;
         Pool<TerrainTileController> terrainTilePool;
 
-        private void OnEnable()
+
+        bool first = true;
+        void OnEnable()
         {
-            activeTerrainTiles = new List<List<TerrainTileController>>();
+            if (first)
+            {
+                activeTerrainTiles = new List<List<TerrainTileController>>();
 
-            Action<TerrainTileController> activateTile = (TerrainTileController t) => {
-                t.gameObject.SetActive(true);
-            };
-            Action<TerrainTileController> deactivateTile = (TerrainTileController t) => {
-                t.gameObject.SetActive(false);
-            };
-            Func<TerrainTileController> newTile = () => {
-                GameObject tileObject = (MapEditorController.instance == null) ? Instantiate(terrainTileView) : Instantiate(terrainTileViewMapEditor);
-                tileObject.transform.SetParent(terrainContainer.transform);
+                Action<TerrainTileController> activateTile = (TerrainTileController t) =>
+                {
+                    t.gameObject.SetActive(true);
+                };
+                Action<TerrainTileController> deactivateTile = (TerrainTileController t) =>
+                {
+                    t.gameObject.SetActive(false);
+                };
+                Func<TerrainTileController> newTile = () =>
+                {
+                    GameObject tileObject = (MapEditorController.instance == null) ? Instantiate(terrainTileView) : Instantiate(terrainTileViewMapEditor);
+                    tileObject.transform.SetParent(terrainContainer.transform);
 
-                TerrainTileController tileController = tileObject.GetComponent<TerrainTileController>();
-                return tileController;
-            };
+                    TerrainTileController tileController = tileObject.GetComponent<TerrainTileController>();
+                    return tileController;
+                };
 
-            terrainTilePool = new Pool<TerrainTileController>(activateTile, deactivateTile, newTile);
-        }
+                terrainTilePool = new Pool<TerrainTileController>(activateTile, deactivateTile, newTile);
 
-        // Use this for initialization
-        void Start()
-        {
-            
+                first = false;
+            }
         }
 
         // Update is called once per frame
