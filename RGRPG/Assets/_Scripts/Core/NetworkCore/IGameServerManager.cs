@@ -14,6 +14,7 @@ namespace RGRPG.Core.NetworkCore
         void BroadcastEnemyUpdate(object[] data);
         void BroadcastSceneUpdate(string sceneID);
         void BroadcastBeginCombat(int[] enemyIDs);
+        void BroadcastGameState(int gameState);
         void BroadcastCombatState(int combatState);
         void BroadcastCombatData(object[] data);
         void BroadcastEndCombat();

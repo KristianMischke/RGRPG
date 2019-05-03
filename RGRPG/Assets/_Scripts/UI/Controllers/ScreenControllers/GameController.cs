@@ -377,9 +377,6 @@ namespace RGRPG.Controllers
                 Marquee.instance.Show();
             }
 
-            if (Input.GetKey(KeyCode.Escape))
-                SceneManager.LoadScene("PauseMenuScene");
-
             wasInCombat = IsInCombat;
         }
 

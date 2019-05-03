@@ -98,6 +98,10 @@ namespace RGRPG.Core.NetworkCore
         {
             client.DeleteCharacter(characterID);
         }
+        public void BroadcastGameState(int gameState)
+        {
+            client.UpdateGameState(gameState);
+        }
 
         // combat messages
         public void BroadcastBeginCombat(int[] enemyIDs)

@@ -109,6 +109,11 @@ namespace RGRPG.Core
             inGame = true;
         }
 
+        public void UpdateGameState(int gameState)
+        {
+            overrideGameState = (GameState)gameState;
+        }
+
         public void CharacterUpdate(object[] data)
         {
             game.DeserializeCharacters(data);

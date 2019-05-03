@@ -20,6 +20,7 @@ namespace RGRPG.Core.NetworkCore
             SCENE_UPDATE,
             DELETE_CHARACTER,
             BEGIN_COMBAT,
+            UPDATE_GAME_STATE,
             UPDATE_COMBAT_STATE,
             UPDATE_COMBAT_DATA,
             COMBAT_PLAYER_READY_FOR_NEXT_ROUND,
@@ -196,6 +197,12 @@ namespace RGRPG.Core.NetworkCore
                         client.EndCombat();
                     }
                     break;
+                case (byte)NetworkEvent.UPDATE_GAME_STATE:
+                    {
+                        int gameState = (int)content;
+                        client.UpdateGameState(gameState);
+                    }
+                    break;
             }
         }
 
@@ -300,6 +307,13 @@ namespace RGRPG.Core.NetworkCore
             bool reliable = true;
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent((byte)NetworkEvent.DELETE_CHARACTER, characterID, reliable, raiseEventOptions);
+        }
+
+        public void BroadcastGameState(int gameState)
+        {
+            bool reliable = true;
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent((byte)NetworkEvent.UPDATE_GAME_STATE, gameState, reliable, raiseEventOptions);
         }
 
         // combat messages

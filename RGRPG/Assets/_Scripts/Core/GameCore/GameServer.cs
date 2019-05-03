@@ -295,6 +295,8 @@ namespace RGRPG.Core
             if (game.SceneTransitioned)
                 serverManager.BroadcastSceneUpdate(game.CurrentScene.ZType);
 
+            serverManager.BroadcastGameState((int)game.CurrentGameState);
+
             if (game.IsInCombat)
             {
                 if (game.CurrentCombatState == CombatState.PlayersChooseActions)

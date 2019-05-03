@@ -20,6 +20,8 @@ public class NetworkManagerSpawner : MonoBehaviour
 
     public static NetworkManagerSpawner instance;
 
+    GameObject networkManagerObject;
+
     private void Start()
     {
         if (instance == null)
@@ -35,6 +37,11 @@ public class NetworkManagerSpawner : MonoBehaviour
 
     public void SpawnNetowrkManager(NetworkManagerType type)
     {
+        if (networkManagerObject != null)
+        {
+            Destroy(networkManagerObject);
+        }
+
         GameObject networkManager;
         switch (type)
         {
@@ -49,6 +56,7 @@ public class NetworkManagerSpawner : MonoBehaviour
                 break;
         }
 
+        networkManagerObject = networkManager;
         DontDestroyOnLoad(networkManager);
     }
 }
